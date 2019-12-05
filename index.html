@@ -177,15 +177,15 @@
     <p class="kamon player-description">[my description]</p>
     <div id="kamon-pokemon"></div>
 
-    <h2>JaeBird's Pokemon</h2>
+    <h2>JaeBird</h2>
     <p class="jbird player-description">[my description]</p>
     <div id="jbird-pokemon"></div>
 
-    <h2>Steve's Pokemon</h2>
+    <h2>Steve</h2>
     <p class="steve player-description">[my description]</p>
     <div id="steve-pokemon"></div>
 
-    <h2>James's Pokemon</h2>
+    <h2>James</h2>
     <p class="james player-description">[my description]</p>
     <div id="james-pokemon"></div>
 
@@ -537,6 +537,9 @@
 
     function setPlayoffs(playoffs, player_names, player_class) {
         playoffs_dom = document.getElementById("playoffs");
+        if (playoffs.length === 0) {
+            playoffs_dom.appendChild(make_dom_element('p', 'No playoff rounds listed yet.'))
+        }
         for (var i = 0; i < playoffs.length; i++) {
             var table, tbody;
             var round = playoffs[i];
