@@ -19,33 +19,33 @@
     p.margin-bottom-0 {
         margin-bottom: 0px;
     }
-    #tournaments table,
+    .tournaments table,
     #playoffs    table,
     #drafts      table,
     #trades      table {
         margin-top: 20px;
         margin-bottom: 20px;
     }
-    #tournaments table tr:first-child td,
+    .tournaments table tr:first-child td,
     #playoffs    table tr:first-child td,
     #drafts      table tr:first-child td,
     #trades      table tr:first-child td {
         font-weight: bold;
         padding-bottom: 8px;
     }
-    #tournaments table tr:not(:first-child) td,
+    .tournaments table tr:not(:first-child) td,
     #playoffs    table tr:not(:first-child) td,
     #drafts      table tr:not(:first-child) td {
         padding-right: 30px;
     }
-    #tournaments table tr:not(:first-child) td:nth-child(3),
+    .tournaments table tr:not(:first-child) td:nth-child(3),
     #trades      table tr:not(:first-child) td:nth-child(3) {
         text-align: center;
     }
-    #tournaments table tr.winner {
+    .tournaments table tr.winner {
         font-weight: bold;
     }
-    #tournaments div.match {
+    .tournaments div.match {
         width: 20px;
         height: 20px;
         display: inline-block;
@@ -53,13 +53,13 @@
         text-align: center;
         border-radius: 5px;
     }
-    #tournaments div.match.win {
+    .tournaments div.match.win {
         background-color: #2ecc71;
     }
-    #tournaments div.match.loss {
+    .tournaments div.match.loss {
         background-color: #e74c3c;
     }
-    #tournaments div.match.none {
+    .tournaments div.match.none {
         visibility: hidden;
     }
     #drafts {
@@ -86,16 +86,16 @@
         text-align: center;
         margin-top: 0px;
     }
-    .pokemon-img.kamon, #tournaments table tr.winner.kamon, #drafts table tr.kamon, #trades table tr.kamon, #playoffs td.winner.kamon {
+    .pokemon-img.kamon, .tournaments table tr.winner.kamon, #drafts table tr.kamon, #trades table tr.kamon, #playoffs td.winner.kamon {
         background: radial-gradient(#e74c3c 5%, #ecf0f1 70%);
     }
-    .pokemon-img.jbird, #tournaments table tr.winner.jbird, #drafts table tr.jbird, #trades table tr.jbird, #playoffs td.winner.jbird {
+    .pokemon-img.jbird, .tournaments table tr.winner.jbird, #drafts table tr.jbird, #trades table tr.jbird, #playoffs td.winner.jbird {
         background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
     }
-    .pokemon-img.steve, #tournaments table tr.winner.steve, #drafts table tr.steve, #trades table tr.steve, #playoffs td.winner.steve {
+    .pokemon-img.steve, .tournaments table tr.winner.steve, #drafts table tr.steve, #trades table tr.steve, #playoffs td.winner.steve {
         background: radial-gradient(#9b59b6 5%, #ecf0f1 70%);
     }
-    .pokemon-img.james, #tournaments table tr.winner.james, #drafts table tr.james, #trades table tr.james, #playoffs td.winner.james {
+    .pokemon-img.james, .tournaments table tr.winner.james, #drafts table tr.james, #trades table tr.james, #playoffs td.winner.james {
         background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
     }
     a:hover > .pokemon-large > p {
@@ -145,7 +145,7 @@
     <h4>Draft rules</h4>
     <p>The draft pick order is randomly determined on the day of the draft. Players iteratively choose pokemon for their roster in a snake draft, meaning every even round is picked in reverse order (ex: 1 2 3 4 4 3 2 1 1 2 ...). Each pokemon (along with associated forms and megas) can only be on one player's roster. Pokemon from the same evolutionary line can belong to different players. Since there are only four legendary guardians (Tapu pokemon) and they are all compeditively viable, as soon as one Tapu pokemon is picked, immediately do a Tapu draft where the remaining players get to pick the remaining Tapu pokemon in a new, randomly determined order and then resume the main draft.</p>
     <h4>Battle rules</h4>
-    <p>Use Smogon's Double OU rules <a href="https://www.smogon.com/dex/sm/formats/doubles/" target="_blank">https://www.smogon.com/dex/sm/formats/doubles/</a> with the following additions and exceptions:</p>
+    <p>Use Smogon's Gen 7 (Sun and Moon) Double OU rules <a href="https://www.smogon.com/dex/sm/formats/doubles/" target="_blank">https://www.smogon.com/dex/sm/formats/doubles/</a> with the following additions and exceptions:</p>
     <ul>
         <li>Roster Clause: Players can only use Pokemon from their roster.</li>
         <li>Legendary 600+ Clause: Players cannot use legendary Pokemon with base stats greater than 600.</li>
@@ -168,12 +168,18 @@
 
     <div>
         <h2>Tournaments</h2>
-        <div id="tournaments"></div>
+        <div id="tournaments" class="tournaments"></div>
     </div>
 
     <div>
         <h2>Playoffs</h2>
         <div id="playoffs"></div>
+    </div>
+
+    <div>
+        <h2>Unofficial Tournaments</h2>
+        <p>These tournaments do not count toward tournament wins, match wins, and pokemon appearances. They may be used to decide events that would normally be determined by random chance such as draft order.</p>
+        <div id="tournaments-unofficial" class="tournaments"></div>
     </div>
 
     <h2>Kamon</h2>
@@ -440,6 +446,26 @@
         ]
     ]
 
+    var tournaments_unofficial = [
+        {
+            "date": '2020/08/25 - Random Monotypes',
+            "teams": [
+                [479, 145, 310, 785, 171, 181],
+                [598, 681, 805, 376, 530, 798],
+                [721, 727, 479, 637, 6, 494],
+                [788, 260, 279, 752, 423, 721]
+            ],
+            "matches": [
+                [2, 0],
+                [1, 3],
+                [0, 1],
+                [2, 3],
+                [0, 3],
+                [2, 1]
+            ]
+        }
+    ]
+
     function pad(num, size) {
         var s = "000000000" + num;
         return s.substr(s.length-size);
@@ -487,8 +513,17 @@
         }
     }
 
-    function setTournaments(tournaments, player_names, player_class) {
+    function setTournamentsOfficial(tournaments, player_names, player_class) {
         tournaments_dom = document.getElementById("tournaments");
+        setTournamentsOnDiv(tournaments_dom, tournaments, player_names, player_class);
+    }
+
+    function setTournamentsUnofficial(tournaments, player_names, player_class) {
+        tournaments_dom = document.getElementById("tournaments-unofficial");
+        setTournamentsOnDiv(tournaments_dom, tournaments, player_names, player_class);
+    }
+
+    function setTournamentsOnDiv(tournaments_dom, tournaments, player_names, player_class) {
         for (var i = tournaments.length-1; i >= 0; i--) {
             var table, tbody;
             var tourny = tournaments[i];
@@ -710,7 +745,7 @@
 
     function setPlayerDescriptions(player_class) {
         for (var i = 0; i < player_class.length; i++) {
-            var n_tournament_wins = document.querySelectorAll('.winner.' + player_class[i]).length;
+            var n_tournament_wins = document.querySelectorAll('#tournaments .winner.' + player_class[i]).length;
             var n_pokemon = document.querySelectorAll('.pokemon-img.' + player_class[i]).length;
             var n_match_wins = 0;
             var match_win_doms = document.querySelectorAll('#tournaments tr.' + player_class[i] + ' td:nth-child(3)');
@@ -797,7 +832,7 @@
 
     var pokemon_names = ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise', 'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate', 'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash', 'Nidoran♀', 'Nidorina', 'Nidoqueen', 'Nidoran♂', 'Nidorino', 'Nidoking', 'Clefairy', 'Clefable', 'Vulpix', 'Ninetales', 'Jigglypuff', 'Wigglytuff', 'Zubat', 'Golbat', 'Oddish', 'Gloom', 'Vileplume', 'Paras', 'Parasect', 'Venonat', 'Venomoth', 'Diglett', 'Dugtrio', 'Meowth', 'Persian', 'Psyduck', 'Golduck', 'Mankey', 'Primeape', 'Growlithe', 'Arcanine', 'Poliwag', 'Poliwhirl', 'Poliwrath', 'Abra', 'Kadabra', 'Alakazam', 'Machop', 'Machoke', 'Machamp', 'Bellsprout', 'Weepinbell', 'Victreebel', 'Tentacool', 'Tentacruel', 'Geodude', 'Graveler', 'Golem', 'Ponyta', 'Rapidash', 'Slowpoke', 'Slowbro', 'Magnemite', 'Magneton', 'Farfetch’d', 'Doduo', 'Dodrio', 'Seel', 'Dewgong', 'Grimer', 'Muk', 'Shellder', 'Cloyster', 'Gastly', 'Haunter', 'Gengar', 'Onix', 'Drowzee', 'Hypno', 'Krabby', 'Kingler', 'Voltorb', 'Electrode', 'Exeggcute', 'Exeggutor', 'Cubone', 'Marowak', 'Hitmonlee', 'Hitmonchan', 'Lickitung', 'Koffing', 'Weezing', 'Rhyhorn', 'Rhydon', 'Chansey', 'Tangela', 'Kangaskhan', 'Horsea', 'Seadra', 'Goldeen', 'Seaking', 'Staryu', 'Starmie', 'Mr. Mime', 'Scyther', 'Jynx', 'Electabuzz', 'Magmar', 'Pinsir', 'Tauros', 'Magikarp', 'Gyarados', 'Lapras', 'Ditto', 'Eevee', 'Vaporeon', 'Jolteon', 'Flareon', 'Porygon', 'Omanyte', 'Omastar', 'Kabuto', 'Kabutops', 'Aerodactyl', 'Snorlax', 'Articuno', 'Zapdos', 'Moltres', 'Dratini', 'Dragonair', 'Dragonite', 'Mewtwo', 'Mew', 'Chikorita', 'Bayleef', 'Meganium', 'Cyndaquil', 'Quilava', 'Typhlosion', 'Totodile', 'Croconaw', 'Feraligatr', 'Sentret', 'Furret', 'Hoothoot', 'Noctowl', 'Ledyba', 'Ledian', 'Spinarak', 'Ariados', 'Crobat', 'Chinchou', 'Lanturn', 'Pichu', 'Cleffa', 'Igglybuff', 'Togepi', 'Togetic', 'Natu', 'Xatu', 'Mareep', 'Flaaffy', 'Ampharos', 'Bellossom', 'Marill', 'Azumarill', 'Sudowoodo', 'Politoed', 'Hoppip', 'Skiploom', 'Jumpluff', 'Aipom', 'Sunkern', 'Sunflora', 'Yanma', 'Wooper', 'Quagsire', 'Espeon', 'Umbreon', 'Murkrow', 'Slowking', 'Misdreavus', 'Unown', 'Wobbuffet', 'Girafarig', 'Pineco', 'Forretress', 'Dunsparce', 'Gligar', 'Steelix', 'Snubbull', 'Granbull', 'Qwilfish', 'Scizor', 'Shuckle', 'Heracross', 'Sneasel', 'Teddiursa', 'Ursaring', 'Slugma', 'Magcargo', 'Swinub', 'Piloswine', 'Corsola', 'Remoraid', 'Octillery', 'Delibird', 'Mantine', 'Skarmory', 'Houndour', 'Houndoom', 'Kingdra', 'Phanpy', 'Donphan', 'Porygon2', 'Stantler', 'Smeargle', 'Tyrogue', 'Hitmontop', 'Smoochum', 'Elekid', 'Magby', 'Miltank', 'Blissey', 'Raikou', 'Entei', 'Suicune', 'Larvitar', 'Pupitar', 'Tyranitar', 'Lugia', 'Ho-Oh', 'Celebi', 'Treecko', 'Grovyle', 'Sceptile', 'Torchic', 'Combusken', 'Blaziken', 'Mudkip', 'Marshtomp', 'Swampert', 'Poochyena', 'Mightyena', 'Zigzagoon', 'Linoone', 'Wurmple', 'Silcoon', 'Beautifly', 'Cascoon', 'Dustox', 'Lotad', 'Lombre', 'Ludicolo', 'Seedot', 'Nuzleaf', 'Shiftry', 'Taillow', 'Swellow', 'Wingull', 'Pelipper', 'Ralts', 'Kirlia', 'Gardevoir', 'Surskit', 'Masquerain', 'Shroomish', 'Breloom', 'Slakoth', 'Vigoroth', 'Slaking', 'Nincada', 'Ninjask', 'Shedinja', 'Whismur', 'Loudred', 'Exploud', 'Makuhita', 'Hariyama', 'Azurill', 'Nosepass', 'Skitty', 'Delcatty', 'Sableye', 'Mawile', 'Aron', 'Lairon', 'Aggron', 'Meditite', 'Medicham', 'Electrike', 'Manectric', 'Plusle', 'Minun', 'Volbeat', 'Illumise', 'Roselia', 'Gulpin', 'Swalot', 'Carvanha', 'Sharpedo', 'Wailmer', 'Wailord', 'Numel', 'Camerupt', 'Torkoal', 'Spoink', 'Grumpig', 'Spinda', 'Trapinch', 'Vibrava', 'Flygon', 'Cacnea', 'Cacturne', 'Swablu', 'Altaria', 'Zangoose', 'Seviper', 'Lunatone', 'Solrock', 'Barboach', 'Whiscash', 'Corphish', 'Crawdaunt', 'Baltoy', 'Claydol', 'Lileep', 'Cradily', 'Anorith', 'Armaldo', 'Feebas', 'Milotic', 'Castform', 'Kecleon', 'Shuppet', 'Banette', 'Duskull', 'Dusclops', 'Tropius', 'Chimecho', 'Absol', 'Wynaut', 'Snorunt', 'Glalie', 'Spheal', 'Sealeo', 'Walrein', 'Clamperl', 'Huntail', 'Gorebyss', 'Relicanth', 'Luvdisc', 'Bagon', 'Shelgon', 'Salamence', 'Beldum', 'Metang', 'Metagross', 'Regirock', 'Regice', 'Registeel', 'Latias', 'Latios', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Turtwig', 'Grotle', 'Torterra', 'Chimchar', 'Monferno', 'Infernape', 'Piplup', 'Prinplup', 'Empoleon', 'Starly', 'Staravia', 'Staraptor', 'Bidoof', 'Bibarel', 'Kricketot', 'Kricketune', 'Shinx', 'Luxio', 'Luxray', 'Budew', 'Roserade', 'Cranidos', 'Rampardos', 'Shieldon', 'Bastiodon', 'Burmy', 'Wormadam', 'Mothim', 'Combee', 'Vespiquen', 'Pachirisu', 'Buizel', 'Floatzel', 'Cherubi', 'Cherrim', 'Shellos', 'Gastrodon', 'Ambipom', 'Drifloon', 'Drifblim', 'Buneary', 'Lopunny', 'Mismagius', 'Honchkrow', 'Glameow', 'Purugly', 'Chingling', 'Stunky', 'Skuntank', 'Bronzor', 'Bronzong', 'Bonsly', 'Mime Jr.', 'Happiny', 'Chatot', 'Spiritomb', 'Gible', 'Gabite', 'Garchomp', 'Munchlax', 'Riolu', 'Lucario', 'Hippopotas', 'Hippowdon', 'Skorupi', 'Drapion', 'Croagunk', 'Toxicroak', 'Carnivine', 'Finneon', 'Lumineon', 'Mantyke', 'Snover', 'Abomasnow', 'Weavile', 'Magnezone', 'Lickilicky', 'Rhyperior', 'Tangrowth', 'Electivire', 'Magmortar', 'Togekiss', 'Yanmega', 'Leafeon', 'Glaceon', 'Gliscor', 'Mamoswine', 'Porygon-Z', 'Gallade', 'Probopass', 'Dusknoir', 'Froslass', 'Rotom', 'Uxie', 'Mesprit', 'Azelf', 'Dialga', 'Palkia', 'Heatran', 'Regigigas', 'Giratina', 'Cresselia', 'Phione', 'Manaphy', 'Darkrai', 'Shaymin', 'Arceus', 'Victini', 'Snivy', 'Servine', 'Serperior', 'Tepig', 'Pignite', 'Emboar', 'Oshawott', 'Dewott', 'Samurott', 'Patrat', 'Watchog', 'Lillipup', 'Herdier', 'Stoutland', 'Purrloin', 'Liepard', 'Pansage', 'Simisage', 'Pansear', 'Simisear', 'Panpour', 'Simipour', 'Munna', 'Musharna', 'Pidove', 'Tranquill', 'Unfezant', 'Blitzle', 'Zebstrika', 'Roggenrola', 'Boldore', 'Gigalith', 'Woobat', 'Swoobat', 'Drilbur', 'Excadrill', 'Audino', 'Timburr', 'Gurdurr', 'Conkeldurr', 'Tympole', 'Palpitoad', 'Seismitoad', 'Throh', 'Sawk', 'Sewaddle', 'Swadloon', 'Leavanny', 'Venipede', 'Whirlipede', 'Scolipede', 'Cottonee', 'Whimsicott', 'Petilil', 'Lilligant', 'Basculin', 'Sandile', 'Krokorok', 'Krookodile', 'Darumaka', 'Darmanitan', 'Maractus', 'Dwebble', 'Crustle', 'Scraggy', 'Scrafty', 'Sigilyph', 'Yamask', 'Cofagrigus', 'Tirtouga', 'Carracosta', 'Archen', 'Archeops', 'Trubbish', 'Garbodor', 'Zorua', 'Zoroark', 'Minccino', 'Cinccino', 'Gothita', 'Gothorita', 'Gothitelle', 'Solosis', 'Duosion', 'Reuniclus', 'Ducklett', 'Swanna', 'Vanillite', 'Vanillish', 'Vanilluxe', 'Deerling', 'Sawsbuck', 'Emolga', 'Karrablast', 'Escavalier', 'Foongus', 'Amoonguss', 'Frillish', 'Jellicent', 'Alomomola', 'Joltik', 'Galvantula', 'Ferroseed', 'Ferrothorn', 'Klink', 'Klang', 'Klinklang', 'Tynamo', 'Eelektrik', 'Eelektross', 'Elgyem', 'Beheeyem', 'Litwick', 'Lampent', 'Chandelure', 'Axew', 'Fraxure', 'Haxorus', 'Cubchoo', 'Beartic', 'Cryogonal', 'Shelmet', 'Accelgor', 'Stunfisk', 'Mienfoo', 'Mienshao', 'Druddigon', 'Golett', 'Golurk', 'Pawniard', 'Bisharp', 'Bouffalant', 'Rufflet', 'Braviary', 'Vullaby', 'Mandibuzz', 'Heatmor', 'Durant', 'Deino', 'Zweilous', 'Hydreigon', 'Larvesta', 'Volcarona', 'Cobalion', 'Terrakion', 'Virizion', 'Tornadus', 'Thundurus', 'Reshiram', 'Zekrom', 'Landorus', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Chespin', 'Quilladin', 'Chesnaught', 'Fennekin', 'Braixen', 'Delphox', 'Froakie', 'Frogadier', 'Greninja', 'Bunnelby', 'Diggersby', 'Fletchling', 'Fletchinder', 'Talonflame', 'Scatterbug', 'Spewpa', 'Vivillon', 'Litleo', 'Pyroar', 'Flabébé', 'Floette', 'Florges', 'Skiddo', 'Gogoat', 'Pancham', 'Pangoro', 'Furfrou', 'Espurr', 'Meowstic', 'Honedge', 'Doublade', 'Aegislash', 'Spritzee', 'Aromatisse', 'Swirlix', 'Slurpuff', 'Inkay', 'Malamar', 'Binacle', 'Barbaracle', 'Skrelp', 'Dragalge', 'Clauncher', 'Clawitzer', 'Helioptile', 'Heliolisk', 'Tyrunt', 'Tyrantrum', 'Amaura', 'Aurorus', 'Sylveon', 'Hawlucha', 'Dedenne', 'Carbink', 'Goomy', 'Sliggoo', 'Goodra', 'Klefki', 'Phantump', 'Trevenant', 'Pumpkaboo', 'Gourgeist', 'Bergmite', 'Avalugg', 'Noibat', 'Noivern', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Rowlet', 'Dartrix', 'Decidueye', 'Litten', 'Torracat', 'Incineroar', 'Popplio', 'Brionne', 'Primarina', 'Pikipek', 'Trumbeak', 'Toucannon', 'Yungoos', 'Gumshoos', 'Grubbin', 'Charjabug', 'Vikavolt', 'Crabrawler', 'Crabominable', 'Oricorio', 'Cutiefly', 'Ribombee', 'Rockruff', 'Lycanroc', 'Wishiwashi', 'Mareanie', 'Toxapex', 'Mudbray', 'Mudsdale', 'Dewpider', 'Araquanid', 'Fomantis', 'Lurantis', 'Morelull', 'Shiinotic', 'Salandit', 'Salazzle', 'Stufful', 'Bewear', 'Bounsweet', 'Steenee', 'Tsareena', 'Comfey', 'Oranguru', 'Passimian', 'Wimpod', 'Golisopod', 'Sandygast', 'Palossand', 'Pyukumuku', 'Type: Null', 'Silvally', 'Minior', 'Komala', 'Turtonator', 'Togedemaru', 'Mimikyu', 'Bruxish', 'Drampa', 'Dhelmise', 'Jangmo-o', 'Hakamo-o', 'Kommo-o', 'Tapu Koko', 'Tapu Lele', 'Tapu Bulu', 'Tapu Fini', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Nihilego', 'Buzzwole', 'Pheromosa', 'Xurkitree', 'Celesteela', 'Kartana', 'Guzzlord', 'Necrozma', 'Magearna', 'Marshadow', 'Poipole', 'Naganadel', 'Stakataka', 'Blacephalon', 'Zeraora', 'Meltan', 'Melmetal'];
 
-    setTournaments(tournaments, player_names, player_class);
+    setTournamentsOfficial(tournaments, player_names, player_class);
     setPlayoffs(playoffs, player_names, player_class);
     for (var i = 0; i < player_pokemon.length; i++) {
         var pokemon_n_used = calculate_n_used(player_pokemon[i]);
@@ -808,6 +843,8 @@
     setDrafts(drafts, player_names, player_class);
     setTrades(trades, player_names, player_class);
     setPlayerDescriptions(player_class);
+
+    setTournamentsUnofficial(tournaments_unofficial, player_names, player_class);
 </script>
 </body>
 </html>
