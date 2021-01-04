@@ -1,0 +1,1695 @@
+<!doctype html>
+
+<html lang="en">
+<head><style>
+    html * {
+        color: #000;
+        font-family: Arial;
+    }
+    html {
+        background-color: #ecf0f1;
+    }
+    h2 {
+        padding-top: 20px;
+        margin-bottom: 0px;
+    }
+    body > p {
+        margin-top: 5px;
+    }
+    p.margin-bottom-0 {
+        margin-bottom: 0px;
+    }
+    .tournaments table,
+    #playoffs    table,
+    #drafts      table,
+    #trades      table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .tournaments table tr:first-child td,
+    #playoffs    table tr:first-child td,
+    #drafts      table tr:first-child td,
+    #trades      table tr:first-child td {
+        font-weight: bold;
+        padding-bottom: 8px;
+    }
+    .tournaments table tr:not(:first-child) td,
+    #playoffs    table tr:not(:first-child) td,
+    #drafts      table tr:not(:first-child) td {
+        padding-right: 30px;
+    }
+    .tournaments table tr:not(:first-child) td:nth-child(3),
+    #trades      table tr:not(:first-child) td:nth-child(3) {
+        text-align: center;
+    }
+    .tournaments table tr.winner {
+        font-weight: bold;
+    }
+    .tournaments div.match {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin-right: 20px;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .tournaments div.match.win {
+        background-color: #2ecc71;
+    }
+    .tournaments div.match.loss {
+        background-color: #e74c3c;
+    }
+    .tournaments div.match.none {
+        visibility: hidden;
+    }
+    #drafts {
+        max-width: 400px;
+    }
+    #drafts table tr:not(:first-child) td {
+        padding-bottom: 10px;
+    }
+    #trades table tr:not(:first-child) td {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .pokemon-large {
+        display: inline-block;
+        border: 3px solid #444;
+        border-radius: 10px;
+        margin: 5px;
+    }
+    .pokemon-img {
+        border-radius: 50%;
+        width: 125px;
+    }
+    .pokemon-large > p {
+        text-align: center;
+        margin-top: 0px;
+    }
+    .pokemon-img.kamon, .tournaments table tr.winner.kamon, #drafts table tr.kamon, #trades table tr.kamon, #playoffs td.winner.kamon {
+        background: radial-gradient(#e74c3c 5%, #ecf0f1 70%);
+    }
+    .pokemon-img.jbird, .tournaments table tr.winner.jbird, #drafts table tr.jbird, #trades table tr.jbird, #playoffs td.winner.jbird {
+        background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
+    }
+    .pokemon-img.steve, .tournaments table tr.winner.steve, #drafts table tr.steve, #trades table tr.steve, #playoffs td.winner.steve {
+        background: radial-gradient(#9b59b6 5%, #ecf0f1 70%);
+    }
+    .pokemon-img.james, .tournaments table tr.winner.james, #drafts table tr.james, #trades table tr.james, #playoffs td.winner.james {
+        background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
+    }
+    a:hover > .pokemon-large > p {
+        text-decoration: underline;
+    }
+    a:hover .pokemon-img.kamon {
+        background: radial-gradient(#e74c3c 50%, #ecf0f1 70%);
+    }
+    a:hover .pokemon-img.jbird {
+        background: radial-gradient(#f1c40f 50%, #ecf0f1 70%);
+    }
+    a:hover .pokemon-img.steve {
+        background: radial-gradient(#9b59b6 50%, #ecf0f1 70%);
+    }
+    a:hover .pokemon-img.james {
+        background: radial-gradient(#74b9ff 50%, #ecf0f1 70%);
+    }
+    .pokemon-large.kamon {
+        border-color: #e74c3c;
+    }
+    .pokemon-large.jbird {
+        border-color: #f1c40f;
+    }
+    .pokemon-large.steve {
+        border-color: #9b59b6;
+    }
+    .pokemon-large.james {
+        border-color: #74b9ff;
+    }
+
+    div.event {
+        margin-top: 40px;
+        /*border: 1px solid #444;*/
+        border-radius: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        font-size: 20px;
+    }
+    div.event > div.body {
+        padding: 10px;
+    }
+    div.event > div.header {
+        border-radius: 5px 5px 0px 0px;
+        padding: 10px 10px;
+        border-bottom: 1px solid #444;
+        font-weight: bold;
+    }
+    div.event.draft > div.header {
+        background-color: #f39c12;
+    }
+    div.event.round > div.header {
+        background-color: #e74c3c;
+    }
+    div.event.tournament > div.body > table.players {
+        /*font-size: 20px;*/
+        /*border: 1px solid black;*/
+        margin-top: 10px;
+        text-align: center;
+        border-spacing: 5px;
+    }
+    div.event.tournament > div.body > table.players th {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: #bdc3c7;
+        border-radius: 5px;
+    }
+    div.event.tournament > div.body > table.players td, th {
+        margin-top: 10px;
+        padding: 0px 20px;
+    }
+    div.event.tournament > div.body > table.players tr.kamon.winner td {
+        background: radial-gradient(#e74c3c 3%, #ecf0f1 70%);
+    }
+    div.event.tournament > div.body > table.players tr.jbird.winner td {
+        background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
+    }
+    div.event.tournament > div.body > table.players tr.steve.winner td {
+        background: radial-gradient(#9b59b6 3%, #ecf0f1 70%);
+    }
+    div.event.tournament > div.body > table.players tr.james.winner td {
+        background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
+    }
+    div.event.tournament > div.header {
+        background-color: #3498db;
+    }
+    div.event.trade > div.header {
+        background-color: #27ae60;
+    }
+    img.sprite {
+        width: 48px;
+    }
+</style></head>
+
+<head><title>Pokemasters - Season 4</title></head>
+<head><link rel="shortcut icon" type="image/png" href="favicon.png"/></head>
+
+<body>
+    <h1>Pokemasters - Season 4</h1>
+
+    <h2>Links</h2>
+    <ul>
+        <li><a href="draft.html">Season 4 Draft</a> - Inital draft for Season 4 of Pokemasters taking place on Saturday, 2019/10/26</li>
+        <li><a href="draft2.html">Season 4 Draft 3</a> - Third draft for Season 4 of Pokemasters after the 2020/08/25 unofficial tournament</li>
+        <li><a href="https://www.smogon.com/dex/sm/formats/doubles/" target="_blank">Smogon Doubles OU Format</a> - Default battle rules we go by with the exception of our own battle clauses</li>
+        <li><a href="https://www.smogon.com/forums/threads/usum-doubles-ou-viability-rankings.3623347/" target="_blank">Smogon Doubles OU Viability Rankings</a> - Reference for what is currently considered viable as of 2019/10/22</li>
+    </ul>
+
+    <h2>Rules</h2>
+    <p>We generally follow Smogon's Doubles OU rules and play several tournaments where each player participates each season. Playoffs are held at the end of each season.</p>
+    <h4>Draft rules</h4>
+    <p>The draft pick order is randomly determined on the day of the draft. Players iteratively choose pokemon for their roster in a snake draft, meaning every even round is picked in reverse order (ex: 1 2 3 4 4 3 2 1 1 2 ...). Each pokemon (along with associated forms and megas) can only be on one player's roster. Pokemon from the same evolutionary line can belong to different players. Since there are only four legendary guardians (Tapu pokemon) and they are all compeditively viable, as soon as one Tapu pokemon is picked, immediately do a Tapu draft where the remaining players get to pick the remaining Tapu pokemon in a new, randomly determined order and then resume the main draft.</p>
+    <h4>Battle rules</h4>
+    <p>Use Smogon's Gen 7 (Sun and Moon) Double OU rules <a href="https://www.smogon.com/dex/sm/formats/doubles/" target="_blank">https://www.smogon.com/dex/sm/formats/doubles/</a> with the following additions and exceptions:</p>
+    <ul>
+        <li>Roster Clause: Players can only use Pokemon from their roster.</li>
+        <li>Legendary 600+ Clause: Players cannot use legendary Pokemon with base stats greater than 600.</li>
+        <li>Legendary Uber Clause: Players cannot use legendary Pokemon determined as Uber by Smogon.</li>
+        <li>Non-legendary Allowed: All non-legendary Pokemon can be used (Snorlax is allowed).</li>
+        <li>Megas Allowed: All mega stones can be used (Mega Gengar and Mega Kangaskhan are allowed).</li>
+        <li>OHKO Allowed: Players can use all OHKO moves (Fissure, Guillatine, Horn Drill, and Sheer Cold are allowed).</li>
+    </ul>
+    <h4>Tournament rules</h4>
+    <p>Use the following rules for each tournament:</p>
+    <ol>
+        <li>Each player chooses a team of 6 pokemon to use the entire tournament.</li>
+        <li>Each player plays all other players exactly once.</li>
+        <li>The player who won the most battles wins the tournament. If two or more players are tied with the most wins, all other players are eliminated and the remaining players repeat steps 2 and 3.</li>
+    </ol>
+    <h4>Season rules</h4>
+    <p>Players play 5 tournaments. All players advance to the playoffs. Players are ranked by tournament wins and then number of matches if tied. If still tied, play single matches to determine an order.</p>
+    <h4>Playoff rules</h4>
+    <p>Players can use different pokemon for each battle. The bottom two players play a best 2 out of 3 and the winner advances. That player plays the next worse player in a best 2 out of 3 and this continues until the championship. The championship is a best 3 out of 5. The champion wins the season and picks their MVP (Most Valuable Pokemon) for the season.</p>
+
+    <div>
+        <div id="events"></div>
+    </div>
+
+    <div>
+        <h2>Tournaments</h2>
+        <div id="tournaments" class="tournaments"></div>
+    </div>
+
+    <div>
+        <h2>Playoffs</h2>
+        <div id="playoffs"></div>
+    </div>
+
+    <div>
+        <h2>Unofficial Tournaments</h2>
+        <p>These tournaments do not count toward tournament wins, match wins, and pokemon appearances. They may be used to decide events that would normally be determined by random chance such as draft order.</p>
+        <div id="tournaments-unofficial" class="tournaments"></div>
+    </div>
+
+    <h2>Kamon</h2>
+    <p class="kamon player-description">[my description]</p>
+    <div id="kamon-pokemon"></div>
+
+    <h2>JaeBird</h2>
+    <p class="jbird player-description">[my description]</p>
+    <div id="jbird-pokemon"></div>
+
+    <h2>Steve</h2>
+    <p class="steve player-description">[my description]</p>
+    <div id="steve-pokemon"></div>
+
+    <h2>James</h2>
+    <p class="james player-description">[my description]</p>
+    <div id="james-pokemon"></div>
+
+    <div>
+        <h2>Trades</h2>
+        <div id="trades"></div>
+    </div>
+
+    <div>
+        <h2>Drafts</h2>
+        <div id="drafts"></div>
+    </div>
+<script>
+    var player_names = ['Kamon', 'JaeBird', 'Steve', 'James'];
+    var player_class = ['kamon', 'jbird', 'steve', 'james'];
+
+    var player_pokemon = [
+        [645, 485, 598, 488, 479, 707, 534, 303, 184, 620, 130, 385, 635, 143, 426, 497, 286, 176, 748, 157, 235, 448, 609, 683, 398, 612, 477, 666, 38, 149, 376, 3, 6, 637],
+        [727, 94, 591, 145, 798, 212, 233, 721, 681, 641, 787, 437, 797, 805, 423, 245, 380, 806, 272, 576, 793, 754, 323, 663, 80, 584, 571, 208, 103, 186, 324],
+        [560, 373, 105, 59, 310, 719, 142, 127, 230, 785, 807, 700, 781, 282, 132, 475, 801, 490, 658, 706, 242, 462, 809, 68, 34, 12, 260, 279, 248, 445, 450, 526],
+        [115, 778, 547, 468, 784, 302, 151, 494, 788, 113, 752, 530, 579, 720, 356, 350, 308, 214, 227, 758, 460, 625, 648, 545, 777, 472, 461, 474, 289, 89, 763, 786, 257, 65],
+    ];
+
+    var tournaments = [
+        {
+            "date": '2019/10/26 - Not Finished Yet',
+            "teams": [
+                [645, 485, 598, 707, 303, 479],
+                [727, 94, 591, 145, 721, 787],
+                [786, 560, 373, 376, 59, 143],
+                [115, 778, 547, 468, 151, 494]
+            ],
+            "matches": [
+                [3, 2],
+                [1, 0],
+                [0, 2],
+                [3, 1],
+                [0, 3],
+                [1, 2],
+                [1, 0],
+                [3, 1],
+                [0, 3]
+            ]
+        },
+        {
+            "date": '2019/12/26',
+            "teams": [
+                [645, 248, 488, 598, 485, 445],
+                [145, 721, 727, 787, 380, 798],
+                [132, 719, 781, 637, 376, 560],
+                [115, 149, 356, 788, 530, 784]
+            ],
+            "matches": [
+                [0, 2],
+                [0, 3],
+                [3, 1],
+                [1, 3],
+                [2, 3],
+                [1, 0],
+                [1, 0]
+            ]
+        },
+        {
+            "date": '2020/07/26',
+            "teams": [
+                [176, 479, 645, 286, 385, 143],
+                [798, 212, 437, 681, 797, 805],
+                [ 59, 132, 719,   3,   6, 807],
+                [115, 151, 494, 547, 778, 468]
+            ],
+            "matches": [
+                [0, 2],
+                [1, 3],
+                [1, 0],
+                [2, 3],
+                [0, 3],
+                [2, 1],
+                [0, 2],
+                [0, 1],
+                [1, 2],
+            ]
+        },
+        {
+            "date": '2020/10/03',
+            "teams": [
+                [6, 637, 38, 488, 3, 479],
+                [721, 727, 787, 591, 805, 233],
+                [785, 560, 801, 132, 373, 490],
+                [494, 778, 786, 788, 65, 289]
+            ],
+            "matches": [
+                [2, 3],
+                [1, 0],
+                [1, 2],
+                [0, 3],
+                [0, 2],
+                [1, 3],
+            ]
+        },
+        {
+            "date": '2020/10/16',
+            "teams": [
+                [149, 176, 376, 637, 479, 286],
+                [721, 787, 798, 212, 186, 245],
+                [490, 801, 719, 560, 785, 59],
+                [778, 115, 788, 786, 472, 227]
+            ],
+            "matches": [
+                [3, 0],
+                [1, 2],
+                [1, 3],
+                [2, 0],
+                [2, 3],
+                [0, 1],
+                [1, 2],
+            ]
+        }
+    ]
+
+    var playoffs = [
+        {
+            "date": '2020/12/27',
+            "player_ids": [2, 3],
+            "matches": [
+                {
+                    "pokemon_ids": [
+                        [560, 132, 490, 373, 785, 59],
+                        [784, 530, 788, 786, 494, 257]
+                    ],
+                    "win_player_id": 2
+                },
+                {
+                    "pokemon_ids": [
+                        [560, 132, 490, 373, 785, 59],
+                        [784, 530, 788, 786, 494, 257]
+                    ],
+                    "win_player_id": 3
+                },
+                {
+                    "pokemon_ids": [
+                        [490, 801, 719, 560, 785, 59],
+                        [115, 778, 547, 468, 151, 494]
+                    ],
+                    "win_player_id": 2
+                }
+            ]
+        },
+        {
+            "date": '2020/12/27',
+            "player_ids": [0, 2],
+            "matches": [
+                {
+                    "pokemon_ids": [
+                        [707, 376, 149, 485, 130, 645],
+                        [560, 132, 490, 373, 785, 59]
+                    ],
+                    "win_player_id": 0
+                },
+                {
+                    "pokemon_ids": [
+                        [448, 707, 303, 485, 598, 385],
+                        [490, 801, 719, 560, 785, 59]
+                    ],
+                    "win_player_id": 0
+                },
+            ]
+        },
+        {
+            "date": '2020/12/27',
+            "player_ids": [1, 0],
+            "matches": [
+                {
+                    "pokemon_ids": [
+                        [233, 324, 727, 721, 323, 805],
+                        [6, 637, 3, 38, 488, 157]
+                    ],
+                    "win_player_id": 1
+                },
+                {
+                    "pokemon_ids": [
+                        [94, 727, 576, 186, 591, 798],
+                        [385, 176, 645, 479, 286, 485]
+                    ],
+                    "win_player_id": 1
+                },
+                {
+                    "pokemon_ids": [
+                        [186, 787, 212, 727, 145, 721],
+                        [707, 376, 149, 485, 130, 645]
+                    ],
+                    "win_player_id": 0
+                },
+                {
+                    "pokemon_ids": [
+                        [233, 212, 787, 727, 721, 805],
+                        [176, 376, 637, 479, 286, 385]
+                    ],
+                    "win_player_id": 1
+                },
+            ]
+        },
+    ];
+
+    var drafts = [
+        [
+            '2019/10/26 - Saturday',
+            [645, 485, 598, 488, 479, 707, 534, 303, 184, 620, 785, 807, 130, 385, 635, 450, 526, 65],
+            [727, 94, 591, 145, 798, 212, 233, 721, 681, 641, 787, 437, 38, 797, 805, 89, 423],
+            [376, 143, 560, 257, 6, 248, 373, 105, 637, 59, 786, 310, 719, 3, 426, 142, 127, 230],
+            [115, 149, 778, 547, 468, 260, 279, 784, 302, 151, 494, 788, 113, 752, 530, 579, 186, 720],
+        ],
+        [
+            '2019/12/09 - Monday',
+            [445, 497, 286, 176, 748], // Matt
+            [245, 380, 806, 272, 576], // Bird
+            [700, 781, 282, 132, 475], // Steve
+            [356, 350, 308, 214, 227], // James
+        ],
+        [
+            '2020/09/02 - Wednesday',
+            [157, 235, 448, 324, 609, 683, 398, 612, 477, 666], // Matt
+            [793, 754, 323, 663, 763, 80, 584, 571, 208, 103], // Bird
+            [801, 490, 658, 706, 242, 462, 809, 68, 34, 12], // Steve
+            [758, 460, 625, 648, 545, 777, 472, 461, 474, 289], // James
+        ]
+    ]
+
+    var trades = [
+        [
+            '2019/11/02',
+            [248, 2, 0],
+            [143, 2, 0],
+            [426, 2, 0],
+            [785, 0, 2],
+            [807, 0, 2]
+        ],
+        [
+            '2020/09/11',
+            [89, 1, 3],
+            [763, 1, 3],
+            [186, 3, 1],
+        ],
+        [
+            '2020/09/20',
+            [260, 3, 2],
+            [279, 3, 2],
+            [786, 2, 3],
+            [257, 2, 3],
+        ],
+        [
+            '2020/09/21',
+            [38, 1, 0],
+            [324, 0, 1],
+        ],
+        [
+            '2020/10/02',
+            [65, 0, 3],
+            [149, 3, 0],
+        ],
+        [
+            '2020/10/02',
+            [376, 2, 0],
+            [6, 2, 0],
+            [3, 2, 0],
+            [637, 2, 0],
+            [248, 0, 2],
+            [445, 0, 2],
+            [450, 0, 2],
+            [526, 0, 2],
+        ]
+    ]
+
+    var tournaments_unofficial = [
+        {
+            "date": '2020/08/25 - Random Monotypes',
+            "teams": [
+                [479, 145, 310, 785, 171, 181],
+                [598, 681, 805, 376, 530, 798],
+                [721, 727, 479, 637, 6, 494],
+                [788, 260, 279, 752, 423, 721]
+            ],
+            "matches": [
+                [2, 0],
+                [1, 3],
+                [0, 1],
+                [2, 3],
+                [0, 3],
+                [2, 1]
+            ]
+        }
+    ]
+
+    var raw = {
+        "players": [
+            {
+                "id": 0,
+                "name": "Kamon",
+                "css_class": "kamon",
+                "creature_ids": [645, 485, 598, 488, 479, 707, 534, 303, 184, 620, 130, 385, 635, 143, 426, 497, 286, 176, 748, 157, 235, 448, 609, 683, 398, 612, 477, 666, 38, 149, 376, 3, 6, 637]
+            }, {
+                "id": 1,
+                "name": "JaeBird",
+                "css_class": "jbird",
+                "creature_ids": [727, 94, 591, 145, 798, 212, 233, 721, 681, 641, 787, 437, 797, 805, 423, 245, 380, 806, 272, 576, 793, 754, 323, 663, 80, 584, 571, 208, 103, 186, 324]
+            }, {
+                "id": 2,
+                "name": "Steve",
+                "css_class": "steve",
+                "creature_ids": [560, 373, 105, 59, 310, 719, 142, 127, 230, 785, 807, 700, 781, 282, 132, 475, 801, 490, 658, 706, 242, 462, 809, 68, 34, 12, 260, 279, 248, 445, 450, 526]
+            }, {
+                "id": 3,
+                "name": "James",
+                "css_class": "james",
+                "creature_ids": [115, 778, 547, 468, 784, 302, 151, 494, 788, 113, 752, 530, 579, 720, 356, 350, 308, 214, 227, 758, 460, 625, 648, 545, 777, 472, 461, 474, 289, 89, 763, 786, 257, 65]
+            },
+        ],
+        "events": [
+            {
+                "type": "draft",
+                "date": "2019/10/26 18:00",
+                "kwargs": {
+                    "player_creature_ids": [
+                        {
+                            "player_id": 0,
+                            "creature_ids": [645, 485, 598, 488, 479, 707, 534, 303, 184, 620, 785, 807, 130, 385, 635, 450, 526, 65]
+                        }, {
+                            "player_id": 1,
+                            "creature_ids": [727, 94, 591, 145, 798, 212, 233, 721, 681, 641, 787, 437, 38, 797, 805, 89, 423]
+                        }, {
+                            "player_id": 2,
+                            "creature_ids": [376, 143, 560, 257, 6, 248, 373, 105, 637, 59, 786, 310, 719, 3, 426, 142, 127, 230]
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [115, 149, 778, 547, 468, 260, 279, 784, 302, 151, 494, 788, 113, 752, 530, 579, 186, 720],
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "tournament",
+                "date": "2019/10/26 20:00",
+                "kwargs": {
+                    "is_official": true,
+                    "teams": [
+                        {
+                            "player_id": 0,
+                            "creature_ids": [645, 485, 598, 707, 303, 479],
+                        }, {
+                            "player_id": 1,
+                            "creature_ids": [727, 94, 591, 145, 721, 787],
+                        }, {
+                            "player_id": 2,
+                            "creature_ids": [786, 560, 373, 376, 59, 143],
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [115, 778, 547, 468, 151, 494],
+                        }
+                    ],
+                    "matches": [
+                        {
+                            "win_player_id": 3,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 0,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 3,
+                            "lose_player_id": 1,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 0,
+                        }, {
+                            "win_player_id": 3,
+                            "lose_player_id": 1,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 3,
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "trade",
+                "date": "2019/11/02 12:00",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 2,
+                            "to_player_id": 0,
+                            "creature_id": 248
+                        }, {
+                            "from_player_id": 2,
+                            "to_player_id": 0,
+                            "creature_id": 248
+                        }, {
+                            "from_player_id": 2,
+                            "to_player_id": 0,
+                            "creature_id": 426
+                        }, {
+                            "from_player_id": 0,
+                            "to_player_id": 2,
+                            "creature_id": 785
+                        }, {
+                            "from_player_id": 0,
+                            "to_player_id": 2,
+                            "creature_id": 807
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "round",
+                "date": "2020/12/27 23:00",
+                "kwargs": {
+                    "matches": [
+                        {
+                            "win_player_id": 2,
+                            "lose_player_id": 3,
+                            "win_creature_ids": [560, 132, 490, 373, 785, 59],
+                            "lose_creature_ids": [784, 530, 788, 786, 494, 257]
+                        }, {
+                            "win_player_id": 3,
+                            "lose_player_id": 2,
+                            "win_creature_ids": [784, 530, 788, 786, 494, 257],
+                            "lose_creature_ids": [560, 132, 490, 373, 785, 59]
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 3,
+                            "win_creature_ids": [490, 801, 719, 560, 785, 59],
+                            "lose_creature_ids": [115, 778, 547, 468, 151, 494]
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "tournament",
+                "date": "2019/12/26 20:00",
+                "kwargs": {
+                    "is_official": true,
+                    "teams": [
+                        {
+                            "player_id": 0,
+                            "creature_ids": [645, 248, 488, 598, 485, 445],
+                        }, {
+                            "player_id": 1,
+                            "creature_ids": [145, 721, 727, 787, 380, 798],
+                        }, {
+                            "player_id": 2,
+                            "creature_ids": [132, 719, 781, 637, 376, 560],
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [115, 149, 356, 788, 530, 784],
+                        }
+                    ],
+                    "matches": [
+                        {
+                            "win_player_id": 0,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 3,
+                            "lose_player_id": 1,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 0,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 0,
+                        }
+                    ]
+                }
+            },
+        ],
+        "creatures": ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise', 'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate', 'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash', 'Nidoran♀', 'Nidorina', 'Nidoqueen', 'Nidoran♂', 'Nidorino', 'Nidoking', 'Clefairy', 'Clefable', 'Vulpix', 'Ninetales', 'Jigglypuff', 'Wigglytuff', 'Zubat', 'Golbat', 'Oddish', 'Gloom', 'Vileplume', 'Paras', 'Parasect', 'Venonat', 'Venomoth', 'Diglett', 'Dugtrio', 'Meowth', 'Persian', 'Psyduck', 'Golduck', 'Mankey', 'Primeape', 'Growlithe', 'Arcanine', 'Poliwag', 'Poliwhirl', 'Poliwrath', 'Abra', 'Kadabra', 'Alakazam', 'Machop', 'Machoke', 'Machamp', 'Bellsprout', 'Weepinbell', 'Victreebel', 'Tentacool', 'Tentacruel', 'Geodude', 'Graveler', 'Golem', 'Ponyta', 'Rapidash', 'Slowpoke', 'Slowbro', 'Magnemite', 'Magneton', 'Farfetch’d', 'Doduo', 'Dodrio', 'Seel', 'Dewgong', 'Grimer', 'Muk', 'Shellder', 'Cloyster', 'Gastly', 'Haunter', 'Gengar', 'Onix', 'Drowzee', 'Hypno', 'Krabby', 'Kingler', 'Voltorb', 'Electrode', 'Exeggcute', 'Exeggutor', 'Cubone', 'Marowak', 'Hitmonlee', 'Hitmonchan', 'Lickitung', 'Koffing', 'Weezing', 'Rhyhorn', 'Rhydon', 'Chansey', 'Tangela', 'Kangaskhan', 'Horsea', 'Seadra', 'Goldeen', 'Seaking', 'Staryu', 'Starmie', 'Mr. Mime', 'Scyther', 'Jynx', 'Electabuzz', 'Magmar', 'Pinsir', 'Tauros', 'Magikarp', 'Gyarados', 'Lapras', 'Ditto', 'Eevee', 'Vaporeon', 'Jolteon', 'Flareon', 'Porygon', 'Omanyte', 'Omastar', 'Kabuto', 'Kabutops', 'Aerodactyl', 'Snorlax', 'Articuno', 'Zapdos', 'Moltres', 'Dratini', 'Dragonair', 'Dragonite', 'Mewtwo', 'Mew', 'Chikorita', 'Bayleef', 'Meganium', 'Cyndaquil', 'Quilava', 'Typhlosion', 'Totodile', 'Croconaw', 'Feraligatr', 'Sentret', 'Furret', 'Hoothoot', 'Noctowl', 'Ledyba', 'Ledian', 'Spinarak', 'Ariados', 'Crobat', 'Chinchou', 'Lanturn', 'Pichu', 'Cleffa', 'Igglybuff', 'Togepi', 'Togetic', 'Natu', 'Xatu', 'Mareep', 'Flaaffy', 'Ampharos', 'Bellossom', 'Marill', 'Azumarill', 'Sudowoodo', 'Politoed', 'Hoppip', 'Skiploom', 'Jumpluff', 'Aipom', 'Sunkern', 'Sunflora', 'Yanma', 'Wooper', 'Quagsire', 'Espeon', 'Umbreon', 'Murkrow', 'Slowking', 'Misdreavus', 'Unown', 'Wobbuffet', 'Girafarig', 'Pineco', 'Forretress', 'Dunsparce', 'Gligar', 'Steelix', 'Snubbull', 'Granbull', 'Qwilfish', 'Scizor', 'Shuckle', 'Heracross', 'Sneasel', 'Teddiursa', 'Ursaring', 'Slugma', 'Magcargo', 'Swinub', 'Piloswine', 'Corsola', 'Remoraid', 'Octillery', 'Delibird', 'Mantine', 'Skarmory', 'Houndour', 'Houndoom', 'Kingdra', 'Phanpy', 'Donphan', 'Porygon2', 'Stantler', 'Smeargle', 'Tyrogue', 'Hitmontop', 'Smoochum', 'Elekid', 'Magby', 'Miltank', 'Blissey', 'Raikou', 'Entei', 'Suicune', 'Larvitar', 'Pupitar', 'Tyranitar', 'Lugia', 'Ho-Oh', 'Celebi', 'Treecko', 'Grovyle', 'Sceptile', 'Torchic', 'Combusken', 'Blaziken', 'Mudkip', 'Marshtomp', 'Swampert', 'Poochyena', 'Mightyena', 'Zigzagoon', 'Linoone', 'Wurmple', 'Silcoon', 'Beautifly', 'Cascoon', 'Dustox', 'Lotad', 'Lombre', 'Ludicolo', 'Seedot', 'Nuzleaf', 'Shiftry', 'Taillow', 'Swellow', 'Wingull', 'Pelipper', 'Ralts', 'Kirlia', 'Gardevoir', 'Surskit', 'Masquerain', 'Shroomish', 'Breloom', 'Slakoth', 'Vigoroth', 'Slaking', 'Nincada', 'Ninjask', 'Shedinja', 'Whismur', 'Loudred', 'Exploud', 'Makuhita', 'Hariyama', 'Azurill', 'Nosepass', 'Skitty', 'Delcatty', 'Sableye', 'Mawile', 'Aron', 'Lairon', 'Aggron', 'Meditite', 'Medicham', 'Electrike', 'Manectric', 'Plusle', 'Minun', 'Volbeat', 'Illumise', 'Roselia', 'Gulpin', 'Swalot', 'Carvanha', 'Sharpedo', 'Wailmer', 'Wailord', 'Numel', 'Camerupt', 'Torkoal', 'Spoink', 'Grumpig', 'Spinda', 'Trapinch', 'Vibrava', 'Flygon', 'Cacnea', 'Cacturne', 'Swablu', 'Altaria', 'Zangoose', 'Seviper', 'Lunatone', 'Solrock', 'Barboach', 'Whiscash', 'Corphish', 'Crawdaunt', 'Baltoy', 'Claydol', 'Lileep', 'Cradily', 'Anorith', 'Armaldo', 'Feebas', 'Milotic', 'Castform', 'Kecleon', 'Shuppet', 'Banette', 'Duskull', 'Dusclops', 'Tropius', 'Chimecho', 'Absol', 'Wynaut', 'Snorunt', 'Glalie', 'Spheal', 'Sealeo', 'Walrein', 'Clamperl', 'Huntail', 'Gorebyss', 'Relicanth', 'Luvdisc', 'Bagon', 'Shelgon', 'Salamence', 'Beldum', 'Metang', 'Metagross', 'Regirock', 'Regice', 'Registeel', 'Latias', 'Latios', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Turtwig', 'Grotle', 'Torterra', 'Chimchar', 'Monferno', 'Infernape', 'Piplup', 'Prinplup', 'Empoleon', 'Starly', 'Staravia', 'Staraptor', 'Bidoof', 'Bibarel', 'Kricketot', 'Kricketune', 'Shinx', 'Luxio', 'Luxray', 'Budew', 'Roserade', 'Cranidos', 'Rampardos', 'Shieldon', 'Bastiodon', 'Burmy', 'Wormadam', 'Mothim', 'Combee', 'Vespiquen', 'Pachirisu', 'Buizel', 'Floatzel', 'Cherubi', 'Cherrim', 'Shellos', 'Gastrodon', 'Ambipom', 'Drifloon', 'Drifblim', 'Buneary', 'Lopunny', 'Mismagius', 'Honchkrow', 'Glameow', 'Purugly', 'Chingling', 'Stunky', 'Skuntank', 'Bronzor', 'Bronzong', 'Bonsly', 'Mime Jr.', 'Happiny', 'Chatot', 'Spiritomb', 'Gible', 'Gabite', 'Garchomp', 'Munchlax', 'Riolu', 'Lucario', 'Hippopotas', 'Hippowdon', 'Skorupi', 'Drapion', 'Croagunk', 'Toxicroak', 'Carnivine', 'Finneon', 'Lumineon', 'Mantyke', 'Snover', 'Abomasnow', 'Weavile', 'Magnezone', 'Lickilicky', 'Rhyperior', 'Tangrowth', 'Electivire', 'Magmortar', 'Togekiss', 'Yanmega', 'Leafeon', 'Glaceon', 'Gliscor', 'Mamoswine', 'Porygon-Z', 'Gallade', 'Probopass', 'Dusknoir', 'Froslass', 'Rotom', 'Uxie', 'Mesprit', 'Azelf', 'Dialga', 'Palkia', 'Heatran', 'Regigigas', 'Giratina', 'Cresselia', 'Phione', 'Manaphy', 'Darkrai', 'Shaymin', 'Arceus', 'Victini', 'Snivy', 'Servine', 'Serperior', 'Tepig', 'Pignite', 'Emboar', 'Oshawott', 'Dewott', 'Samurott', 'Patrat', 'Watchog', 'Lillipup', 'Herdier', 'Stoutland', 'Purrloin', 'Liepard', 'Pansage', 'Simisage', 'Pansear', 'Simisear', 'Panpour', 'Simipour', 'Munna', 'Musharna', 'Pidove', 'Tranquill', 'Unfezant', 'Blitzle', 'Zebstrika', 'Roggenrola', 'Boldore', 'Gigalith', 'Woobat', 'Swoobat', 'Drilbur', 'Excadrill', 'Audino', 'Timburr', 'Gurdurr', 'Conkeldurr', 'Tympole', 'Palpitoad', 'Seismitoad', 'Throh', 'Sawk', 'Sewaddle', 'Swadloon', 'Leavanny', 'Venipede', 'Whirlipede', 'Scolipede', 'Cottonee', 'Whimsicott', 'Petilil', 'Lilligant', 'Basculin', 'Sandile', 'Krokorok', 'Krookodile', 'Darumaka', 'Darmanitan', 'Maractus', 'Dwebble', 'Crustle', 'Scraggy', 'Scrafty', 'Sigilyph', 'Yamask', 'Cofagrigus', 'Tirtouga', 'Carracosta', 'Archen', 'Archeops', 'Trubbish', 'Garbodor', 'Zorua', 'Zoroark', 'Minccino', 'Cinccino', 'Gothita', 'Gothorita', 'Gothitelle', 'Solosis', 'Duosion', 'Reuniclus', 'Ducklett', 'Swanna', 'Vanillite', 'Vanillish', 'Vanilluxe', 'Deerling', 'Sawsbuck', 'Emolga', 'Karrablast', 'Escavalier', 'Foongus', 'Amoonguss', 'Frillish', 'Jellicent', 'Alomomola', 'Joltik', 'Galvantula', 'Ferroseed', 'Ferrothorn', 'Klink', 'Klang', 'Klinklang', 'Tynamo', 'Eelektrik', 'Eelektross', 'Elgyem', 'Beheeyem', 'Litwick', 'Lampent', 'Chandelure', 'Axew', 'Fraxure', 'Haxorus', 'Cubchoo', 'Beartic', 'Cryogonal', 'Shelmet', 'Accelgor', 'Stunfisk', 'Mienfoo', 'Mienshao', 'Druddigon', 'Golett', 'Golurk', 'Pawniard', 'Bisharp', 'Bouffalant', 'Rufflet', 'Braviary', 'Vullaby', 'Mandibuzz', 'Heatmor', 'Durant', 'Deino', 'Zweilous', 'Hydreigon', 'Larvesta', 'Volcarona', 'Cobalion', 'Terrakion', 'Virizion', 'Tornadus', 'Thundurus', 'Reshiram', 'Zekrom', 'Landorus', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Chespin', 'Quilladin', 'Chesnaught', 'Fennekin', 'Braixen', 'Delphox', 'Froakie', 'Frogadier', 'Greninja', 'Bunnelby', 'Diggersby', 'Fletchling', 'Fletchinder', 'Talonflame', 'Scatterbug', 'Spewpa', 'Vivillon', 'Litleo', 'Pyroar', 'Flabébé', 'Floette', 'Florges', 'Skiddo', 'Gogoat', 'Pancham', 'Pangoro', 'Furfrou', 'Espurr', 'Meowstic', 'Honedge', 'Doublade', 'Aegislash', 'Spritzee', 'Aromatisse', 'Swirlix', 'Slurpuff', 'Inkay', 'Malamar', 'Binacle', 'Barbaracle', 'Skrelp', 'Dragalge', 'Clauncher', 'Clawitzer', 'Helioptile', 'Heliolisk', 'Tyrunt', 'Tyrantrum', 'Amaura', 'Aurorus', 'Sylveon', 'Hawlucha', 'Dedenne', 'Carbink', 'Goomy', 'Sliggoo', 'Goodra', 'Klefki', 'Phantump', 'Trevenant', 'Pumpkaboo', 'Gourgeist', 'Bergmite', 'Avalugg', 'Noibat', 'Noivern', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Rowlet', 'Dartrix', 'Decidueye', 'Litten', 'Torracat', 'Incineroar', 'Popplio', 'Brionne', 'Primarina', 'Pikipek', 'Trumbeak', 'Toucannon', 'Yungoos', 'Gumshoos', 'Grubbin', 'Charjabug', 'Vikavolt', 'Crabrawler', 'Crabominable', 'Oricorio', 'Cutiefly', 'Ribombee', 'Rockruff', 'Lycanroc', 'Wishiwashi', 'Mareanie', 'Toxapex', 'Mudbray', 'Mudsdale', 'Dewpider', 'Araquanid', 'Fomantis', 'Lurantis', 'Morelull', 'Shiinotic', 'Salandit', 'Salazzle', 'Stufful', 'Bewear', 'Bounsweet', 'Steenee', 'Tsareena', 'Comfey', 'Oranguru', 'Passimian', 'Wimpod', 'Golisopod', 'Sandygast', 'Palossand', 'Pyukumuku', 'Type: Null', 'Silvally', 'Minior', 'Komala', 'Turtonator', 'Togedemaru', 'Mimikyu', 'Bruxish', 'Drampa', 'Dhelmise', 'Jangmo-o', 'Hakamo-o', 'Kommo-o', 'Tapu Koko', 'Tapu Lele', 'Tapu Bulu', 'Tapu Fini', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Nihilego', 'Buzzwole', 'Pheromosa', 'Xurkitree', 'Celesteela', 'Kartana', 'Guzzlord', 'Necrozma', 'Magearna', 'Marshadow', 'Poipole', 'Naganadel', 'Stakataka', 'Blacephalon', 'Zeraora', 'Meltan', 'Melmetal']
+    }
+
+    /**
+     * [bar description]
+     * @param  {[type]} foo [description]
+     * @return {[type]}     [description]
+     */
+
+    /**
+     * Load raw data and add to html
+     * @param  {object} raw Dictionary of raw data. Should include the following fields:
+     *     "events", "players"
+     * @return {None}
+     */
+    function main(raw) {
+        [players, events, creatures] = parse_raw(raw);
+        draw_events(events, players, creatures, document.getElementById("events"));
+    }
+
+    /**
+     * Parse raw data into players and events objects
+     * @param  {[object]} raw [Must contain "players" and "events" attributes]
+     * @return {array} [players, events] Players is list of players. Events is list of events
+     */
+    function parse_raw(raw) {
+        assert("players" in raw, "'players' attribute must be in the raw object")
+        var players = [];
+        for (raw_player of raw["players"]) {
+            players.push(Player.from_raw(raw_player));
+        }
+        assert("events" in raw, "'events' attribute must be in the raw object")
+        var events = [];
+        for (raw_event of raw["events"]) {
+            events.push(Event.from_raw(raw_event));
+        }
+        assert("creatures" in raw, "'creatures' attribute must be in the raw object")
+        var creatures = [];
+        for (var i = 0; i < raw["creatures"].length; i++) {
+            creatures.push(Creature.from_raw(raw["creatures"][i], i));
+        }
+        return [players, events, creatures]
+    }
+
+    /**
+     * [Draw events to HTMl]
+     * @param  {[array]} events [Each event to be drawn in html]
+     * @param  {[array]} players [Each player. Used to draw information about the players in events]
+     * @param  {[array]} creatures [Each creature. Used to draw information about each of the creatures used in events]
+     * @param  {[dom]} dom [DOM element]
+     * @return {array} [players, events] Players is list of players. Events is list of events
+     */
+    function draw_events(events, players, creatures, dom) {
+        events = events.sort(function(a, b) { return a.date > b.date ? -1 : 1 });
+        for (let event of events) {
+            dom.appendChild(event.draw(players, creatures));
+        }
+    }
+
+    function print(x) {
+        console.log(x);
+    }
+
+    function assert(condition, message) {
+        if (!condition) {
+            throw new Error(message || "Assertion failed");
+        }
+    }
+
+    function argfind(list, element) {
+        for (let i = 0; i < list.length; i++) {
+            if (list[i] === element) {
+                return i;
+            }
+        }
+        throw new Error("Did not find element " + element + " in list " + list);
+    }
+
+    function argsort(nums) {
+        nums_with_idx = [];
+        for (var i in nums) {
+            nums_with_idx.push([nums[i], i]);
+        }
+        nums_with_idx.sort(function(left, right) {
+          return left[0] < right[0] ? -1 : 1;
+        });
+        var idx = [];
+        for (var j in nums_with_idx) {
+            idx.push(parseInt(nums_with_idx[j][1]));
+        }
+        return idx;
+    }
+
+    /**
+     * [Player IDs and number of wins for each player sorted by number of wins]
+     * @param {[array]} nums [List of non-unique elements]
+     * @return {[array]} uniques [Unique elements sorted by count]
+     * @return {[array]} counts [Count (or frequency of occurence) for each unique element in non decreasing order]
+     */
+    function unique_counts(nums) {
+        var counts = {};
+        for (var i = 0; i < nums.length; i++) {
+            var num = nums[i];
+            counts[num] = counts[num] ? counts[num] + 1 : 1;
+        }
+        var keys = Object.keys(counts);
+        var vals = [];
+        for (key of keys) {
+            vals.push(counts[key]);
+        }
+        var idx = argsort(vals);
+        var keys_sorted = [];
+        var vals_sorted = [];
+        for (var i of idx) {
+            keys_sorted.push(keys[i]);
+            vals_sorted.push(vals[i]);
+        }
+        return [keys_sorted, vals_sorted];
+    }
+
+    function pad(num, size) {
+        var s = "000000000" + num;
+        return s.substr(s.length-size);
+    }
+
+    class Player {
+        /**
+         * [Creature Player object]
+         * @param  {[int]} id [ID for player]
+         * @param  {[str]} name [Name of player]
+         * @param  {[array]} creature_ids [ID for each creature belonging to player]
+         * @param  {[str]} css_class [Class name to be used as HTMl class for CSS decoration]
+         * @return {[Player]}
+         */
+        constructor(id, name, creature_ids, css_class) {
+            this.id = id;
+            this.name = name;
+            this.creature_ids = creature_ids;
+            this.css_class = css_class;
+        }
+        /**
+         * [Create Player object from raw player data]
+         * @param  {[object]} raw [Should have a "id" and "creature_ids" fields]
+         * @return {[Player]}
+         */
+        static from_raw(raw) {
+            assert("id" in raw, "Raw player data should have 'id' field");
+            assert("name" in raw, "Raw player data should have 'name' field");
+            assert("creature_ids" in raw, "Raw player data should have 'creature_ids' field");
+            assert("css_class" in raw, "Raw player data should have 'css_class' field");
+            return new Player(raw.id, raw.name, raw.creature_ids, raw.css_class);
+        }
+        static get_by_id(players, player_id) {
+            for (var player of players) {
+                if (player.id === player_id) {
+                    return player;
+                }
+            }
+            throw new Error("Found no player with ID " + player_id);
+        }
+        static get_by_ids(players, player_ids) {
+            var id2player = {};
+            for (var player of players) {
+                id2player[player.id] = player;
+            }
+            var players_ordered = [];
+            for (var player_id of player_ids) {
+                players_ordered.push(id2player[player_id]);
+            }
+            return players_ordered;
+        }
+    }
+
+    class Creature {
+        constructor(name, id) {
+            this.name = name;
+            this.id = id;
+        }
+        static from_raw(creature_name, creature_id) {
+            return new Creature(creature_name, creature_id);
+        }
+        draw_sprite() {
+            var dom = document.createElement("img");
+            dom.src = "https://www.serebii.net/pokedex-sm/icon/" + pad(this.id, 3) + ".png"
+            dom.classList.add("sprite");
+            return dom;
+        }
+        static get_by_ids(creatures, creature_ids) {
+            var id2creature = {};
+            for (var creature of creatures) {
+                id2creature[creature.id] = creature;
+            }
+            var creatures_ordered = [];
+            for (var creature_id of creature_ids) {
+                creatures_ordered.push(id2creature[creature_id]);
+            }
+            return creatures_ordered;
+        }
+    }
+
+    class Event {
+        constructor(date_str) {
+            this.date = new Date(date_str);
+        }
+        static from_raw(raw) {
+            assert("type" in raw, "Raw event data should have 'type' field");
+            assert("date" in raw, "Raw event data should have 'date' field");
+            assert("kwargs" in raw, "Raw event data should have 'kwargs' field");
+            if (raw.type === "tournament") {
+                return Tournament.from_raw(raw);
+            } else if (raw.type === "draft") {
+                return Draft.from_raw(raw);
+            } else if (raw.type === "trade") {
+                return Trade.from_raw(raw);
+            } else if (raw.type === "round") {
+                return Round.from_raw(raw);
+            } else {
+                throw new Error("Unrecognized event type '" + raw.type + "'")
+            }
+        }
+        /**
+         * [Draw the event card with a title and the inner dom]
+         * @param  {[array]} children [List of DOM to make content of the card]
+         * @param  {[str]} title [Title of the card. Should be something like "Tournament" or "Draft"]
+         * @param  {[str]} css_class [CSS class to be added to the div "event" div]
+         * @return {[Player]}
+         */
+        draw(children, title, css_class) {
+            var dom = document.createElement("div");
+            dom.classList.add("event");
+            dom.classList.add(css_class);
+            var dom_header = document.createElement("div");
+            dom_header.classList.add("header");
+            dom_header.innerHTML = title;
+            var dom_body = document.createElement("div");
+            dom_body.classList.add("body");
+            for (var child of children) {
+                dom_body.appendChild(child);
+            }
+            dom.appendChild(dom_header);
+            dom.appendChild(dom_body);
+            return dom;
+        }
+    }
+
+    class Tournament extends Event {
+        constructor(date, is_official, teams, matches) {
+            super(date)
+            this.is_official = is_official
+            this.teams = teams
+            this.matches = matches
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("is_official" in kwargs, "Raw tournemnt data should have 'is_official' field");
+            assert("teams" in kwargs, "Raw tournemnt data should have 'teams' field");
+            assert("matches" in kwargs, "Raw tournemnt data should have 'matches' field");
+            let teams = [];
+            for (let raw_team of kwargs.teams) {
+                teams.push(Team.from_raw(raw_team))
+            }
+            let matches = [];
+            for (let raw_match of kwargs.matches) {
+                matches.push(Match.from_raw(raw_match, teams));
+            }
+            return new Tournament(raw.date, raw.is_official, teams, matches);
+        }
+        /**
+         * [Draw event has HTML DOM]
+         * @param  {[array]} players [Each player's information]
+         * @param  {[array]} creatures [Each creatures's information]
+         * @return {[dom]} dom [DOM element representation of event]
+         */
+        draw(players, creatures) {
+            var dom_span = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var player_ids, n_wins, n_loss;
+            [player_ids, n_wins, n_loss] = this.player_ids_wins_and_losses;
+            var player_ranks = rank_scores(n_wins);
+            var player_is_winner = [];
+            for (var player_rank of player_ranks) {
+                player_is_winner.push(player_rank === 1);
+            }
+            players = Player.get_by_ids(players, player_ids);  // Order players by n_wins
+            var teams = Team.get_by_player_ids(this.teams, player_ids);
+            var dom_player_table = create_element({tag: "table", classList: ["players"]});
+            dom_player_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Rank"}),
+                create_element({tag: "th", innerHTML: "Player"}),
+                create_element({tag: "th", innerHTML: "Pokemon"}),
+                create_element({tag: "th", innerHTML: "Wins"}),
+                create_element({tag: "th", innerHTML: "Losses"})
+            ]}));
+            for (var i = 0; i < player_ids.length; i++) {
+                var class_list = [players[i].css_class];
+                if (player_is_winner[i]) {
+                    class_list.push("winner");
+                }
+                dom_player_table.appendChild(create_element({tag: "tr", classList: class_list, children: [
+                    create_element({tag: "td", innerHTML: player_ranks[i]}),
+                    create_element({tag: "td", innerHTML: players[i].name}),
+                    create_element({tag: "td", children: [teams[i].draw_sprites(players, creatures)]}),
+                    create_element({tag: "td", innerHTML: n_wins[i]}),
+                    create_element({tag: "td", innerHTML: n_loss[i]}),
+                ]}));
+            }
+            return super.draw([dom_span, dom_player_table], "Tournament", "tournament");
+        }
+        _draw_player_table(players) {
+
+        }
+        /**
+         * [Player IDs and number of wins for each player sorted by number of wins]
+         * @return {[array]} player_ids [ID for each player]
+         * @return {[array]} wins [Number of wins for each player (in descending order). Corresponds to returned player_ids]
+         */
+        get player_ids_wins_and_losses() {
+            var win_player_ids = [];
+            var lose_player_ids = [];
+            for (let match of this.matches) {
+                win_player_ids.push(match.win_team.player_id);
+                lose_player_ids.push(match.lose_team.player_id);
+            }
+            var player_and_wins = unique_counts(win_player_ids);
+            var player2wins = {};
+            for (var i = 0; i < player_and_wins[0].length; i++) {
+                player2wins[player_and_wins[0][i]] = player_and_wins[1][i];
+            }
+            var player_and_losses = unique_counts(lose_player_ids);
+            var player2losses = {};
+            for (var i = 0; i < player_and_losses[0].length; i++) {
+                player2losses[player_and_losses[0][i]] = player_and_losses[1][i];
+            }
+            var player_ids = [];
+            for (var team of this.teams) {
+                player_ids.push(team.player_id);
+            }
+            for (var player_id of player_ids) {
+                if (!(player_id in player2wins)) {
+                    player2wins[player_id] = 0;
+                }
+                if (!(player_id in player2losses)) {
+                    player2losses[player_id] = 0;
+                }
+            }
+            var player2score = {}
+            var scores = []
+            for (var player_id of player_ids) {
+                scores.push(player2wins[player_id] - player2losses[player_id]);
+            }
+            var idx = argsort(scores).reverse();
+            var player_ids_sorted = [];
+            for (var i of idx) {
+                player_ids_sorted.push(player_ids[i]);
+            }
+            var n_wins_sorted = [];
+            var n_loss_sorted = [];
+            for (var player_id of player_ids_sorted) {
+                n_wins_sorted.push(player2wins[player_id]);
+                n_loss_sorted.push(player2losses[player_id]);
+            }
+            return [player_ids_sorted, n_wins_sorted, n_loss_sorted];
+        }
+    }
+
+    class Draft extends Event {
+        constructor(date, teams) {
+            super(date);
+            this.teams = teams;
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("player_creature_ids" in kwargs, "Raw draft data should have 'player_creature_ids' field");
+            let teams = [];
+            for (let raw_team of kwargs.player_creature_ids) {
+                teams.push(Team.from_raw(raw_team))
+            }
+            return new Draft(raw.date, teams);
+        }
+        /**
+         * [Draw event has HTML DOM]
+         * @param  {[array]} players [Each player's information]
+         * @param  {[array]} creatures [Each creatures's information]
+         * @return {[dom]} dom [DOM element representation of event]
+         */
+        draw(players, creatures) {
+            var dom = document.createElement("div");
+            dom.classList.add("draft");
+            dom.innerHTML = this.date.toLocaleString();
+            return super.draw([dom], "Draft", "draft");
+        }
+    }
+
+    class Trade extends Event {
+        constructor(date, creature_team_changes) {
+            super(date);
+            this.creature_team_changes = creature_team_changes;
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("creatures" in kwargs, "Raw draft data should have 'creatures' field");
+            let creature_team_changes = [];
+            for (let raw_creature_team_change of kwargs.creatures) {
+                creature_team_changes.push(CreatureTeamChange.from_raw(raw_creature_team_change))
+            }
+            return new Trade(raw.date, creature_team_changes);
+        }
+        /**
+         * [Draw event has HTML DOM]
+         * @param  {[array]} players [Each player's information]
+         * @param  {[array]} creatures [Each creatures's information]
+         * @return {[dom]} dom [DOM element representation of event]
+         */
+        draw(players, creatures) {
+            var dom = document.createElement("div");
+            dom.classList.add("trade");
+            dom.innerHTML = this.date.toLocaleString();
+            return super.draw([dom], "Trade", "trade");
+        }
+    }
+
+    class Round extends Event {
+        constructor(date, matches) {
+            super(date)
+            this.matches = matches
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("matches" in kwargs, "Raw round data should have a 'matches' field");
+            let matches = [];
+            for (let raw_match of kwargs.matches) {
+                assert("win_player_id" in raw_match, "Raw match data in playoff round should each have a 'win_player_id' field");
+                assert("lose_player_id" in raw_match, "Raw match data in playoff round should each have a 'lose_player_id' field");
+                assert("win_creature_ids" in raw_match, "Raw match data in playoff round should each have a 'win_creature_ids' field");
+                assert("lose_creature_ids" in raw_match, "Raw match data in playoff round should each have a 'lose_creature_ids' field");
+                let win_team = new Team(raw_match.win_player_id, raw_match.win_creature_ids);
+                let lose_team = new Team(raw_match.lose_player_id, raw_match.lose_creature_ids);
+                matches.push(new Match(win_team, lose_team));
+            }
+            return new Round(raw.date, matches);
+        }
+        /**
+         * [Draw event has HTML DOM]
+         * @param  {[array]} players [Each player's information]
+         * @param  {[array]} creatures [Each creatures's information]
+         * @return {[dom]} dom [DOM element representation of event]
+         */
+        draw(players, creatures) {
+            var dom = document.createElement("div");
+            dom.classList.add("round");
+            dom.innerHTML = this.date.toLocaleString();
+            return super.draw([dom], "Playoff Round", "round");
+        }
+    }
+
+    class CreatureTeamChange {
+        constructor(creature_id, from_player_id, to_player_id) {
+            this.creature_id = creature_id;
+            this.from_player_id = from_player_id;
+            this.to_player_id = to_player_id;
+        }
+        static from_raw(raw) {
+            assert("from_player_id" in raw, "Raw creature team change data should have a 'from_player_id' field");
+            assert("to_player_id" in raw, "Raw creature team change data should have a 'to_player_id' field");
+            assert("creature_id" in raw, "Raw creature team change data should have a 'creature_id' field");
+            return new CreatureTeamChange(raw.creature_id, raw.from_player_id, raw.to_player_id)
+        }
+    }
+
+    class Team {
+        /**
+         * Create Team object that consists of a player and their creatures used in a match
+         * @param  {[int]} player_id ID of player
+         * @param  {[array]} creature_ids IDs of creatures
+         * @return {Team}
+         */
+        constructor(player_id, creature_ids) {
+            this.player_id = player_id;
+            this.creature_ids = creature_ids;
+        }
+        static from_raw(raw) {
+            assert("player_id" in raw, "Raw team data should have 'player_id' field");
+            assert("creature_ids" in raw, "Raw team data should have 'creature_ids' field");
+            return new Team(raw.player_id, raw.creature_ids);
+        }
+        draw_sprites(players, creatures) {
+            var team_player = Player.get_by_id(players, this.player_id);
+            var team_creatures = Creature.get_by_ids(creatures, this.creature_ids.sort());
+            var dom = document.createElement("div");
+            dom.classList.add("team");
+            dom.classList.add(team_player.css_class);
+            for (var i = 0; i < team_creatures.length; i++) {
+                var dom_img = team_creatures[i].draw_sprite();
+                dom_img.classList.add(team_player.css_class);
+                dom.appendChild(dom_img);
+            }
+            return dom;
+        }
+        static get_by_player_ids(teams, player_ids) {
+            var id2team = {};
+            for (var team of teams) {
+                id2team[team.player_id] = team;
+            }
+            var teams_ordered = [];
+            for (var player_id of player_ids) {
+                teams_ordered.push(id2team[player_id]);
+            }
+            return teams_ordered;
+        }
+
+    }
+
+    class Match {
+        /**
+         * Create Match object that has a winner and loser team
+         * @param  {[Team]} win_team
+         * @param  {[Team]} lose_team
+         * @return {Match}
+         */
+         constructor(win_team, lose_team) {
+            this.win_team = win_team;
+            this.lose_team = lose_team;
+         }
+         /**
+         * Create Match object from raw match data and a list of possible teams
+         * @param  {[object]} raw [Must contain a "win_player_id" and a "lose_player_id" field]
+         * @param  {[array]} teams [Possible teams to select from. These could be teams for all the players in a tournament
+         *     but has to at least include teams for the winning and losing players]
+         * @return {Match}
+         */
+         static from_raw(raw, teams) {
+            assert("win_player_id" in raw, "Raw match data should have a 'win_player_id' field");
+            assert("lose_player_id" in raw, "Raw match data should have a 'lose_player_id' field");
+            let win_player_id = raw.win_player_id;
+            let lose_player_id = raw.lose_player_id;
+            let player_ids = [];
+            for (let team of teams) {
+                player_ids.push(team.player_id);
+            }
+            let player_id_set = new Set(player_ids);
+            assert(player_ids.length === player_id_set.size, "Teams should belong to different players when making a Match");
+            assert(player_id_set.has(win_player_id), "Winning player ID must have a team");
+            assert(player_id_set.has(lose_player_id), "Losing player ID must have a team");
+            let win_team_index = argfind(player_ids, win_player_id);
+            let lose_team_index = argfind(player_ids, lose_player_id);
+            return new Match(teams[win_team_index], teams[lose_team_index]);
+         }
+    }
+
+    function create_element({tag = "div", innerHTML = "", children = [], classList = []}={}) {
+        dom = document.createElement(tag);
+        dom.innerHTML = innerHTML;
+        for (var css_class of classList) {
+            dom.classList.add(css_class);
+        }
+        for (var child of children) {
+            dom.appendChild(child);
+        }
+        return dom;
+    }
+
+    function create_elements(count, innerHTML = "", tag = "div", children = [], classList = []) {
+        var elements = [];
+        for (var i = 0; i < count; i++) {
+            elements.push(create_element({tag: tag, innerHTML: innerHTML, children: children, classList: classList}))
+        }
+        return elements;
+    }
+
+    /**
+     * [Rank play]
+     * @param  {[array]} scores [Score for each element. Could be number of match wins for each player in a tournament]
+     * @return {[array]} ranks [Rank of each element with higher scores getting a higher rank]
+     */
+    function rank_scores(scores) {
+        var sorted = scores.slice().sort(function(a,b){return b - a})
+        return scores.map(function(v){ return sorted.indexOf(v)+1 });
+    }
+
+    function setPokemon(player_pokemon_div, pokemon_numbers, classes, pokemon_names, pokemon_n_used, player_class) {
+
+        /* Sort by pokemon number then sort by number of times used */
+        idx = argsort(pokemon_numbers).reverse();
+        pokemon_numbers = apply_index(pokemon_numbers, idx);
+        pokemon_n_used = apply_index(pokemon_n_used, idx);
+        idx = argsort(pokemon_n_used).reverse();
+        pokemon_numbers = apply_index(pokemon_numbers, idx);
+        pokemon_n_used = apply_index(pokemon_n_used, idx);
+
+        for (var i = 0; i < pokemon_numbers.length; i++) {
+            var a   = document.createElement('a');
+            var div = document.createElement('div');
+            var img = document.createElement('img');
+            var p1   = document.createElement('p');
+            var p2   = document.createElement('p');
+            var p3   = document.createElement('p');
+            a.appendChild(div);
+            div.appendChild(img);
+            div.appendChild(p1);
+            div.appendChild(p2);
+            div.appendChild(p3);
+            pokemon_name = pokemon_names[pokemon_numbers[i]-1]
+            a.href = "https://www.smogon.com/dex/sm/pokemon/" + pokemon_name;
+            a.target = "_blank";
+            div.classList.add("pokemon-large");
+            div.classList.add(player_class);
+            img.src = "https://www.serebii.net/pokemon/art/" + pad(pokemon_numbers[i], 3) + ".png";
+            for (var j = 0; j < classes.length; j++) {
+                img.classList.add(classes[j]);
+            }
+            p1.innerHTML = pokemon_name;
+            p1.classList.add("margin-bottom-0");
+            p2.innerHTML = "#" + pokemon_numbers[i];
+            p2.classList.add("margin-bottom-0");
+            p3.innerHTML = "used: " + pokemon_n_used[i];
+
+            
+            player_pokemon_div.appendChild(a);
+        }
+    }
+
+    function setTournamentsOfficial(tournaments, player_names, player_class) {
+        tournaments_dom = document.getElementById("tournaments");
+        setTournamentsOnDiv(tournaments_dom, tournaments, player_names, player_class);
+    }
+
+    function setTournamentsUnofficial(tournaments, player_names, player_class) {
+        tournaments_dom = document.getElementById("tournaments-unofficial");
+        setTournamentsOnDiv(tournaments_dom, tournaments, player_names, player_class);
+    }
+
+    function setTournamentsOnDiv(tournaments_dom, tournaments, player_names, player_class) {
+        for (var i = tournaments.length-1; i >= 0; i--) {
+            var table, tbody;
+            var tourny = tournaments[i];
+            [table, tbody] = make_table_with_header('Tournament '+(i+1)+', '+tourny["date"], "3");
+
+            var header_row = document.createElement('tr');
+            header_row.appendChild(make_dom_element('td', 'Player'));
+            header_row.appendChild(make_dom_element('td', 'Pokemon'));
+            header_row.appendChild(make_dom_element('td', 'Wins'));
+            header_row.appendChild(make_dom_element('td', 'Matches'));
+
+            // Figure out the winner. Append 'winner' onto their list of classes to be used for their tr in the table
+            var row_classes = player_class.slice();
+            var n_wins = [];
+            var matches = []; // 1: Win, -1: Loss: 0: No participation
+            for (var j = 0; j < player_names.length; j++) {
+                n_wins[j] = 0;
+                matches[j] = [];
+                for (var k = 0; k < tourny["matches"].length; k++) {
+                    var match = tourny["matches"][k];
+                    if (match[0] == j) { // Won
+                        matches[j][k] = 1;
+                    } else if (match[1] == j) { // Lost
+                        matches[j][k] = -1;
+                    } else {
+                        matches[j][k] = 0
+                    }
+                }
+            }
+
+            for (var j = 0; j < tourny["matches"].length; j++) {
+                var match = tourny["matches"][j];
+                n_wins[match[0]] += 1;
+            }
+            winner_index = index_of_max(n_wins);
+            if (winner_index !== -1) {
+                row_classes[winner_index] = row_classes[winner_index] + ' winner';
+            }
+
+            // Make a row for each player in the table
+            tbody.appendChild(header_row);
+            for (var j = 0; j < player_names.length; j++) {
+                var player_row = make_tournament_table_row(player_names[j], tourny["teams"][j], n_wins[j], matches[j], row_classes[j]);
+                tbody.appendChild(player_row);
+            }
+            tournaments_dom.appendChild(table);
+        }
+    }
+
+    function make_tournament_table_row(player, pokemon, wins, matches, cls) {
+        var row = document.createElement('tr');
+        var player_div = document.createElement('td');
+        player_div.innerHTML = player;
+        var pokemon_div = document.createElement('td');
+        pokemon.sort((a, b) => a - b);
+        for (var i = 0; i < pokemon.length; i++) {
+            var pokemon_icon_img_div = get_pokemon_icon(pokemon[i]);
+            pokemon_icon_img_div.classList.add('tournament-pokemon-' + pokemon[i]);
+            pokemon_div.appendChild(pokemon_icon_img_div);
+        }
+        var wins_div = document.createElement('td');
+        wins_div.innerHTML = wins;
+        var matches_div = document.createElement('td');
+        matches_div.appendChild(make_matches_div(matches));
+        row.appendChild(player_div);
+        row.appendChild(pokemon_div);
+        row.appendChild(wins_div);
+        row.appendChild(matches_div);
+        var classes = cls.split(' ');
+        for (var i = 0; i < classes.length; i++) {
+            row.classList.add(classes[i]);
+        }
+        return row;
+    }
+
+    function make_matches_div(matches) {
+        var wrapper = document.createElement('div');
+        for (var i = 0; i < matches.length; i++) {
+            var match_div = document.createElement('div');
+            match_div.classList.add('match');
+            if (matches[i] == 1) {
+                match_div.classList.add('win');
+                match_div.innerHTML = 'W';
+            } else if (matches[i] == -1) {
+                match_div.classList.add('loss');
+                match_div.innerHTML = 'L';
+            } else {
+                match_div.classList.add('none');
+            }
+            wrapper.appendChild(match_div);
+        }
+        return wrapper;
+    }
+
+    function setPlayoffs(playoffs, player_names, player_class) {
+        playoffs_dom = document.getElementById("playoffs");
+        if (playoffs.length === 0) {
+            playoffs_dom.appendChild(make_dom_element('p', 'No playoff rounds listed yet.'))
+        }
+        for (var i = 0; i < playoffs.length; i++) {
+            var table, tbody;
+            var round = playoffs[i];
+            [table, tbody] = make_table_with_header('Round '+(i+1)+', '+round["date"], "3");
+            
+            // Table header
+            var player_ids = round["player_ids"]
+            var header_row = document.createElement('tr');
+            for (var j = 0; j < player_ids.length; j++) {
+                header_row.appendChild(make_dom_element('td', player_names[player_ids[j]]));
+            }
+            header_row.appendChild(make_dom_element('td', 'Winner'));
+            tbody.append(header_row)
+
+            // Each battle
+            for (var j = 0; j < round["matches"].length; j++) {
+                var pokemon_ids = round["matches"][j]["pokemon_ids"];
+                var win_player_id = round["matches"][j]["win_player_id"];
+                tr = document.createElement('tr');
+                tdl = document.createElement('td');
+                // Set pokemon icons
+                for (var k = 0; k < pokemon_ids.length; k++) {
+                    var td = document.createElement('td');
+                    var pokemon_team_ids = pokemon_ids[k];
+                    pokemon_team_ids.sort((a, b) => a - b);
+                    for (var l = 0; l < pokemon_team_ids.length; l++) {
+                        td.appendChild(get_pokemon_icon(pokemon_team_ids[l]));
+                    }
+                    td.classList.add(player_class[player_ids[k]])
+                    if (player_ids[k] == win_player_id) {
+                        td.classList.add('winner');
+                    }
+                    tr.appendChild(td);
+                }
+                // Win player name
+                var td = make_dom_element('td', player_names[win_player_id]);
+                td.classList.add('winner');
+                td.classList.add(player_class[win_player_id]);
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+            }
+
+            playoffs_dom.appendChild(table);
+        }
+    }
+
+    function make_table_with_header(header_text, n_cols) {
+        var table = document.createElement('table');
+        var tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+        var tr = document.createElement('tr');
+        tbody.appendChild(tr);
+        var td = make_dom_element('td', header_text);
+        tr.appendChild(td);
+        td.setAttribute("colspan", n_cols);
+        return [table, tbody]
+    }
+
+    function setDrafts(drafts, player_names, player_class) {
+        drafts_dom = document.getElementById("drafts");
+        for (var i = drafts.length-1; i >= 0; i--) {
+            var table, tbody;
+            [table, tbody] = make_table_with_header('Draft '+(i+1)+', '+drafts[i][0], "2");
+
+            var header_row = document.createElement('tr');
+            header_row.appendChild(make_dom_element('td', 'Player'));
+            header_row.appendChild(make_dom_element('td', 'Pokemon'));
+            tbody.appendChild(header_row);
+
+            // Make a row for each player in the table
+            var table_rows = []
+            for (var j = 0; j < player_names.length; j++) {
+                var row = make_draft_table_row(player_names[j], drafts[i][j+1]);
+                row.className = player_class[j];
+                tbody.appendChild(row);
+            }
+            table.appendChild(tbody);
+            drafts_dom.appendChild(table);
+        }
+    }
+
+    function make_draft_table_row(player, pokemon) {
+        var row = document.createElement('tr');
+        var player_div = document.createElement('td');
+        player_div.innerHTML = player;
+        var pokemon_div = document.createElement('td');
+        for (var i = 0; i < pokemon.length; i++) {
+            pokemon_div.appendChild(get_pokemon_icon(pokemon[i]));
+        }
+        row.appendChild(player_div);
+        row.appendChild(pokemon_div);
+        return row;
+    }
+
+    function setTrades(trades, player_names, player_class) {
+        trades_dom = document.getElementById("trades");
+        for (var i = trades.length-1; i >= 0; i--) {
+            var table, tbody;
+            [table, tbody] = make_table_with_header('Trade '+(i+1)+', '+trades[i][0], "4");
+            trades_dom.append(table);
+
+            var header_row = document.createElement('tr');
+            header_row.appendChild(make_dom_element('td', 'From'));
+            header_row.appendChild(make_dom_element('td', 'Pokemon'));
+            header_row.appendChild(make_dom_element('td', 'To'));
+            tbody.appendChild(header_row);
+
+            for (var j = 1; j < trades[i].length; j++) {
+                var tr = document.createElement('tr');
+                tbody.appendChild(tr);
+                var from_player_idx = trades[i][j][1];
+                var to_player_idx = trades[i][j][2];
+                tr.appendChild(make_dom_element('td', player_names[from_player_idx]));
+                tr.appendChild(get_pokemon_icon_td(trades[i][j][0]));
+                tr.appendChild(make_dom_element('td', player_names[to_player_idx]));
+                tr.className = player_class[to_player_idx];
+            }
+        }
+    }
+
+    function setPlayerDescriptions(player_class) {
+        for (var i = 0; i < player_class.length; i++) {
+            var n_tournament_wins = document.querySelectorAll('#tournaments .winner.' + player_class[i]).length;
+            var n_pokemon = document.querySelectorAll('.pokemon-img.' + player_class[i]).length;
+            var n_match_wins = 0;
+            var match_win_doms = document.querySelectorAll('#tournaments tr.' + player_class[i] + ' td:nth-child(3)');
+            for (var j = 0; j < match_win_doms.length; j++) {
+                n_match_wins += parseInt(match_win_doms[j].innerHTML);
+            }
+            var description_dom = document.querySelectorAll('.player-description.' + player_class[i])[0];
+            description_dom.innerHTML = n_tournament_wins + ' Tournament Wins, ' + n_match_wins + ' Match Wins, ' + n_pokemon + ' Pokemon';
+        }
+    }
+
+    function get_pokemon_icon_td(pokemon_number) {
+        var img = get_pokemon_icon(pokemon_number);
+        var td = document.createElement('td');
+        td.appendChild(img);
+        td.setAttribute("style", "text-align: center;");
+        return td;
+    }
+
+    function get_pokemon_icon(pokemon_number) {
+        var img = document.createElement('img');
+        img.src = "https://www.serebii.net/pokedex-sm/icon/" + pad(pokemon_number, 3) + ".png";
+        return img;
+    }
+
+    function createElementFromHTML(htmlString) {
+        var div = document.createElement('div');
+        div.innerHTML = htmlString.trim();
+        return div.firstChild; 
+    }
+
+    function make_dom_element(tag, innerHTML) {
+        var dom_element = document.createElement(tag);
+        dom_element.innerHTML = innerHTML;
+        return dom_element;
+    }
+
+    function index_of_max(arr) {
+        /* Return -1 if multiple maxes */
+        imax = 0;
+        for (var i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[imax]) {
+                imax = i;
+            }
+        }
+        for (var i = 0; i < arr.length; i++) {
+            if ((arr[i] == arr[imax]) && (i != imax)) {
+                return -1;
+            }
+        }
+        return imax;
+    }
+
+    function calculate_n_used(pokemon_numbers) {
+        var n_used = [];
+        for (var i = 0; i < pokemon_numbers.length; i++) {
+            n_used[i] = document.getElementsByClassName('tournament-pokemon-' + pokemon_numbers[i]).length;
+        }
+        return n_used;
+    }
+
+    function apply_index(nums, idx) {
+        nums_new = [];
+        for (var i = 0; i < nums.length; i++) {
+            nums_new.push(nums[idx[i]]);
+        }
+        return nums_new;
+    }
+
+    var pokemon_names = ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise', 'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate', 'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash', 'Nidoran♀', 'Nidorina', 'Nidoqueen', 'Nidoran♂', 'Nidorino', 'Nidoking', 'Clefairy', 'Clefable', 'Vulpix', 'Ninetales', 'Jigglypuff', 'Wigglytuff', 'Zubat', 'Golbat', 'Oddish', 'Gloom', 'Vileplume', 'Paras', 'Parasect', 'Venonat', 'Venomoth', 'Diglett', 'Dugtrio', 'Meowth', 'Persian', 'Psyduck', 'Golduck', 'Mankey', 'Primeape', 'Growlithe', 'Arcanine', 'Poliwag', 'Poliwhirl', 'Poliwrath', 'Abra', 'Kadabra', 'Alakazam', 'Machop', 'Machoke', 'Machamp', 'Bellsprout', 'Weepinbell', 'Victreebel', 'Tentacool', 'Tentacruel', 'Geodude', 'Graveler', 'Golem', 'Ponyta', 'Rapidash', 'Slowpoke', 'Slowbro', 'Magnemite', 'Magneton', 'Farfetch’d', 'Doduo', 'Dodrio', 'Seel', 'Dewgong', 'Grimer', 'Muk', 'Shellder', 'Cloyster', 'Gastly', 'Haunter', 'Gengar', 'Onix', 'Drowzee', 'Hypno', 'Krabby', 'Kingler', 'Voltorb', 'Electrode', 'Exeggcute', 'Exeggutor', 'Cubone', 'Marowak', 'Hitmonlee', 'Hitmonchan', 'Lickitung', 'Koffing', 'Weezing', 'Rhyhorn', 'Rhydon', 'Chansey', 'Tangela', 'Kangaskhan', 'Horsea', 'Seadra', 'Goldeen', 'Seaking', 'Staryu', 'Starmie', 'Mr. Mime', 'Scyther', 'Jynx', 'Electabuzz', 'Magmar', 'Pinsir', 'Tauros', 'Magikarp', 'Gyarados', 'Lapras', 'Ditto', 'Eevee', 'Vaporeon', 'Jolteon', 'Flareon', 'Porygon', 'Omanyte', 'Omastar', 'Kabuto', 'Kabutops', 'Aerodactyl', 'Snorlax', 'Articuno', 'Zapdos', 'Moltres', 'Dratini', 'Dragonair', 'Dragonite', 'Mewtwo', 'Mew', 'Chikorita', 'Bayleef', 'Meganium', 'Cyndaquil', 'Quilava', 'Typhlosion', 'Totodile', 'Croconaw', 'Feraligatr', 'Sentret', 'Furret', 'Hoothoot', 'Noctowl', 'Ledyba', 'Ledian', 'Spinarak', 'Ariados', 'Crobat', 'Chinchou', 'Lanturn', 'Pichu', 'Cleffa', 'Igglybuff', 'Togepi', 'Togetic', 'Natu', 'Xatu', 'Mareep', 'Flaaffy', 'Ampharos', 'Bellossom', 'Marill', 'Azumarill', 'Sudowoodo', 'Politoed', 'Hoppip', 'Skiploom', 'Jumpluff', 'Aipom', 'Sunkern', 'Sunflora', 'Yanma', 'Wooper', 'Quagsire', 'Espeon', 'Umbreon', 'Murkrow', 'Slowking', 'Misdreavus', 'Unown', 'Wobbuffet', 'Girafarig', 'Pineco', 'Forretress', 'Dunsparce', 'Gligar', 'Steelix', 'Snubbull', 'Granbull', 'Qwilfish', 'Scizor', 'Shuckle', 'Heracross', 'Sneasel', 'Teddiursa', 'Ursaring', 'Slugma', 'Magcargo', 'Swinub', 'Piloswine', 'Corsola', 'Remoraid', 'Octillery', 'Delibird', 'Mantine', 'Skarmory', 'Houndour', 'Houndoom', 'Kingdra', 'Phanpy', 'Donphan', 'Porygon2', 'Stantler', 'Smeargle', 'Tyrogue', 'Hitmontop', 'Smoochum', 'Elekid', 'Magby', 'Miltank', 'Blissey', 'Raikou', 'Entei', 'Suicune', 'Larvitar', 'Pupitar', 'Tyranitar', 'Lugia', 'Ho-Oh', 'Celebi', 'Treecko', 'Grovyle', 'Sceptile', 'Torchic', 'Combusken', 'Blaziken', 'Mudkip', 'Marshtomp', 'Swampert', 'Poochyena', 'Mightyena', 'Zigzagoon', 'Linoone', 'Wurmple', 'Silcoon', 'Beautifly', 'Cascoon', 'Dustox', 'Lotad', 'Lombre', 'Ludicolo', 'Seedot', 'Nuzleaf', 'Shiftry', 'Taillow', 'Swellow', 'Wingull', 'Pelipper', 'Ralts', 'Kirlia', 'Gardevoir', 'Surskit', 'Masquerain', 'Shroomish', 'Breloom', 'Slakoth', 'Vigoroth', 'Slaking', 'Nincada', 'Ninjask', 'Shedinja', 'Whismur', 'Loudred', 'Exploud', 'Makuhita', 'Hariyama', 'Azurill', 'Nosepass', 'Skitty', 'Delcatty', 'Sableye', 'Mawile', 'Aron', 'Lairon', 'Aggron', 'Meditite', 'Medicham', 'Electrike', 'Manectric', 'Plusle', 'Minun', 'Volbeat', 'Illumise', 'Roselia', 'Gulpin', 'Swalot', 'Carvanha', 'Sharpedo', 'Wailmer', 'Wailord', 'Numel', 'Camerupt', 'Torkoal', 'Spoink', 'Grumpig', 'Spinda', 'Trapinch', 'Vibrava', 'Flygon', 'Cacnea', 'Cacturne', 'Swablu', 'Altaria', 'Zangoose', 'Seviper', 'Lunatone', 'Solrock', 'Barboach', 'Whiscash', 'Corphish', 'Crawdaunt', 'Baltoy', 'Claydol', 'Lileep', 'Cradily', 'Anorith', 'Armaldo', 'Feebas', 'Milotic', 'Castform', 'Kecleon', 'Shuppet', 'Banette', 'Duskull', 'Dusclops', 'Tropius', 'Chimecho', 'Absol', 'Wynaut', 'Snorunt', 'Glalie', 'Spheal', 'Sealeo', 'Walrein', 'Clamperl', 'Huntail', 'Gorebyss', 'Relicanth', 'Luvdisc', 'Bagon', 'Shelgon', 'Salamence', 'Beldum', 'Metang', 'Metagross', 'Regirock', 'Regice', 'Registeel', 'Latias', 'Latios', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Turtwig', 'Grotle', 'Torterra', 'Chimchar', 'Monferno', 'Infernape', 'Piplup', 'Prinplup', 'Empoleon', 'Starly', 'Staravia', 'Staraptor', 'Bidoof', 'Bibarel', 'Kricketot', 'Kricketune', 'Shinx', 'Luxio', 'Luxray', 'Budew', 'Roserade', 'Cranidos', 'Rampardos', 'Shieldon', 'Bastiodon', 'Burmy', 'Wormadam', 'Mothim', 'Combee', 'Vespiquen', 'Pachirisu', 'Buizel', 'Floatzel', 'Cherubi', 'Cherrim', 'Shellos', 'Gastrodon', 'Ambipom', 'Drifloon', 'Drifblim', 'Buneary', 'Lopunny', 'Mismagius', 'Honchkrow', 'Glameow', 'Purugly', 'Chingling', 'Stunky', 'Skuntank', 'Bronzor', 'Bronzong', 'Bonsly', 'Mime Jr.', 'Happiny', 'Chatot', 'Spiritomb', 'Gible', 'Gabite', 'Garchomp', 'Munchlax', 'Riolu', 'Lucario', 'Hippopotas', 'Hippowdon', 'Skorupi', 'Drapion', 'Croagunk', 'Toxicroak', 'Carnivine', 'Finneon', 'Lumineon', 'Mantyke', 'Snover', 'Abomasnow', 'Weavile', 'Magnezone', 'Lickilicky', 'Rhyperior', 'Tangrowth', 'Electivire', 'Magmortar', 'Togekiss', 'Yanmega', 'Leafeon', 'Glaceon', 'Gliscor', 'Mamoswine', 'Porygon-Z', 'Gallade', 'Probopass', 'Dusknoir', 'Froslass', 'Rotom', 'Uxie', 'Mesprit', 'Azelf', 'Dialga', 'Palkia', 'Heatran', 'Regigigas', 'Giratina', 'Cresselia', 'Phione', 'Manaphy', 'Darkrai', 'Shaymin', 'Arceus', 'Victini', 'Snivy', 'Servine', 'Serperior', 'Tepig', 'Pignite', 'Emboar', 'Oshawott', 'Dewott', 'Samurott', 'Patrat', 'Watchog', 'Lillipup', 'Herdier', 'Stoutland', 'Purrloin', 'Liepard', 'Pansage', 'Simisage', 'Pansear', 'Simisear', 'Panpour', 'Simipour', 'Munna', 'Musharna', 'Pidove', 'Tranquill', 'Unfezant', 'Blitzle', 'Zebstrika', 'Roggenrola', 'Boldore', 'Gigalith', 'Woobat', 'Swoobat', 'Drilbur', 'Excadrill', 'Audino', 'Timburr', 'Gurdurr', 'Conkeldurr', 'Tympole', 'Palpitoad', 'Seismitoad', 'Throh', 'Sawk', 'Sewaddle', 'Swadloon', 'Leavanny', 'Venipede', 'Whirlipede', 'Scolipede', 'Cottonee', 'Whimsicott', 'Petilil', 'Lilligant', 'Basculin', 'Sandile', 'Krokorok', 'Krookodile', 'Darumaka', 'Darmanitan', 'Maractus', 'Dwebble', 'Crustle', 'Scraggy', 'Scrafty', 'Sigilyph', 'Yamask', 'Cofagrigus', 'Tirtouga', 'Carracosta', 'Archen', 'Archeops', 'Trubbish', 'Garbodor', 'Zorua', 'Zoroark', 'Minccino', 'Cinccino', 'Gothita', 'Gothorita', 'Gothitelle', 'Solosis', 'Duosion', 'Reuniclus', 'Ducklett', 'Swanna', 'Vanillite', 'Vanillish', 'Vanilluxe', 'Deerling', 'Sawsbuck', 'Emolga', 'Karrablast', 'Escavalier', 'Foongus', 'Amoonguss', 'Frillish', 'Jellicent', 'Alomomola', 'Joltik', 'Galvantula', 'Ferroseed', 'Ferrothorn', 'Klink', 'Klang', 'Klinklang', 'Tynamo', 'Eelektrik', 'Eelektross', 'Elgyem', 'Beheeyem', 'Litwick', 'Lampent', 'Chandelure', 'Axew', 'Fraxure', 'Haxorus', 'Cubchoo', 'Beartic', 'Cryogonal', 'Shelmet', 'Accelgor', 'Stunfisk', 'Mienfoo', 'Mienshao', 'Druddigon', 'Golett', 'Golurk', 'Pawniard', 'Bisharp', 'Bouffalant', 'Rufflet', 'Braviary', 'Vullaby', 'Mandibuzz', 'Heatmor', 'Durant', 'Deino', 'Zweilous', 'Hydreigon', 'Larvesta', 'Volcarona', 'Cobalion', 'Terrakion', 'Virizion', 'Tornadus', 'Thundurus', 'Reshiram', 'Zekrom', 'Landorus', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Chespin', 'Quilladin', 'Chesnaught', 'Fennekin', 'Braixen', 'Delphox', 'Froakie', 'Frogadier', 'Greninja', 'Bunnelby', 'Diggersby', 'Fletchling', 'Fletchinder', 'Talonflame', 'Scatterbug', 'Spewpa', 'Vivillon', 'Litleo', 'Pyroar', 'Flabébé', 'Floette', 'Florges', 'Skiddo', 'Gogoat', 'Pancham', 'Pangoro', 'Furfrou', 'Espurr', 'Meowstic', 'Honedge', 'Doublade', 'Aegislash', 'Spritzee', 'Aromatisse', 'Swirlix', 'Slurpuff', 'Inkay', 'Malamar', 'Binacle', 'Barbaracle', 'Skrelp', 'Dragalge', 'Clauncher', 'Clawitzer', 'Helioptile', 'Heliolisk', 'Tyrunt', 'Tyrantrum', 'Amaura', 'Aurorus', 'Sylveon', 'Hawlucha', 'Dedenne', 'Carbink', 'Goomy', 'Sliggoo', 'Goodra', 'Klefki', 'Phantump', 'Trevenant', 'Pumpkaboo', 'Gourgeist', 'Bergmite', 'Avalugg', 'Noibat', 'Noivern', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Rowlet', 'Dartrix', 'Decidueye', 'Litten', 'Torracat', 'Incineroar', 'Popplio', 'Brionne', 'Primarina', 'Pikipek', 'Trumbeak', 'Toucannon', 'Yungoos', 'Gumshoos', 'Grubbin', 'Charjabug', 'Vikavolt', 'Crabrawler', 'Crabominable', 'Oricorio', 'Cutiefly', 'Ribombee', 'Rockruff', 'Lycanroc', 'Wishiwashi', 'Mareanie', 'Toxapex', 'Mudbray', 'Mudsdale', 'Dewpider', 'Araquanid', 'Fomantis', 'Lurantis', 'Morelull', 'Shiinotic', 'Salandit', 'Salazzle', 'Stufful', 'Bewear', 'Bounsweet', 'Steenee', 'Tsareena', 'Comfey', 'Oranguru', 'Passimian', 'Wimpod', 'Golisopod', 'Sandygast', 'Palossand', 'Pyukumuku', 'Type: Null', 'Silvally', 'Minior', 'Komala', 'Turtonator', 'Togedemaru', 'Mimikyu', 'Bruxish', 'Drampa', 'Dhelmise', 'Jangmo-o', 'Hakamo-o', 'Kommo-o', 'Tapu Koko', 'Tapu Lele', 'Tapu Bulu', 'Tapu Fini', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Nihilego', 'Buzzwole', 'Pheromosa', 'Xurkitree', 'Celesteela', 'Kartana', 'Guzzlord', 'Necrozma', 'Magearna', 'Marshadow', 'Poipole', 'Naganadel', 'Stakataka', 'Blacephalon', 'Zeraora', 'Meltan', 'Melmetal'];
+
+    setTournamentsOfficial(tournaments, player_names, player_class);
+    setPlayoffs(playoffs, player_names, player_class);
+    for (var i = 0; i < player_pokemon.length; i++) {
+        var pokemon_n_used = calculate_n_used(player_pokemon[i]);
+        var player_pokemon_div = document.getElementById(player_class[i] + "-pokemon");
+        setPokemon(player_pokemon_div, player_pokemon[i], ["pokemon-img", player_class[i]], pokemon_names, pokemon_n_used, player_class[i]);
+    }
+
+    setDrafts(drafts, player_names, player_class);
+    setTrades(trades, player_names, player_class);
+    setPlayerDescriptions(player_class);
+
+    setTournamentsUnofficial(tournaments_unofficial, player_names, player_class);
+
+    main(raw);
+</script>
+</body>
+</html>
