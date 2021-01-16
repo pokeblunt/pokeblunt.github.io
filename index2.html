@@ -148,58 +148,18 @@
     div.event.draft > div.header {
         background-color: #f39c12;
     }
+    div.event.draft {
+        max-height: 33em;
+        overflow: hidden;
+    }
+    div.event.draft:hover {
+        cursor: pointer;
+    }
+    div.event.draft.expanded {
+        max-height: none;
+    }
     div.event.round > div.header {
         background-color: #e74c3c;
-    }
-    div.event.round > div.body > table.matches,
-    div.event.round > div.body > table.players,
-    div.event.tournament > div.body > table.matches,
-    div.event.tournament > div.body > table.players {
-        margin-top: 10px;
-        text-align: center;
-        border-spacing: 5px;
-    }
-    div.event.round > div.body > table.matches th,
-    div.event.round > div.body > table.players th,
-    div.event.tournament > div.body > table.matches th,
-    div.event.tournament > div.body > table.players th {
-        background-color: #bdc3c7;
-        border-radius: 5px;
-    }
-    div.event.round > div.body > table.matches td,
-    div.event.round > div.body > table.matches th,
-    div.event.round > div.body > table.players td,
-    div.event.round > div.body > table.players th,
-    div.event.tournament > div.body > table.matches td,
-    div.event.tournament > div.body > table.matches th,
-    div.event.tournament > div.body > table.players td,
-    div.event.tournament > div.body > table.players th {
-        margin-top: 10px;
-        padding: 5px 10px;
-    }
-    div.event.round > div.body > table.matches > tr > td.james.winner,
-    div.event.round > div.body > table.players > tr.james.winner > td,
-    div.event.tournament > div.body > table.matches > tr > td.james.winner,
-    div.event.tournament > div.body > table.players > tr.james.winner > td {
-        background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
-    }
-    div.event.round > div.body > table.matches > tr > td.jbird.winner,
-    div.event.round > div.body > table.players > tr.jbird.winner > td,
-    div.event.tournament > div.body > table.matches > tr > td.jbird.winner,
-    div.event.tournament > div.body > table.players > tr.jbird.winner > td {
-        background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
-    }
-    div.event.round > div.body > table.matches > tr > td.kamon.winner,
-    div.event.round > div.body > table.players > tr.kamon.winner > td,
-    div.event.tournament > div.body > table.matches > tr > td.kamon.winner,
-    div.event.tournament > div.body > table.players > tr.kamon.winner > td {
-        background: radial-gradient(#e74c3c 3%, #ecf0f1 70%);
-    }
-    div.event.round > div.body > table.matches > tr > td.steve.winner,
-    div.event.round > div.body > table.players > tr.steve.winner > td,
-    div.event.tournament > div.body > table.matches > tr > td.steve.winner,
-    div.event.tournament > div.body > table.players > tr.steve.winner > td {
-        background: radial-gradient(#9b59b6 3%, #ecf0f1 70%);
     }
     div.event.tournament > div.header {
         background-color: #3498db;
@@ -212,6 +172,36 @@
     }
     img.trainer_sprite {
         width: 64px;
+    }
+    table.standard {
+        margin-top: 10px;
+        text-align: center;
+        border-spacing: 5px;
+    }
+    table.standard th {
+        background-color: #bdc3c7;
+        border-radius: 5px;
+    }
+    table.standard td,
+    table.standard th {
+        margin-top: 10px;
+        padding: 5px 10px;
+    }
+    table.standard > tr > td.james.winner,
+    table.standard > tr.james.winner > td {
+        background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
+    }
+    table.standard > tr > td.jbird.winner,
+    table.standard > tr.jbird.winner > td {
+        background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
+    }
+    table.standard > tr > td.kamon.winner,
+    table.standard > tr.kamon.winner > td {
+        background: radial-gradient(#e74c3c 3%, #ecf0f1 70%);
+    }
+    table.standard > tr > td.steve.winner,
+    table.standard > tr.steve.winner > td {
+        background: radial-gradient(#9b59b6 3%, #ecf0f1 70%);
     }
 </style></head>
 
@@ -614,19 +604,220 @@
                 "type": "draft",
                 "date": "2019/10/26 18:00",
                 "kwargs": {
-                    "player_creature_ids": [
+                    "creatures_drafted": [
                         {
-                            "player_id": 0,
-                            "creature_ids": [645, 485, 598, 488, 479, 707, 534, 303, 184, 620, 785, 807, 130, 385, 635, 450, 526, 65]
+                            "player_id": 3,
+                            "creature_id": 115
                         }, {
                             "player_id": 1,
-                            "creature_ids": [727, 94, 591, 145, 798, 212, 233, 721, 681, 641, 787, 437, 38, 797, 805, 89, 423]
+                            "creature_id": 727
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 645
                         }, {
                             "player_id": 2,
-                            "creature_ids": [376, 143, 560, 257, 6, 248, 373, 105, 637, 59, 786, 310, 719, 3, 426, 142, 127, 230]
+                            "creature_id": 376
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 143
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 485
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 94
                         }, {
                             "player_id": 3,
-                            "creature_ids": [115, 149, 778, 547, 468, 260, 279, 784, 302, 151, 494, 788, 113, 752, 530, 579, 186, 720],
+                            "creature_id": 149
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 778
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 591
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 598
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 560
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 257
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 488
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 145
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 547
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 468
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 798
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 479
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 6
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 248
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 707
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 212
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 260
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 279
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 233
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 534
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 373
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 105
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 303
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 721
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 784
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 302
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 681
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 184
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 637
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 59
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 620
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 641
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 151
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 494
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 787
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 788
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 786
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 785
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 807
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 310
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 719
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 130
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 437
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 113
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 752
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 38
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 385
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 3
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 426
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 635
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 797
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 530
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 579
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 805
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 450
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 142
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 127
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 526
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 89
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 186
+                        }, {
+                            "player_id": 3,
+                            "creature_id": 720
+                        }, {
+                            "player_id": 1,
+                            "creature_id": 423
+                        }, {
+                            "player_id": 0,
+                            "creature_id": 65
+                        }, {
+                            "player_id": 2,
+                            "creature_id": 230
                         }
                     ]
                 }
@@ -1077,20 +1268,10 @@
          * @return {[Player]}
          */
         draw(children, title, css_class) {
-            var dom = document.createElement("div");
-            dom.classList.add("event");
-            dom.classList.add(css_class);
-            var dom_header = document.createElement("div");
-            dom_header.classList.add("header");
-            dom_header.innerHTML = title;
-            var dom_body = document.createElement("div");
-            dom_body.classList.add("body");
-            for (var child of children) {
-                dom_body.appendChild(child);
-            }
-            dom.appendChild(dom_header);
-            dom.appendChild(dom_body);
-            return dom;
+            return create_element({tag: "div", classList: ["event", css_class], attributes: {onclick: "toggle_expanded(this)"}, children: [
+                create_element({tag: "div", classList: ["header"], innerHTML: title}),
+                create_element({tag: "div", classList: ["body"], children: children}),
+            ]});
         }
     }
 
@@ -1135,7 +1316,7 @@
             }
             var players_by_n_wins = Player.get_by_ids(players, player_ids);  // Order players by n_wins
             var teams = Team.get_by_player_ids(this.teams, player_ids);
-            var dom_player_table = create_element({tag: "table", classList: ["players"]});
+            var dom_player_table = create_element({tag: "table", classList: ["players", "standard"]});
             dom_player_table.appendChild(create_element({tag: "tr", children: [
                 create_element({tag: "th", innerHTML: "Rank"}),
                 create_element({tag: "th", innerHTML: "Trainer"}),
@@ -1160,7 +1341,7 @@
             }
 
             // Draw matches table
-            var dom_matches_table = create_element({tag: "table", classList: ["matches"]});
+            var dom_matches_table = create_element({tag: "table", classList: ["matches", "standard"]});
             dom_matches_table.appendChild(create_element({tag: "tr", children: [
                 create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
                 create_element({tag: "th", innerHTML: "Win", attributes: {"colspan": 2}}),
@@ -1190,18 +1371,18 @@
     }
 
     class Draft extends Event {
-        constructor(date, teams) {
+        constructor(date, creatures_drafted) {
             super(date);
-            this.teams = teams;
+            this.creatures_drafted = creatures_drafted
         }
         static from_raw(raw) {
             let kwargs = raw.kwargs;
-            assert("player_creature_ids" in kwargs, "Raw draft data should have 'player_creature_ids' field");
-            let teams = [];
-            for (let raw_team of kwargs.player_creature_ids) {
-                teams.push(Team.from_raw(raw_team))
+            assert("creatures_drafted" in kwargs, "Raw draft data should have 'creatures_drafted' field");
+            let creatures_drafted = [];
+            for (let raw_creature_drafted of kwargs.creatures_drafted) {
+                creatures_drafted.push(CreatureDrafted.from_raw(raw_creature_drafted))
             }
-            return new Draft(raw.date, teams);
+            return new Draft(raw.date, creatures_drafted);
         }
         /**
          * [Draw event has HTML DOM]
@@ -1210,10 +1391,29 @@
          * @return {[dom]} dom [DOM element representation of event]
          */
         draw(players, creatures) {
-            var dom = document.createElement("div");
-            dom.classList.add("draft");
-            dom.innerHTML = this.date.toLocaleString();
-            return super.draw([dom], "Draft " + this.number, "draft");
+            var dom_span = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            
+            var dom_table = create_element({tag: "table", classList: ["standard"]});
+            dom_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Pick"}),
+                create_element({tag: "th", innerHTML: "Trainer"}),
+                create_element({tag: "th", innerHTML: "Pokemon"}),
+                create_element({tag: "th", innerHTML: "Number"})
+            ]}));
+            for (var i = 0; i < this.creatures_drafted.length; i++) {
+                var player = players[this.creatures_drafted[i].player_id];
+                print(this.creatures_drafted[i]);
+                print(player);
+                var creature = creatures[this.creatures_drafted[i].creature_id];
+                dom_table.appendChild(create_element({tag: "tr", classList: ["winner", player.css_class], children: [
+                    create_element({tag: "td", innerHTML: i + 1}),
+                    create_element({tag: "td", innerHTML: player.name}),
+                    create_element({tag: "td", children: [creature.draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: creature.id}),
+                ]}));
+            }
+
+            return super.draw([dom_span, dom_table], "Draft " + this.number, "draft");
         }
     }
 
@@ -1283,7 +1483,7 @@
                 player_is_winner.push(player_rank === 1);
             }
             var players_by_n_wins = Player.get_by_ids(players, player_ids);  // Order players by n_wins
-            var dom_player_table = create_element({tag: "table", classList: ["players"]});
+            var dom_player_table = create_element({tag: "table", classList: ["players", "standard"]});
             dom_player_table.appendChild(create_element({tag: "tr", children: [
                 create_element({tag: "th", innerHTML: "Rank"}),
                 create_element({tag: "th", innerHTML: "Trainer"}),
@@ -1306,7 +1506,7 @@
             }
 
             // Matches table with teams
-            var dom_matches_table = create_element({tag: "table", classList: ["matches"]});
+            var dom_matches_table = create_element({tag: "table", classList: ["matches", "standard"]});
             dom_matches_table.appendChild(create_element({tag: "tr", children: [
                 create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
                 create_element({tag: "th", innerHTML: "Win", attributes: {"colspan": 2}}),
@@ -1345,7 +1545,19 @@
             assert("from_player_id" in raw, "Raw creature team change data should have a 'from_player_id' field");
             assert("to_player_id" in raw, "Raw creature team change data should have a 'to_player_id' field");
             assert("creature_id" in raw, "Raw creature team change data should have a 'creature_id' field");
-            return new CreatureTeamChange(raw.creature_id, raw.from_player_id, raw.to_player_id)
+            return new CreatureTeamChange(raw.creature_id, raw.from_player_id, raw.to_player_id);
+        }
+    }
+
+    class CreatureDrafted {
+        constructor(creature_id, player_id) {
+            this.creature_id = creature_id;
+            this.player_id = player_id;
+        }
+        static from_raw(raw) {
+            assert("creature_id" in raw, "Raw creature team change data should have a 'creature_id' field");
+            assert("player_id" in raw, "Raw creature team change data should have a 'player_id' field");
+            return new CreatureDrafted(raw.creature_id, raw.player_id);
         }
     }
 
@@ -1504,6 +1716,17 @@
             elements.push(create_element({tag: tag, innerHTML: innerHTML, children: children, classList: classList}))
         }
         return elements;
+    }
+
+    /**
+     * @param [object] dom Dom element to toggle a css "expanded" class on
+     */
+    function toggle_expanded(dom) {
+        if (dom.classList.contains("expanded")) {
+            dom.classList.remove("expanded");
+        } else {
+            dom.classList.add("expanded");
+        }
     }
 
     /**
