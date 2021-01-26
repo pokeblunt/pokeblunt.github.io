@@ -126,6 +126,10 @@
         border-color: #74b9ff;
     }
 
+    span {
+        display: block;
+        padding-bottom: 10px;
+    }
     .visibility-hidden {
         visibility: hidden;
     }
@@ -166,6 +170,9 @@
     }
     div.event.trade > div.header {
         background-color: #27ae60;
+    }
+    div.event.unofficial-tournament > div.header {
+        background-color: #9b59b6;
     }
     img.sprite {
         width: 48px;
@@ -603,6 +610,7 @@
             {
                 "type": "draft",
                 "date": "2019/10/26 18:00",
+                "description": "",
                 "kwargs": {
                     "creatures_drafted": [
                         {
@@ -825,8 +833,8 @@
             {
                 "type": "tournament",
                 "date": "2019/10/26 20:00",
+                "description": "",
                 "kwargs": {
-                    "is_official": true,
                     "teams": [
                         {
                             "player_id": 0,
@@ -877,6 +885,7 @@
             {
                 "type": "trade",
                 "date": "2019/11/02 12:00",
+                "description": "",
                 "kwargs": {
                     "creatures": [
                         {
@@ -906,6 +915,7 @@
             {
                 "type": "round",
                 "date": "2020/12/27 23:00",
+                "description": "",
                 "kwargs": {
                     "matches": [
                         {
@@ -930,6 +940,7 @@
             {
                 "type": "round",
                 "date": "2020/12/27 23:30",
+                "description": "",
                 "kwargs": {
                     "matches": [
                         {
@@ -949,6 +960,7 @@
             {
                 "type": "round",
                 "date": "2020/12/27 23:45",
+                "description": "",
                 "kwargs": {
                     "matches": [
                         {
@@ -978,8 +990,8 @@
             {
                 "type": "tournament",
                 "date": "2019/12/26 20:00",
+                "description": "",
                 "kwargs": {
-                    "is_official": true,
                     "teams": [
                         {
                             "player_id": 0,
@@ -1017,6 +1029,178 @@
                         }, {
                             "win_player_id": 1,
                             "lose_player_id": 0,
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "unofficial-tournament",
+                "date": "2020/08/25",
+                "description": "Random monotypes were selected for each player. The outcome of this unofficial tournament determined the order of the __ draft.",
+                "kwargs": {
+                    "teams": [
+                        {
+                            "player_id": 0,
+                            "creature_ids": [479, 145, 310, 785, 171, 181],
+                        }, {
+                            "player_id": 1,
+                            "creature_ids": [598, 681, 805, 376, 530, 798],
+                        }, {
+                            "player_id": 2,
+                            "creature_ids": [721, 727, 479, 637, 6, 494],
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [788, 260, 279, 752, 423, 721],
+                        }
+                    ],
+                    "matches": [
+                        {
+                            "win_player_id": 2,
+                            "lose_player_id": 0,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 1,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 1,
+                        }
+                    ]
+                }
+            },
+
+
+
+            {
+                "type": "trade",
+                "date": "2020/09/11",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 1,
+                            "to_player_id": 3,
+                            "creature_id": 89
+                        }, {
+                            "from_player_id": 1,
+                            "to_player_id": 3,
+                            "creature_id": 763
+                        }, {
+                            "from_player_id": 3,
+                            "to_player_id": 1,
+                            "creature_id": 186
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "trade",
+                "date": "2020/09/20",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 3,
+                            "to_player_id": 2,
+                            "creature_id": 260
+                        }, {
+                            "from_player_id": 3,
+                            "to_player_id": 2,
+                            "creature_id": 279
+                        }, {
+                            "from_player_id": 2,
+                            "to_player_id": 3,
+                            "creature_id": 786
+                        }, {
+                            "from_player_id": 2,
+                            "to_player_id": 3,
+                            "creature_id": 257
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "trade",
+                "date": "2020/09/21",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 1,
+                            "to_player_id": 0,
+                            "creature_id": 38
+                        }, {
+                            "from_player_id": 0,
+                            "to_player_id": 1,
+                            "creature_id": 324
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "trade",
+                "date": "2020/10/02 11:00",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 0,
+                            "to_player_id": 3,
+                            "creature_id": 65
+                        }, {
+                            "from_player_id": 3,
+                            "to_player_id": 0,
+                            "creature_id": 149
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "trade",
+                "date": "2020/10/02 12:00",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 2,
+                            "to_player_id": 0,
+                            "creature_id": 376
+                        }, {
+                            "from_player_id": 2,
+                            "to_player_id": 0,
+                            "creature_id": 6
+                        }, {
+                            "from_player_id": 2,
+                            "to_player_id": 0,
+                            "creature_id": 3
+                        }, {
+                            "from_player_id": 2,
+                            "to_player_id": 0,
+                            "creature_id": 637
+                        }, {
+                            "from_player_id": 0,
+                            "to_player_id": 2,
+                            "creature_id": 248
+                        }, {
+                            "from_player_id": 0,
+                            "to_player_id": 2,
+                            "creature_id": 445
+                        }, {
+                            "from_player_id": 0,
+                            "to_player_id": 2,
+                            "creature_id": 450
+                        }, {
+                            "from_player_id": 0,
+                            "to_player_id": 2,
+                            "creature_id": 526
                         }
                     ]
                 }
@@ -1060,7 +1244,7 @@
             events.push(Event.from_raw(raw_event));
         }
         events = events.sort(function(a, b) { return a.date < b.date ? -1 : 1 });  // Order from earliest to latest to number
-        counter = {"Draft": 0, "Round": 0, "Tournament": 0, "Trade": 0};
+        counter = {"Draft": 0, "Round": 0, "Tournament": 0, "Trade": 0, "UnofficialTournament": 0};
         for (var event of events) {
             type_str = event.constructor.name;
             counter[type_str] += 1;
@@ -1238,12 +1422,14 @@
     }
 
     class Event {
-        constructor(date_str) {
+        constructor(date_str, description) {
             this.date = new Date(date_str);
+            this.description = description;
         }
         static from_raw(raw) {
             assert("type" in raw, "Raw event data should have 'type' field");
             assert("date" in raw, "Raw event data should have 'date' field");
+            assert("description" in raw, "Raw event data should have 'description' field");
             assert("kwargs" in raw, "Raw event data should have 'kwargs' field");
             if (raw.type === "tournament") {
                 return Tournament.from_raw(raw);
@@ -1253,6 +1439,8 @@
                 return Trade.from_raw(raw);
             } else if (raw.type === "round") {
                 return Round.from_raw(raw);
+            } else if (raw.type === "unofficial-tournament") {
+                return UnofficialTournament.from_raw(raw);
             } else {
                 throw new Error("Unrecognized event type '" + raw.type + "'")
             }
@@ -1276,15 +1464,13 @@
     }
 
     class Tournament extends Event {
-        constructor(date, is_official, teams, matches) {
-            super(date)
-            this.is_official = is_official
-            this.teams = teams
-            this.matches = matches
+        constructor(date, description, teams, matches) {
+            super(date, description);
+            this.teams = teams;
+            this.matches = matches;
         }
         static from_raw(raw) {
             let kwargs = raw.kwargs;
-            assert("is_official" in kwargs, "Raw tournemnt data should have 'is_official' field");
             assert("teams" in kwargs, "Raw tournemnt data should have 'teams' field");
             assert("matches" in kwargs, "Raw tournemnt data should have 'matches' field");
             let teams = [];
@@ -1295,16 +1481,18 @@
             for (let raw_match of kwargs.matches) {
                 matches.push(Match.from_raw(raw_match, teams));
             }
-            return new Tournament(raw.date, raw.is_official, teams, matches);
+            return new Tournament(raw.date, raw.description, teams, matches);
         }
         /**
          * [Draw event has HTML DOM]
          * @param  {[array]} players [Each player's information]
          * @param  {[array]} creatures [Each creatures's information]
+         * @param  {[bool]} is_official [true if is official tournement. false if we should add "unofficial" name and css classes]
          * @return {[dom]} dom [DOM element representation of event]
          */
-        draw(players, creatures) {
-            var dom_span = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+        draw_with_is_official(players, creatures, is_official) {
+            var dom_date = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var dom_description = create_element({tag: "span", innerHTML: this.description});
             
             // Draw player-team table
             var player_ids, n_wins, n_loss;
@@ -1366,13 +1554,43 @@
                 ]}));
             }
 
-            return super.draw([dom_span, dom_player_table, dom_matches_table], "Tournament " + this.number, "tournament");
+
+            if (is_official) {
+                return super.draw([dom_date, dom_description, dom_player_table, dom_matches_table], "Tournament " + this.number, "tournament");
+            }
+            return super.draw([dom_date, dom_description, dom_player_table, dom_matches_table], "Unofficial Tournament " + this.number, "unofficial-tournament");
+        }
+        draw(players, creatures) {
+            return this.draw_with_is_official(players, creatures, true);
+        }
+    }
+
+    class UnofficialTournament extends Tournament {
+        constructor(date, description, teams, matches) {
+            super(date, description, teams, matches);
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("teams" in kwargs, "Raw tournemnt data should have 'teams' field");
+            assert("matches" in kwargs, "Raw tournemnt data should have 'matches' field");
+            let teams = [];
+            for (let raw_team of kwargs.teams) {
+                teams.push(Team.from_raw(raw_team))
+            }
+            let matches = [];
+            for (let raw_match of kwargs.matches) {
+                matches.push(Match.from_raw(raw_match, teams));
+            }
+            return new UnofficialTournament(raw.date, raw.description, teams, matches);
+        }
+        draw(players, creatures) {
+            return this.draw_with_is_official(players, creatures, false);
         }
     }
 
     class Draft extends Event {
-        constructor(date, creatures_drafted) {
-            super(date);
+        constructor(date, description, creatures_drafted) {
+            super(date, description);
             this.creatures_drafted = creatures_drafted
         }
         static from_raw(raw) {
@@ -1382,7 +1600,7 @@
             for (let raw_creature_drafted of kwargs.creatures_drafted) {
                 creatures_drafted.push(CreatureDrafted.from_raw(raw_creature_drafted))
             }
-            return new Draft(raw.date, creatures_drafted);
+            return new Draft(raw.date, raw.description, creatures_drafted);
         }
         /**
          * [Draw event has HTML DOM]
@@ -1402,8 +1620,6 @@
             ]}));
             for (var i = 0; i < this.creatures_drafted.length; i++) {
                 var player = players[this.creatures_drafted[i].player_id];
-                print(this.creatures_drafted[i]);
-                print(player);
                 var creature = creatures[this.creatures_drafted[i].creature_id];
                 dom_table.appendChild(create_element({tag: "tr", classList: ["winner", player.css_class], children: [
                     create_element({tag: "td", innerHTML: i + 1}),
@@ -1418,8 +1634,8 @@
     }
 
     class Trade extends Event {
-        constructor(date, creature_team_changes) {
-            super(date);
+        constructor(date, description, creature_team_changes) {
+            super(date, description);
             this.creature_team_changes = creature_team_changes;
         }
         static from_raw(raw) {
@@ -1429,7 +1645,7 @@
             for (let raw_creature_team_change of kwargs.creatures) {
                 creature_team_changes.push(CreatureTeamChange.from_raw(raw_creature_team_change))
             }
-            return new Trade(raw.date, creature_team_changes);
+            return new Trade(raw.date, raw.description, creature_team_changes);
         }
         /**
          * [Draw event has HTML DOM]
@@ -1438,16 +1654,31 @@
          * @return {[dom]} dom [DOM element representation of event]
          */
         draw(players, creatures) {
-            var dom = document.createElement("div");
-            dom.classList.add("trade");
-            dom.innerHTML = this.date.toLocaleString();
-            return super.draw([dom], "Trade " + this.number, "trade");
+            var dom_span = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var dom_trade_table = create_element({tag: "table", classList: ["trades", "standard"]});
+            dom_trade_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Pokemon"}),
+                create_element({tag: "th", innerHTML: "To"}),
+                create_element({tag: "th", innerHTML: "From"})
+            ]}));
+            for (var creature_team_change of this.creature_team_changes) {
+                var creature = creatures[creature_team_change.creature_id];
+                var to_player = players[creature_team_change.to_player_id];
+                var from_player = players[creature_team_change.from_player_id];
+                var classList = ["winner", to_player.css_class];
+                dom_trade_table.appendChild(create_element({tag: "tr", children: [
+                    create_element({tag: "td", children: [creature.draw_sprite()], classList: classList}),
+                    create_element({tag: "td", innerHTML: to_player.name, classList: classList}),
+                    create_element({tag: "td", innerHTML: from_player.name}),
+                ]}));
+            }
+            return super.draw([dom_span, dom_trade_table], "Trade " + this.number, "trade");
         }
     }
 
     class Round extends Event {
-        constructor(date, matches) {
-            super(date)
+        constructor(date, description, matches) {
+            super(date, description)
             this.matches = matches
         }
         static from_raw(raw) {
@@ -1463,7 +1694,7 @@
                 let lose_team = new Team(raw_match.lose_player_id, raw_match.lose_creature_ids);
                 matches.push(new Match(win_team, lose_team));
             }
-            return new Round(raw.date, matches);
+            return new Round(raw.date, raw.description, matches);
         }
         /**
          * [Draw event has HTML DOM]
