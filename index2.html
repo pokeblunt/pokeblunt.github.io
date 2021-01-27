@@ -126,6 +126,13 @@
         border-color: #74b9ff;
     }
 
+    h1, h2 {
+        text-align: center;
+    }
+    h2 {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
     span {
         display: block;
         padding-bottom: 10px;
@@ -133,9 +140,23 @@
     .visibility-hidden {
         visibility: hidden;
     }
+    div.art-holder {
+        display: inline-block;
+        padding-bottom: 15px;
+    }
+    div.art-holder > span {
+        text-align: center;
+        padding: 0px;
+    }
+    div.champ {
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+    }
     div.event {
         margin-top: 40px;
-        /*border: 1px solid #444;*/
+        margin-left: 20px;
+        margin-right: 20px;
         border-radius: 5px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         font-size: 20px;
@@ -148,6 +169,11 @@
         padding: 10px 10px;
         border-bottom: 1px solid #444;
         font-weight: bold;
+    }
+    div.event.champion > div.header,
+    div.event.player > div.header {
+        background-color: #2d3436;
+        color: #dfe6e9;
     }
     div.event.draft > div.header {
         background-color: #f39c12;
@@ -174,16 +200,28 @@
     div.event.unofficial-tournament > div.header {
         background-color: #9b59b6;
     }
+    img.art {
+        width: 125px;
+    }
+    img.art.large {
+        height: 256px;
+        width: auto;
+    }
     img.sprite {
         width: 48px;
     }
     img.trainer_sprite {
-        width: 64px;
+        height: 64px;
+    }
+    img.trainer_sprite.large {
+        height: 256px;
     }
     table.standard {
         margin-top: 10px;
         text-align: center;
         border-spacing: 5px;
+        margin-left: auto;
+        margin-right: auto;
     }
     table.standard th {
         background-color: #bdc3c7;
@@ -195,19 +233,23 @@
         padding: 5px 10px;
     }
     table.standard > tr > td.james.winner,
-    table.standard > tr.james.winner > td {
+    table.standard > tr.james.winner > td,
+    div.james.winner > img {
         background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
     }
     table.standard > tr > td.jbird.winner,
-    table.standard > tr.jbird.winner > td {
+    table.standard > tr.jbird.winner > td,
+    div.jbird.winner > img {
         background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
     }
     table.standard > tr > td.kamon.winner,
-    table.standard > tr.kamon.winner > td {
+    table.standard > tr.kamon.winner > td,
+    div.kamon.winner > img {
         background: radial-gradient(#e74c3c 3%, #ecf0f1 70%);
     }
     table.standard > tr > td.steve.winner,
-    table.standard > tr.steve.winner > td {
+    table.standard > tr.steve.winner > td,
+    div.steve.winner > img {
         background: radial-gradient(#9b59b6 3%, #ecf0f1 70%);
     }
 </style></head>
@@ -216,7 +258,12 @@
 <head><link rel="shortcut icon" type="image/png" href="favicon.png"/></head>
 
 <body>
-    <h1>Pokemasters - Season 4</h1>
+    <h1>Pokemasters</h1>
+    <h2>Season 4</h2>
+
+    <div>
+        <div id="events"></div>
+    </div>
 
     <h2>Links</h2>
     <ul>
@@ -251,10 +298,6 @@
     <p>Players play 5 tournaments. All players advance to the playoffs. Players are ranked by tournament wins and then number of matches if tied. If still tied, play single matches to determine an order.</p>
     <h4>Playoff rules</h4>
     <p>Players can use different pokemon for each battle. The bottom two players play a best 2 out of 3 and the winner advances. That player plays the next worse player in a best 2 out of 3 and this continues until the championship. The championship is a best 3 out of 5. The champion wins the season and picks their MVP (Most Valuable Pokemon) for the season.</p>
-
-    <div>
-        <div id="events"></div>
-    </div>
 
     <div>
         <h2>Tournaments</h2>
@@ -578,6 +621,7 @@
     ]
 
     // Good trainer sprite resource https://archives.bulbagarden.net/wiki/Category:Generation_V_Trainer_sprites
+    // More trainer sprite resource https://pokemon.gamepedia.com/Category:Trainer_sprites
     var raw = {
         "players": [
             {
@@ -585,25 +629,25 @@
                 "name": "Kamon",
                 "css_class": "kamon",
                 "creature_ids": [645, 485, 598, 488, 479, 707, 534, 303, 184, 620, 130, 385, 635, 143, 426, 497, 286, 176, 748, 157, 235, 448, 609, 683, 398, 612, 477, 666, 38, 149, 376, 3, 6, 637],
-                "trainer_sprite": "https://archives.bulbagarden.net/media/upload/c/c0/Spr_B2W2_Whitney.png"
+                "trainer_sprite": "https://static.wikia.nocookie.net/wiki_marriland/images/b/b3/Whitney%28B2W2%29Sprite.gif/revision/latest?cb=20120701131753"
             }, {
                 "id": 1,
                 "name": "JaeBird",
                 "css_class": "jbird",
                 "creature_ids": [727, 94, 591, 145, 798, 212, 233, 721, 681, 641, 787, 437, 797, 805, 423, 245, 380, 806, 272, 576, 793, 754, 323, 663, 80, 584, 571, 208, 103, 186, 324],
-                "trainer_sprite": "https://archives.bulbagarden.net/media/upload/2/2c/Spr_B2W2_N.png"
+                "trainer_sprite": "https://static.wikia.nocookie.net/wiki_marriland/images/6/6d/HGSSRed.gif/revision/latest?cb=20120629092838"
             }, {
                 "id": 2,
                 "name": "Steve",
                 "css_class": "steve",
                 "creature_ids": [560, 373, 105, 59, 310, 719, 142, 127, 230, 785, 807, 700, 781, 282, 132, 475, 801, 490, 658, 706, 242, 462, 809, 68, 34, 12, 260, 279, 248, 445, 450, 526],
-                "trainer_sprite": "https://archives.bulbagarden.net/media/upload/4/42/Spr_B2W2_Steven.png"
+                "trainer_sprite": "https://static.wikia.nocookie.net/wiki_marriland/images/c/c0/StevenB2W2sprite.png/revision/latest?cb=20120622153520"
             }, {
                 "id": 3,
                 "name": "James",
                 "css_class": "james",
                 "creature_ids": [115, 778, 547, 468, 784, 302, 151, 494, 788, 113, 752, 530, 579, 720, 356, 350, 308, 214, 227, 758, 460, 625, 648, 545, 777, 472, 461, 474, 289, 89, 763, 786, 257, 65],
-                "trainer_sprite": "https://archives.bulbagarden.net/media/upload/1/11/Spr_B2W2_Blaine.png"
+                "trainer_sprite": "https://static.wikia.nocookie.net/wiki_marriland/images/b/b3/Chuck%28HGSS%29Sprite.gif/revision/latest?cb=20100311133544"
             },
         ],
         "events": [
@@ -1036,7 +1080,7 @@
             {
                 "type": "unofficial-tournament",
                 "date": "2020/08/25",
-                "description": "Random monotypes were selected for each player. The outcome of this unofficial tournament determined the order of the __ draft.",
+                "description": "Random monotypes were selected for each player. The outcome of this unofficial tournament determined the order of the _____ draft.",
                 "kwargs": {
                     "teams": [
                         {
@@ -1076,9 +1120,6 @@
                     ]
                 }
             },
-
-
-
             {
                 "type": "trade",
                 "date": "2020/09/11",
@@ -1205,6 +1246,29 @@
                     ]
                 }
             },
+            {
+                "type": "champion",
+                "date": "2020/12/28",
+                "description": "JaeBird is declared champion of season 4! He names Incenroar as season 4 MVP.",
+                "kwargs": {
+                    "mvp_creature_id": 727,
+                    "teams": [
+                        {
+                            "player_id": 1,
+                            "creature_ids": [598, 681, 805, 376, 530, 798],
+                        }, {
+                            "player_id": 0,
+                            "creature_ids": [479, 145, 310, 785, 171, 181],
+                        }, {
+                            "player_id": 2,
+                            "creature_ids": [721, 727, 479, 637, 6, 494],
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [788, 260, 279, 752, 423, 721],
+                        }
+                    ],
+                }
+            },
         ],
         "creatures": ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise', 'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate', 'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash', 'Nidoran♀', 'Nidorina', 'Nidoqueen', 'Nidoran♂', 'Nidorino', 'Nidoking', 'Clefairy', 'Clefable', 'Vulpix', 'Ninetales', 'Jigglypuff', 'Wigglytuff', 'Zubat', 'Golbat', 'Oddish', 'Gloom', 'Vileplume', 'Paras', 'Parasect', 'Venonat', 'Venomoth', 'Diglett', 'Dugtrio', 'Meowth', 'Persian', 'Psyduck', 'Golduck', 'Mankey', 'Primeape', 'Growlithe', 'Arcanine', 'Poliwag', 'Poliwhirl', 'Poliwrath', 'Abra', 'Kadabra', 'Alakazam', 'Machop', 'Machoke', 'Machamp', 'Bellsprout', 'Weepinbell', 'Victreebel', 'Tentacool', 'Tentacruel', 'Geodude', 'Graveler', 'Golem', 'Ponyta', 'Rapidash', 'Slowpoke', 'Slowbro', 'Magnemite', 'Magneton', 'Farfetch’d', 'Doduo', 'Dodrio', 'Seel', 'Dewgong', 'Grimer', 'Muk', 'Shellder', 'Cloyster', 'Gastly', 'Haunter', 'Gengar', 'Onix', 'Drowzee', 'Hypno', 'Krabby', 'Kingler', 'Voltorb', 'Electrode', 'Exeggcute', 'Exeggutor', 'Cubone', 'Marowak', 'Hitmonlee', 'Hitmonchan', 'Lickitung', 'Koffing', 'Weezing', 'Rhyhorn', 'Rhydon', 'Chansey', 'Tangela', 'Kangaskhan', 'Horsea', 'Seadra', 'Goldeen', 'Seaking', 'Staryu', 'Starmie', 'Mr. Mime', 'Scyther', 'Jynx', 'Electabuzz', 'Magmar', 'Pinsir', 'Tauros', 'Magikarp', 'Gyarados', 'Lapras', 'Ditto', 'Eevee', 'Vaporeon', 'Jolteon', 'Flareon', 'Porygon', 'Omanyte', 'Omastar', 'Kabuto', 'Kabutops', 'Aerodactyl', 'Snorlax', 'Articuno', 'Zapdos', 'Moltres', 'Dratini', 'Dragonair', 'Dragonite', 'Mewtwo', 'Mew', 'Chikorita', 'Bayleef', 'Meganium', 'Cyndaquil', 'Quilava', 'Typhlosion', 'Totodile', 'Croconaw', 'Feraligatr', 'Sentret', 'Furret', 'Hoothoot', 'Noctowl', 'Ledyba', 'Ledian', 'Spinarak', 'Ariados', 'Crobat', 'Chinchou', 'Lanturn', 'Pichu', 'Cleffa', 'Igglybuff', 'Togepi', 'Togetic', 'Natu', 'Xatu', 'Mareep', 'Flaaffy', 'Ampharos', 'Bellossom', 'Marill', 'Azumarill', 'Sudowoodo', 'Politoed', 'Hoppip', 'Skiploom', 'Jumpluff', 'Aipom', 'Sunkern', 'Sunflora', 'Yanma', 'Wooper', 'Quagsire', 'Espeon', 'Umbreon', 'Murkrow', 'Slowking', 'Misdreavus', 'Unown', 'Wobbuffet', 'Girafarig', 'Pineco', 'Forretress', 'Dunsparce', 'Gligar', 'Steelix', 'Snubbull', 'Granbull', 'Qwilfish', 'Scizor', 'Shuckle', 'Heracross', 'Sneasel', 'Teddiursa', 'Ursaring', 'Slugma', 'Magcargo', 'Swinub', 'Piloswine', 'Corsola', 'Remoraid', 'Octillery', 'Delibird', 'Mantine', 'Skarmory', 'Houndour', 'Houndoom', 'Kingdra', 'Phanpy', 'Donphan', 'Porygon2', 'Stantler', 'Smeargle', 'Tyrogue', 'Hitmontop', 'Smoochum', 'Elekid', 'Magby', 'Miltank', 'Blissey', 'Raikou', 'Entei', 'Suicune', 'Larvitar', 'Pupitar', 'Tyranitar', 'Lugia', 'Ho-Oh', 'Celebi', 'Treecko', 'Grovyle', 'Sceptile', 'Torchic', 'Combusken', 'Blaziken', 'Mudkip', 'Marshtomp', 'Swampert', 'Poochyena', 'Mightyena', 'Zigzagoon', 'Linoone', 'Wurmple', 'Silcoon', 'Beautifly', 'Cascoon', 'Dustox', 'Lotad', 'Lombre', 'Ludicolo', 'Seedot', 'Nuzleaf', 'Shiftry', 'Taillow', 'Swellow', 'Wingull', 'Pelipper', 'Ralts', 'Kirlia', 'Gardevoir', 'Surskit', 'Masquerain', 'Shroomish', 'Breloom', 'Slakoth', 'Vigoroth', 'Slaking', 'Nincada', 'Ninjask', 'Shedinja', 'Whismur', 'Loudred', 'Exploud', 'Makuhita', 'Hariyama', 'Azurill', 'Nosepass', 'Skitty', 'Delcatty', 'Sableye', 'Mawile', 'Aron', 'Lairon', 'Aggron', 'Meditite', 'Medicham', 'Electrike', 'Manectric', 'Plusle', 'Minun', 'Volbeat', 'Illumise', 'Roselia', 'Gulpin', 'Swalot', 'Carvanha', 'Sharpedo', 'Wailmer', 'Wailord', 'Numel', 'Camerupt', 'Torkoal', 'Spoink', 'Grumpig', 'Spinda', 'Trapinch', 'Vibrava', 'Flygon', 'Cacnea', 'Cacturne', 'Swablu', 'Altaria', 'Zangoose', 'Seviper', 'Lunatone', 'Solrock', 'Barboach', 'Whiscash', 'Corphish', 'Crawdaunt', 'Baltoy', 'Claydol', 'Lileep', 'Cradily', 'Anorith', 'Armaldo', 'Feebas', 'Milotic', 'Castform', 'Kecleon', 'Shuppet', 'Banette', 'Duskull', 'Dusclops', 'Tropius', 'Chimecho', 'Absol', 'Wynaut', 'Snorunt', 'Glalie', 'Spheal', 'Sealeo', 'Walrein', 'Clamperl', 'Huntail', 'Gorebyss', 'Relicanth', 'Luvdisc', 'Bagon', 'Shelgon', 'Salamence', 'Beldum', 'Metang', 'Metagross', 'Regirock', 'Regice', 'Registeel', 'Latias', 'Latios', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Turtwig', 'Grotle', 'Torterra', 'Chimchar', 'Monferno', 'Infernape', 'Piplup', 'Prinplup', 'Empoleon', 'Starly', 'Staravia', 'Staraptor', 'Bidoof', 'Bibarel', 'Kricketot', 'Kricketune', 'Shinx', 'Luxio', 'Luxray', 'Budew', 'Roserade', 'Cranidos', 'Rampardos', 'Shieldon', 'Bastiodon', 'Burmy', 'Wormadam', 'Mothim', 'Combee', 'Vespiquen', 'Pachirisu', 'Buizel', 'Floatzel', 'Cherubi', 'Cherrim', 'Shellos', 'Gastrodon', 'Ambipom', 'Drifloon', 'Drifblim', 'Buneary', 'Lopunny', 'Mismagius', 'Honchkrow', 'Glameow', 'Purugly', 'Chingling', 'Stunky', 'Skuntank', 'Bronzor', 'Bronzong', 'Bonsly', 'Mime Jr.', 'Happiny', 'Chatot', 'Spiritomb', 'Gible', 'Gabite', 'Garchomp', 'Munchlax', 'Riolu', 'Lucario', 'Hippopotas', 'Hippowdon', 'Skorupi', 'Drapion', 'Croagunk', 'Toxicroak', 'Carnivine', 'Finneon', 'Lumineon', 'Mantyke', 'Snover', 'Abomasnow', 'Weavile', 'Magnezone', 'Lickilicky', 'Rhyperior', 'Tangrowth', 'Electivire', 'Magmortar', 'Togekiss', 'Yanmega', 'Leafeon', 'Glaceon', 'Gliscor', 'Mamoswine', 'Porygon-Z', 'Gallade', 'Probopass', 'Dusknoir', 'Froslass', 'Rotom', 'Uxie', 'Mesprit', 'Azelf', 'Dialga', 'Palkia', 'Heatran', 'Regigigas', 'Giratina', 'Cresselia', 'Phione', 'Manaphy', 'Darkrai', 'Shaymin', 'Arceus', 'Victini', 'Snivy', 'Servine', 'Serperior', 'Tepig', 'Pignite', 'Emboar', 'Oshawott', 'Dewott', 'Samurott', 'Patrat', 'Watchog', 'Lillipup', 'Herdier', 'Stoutland', 'Purrloin', 'Liepard', 'Pansage', 'Simisage', 'Pansear', 'Simisear', 'Panpour', 'Simipour', 'Munna', 'Musharna', 'Pidove', 'Tranquill', 'Unfezant', 'Blitzle', 'Zebstrika', 'Roggenrola', 'Boldore', 'Gigalith', 'Woobat', 'Swoobat', 'Drilbur', 'Excadrill', 'Audino', 'Timburr', 'Gurdurr', 'Conkeldurr', 'Tympole', 'Palpitoad', 'Seismitoad', 'Throh', 'Sawk', 'Sewaddle', 'Swadloon', 'Leavanny', 'Venipede', 'Whirlipede', 'Scolipede', 'Cottonee', 'Whimsicott', 'Petilil', 'Lilligant', 'Basculin', 'Sandile', 'Krokorok', 'Krookodile', 'Darumaka', 'Darmanitan', 'Maractus', 'Dwebble', 'Crustle', 'Scraggy', 'Scrafty', 'Sigilyph', 'Yamask', 'Cofagrigus', 'Tirtouga', 'Carracosta', 'Archen', 'Archeops', 'Trubbish', 'Garbodor', 'Zorua', 'Zoroark', 'Minccino', 'Cinccino', 'Gothita', 'Gothorita', 'Gothitelle', 'Solosis', 'Duosion', 'Reuniclus', 'Ducklett', 'Swanna', 'Vanillite', 'Vanillish', 'Vanilluxe', 'Deerling', 'Sawsbuck', 'Emolga', 'Karrablast', 'Escavalier', 'Foongus', 'Amoonguss', 'Frillish', 'Jellicent', 'Alomomola', 'Joltik', 'Galvantula', 'Ferroseed', 'Ferrothorn', 'Klink', 'Klang', 'Klinklang', 'Tynamo', 'Eelektrik', 'Eelektross', 'Elgyem', 'Beheeyem', 'Litwick', 'Lampent', 'Chandelure', 'Axew', 'Fraxure', 'Haxorus', 'Cubchoo', 'Beartic', 'Cryogonal', 'Shelmet', 'Accelgor', 'Stunfisk', 'Mienfoo', 'Mienshao', 'Druddigon', 'Golett', 'Golurk', 'Pawniard', 'Bisharp', 'Bouffalant', 'Rufflet', 'Braviary', 'Vullaby', 'Mandibuzz', 'Heatmor', 'Durant', 'Deino', 'Zweilous', 'Hydreigon', 'Larvesta', 'Volcarona', 'Cobalion', 'Terrakion', 'Virizion', 'Tornadus', 'Thundurus', 'Reshiram', 'Zekrom', 'Landorus', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Chespin', 'Quilladin', 'Chesnaught', 'Fennekin', 'Braixen', 'Delphox', 'Froakie', 'Frogadier', 'Greninja', 'Bunnelby', 'Diggersby', 'Fletchling', 'Fletchinder', 'Talonflame', 'Scatterbug', 'Spewpa', 'Vivillon', 'Litleo', 'Pyroar', 'Flabébé', 'Floette', 'Florges', 'Skiddo', 'Gogoat', 'Pancham', 'Pangoro', 'Furfrou', 'Espurr', 'Meowstic', 'Honedge', 'Doublade', 'Aegislash', 'Spritzee', 'Aromatisse', 'Swirlix', 'Slurpuff', 'Inkay', 'Malamar', 'Binacle', 'Barbaracle', 'Skrelp', 'Dragalge', 'Clauncher', 'Clawitzer', 'Helioptile', 'Heliolisk', 'Tyrunt', 'Tyrantrum', 'Amaura', 'Aurorus', 'Sylveon', 'Hawlucha', 'Dedenne', 'Carbink', 'Goomy', 'Sliggoo', 'Goodra', 'Klefki', 'Phantump', 'Trevenant', 'Pumpkaboo', 'Gourgeist', 'Bergmite', 'Avalugg', 'Noibat', 'Noivern', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Rowlet', 'Dartrix', 'Decidueye', 'Litten', 'Torracat', 'Incineroar', 'Popplio', 'Brionne', 'Primarina', 'Pikipek', 'Trumbeak', 'Toucannon', 'Yungoos', 'Gumshoos', 'Grubbin', 'Charjabug', 'Vikavolt', 'Crabrawler', 'Crabominable', 'Oricorio', 'Cutiefly', 'Ribombee', 'Rockruff', 'Lycanroc', 'Wishiwashi', 'Mareanie', 'Toxapex', 'Mudbray', 'Mudsdale', 'Dewpider', 'Araquanid', 'Fomantis', 'Lurantis', 'Morelull', 'Shiinotic', 'Salandit', 'Salazzle', 'Stufful', 'Bewear', 'Bounsweet', 'Steenee', 'Tsareena', 'Comfey', 'Oranguru', 'Passimian', 'Wimpod', 'Golisopod', 'Sandygast', 'Palossand', 'Pyukumuku', 'Type: Null', 'Silvally', 'Minior', 'Komala', 'Turtonator', 'Togedemaru', 'Mimikyu', 'Bruxish', 'Drampa', 'Dhelmise', 'Jangmo-o', 'Hakamo-o', 'Kommo-o', 'Tapu Koko', 'Tapu Lele', 'Tapu Bulu', 'Tapu Fini', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Nihilego', 'Buzzwole', 'Pheromosa', 'Xurkitree', 'Celesteela', 'Kartana', 'Guzzlord', 'Necrozma', 'Magearna', 'Marshadow', 'Poipole', 'Naganadel', 'Stakataka', 'Blacephalon', 'Zeraora', 'Meltan', 'Melmetal']
     }
@@ -1224,6 +1288,7 @@
     function main(raw) {
         [players, events, creatures] = parse_raw(raw);
         draw_events(events, players, creatures, document.getElementById("events"));
+        draw_players(players, creatures, document.getElementById("events"));
     }
 
     /**
@@ -1255,9 +1320,20 @@
         assert("creatures" in raw, "'creatures' attribute must be in the raw object")
         var creatures = [];
         for (var i = 0; i < raw["creatures"].length; i++) {
-            creatures.push(Creature.from_raw(raw["creatures"][i], i));
+            creatures.push(Creature.from_raw(raw["creatures"][i], i + 1));
         }
+
+        set_statistics(events, players, creatures);
         return [players, events, creatures]
+    }
+
+    /**
+     * [Collect statistics from each event and update each relevent player and creature]
+     */
+    function set_statistics(events, players, creatures) {
+        for (let event of events) {
+            event.update_statistics(players, creatures);
+        }
     }
 
     /**
@@ -1271,6 +1347,12 @@
     function draw_events(events, players, creatures, dom) {
         for (let event of events) {
             dom.appendChild(event.draw(players, creatures));
+        }
+    }
+
+    function draw_players(players, creatures, dom) {
+        for (let player of players) {
+            dom.appendChild(player.draw(creatures));
         }
     }
 
@@ -1356,6 +1438,7 @@
             this.creature_ids = creature_ids;
             this.css_class = css_class;
             this.trainer_sprite = trainer_sprite;
+            this.stat = new StatisticHolder();
         }
         /**
          * [Create Player object from raw player data]
@@ -1389,8 +1472,108 @@
             }
             return players_ordered;
         }
-        draw() {
+        draw(creatures) {
+            var dom_stats_table = create_element({tag: "table", classList: ["players", "standard"], children: [
+                create_element({tag: "tr", children: [
+                    create_element({tag: "th", innerHTML: "Name"}),
+                    create_element({tag: "th", innerHTML: "Trainer"}),
+                    create_element({tag: "th", innerHTML: "TMW"}),
+                    create_element({tag: "th", innerHTML: "TM"}),
+                    create_element({tag: "th", innerHTML: "TW"}),
+                    create_element({tag: "th", innerHTML: "T"}),
+                    create_element({tag: "th", innerHTML: "PMW"}),
+                    create_element({tag: "th", innerHTML: "PM"}),
+                    create_element({tag: "th", innerHTML: "PW"}),
+                    create_element({tag: "th", innerHTML: "P"}),
+                    create_element({tag: "th", innerHTML: "R"}),
+                ]}),
+                create_element({tag: "tr", classList: [], children: [
+                    create_element({tag: "td", innerHTML: this.name}),
+                    create_element({tag: "td", children: [this.draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: this.stat.tournament_match_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.tournament_matches}),
+                    create_element({tag: "td", innerHTML: this.stat.tournament_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.tournaments}),
+                    create_element({tag: "td", innerHTML: this.stat.round_match_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.round_matches}),
+                    create_element({tag: "td", innerHTML: this.stat.round_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.rounds}),
+                    create_element({tag: "td", innerHTML: this.stat.trades}),
+                ]})
+            ]});
+
+            // var creatures = [for (creature_id of this.creature_ids) creatures[creature_id]];
+            var dom_creature_arts = [];
+            var creatures_this_player = Creature.get_by_ids(creatures, this.creature_ids);
+            for (let creature of creatures_this_player) {
+                dom_creature_arts.push(creature.draw_art_with_discription());
+            }
+
+            return create_element({tag: "div", classList: ["event", "player"], children: [
+                create_element({tag: "div", classList: ["header"], innerHTML: "Trainer: " + this.name}),
+                create_element({tag: "div", classList: ["body"], children: [dom_stats_table].concat(dom_creature_arts)}),
+            ]});
+        }
+        draw_sprite() {
             return create_element({tag: "img", attributes: {"src": this.trainer_sprite}, classList: ["trainer_sprite"]});
+        }
+        draw_large_sprite() {
+            return create_element({tag: "img", attributes: {"src": this.trainer_sprite}, classList: ["trainer_sprite", "large"]});
+        }
+    }
+
+    class StatisticHolder {
+        constructor() {
+            this.tournament_matches = 0;
+            this.tournament_match_wins = 0;
+            this.tournaments = 0;
+            this.tournament_wins = 0;
+            this.round_matches = 0;
+            this.round_match_wins = 0;
+            this.rounds = 0;
+            this.round_wins = 0;
+            this.trades = 0;
+        }
+        get tournament_match_losses() {
+            return this.tournament_matches - this.tournament_match_wins;
+        }
+        get tournament_losses() {
+            return this.tournaments - this.tournament_wins;
+        }
+        get round_match_losses() {
+            return this.round_matches - this.round_match_wins;
+        }
+        get round_losses() {
+            return this.rounds - this.round_wins;
+        }
+        add_tournament_match_wins(n_wins) {
+            this.tournament_matches += n_wins;
+            this.tournament_match_wins += n_wins;
+        }
+        add_tournament_match_losses(n_losses) {
+            this.tournament_matches += n_losses;
+        }
+        add_tournament_win_loss(win) {
+            if (win) {
+                this.tournament_wins += 1;
+            }
+            this.tournaments += 1;
+        }
+        add_round_match_wins(n_wins) {
+            this.round_matches += n_wins;
+            this.round_match_wins += n_wins;
+        }
+        add_round_match_losses(n_losses) {
+            this.round_matches += n_losses;
+        }
+        add_round_win_loss(win) {
+            if (win) {
+                this.round_wins += 1;
+            }
+            this.rounds += 1;
+        }
+        add_trade() {
+            this.trades += 1;
         }
     }
 
@@ -1398,15 +1581,32 @@
         constructor(name, id) {
             this.name = name;
             this.id = id;
+            this.stat = new StatisticHolder();
         }
         static from_raw(creature_name, creature_id) {
             return new Creature(creature_name, creature_id);
         }
         draw_sprite() {
-            var dom = document.createElement("img");
-            dom.src = "https://www.serebii.net/pokedex-sm/icon/" + pad(this.id, 3) + ".png"
-            dom.classList.add("sprite");
-            return dom;
+            return create_element({tag: "img", classList: ["sprite"], attributes: {
+                src: "https://www.serebii.net/pokedex-sm/icon/" + pad(this.id, 3) + ".png"
+            }});
+        }
+        draw_art() {
+            return create_element({tag: "img", classList: ["art"], attributes: {
+                src: "https://www.serebii.net/pokemon/art/" + pad(this.id, 3) + ".png"
+            }});
+        }
+        draw_large_art() {
+            return create_element({tag: "img", classList: ["art", "large"], attributes: {
+                src: "https://www.serebii.net/pokemon/art/" + pad(this.id, 3) + ".png"
+            }});
+        }
+        draw_art_with_discription() {
+            return create_element({tag: "div", classList: ["art-holder"], children: [
+                this.draw_art(),
+                create_element({tag: "span", innerHTML: this.name}),
+                create_element({tag: "span", innerHTML: "#" + this.id})
+            ]});
         }
         static get_by_ids(creatures, creature_ids) {
             var id2creature = {};
@@ -1418,6 +1618,13 @@
                 creatures_ordered.push(id2creature[creature_id]);
             }
             return creatures_ordered;
+        }
+        static get_by_id(creatures, creature_id) {
+            var id2creature = {};
+            for (var creature of creatures) {
+                id2creature[creature.id] = creature;
+            }
+            return id2creature[creature_id];
         }
     }
 
@@ -1441,6 +1648,8 @@
                 return Round.from_raw(raw);
             } else if (raw.type === "unofficial-tournament") {
                 return UnofficialTournament.from_raw(raw);
+            } else if (raw.type == "champion") {
+                return Champion.from_raw(raw);
             } else {
                 throw new Error("Unrecognized event type '" + raw.type + "'")
             }
@@ -1460,6 +1669,59 @@
                 create_element({tag: "div", classList: ["header"], innerHTML: title}),
                 create_element({tag: "div", classList: ["body"], children: children}),
             ]});
+        }
+        update_statistics(players, creatures) {
+        }
+    }
+
+    class Champion extends Event {
+        constructor(date, description, teams, mvp_creature_id) {
+            super(date, description)
+            this.teams = teams
+            this.mvp_creature_id = mvp_creature_id
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("teams" in kwargs, "Raw tournemnt data should have 'teams' field");
+            assert("mvp_creature_id" in kwargs, "Raw tournemnt data should have 'mvp_creature_id' field");
+            let teams = [];
+            for (let raw_team of kwargs.teams) {
+                teams.push(Team.from_raw(raw_team))
+            }
+            return new Champion(raw.date, raw.description, teams, kwargs.mvp_creature_id);
+        }
+        draw(players, creatures) {
+            var dom_date = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var dom_description = create_element({tag: "span", innerHTML: this.description});
+
+            let player_ids = this.teams.map(({ player_id }) => player_id);
+            var players = Player.get_by_ids(players, player_ids);  // Order players by rank (in order of teams)
+
+            // var creature = creatures[this.mvp_creature_id];
+            var creature = Creature.get_by_id(creatures, this.mvp_creature_id);
+            var dom_champ = create_element({tag: "div", classList: ["winner", players[0].css_class, "champ"], children: [
+                players[0].draw_large_sprite(),
+                creature.draw_large_art(),
+            ]});
+
+            var dom_player_table = create_element({tag: "table", classList: ["players", "standard"]});
+            dom_player_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Place"}),
+                create_element({tag: "th", innerHTML: "Trainer"}),
+                create_element({tag: "th", innerHTML: "Name"}),
+                create_element({tag: "th", innerHTML: "Favorite Pokemon"})
+            ]}));
+            for (var i = 0; i < player_ids.length; i++) {
+                var class_list = [players[i].css_class, "winner"];
+                dom_player_table.appendChild(create_element({tag: "tr", classList: class_list, children: [
+                    create_element({tag: "td", innerHTML: i + 1}),
+                    create_element({tag: "td", children: [players[i].draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: players[i].name}),
+                    create_element({tag: "td", children: [this.teams[i].draw_sprites(players, creatures)]})
+                ]}));
+            }
+
+            return super.draw([dom_date, dom_description, dom_champ, dom_player_table], "Champion!", "champion");
         }
     }
 
@@ -1520,7 +1782,7 @@
                 }
                 dom_player_table.appendChild(create_element({tag: "tr", classList: class_list, children: [
                     create_element({tag: "td", innerHTML: player_ranks[i]}),
-                    create_element({tag: "td", children: [players_by_n_wins[i].draw()]}),
+                    create_element({tag: "td", children: [players_by_n_wins[i].draw_sprite()]}),
                     create_element({tag: "td", innerHTML: players_by_n_wins[i].name}),
                     create_element({tag: "td", children: [teams[i].draw_sprites(players_by_n_wins, creatures)]}),
                     create_element({tag: "td", innerHTML: n_wins[i]}),
@@ -1554,7 +1816,6 @@
                 ]}));
             }
 
-
             if (is_official) {
                 return super.draw([dom_date, dom_description, dom_player_table, dom_matches_table], "Tournament " + this.number, "tournament");
             }
@@ -1562,6 +1823,23 @@
         }
         draw(players, creatures) {
             return this.draw_with_is_official(players, creatures, true);
+        }
+        update_statistics(players, creatures) {
+            var player_ids, n_wins, n_loss;
+            [player_ids, n_wins, n_loss] = Match.get_player_ids_wins_and_loses(this.matches);
+            var player_ranks = rank_scores(n_wins);
+            var player_is_winner = [];
+            for (var player_rank of player_ranks) {
+                player_is_winner.push(player_rank === 1);
+            }
+            var teams = Team.get_by_player_ids(this.teams, player_ids);
+
+            for (let i = 0; i < player_ids.length; i++) {
+                let player_id = player_ids[i];
+                players[player_id].stat.add_tournament_match_wins(n_wins[i]);
+                players[player_id].stat.add_tournament_match_losses(n_loss[i]);
+                players[player_id].stat.add_tournament_win_loss(player_is_winner[i]);
+            }
         }
     }
 
@@ -1585,6 +1863,8 @@
         }
         draw(players, creatures) {
             return this.draw_with_is_official(players, creatures, false);
+        }
+        update_statistics(players, creatures) {
         }
     }
 
@@ -1620,7 +1900,7 @@
             ]}));
             for (var i = 0; i < this.creatures_drafted.length; i++) {
                 var player = players[this.creatures_drafted[i].player_id];
-                var creature = creatures[this.creatures_drafted[i].creature_id];
+                var creature = creatures[this.creatures_drafted[i].creature_id - 1];
                 dom_table.appendChild(create_element({tag: "tr", classList: ["winner", player.css_class], children: [
                     create_element({tag: "td", innerHTML: i + 1}),
                     create_element({tag: "td", innerHTML: player.name}),
@@ -1662,7 +1942,7 @@
                 create_element({tag: "th", innerHTML: "From"})
             ]}));
             for (var creature_team_change of this.creature_team_changes) {
-                var creature = creatures[creature_team_change.creature_id];
+                var creature = creatures[creature_team_change.creature_id - 1];
                 var to_player = players[creature_team_change.to_player_id];
                 var from_player = players[creature_team_change.from_player_id];
                 var classList = ["winner", to_player.css_class];
@@ -1673,6 +1953,12 @@
                 ]}));
             }
             return super.draw([dom_span, dom_trade_table], "Trade " + this.number, "trade");
+        }
+        update_statistics(players, creatures) {
+            for (let creature_team_change of this.creature_team_changes) {
+                players[creature_team_change.from_player_id].stat.add_trade();
+                players[creature_team_change.to_player_id].stat.add_trade();
+            }
         }
     }
 
@@ -1729,7 +2015,7 @@
                 }
                 dom_player_table.appendChild(create_element({tag: "tr", classList: class_list, children: [
                     create_element({tag: "td", innerHTML: player_ranks[i]}),
-                    create_element({tag: "td", children: [players_by_n_wins[i].draw()]}),
+                    create_element({tag: "td", children: [players_by_n_wins[i].draw_sprite()]}),
                     create_element({tag: "td", innerHTML: players_by_n_wins[i].name}),
                     create_element({tag: "td", innerHTML: n_wins[i]}),
                     create_element({tag: "td", innerHTML: n_loss[i]}),
@@ -1763,6 +2049,22 @@
             }
 
             return super.draw([dom_span, dom_player_table, dom_matches_table], "Playoff Round " + this.number, "round");
+        }
+        update_statistics(players, creatures) {
+            var player_ids, n_wins, n_loss;
+            [player_ids, n_wins, n_loss] = Match.get_player_ids_wins_and_loses(this.matches);
+            var player_ranks = rank_scores(n_wins);
+            var player_is_winner = [];
+            for (var player_rank of player_ranks) {
+                player_is_winner.push(player_rank === 1);
+            }
+
+            for (let i = 0; i < player_ids.length; i++) {
+                let player_id = player_ids[i];
+                players[player_id].stat.add_round_match_wins(n_wins[i]);
+                players[player_id].stat.add_round_match_losses(n_loss[i]);
+                players[player_id].stat.add_round_win_loss(player_is_winner[i]);
+            }
         }
     }
 
