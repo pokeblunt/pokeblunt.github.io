@@ -629,25 +629,25 @@
                 "name": "Kamon",
                 "css_class": "kamon",
                 "creature_ids": [645, 485, 598, 488, 479, 707, 534, 303, 184, 620, 130, 385, 635, 143, 426, 497, 286, 176, 748, 157, 235, 448, 609, 683, 398, 612, 477, 666, 38, 149, 376, 3, 6, 637],
-                "trainer_sprite": "https://static.wikia.nocookie.net/wiki_marriland/images/b/b3/Whitney%28B2W2%29Sprite.gif/revision/latest?cb=20120701131753"
+                "trainer_sprite": "Spr_B2W2_Whitney.gif"
             }, {
                 "id": 1,
                 "name": "JaeBird",
                 "css_class": "jbird",
                 "creature_ids": [727, 94, 591, 145, 798, 212, 233, 721, 681, 641, 787, 437, 797, 805, 423, 245, 380, 806, 272, 576, 793, 754, 323, 663, 80, 584, 571, 208, 103, 186, 324],
-                "trainer_sprite": "https://static.wikia.nocookie.net/wiki_marriland/images/6/6d/HGSSRed.gif/revision/latest?cb=20120629092838"
+                "trainer_sprite": "Spr_B2W2_N.png"
             }, {
                 "id": 2,
                 "name": "Steve",
                 "css_class": "steve",
                 "creature_ids": [560, 373, 105, 59, 310, 719, 142, 127, 230, 785, 807, 700, 781, 282, 132, 475, 801, 490, 658, 706, 242, 462, 809, 68, 34, 12, 260, 279, 248, 445, 450, 526],
-                "trainer_sprite": "https://static.wikia.nocookie.net/wiki_marriland/images/c/c0/StevenB2W2sprite.png/revision/latest?cb=20120622153520"
+                "trainer_sprite": "Spr_B2W2_Steven.png"
             }, {
                 "id": 3,
                 "name": "James",
                 "css_class": "james",
                 "creature_ids": [115, 778, 547, 468, 784, 302, 151, 494, 788, 113, 752, 530, 579, 720, 356, 350, 308, 214, 227, 758, 460, 625, 648, 545, 777, 472, 461, 474, 289, 89, 763, 786, 257, 65],
-                "trainer_sprite": "https://static.wikia.nocookie.net/wiki_marriland/images/b/b3/Chuck%28HGSS%29Sprite.gif/revision/latest?cb=20100311133544"
+                "trainer_sprite": "Spr_B2W2_Chuck.png"
             },
         ],
         "events": [
@@ -1249,7 +1249,7 @@
             {
                 "type": "champion",
                 "date": "2020/12/28",
-                "description": "JaeBird is declared champion of season 4! He names Incenroar as season 4 MVP.",
+                "description": "JaeBird wins Season 4! Incenroar is named Season 4 MVP.",
                 "kwargs": {
                     "mvp_creature_id": 727,
                     "teams": [
@@ -1475,8 +1475,18 @@
         draw(creatures) {
             var dom_stats_table = create_element({tag: "table", classList: ["players", "standard"], children: [
                 create_element({tag: "tr", children: [
+                    create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                    create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                    create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                    create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                    create_element({tag: "th", innerHTML: "Tournaments", attributes: {"colspan": 4}}),
+                    create_element({tag: "th", innerHTML: "Playoffs", attributes: {"colspan": 4}}),
+                ]}),
+                create_element({tag: "tr", children: [
                     create_element({tag: "th", innerHTML: "Name"}),
                     create_element({tag: "th", innerHTML: "Trainer"}),
+                    create_element({tag: "th", innerHTML: "MW"}),
+                    create_element({tag: "th", innerHTML: "M"}),
                     create_element({tag: "th", innerHTML: "TMW"}),
                     create_element({tag: "th", innerHTML: "TM"}),
                     create_element({tag: "th", innerHTML: "TW"}),
@@ -1485,11 +1495,12 @@
                     create_element({tag: "th", innerHTML: "PM"}),
                     create_element({tag: "th", innerHTML: "PW"}),
                     create_element({tag: "th", innerHTML: "P"}),
-                    create_element({tag: "th", innerHTML: "R"}),
                 ]}),
                 create_element({tag: "tr", classList: [], children: [
                     create_element({tag: "td", innerHTML: this.name}),
                     create_element({tag: "td", children: [this.draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: this.stat.match_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.matches}),
                     create_element({tag: "td", innerHTML: this.stat.tournament_match_wins}),
                     create_element({tag: "td", innerHTML: this.stat.tournament_matches}),
                     create_element({tag: "td", innerHTML: this.stat.tournament_wins}),
@@ -1498,11 +1509,9 @@
                     create_element({tag: "td", innerHTML: this.stat.round_matches}),
                     create_element({tag: "td", innerHTML: this.stat.round_wins}),
                     create_element({tag: "td", innerHTML: this.stat.rounds}),
-                    create_element({tag: "td", innerHTML: this.stat.trades}),
                 ]})
             ]});
 
-            // var creatures = [for (creature_id of this.creature_ids) creatures[creature_id]];
             var dom_creature_arts = [];
             var creatures_this_player = Creature.get_by_ids(creatures, this.creature_ids);
             for (let creature of creatures_this_player) {
@@ -1533,6 +1542,12 @@
             this.rounds = 0;
             this.round_wins = 0;
             this.trades = 0;
+        }
+        get matches() {
+            return this.tournament_matches + this.round_matches;
+        }
+        get match_wins() {
+            return this.tournament_match_wins + this.round_match_wins;
         }
         get tournament_match_losses() {
             return this.tournament_matches - this.tournament_match_wins;
