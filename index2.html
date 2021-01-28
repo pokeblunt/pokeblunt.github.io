@@ -1748,6 +1748,12 @@
 
             var dom_creature_arts = [];
             var creatures_this_player = Creature.get_by_ids(creatures, this.creature_ids);
+            creatures_this_player = creatures_this_player.sort(function(a, b) {
+                if (a.stat.matches + a.stat.match_wins > b.stat.matches + b.stat.match_wins) {
+                    return -1;
+                }
+                return 1;
+            });
             for (let creature of creatures_this_player) {
                 dom_creature_arts.push(creature.draw_art_with_discription());
             }
