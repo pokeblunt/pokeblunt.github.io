@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <head><style>
     html * {
         color: #000;
@@ -140,11 +141,12 @@
     .visibility-hidden {
         visibility: hidden;
     }
-    div.art-holder {
+    a.art-holder {
         display: inline-block;
         padding-bottom: 15px;
+        text-decoration: none;
     }
-    div.art-holder > span {
+    a.art-holder > span {
         text-align: center;
         padding: 0px;
     }
@@ -251,6 +253,11 @@
     table.standard > tr.steve.winner > td,
     div.steve.winner > img {
         background: radial-gradient(#9b59b6 3%, #ecf0f1 70%);
+    }
+    #cst > tr > td {
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 </style></head>
 
@@ -1289,6 +1296,7 @@
         [players, events, creatures] = parse_raw(raw);
         draw_events(events, players, creatures, document.getElementById("events"));
         draw_players(players, creatures, document.getElementById("events"));
+        draw_creature_statistics_table(players, creatures, document.getElementById("events"));
     }
 
     /**
@@ -1353,6 +1361,91 @@
     function draw_players(players, creatures, dom) {
         for (let player of players) {
             dom.appendChild(player.draw(creatures));
+        }
+    }
+
+    function draw_creature_statistics_table(players, creatures, dom) {
+        var table_rows = [create_element({tag: "tr", children: [
+            create_element({tag: "th", innerHTML: "No", attributes: {onClick: "sortTable('cst', 0, false)"}}),
+            create_element({tag: "th", innerHTML: "Pokemon", attributes: {colspan: 2}}),
+            create_element({tag: "th", innerHTML: "M+MW", attributes: {onClick: "sortTable('cst', 3, true)"}}),
+            create_element({tag: "th", innerHTML: "MW", attributes: {onClick: "sortTable('cst', 4, true)"}}),
+            create_element({tag: "th", innerHTML: "M", attributes: {onClick: "sortTable('cst', 5, true)"}}),
+            create_element({tag: "th", innerHTML: "MW%", attributes: {onClick: "sortTable('cst', 6, true)"}}),
+            create_element({tag: "th", innerHTML: "TMW", attributes: {onClick: "sortTable('cst', 7, true)"}}),
+            create_element({tag: "th", innerHTML: "TM", attributes: {onClick: "sortTable('cst', 8, true)"}}),
+            create_element({tag: "th", innerHTML: "TW", attributes: {onClick: "sortTable('cst', 9, true)"}}),
+            create_element({tag: "th", innerHTML: "T", attributes: {onClick: "sortTable('cst', 10, true)"}}),
+            create_element({tag: "th", innerHTML: "PMW", attributes: {onClick: "sortTable('cst', 11, true)"}}),
+            create_element({tag: "th", innerHTML: "PM", attributes: {onClick: "sortTable('cst', 12, true)"}}),
+            create_element({tag: "th", innerHTML: "PW", attributes: {onClick: "sortTable('cst', 13, true)"}}),
+            create_element({tag: "th", innerHTML: "P", attributes: {onClick: "sortTable('cst', 14, true)"}}),
+            create_element({tag: "th", innerHTML: "R", attributes: {onClick: "sortTable('cst', 15, true)"}}),
+        ]})];
+        for (var player of players) {
+            var player_creatures = Creature.get_by_ids(creatures, player.creature_ids);
+            for (var creature of player_creatures) {
+                table_rows.push(create_element({tag: "tr", children: [
+                    create_element({tag: "td", innerHTML: creature.id}),
+                    create_element({tag: "td", children: [creature.draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: creature.name}),
+                    create_element({tag: "td", innerHTML: creature.stat.matches + creature.stat.match_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.match_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.matches}),
+                    create_element({tag: "td", innerHTML: creature.stat.match_win_percent_str}),
+                    create_element({tag: "td", innerHTML: creature.stat.tournament_match_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.tournament_matches}),
+                    create_element({tag: "td", innerHTML: creature.stat.tournament_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.tournaments}),
+                    create_element({tag: "td", innerHTML: creature.stat.round_match_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.round_matches}),
+                    create_element({tag: "td", innerHTML: creature.stat.round_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.rounds}),
+                    create_element({tag: "td", innerHTML: creature.stat.trades}),
+                ]}));
+            }
+        }
+        dom.appendChild(create_element({tag: "table", attributes: {id: "cst"}, children: table_rows}))
+    }
+
+    function sortTable(table_id, n, decending) {
+        if (decending) {
+            f = -1;
+        } else {
+            f = 1;
+        }
+        var table_selector = "#" + table_id;
+        var rows = $(table_selector + " tr").get();
+
+        rows.sort(function(a, b) {
+            var A = getVal(a);
+            var B = getVal(b);
+            if(A < B) {
+                return -1 * f;
+            }
+            if(A > B) {
+                return 1 * f;
+            }
+            return 0;
+        });
+
+        function getVal(elm) {
+            if ($(elm).children("th").length > 0) {
+                if (decending) {
+                    return Infinity;
+                }
+                return -Infinity;
+            }
+            var v = $(elm).children("td").eq(n).text().toUpperCase();
+            if($.isNumeric(v)){
+                v = parseInt(v,10);
+            }
+            return v;
+        }
+
+        var table_dom = document.getElementById(table_id);
+        for (var row of rows) {
+            table_dom.append(row);
         }
     }
 
@@ -1549,6 +1642,12 @@
         get match_wins() {
             return this.tournament_match_wins + this.round_match_wins;
         }
+        get match_win_percent_str() {
+            if (this.matches == 0) {
+                return "0.000"
+            }
+            return (this.match_wins / this.matches).toFixed(3);
+        }
         get tournament_match_losses() {
             return this.tournament_matches - this.tournament_match_wins;
         }
@@ -1617,7 +1716,8 @@
             }});
         }
         draw_art_with_discription() {
-            return create_element({tag: "div", classList: ["art-holder"], children: [
+            var href = "https://www.smogon.com/dex/sm/pokemon/" + this.name + "/doubles/"
+            return create_element({tag: "a", attributes: {href: href, target: "_blank"}, classList: ["art-holder"], children: [
                 this.draw_art(),
                 create_element({tag: "span", innerHTML: this.name}),
                 create_element({tag: "span", innerHTML: "#" + this.id})
@@ -1849,11 +1949,18 @@
             }
             var teams = Team.get_by_player_ids(this.teams, player_ids);
 
+            // Update player statistics
             for (let i = 0; i < player_ids.length; i++) {
                 let player_id = player_ids[i];
                 players[player_id].stat.add_tournament_match_wins(n_wins[i]);
                 players[player_id].stat.add_tournament_match_losses(n_loss[i]);
                 players[player_id].stat.add_tournament_win_loss(player_is_winner[i]);
+                var player_creatures = Creature.get_by_ids(creatures, teams[i].creature_ids);
+                for (var creature of player_creatures) {
+                    creature.stat.add_tournament_match_wins(n_wins[i]);
+                    creature.stat.add_tournament_match_losses(n_loss[i]);
+                    creature.stat.add_tournament_win_loss(player_is_winner[i]);
+                }
             }
         }
     }
@@ -1970,9 +2077,15 @@
             return super.draw([dom_span, dom_trade_table], "Trade " + this.number, "trade");
         }
         update_statistics(players, creatures) {
+            var creature_ids = [];
             for (let creature_team_change of this.creature_team_changes) {
                 players[creature_team_change.from_player_id].stat.add_trade();
                 players[creature_team_change.to_player_id].stat.add_trade();
+                creature_ids.push(creature_team_change.creature_id);
+            }
+            var creatures_in_trade = Creature.get_by_ids(creatures, creature_ids);
+            for (var creature of creatures_in_trade) {
+                creature.stat.add_trade();
             }
         }
     }
@@ -2079,6 +2192,14 @@
                 players[player_id].stat.add_round_match_wins(n_wins[i]);
                 players[player_id].stat.add_round_match_losses(n_loss[i]);
                 players[player_id].stat.add_round_win_loss(player_is_winner[i]);
+            }
+            for (var match of this.matches) {
+                for (var creature of Creature.get_by_ids(creatures, match.win_team.creature_ids)) {
+                    creature.stat.add_round_match_wins(1);
+                }
+                for (var creature of Creature.get_by_ids(creatures, match.lose_team.creature_ids)) {
+                    creature.stat.add_round_match_losses(1);
+                }
             }
         }
     }
