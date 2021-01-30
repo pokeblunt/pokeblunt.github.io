@@ -138,6 +138,9 @@
         display: block;
         padding-bottom: 10px;
     }
+    .pointer {
+        cursor: pointer;
+    }
     .visibility-hidden {
         visibility: hidden;
     }
@@ -172,8 +175,7 @@
         border-bottom: 1px solid #444;
         font-weight: bold;
     }
-    div.event.champion > div.header,
-    div.event.player > div.header {
+    div.event.grey > div.header {
         background-color: #2d3436;
         color: #dfe6e9;
     }
@@ -270,6 +272,45 @@
 
     <div>
         <div id="events"></div>
+    </div>
+
+    <div class="event grey">
+        <div class="header">Rules</div>
+        <div class="body">
+            <h2>Links</h2>
+            <ul>
+                <li><a href="draft.html">Season 4 Draft</a> - Inital draft for Season 4 of Pokemasters taking place on Saturday, 2019/10/26</li>
+                <li><a href="draft2.html">Season 4 Draft 3</a> - Third draft for Season 4 of Pokemasters after the 2020/08/25 unofficial tournament</li>
+                <li><a href="https://www.smogon.com/dex/sm/formats/doubles/" target="_blank">Smogon Doubles OU Format</a> - Default battle rules we go by with the exception of our own battle clauses</li>
+                <li><a href="https://www.smogon.com/forums/threads/usum-doubles-ou-viability-rankings.3623347/" target="_blank">Smogon Doubles OU Viability Rankings</a> - Reference for what is currently considered viable as of 2019/10/22</li>
+            </ul>
+
+            <h2>Rules</h2>
+            <p>We generally follow Smogon's Doubles OU rules and play several tournaments where each player participates each season. Playoffs are held at the end of each season.</p>
+            <h4>Draft rules</h4>
+            <p>The draft pick order is randomly determined on the day of the draft. Players iteratively choose pokemon for their roster in a snake draft, meaning every even round is picked in reverse order (ex: 1 2 3 4 4 3 2 1 1 2 ...). Each pokemon (along with associated forms and megas) can only be on one player's roster. Pokemon from the same evolutionary line can belong to different players. Since there are only four legendary guardians (Tapu pokemon) and they are all compeditively viable, as soon as one Tapu pokemon is picked, immediately do a Tapu draft where the remaining players get to pick the remaining Tapu pokemon in a new, randomly determined order and then resume the main draft.</p>
+            <h4>Battle rules</h4>
+            <p>Use Smogon's Gen 7 (Sun and Moon) Double OU rules <a href="https://www.smogon.com/dex/sm/formats/doubles/" target="_blank">https://www.smogon.com/dex/sm/formats/doubles/</a> with the following additions and exceptions:</p>
+            <ul>
+                <li>Roster Clause: Players can only use Pokemon from their roster.</li>
+                <li>Legendary 600+ Clause: Players cannot use legendary Pokemon with base stats greater than 600.</li>
+                <li>Legendary Uber Clause: Players cannot use legendary Pokemon determined as Uber by Smogon.</li>
+                <li>Non-legendary Allowed: All non-legendary Pokemon can be used (Snorlax is allowed).</li>
+                <li>Megas Allowed: All mega stones can be used (Mega Gengar and Mega Kangaskhan are allowed).</li>
+                <li>OHKO Allowed: Players can use all OHKO moves (Fissure, Guillatine, Horn Drill, and Sheer Cold are allowed).</li>
+            </ul>
+            <h4>Tournament rules</h4>
+            <p>Use the following rules for each tournament:</p>
+            <ol>
+                <li>Each player chooses a team of 6 pokemon to use the entire tournament.</li>
+                <li>Each player plays all other players exactly once.</li>
+                <li>The player who won the most battles wins the tournament. If two or more players are tied with the most wins, all other players are eliminated and the remaining players repeat steps 2 and 3.</li>
+            </ol>
+            <h4>Season rules</h4>
+            <p>Players play 5 tournaments. All players advance to the playoffs. Players are ranked by tournament wins and then number of matches if tied. If still tied, play single matches to determine an order.</p>
+            <h4>Playoff rules</h4>
+            <p>Players can use different pokemon for each battle. The bottom two players play a best 2 out of 3 and the winner advances. That player plays the next worse player in a best 2 out of 3 and this continues until the championship. The championship is a best 3 out of 5. The champion wins the season and picks their MVP (Most Valuable Pokemon) for the season.</p>
+        </div>
     </div>
 
     <h2>Links</h2>
@@ -1262,16 +1303,16 @@
                     "teams": [
                         {
                             "player_id": 1,
-                            "creature_ids": [598, 681, 805, 376, 530, 798],
+                            "creature_ids": [94, 212, 145, 727, 787, 721],
                         }, {
                             "player_id": 0,
-                            "creature_ids": [479, 145, 310, 785, 171, 181],
+                            "creature_ids": [645, 479, 485, 598, 376, 286],
                         }, {
                             "player_id": 2,
-                            "creature_ids": [721, 727, 479, 637, 6, 494],
+                            "creature_ids": [560, 59, 719, 132, 785, 490],
                         }, {
                             "player_id": 3,
-                            "creature_ids": [788, 260, 279, 752, 423, 721],
+                            "creature_ids": [115, 778, 494, 788, 786, 547],
                         }
                     ],
                 }
@@ -1507,21 +1548,21 @@
 
     function draw_creature_statistics_table(players, creatures, dom) {
         var table_rows = [create_element({tag: "tr", children: [
-            create_element({tag: "th", innerHTML: "No", attributes: {onClick: "sortTable('cst', 0, false)"}}),
-            create_element({tag: "th", innerHTML: "Pokemon", attributes: {colspan: 2}}),
-            create_element({tag: "th", innerHTML: "M+MW", attributes: {onClick: "sortTable('cst', 3, true)"}}),
-            create_element({tag: "th", innerHTML: "MW", attributes: {onClick: "sortTable('cst', 4, true)"}}),
-            create_element({tag: "th", innerHTML: "M", attributes: {onClick: "sortTable('cst', 5, true)"}}),
-            create_element({tag: "th", innerHTML: "MW%", attributes: {onClick: "sortTable('cst', 6, true)"}}),
-            create_element({tag: "th", innerHTML: "TMW", attributes: {onClick: "sortTable('cst', 7, true)"}}),
-            create_element({tag: "th", innerHTML: "TM", attributes: {onClick: "sortTable('cst', 8, true)"}}),
-            create_element({tag: "th", innerHTML: "TW", attributes: {onClick: "sortTable('cst', 9, true)"}}),
-            create_element({tag: "th", innerHTML: "T", attributes: {onClick: "sortTable('cst', 10, true)"}}),
-            create_element({tag: "th", innerHTML: "PMW", attributes: {onClick: "sortTable('cst', 11, true)"}}),
-            create_element({tag: "th", innerHTML: "PM", attributes: {onClick: "sortTable('cst', 12, true)"}}),
-            create_element({tag: "th", innerHTML: "PW", attributes: {onClick: "sortTable('cst', 13, true)"}}),
-            create_element({tag: "th", innerHTML: "P", attributes: {onClick: "sortTable('cst', 14, true)"}}),
-            create_element({tag: "th", innerHTML: "R", attributes: {onClick: "sortTable('cst', 15, true)"}}),
+            create_element({tag: "th", innerHTML: "No", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 0, false)"}}),
+            create_element({tag: "th", innerHTML: "Pokemon", classList: ["pointer"], attributes: {colspan: 2, onClick: "sortTable('cst', 2, false)"}}),
+            create_element({tag: "th", innerHTML: "M+MW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 3, true)"}}),
+            create_element({tag: "th", innerHTML: "MW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 4, true)"}}),
+            create_element({tag: "th", innerHTML: "M", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 5, true)"}}),
+            create_element({tag: "th", innerHTML: "MW%", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 6, true)"}}),
+            create_element({tag: "th", innerHTML: "TMW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 7, true)"}}),
+            create_element({tag: "th", innerHTML: "TM", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 8, true)"}}),
+            create_element({tag: "th", innerHTML: "TW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 9, true)"}}),
+            create_element({tag: "th", innerHTML: "T", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 10, true)"}}),
+            create_element({tag: "th", innerHTML: "PMW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 11, true)"}}),
+            create_element({tag: "th", innerHTML: "PM", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 12, true)"}}),
+            create_element({tag: "th", innerHTML: "PW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 13, true)"}}),
+            create_element({tag: "th", innerHTML: "P", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 14, true)"}}),
+            create_element({tag: "th", innerHTML: "R", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 15, true)"}}),
         ]})];
         for (var player of players) {
             var player_creatures = Creature.get_by_ids(creatures, player.creature_ids);
@@ -1546,7 +1587,13 @@
                 ]}));
             }
         }
-        dom.appendChild(create_element({tag: "table", attributes: {id: "cst"}, children: table_rows}))
+
+        var table_dom = create_element({tag: "table", attributes: {id: "cst"}, classList: ["standard"], children: table_rows});
+        dom.appendChild(create_element({tag: "div", classList: ["event", "grey"], children: [
+            create_element({tag: "div", classList: ["header"], innerHTML: "Pokemon Statistics"}),
+            create_element({tag: "div", classList: ["body"], attributes: {"style": "overflow-x: scroll"}, children: [table_dom]}),
+        ]}));
+        sortTable('cst', 0, false);
     }
 
     function sortTable(table_id, n, decending) {
@@ -1758,7 +1805,7 @@
                 dom_creature_arts.push(creature.draw_art_with_discription());
             }
 
-            return create_element({tag: "div", classList: ["event", "player"], children: [
+            return create_element({tag: "div", classList: ["event", "grey"], children: [
                 create_element({tag: "div", classList: ["header"], innerHTML: "Trainer: " + this.name}),
                 create_element({tag: "div", classList: ["body"], children: [dom_stats_table].concat(dom_creature_arts)}),
             ]});
@@ -1983,7 +2030,7 @@
                 ]}));
             }
 
-            return super.draw([dom_date, dom_description, dom_champ, dom_player_table], "Champion!", "champion");
+            return super.draw([dom_date, dom_description, dom_champ, dom_player_table], "Champion!", "grey");
         }
     }
 
@@ -2395,7 +2442,13 @@
         }
         draw_sprites(players, creatures) {
             var team_player = Player.get_by_id(players, this.player_id);
-            var team_creatures = Creature.get_by_ids(creatures, this.creature_ids.sort());
+            var team_creatures = Creature.get_by_ids(creatures, this.creature_ids.sort(function(a, b) {
+                if (a < b) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }));
             var dom = document.createElement("div");
             dom.classList.add("team");
             dom.classList.add(team_player.css_class);
