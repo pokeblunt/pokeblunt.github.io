@@ -275,6 +275,26 @@
     </div>
 
     <div class="event grey">
+        <div class="header">Pokemon Statistics</div>
+        <div class="body" style="overflow-x: scroll" id="put-pokemon-stats-table-here">
+            Key:
+            <ul>
+                <li>M+MW: Two points for match win. One point for match loss</li>
+                <li>MW: Match wins</li>
+                <li>M: Matches</li>
+                <li>MW%: Percent of matches won</li>
+                <li>TMW: Tournament match wins</li>
+                <li>TM: Tournament matches</li>
+                <li>TW: Tournament wins</li>
+                <li>T: Tournaments</li>
+                <li>PMW: Playoff match wins</li>
+                <li>PM: Playoff matches</li>
+                <li>R: Trades</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="event grey">
         <div class="header">Rules</div>
         <div class="body">
             <h2>Links</h2>
@@ -689,7 +709,7 @@
                 "name": "Steve",
                 "css_class": "steve",
                 "creature_ids": [560, 373, 105, 59, 310, 719, 142, 127, 230, 785, 807, 700, 781, 282, 132, 475, 801, 490, 658, 706, 242, 462, 809, 68, 34, 12, 260, 279, 248, 445, 450, 526],
-                "trainer_sprite": "Spr_B2W2_Steven.png"
+                "trainer_sprite": "Spr_B2W2_Alder.png"
             }, {
                 "id": 3,
                 "name": "James",
@@ -1785,10 +1805,8 @@
         }
 
         var table_dom = create_element({tag: "table", attributes: {id: "cst"}, classList: ["standard"], children: table_rows});
-        dom.appendChild(create_element({tag: "div", classList: ["event", "grey"], children: [
-            create_element({tag: "div", classList: ["header"], innerHTML: "Pokemon Statistics"}),
-            create_element({tag: "div", classList: ["body"], attributes: {"style": "overflow-x: scroll"}, children: [table_dom]}),
-        ]}));
+        var outer_dom = document.getElementById("put-pokemon-stats-table-here");
+        outer_dom.appendChild(table_dom);
         sortTable('cst', 0, false);
     }
 
