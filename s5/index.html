@@ -1638,7 +1638,8 @@
             var dom_description = create_element({tag: "span", innerHTML: this.description});
             var dom_trade_table = create_element({tag: "table", classList: ["trades", "standard"]});
             dom_trade_table.appendChild(create_element({tag: "tr", children: [
-                create_element({tag: "th", innerHTML: "Pokemon"}),
+                create_element({tag: "th", innerHTML: "No"}),
+                create_element({tag: "th", innerHTML: "Pokemon", attributes: {colspan: 2}}),
                 create_element({tag: "th", innerHTML: "To"}),
                 create_element({tag: "th", innerHTML: "From"})
             ]}));
@@ -1648,7 +1649,9 @@
                 var from_player = players[creature_team_change.from_player_id];
                 var classList = ["winner", to_player.css_class];
                 dom_trade_table.appendChild(create_element({tag: "tr", children: [
+                    create_element({tag: "td", innerHTML: creature.id}),
                     create_element({tag: "td", children: [creature.draw_sprite()], classList: classList}),
+                    create_element({tag: "td", innerHTML: creature.name}),
                     create_element({tag: "td", innerHTML: to_player.name, classList: classList}),
                     create_element({tag: "td", innerHTML: from_player.name}),
                 ]}));
