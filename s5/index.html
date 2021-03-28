@@ -413,7 +413,7 @@
                 "name": "JaeBird",
                 "css_class": "jbird",
                 "creature_ids": [788, 645, 376, 212, 798, 143, 145, 718, 637, 591, 230, 488,   3, 681, 38,  53, 576, 380, 560, 805],
-                "trainer_sprite": "Spr_B2W2_N.png"
+                "trainer_sprite": "zen.gif"
             }, {
                 "id": 2,
                 "name": "Steve",
@@ -425,7 +425,7 @@
                 "name": "James",
                 "css_class": "james",
                 "creature_ids": [785, 802, 801, 115, 385, 778, 468, 445, 787, 598,  94, 648, 386, 795, 800, 748, 113, 806, 793, 310],
-                "trainer_sprite": "Spr_B2W2_Chuck.png"
+                "trainer_sprite": "angel.png"
             },
         ],
         "events": [
@@ -1174,8 +1174,8 @@
                     create_element({tag: "th", innerHTML: "P"}),
                 ]}),
                 create_element({tag: "tr", classList: [], children: [
-                    create_element({tag: "td", innerHTML: this.name}),
-                    create_element({tag: "td", children: [this.draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: this.name, classList: ["winner", this.css_class]}),
+                    create_element({tag: "td", children: [this.draw_sprite()], classList: ["winner", this.css_class]}),
                     create_element({tag: "td", innerHTML: this.stat.match_wins}),
                     create_element({tag: "td", innerHTML: this.stat.matches}),
                     create_element({tag: "td", innerHTML: this.stat.tournament_match_wins}),
