@@ -412,7 +412,7 @@
                 "id": 1,
                 "name": "JaeBird",
                 "css_class": "jbird",
-                "creature_ids": [788, 645, 376, 212, 798, 143, 145, 718, 591, 3, 681, 38,  53, 576, 380, 560, 805, 719, 786],
+                "creature_ids": [788, 376, 212, 798, 143, 145, 718, 591, 3, 681, 38,  53, 576, 380, 560, 805, 719, 785],
                 "trainer_sprite": "zen.gif"
             }, {
                 "id": 2,
@@ -424,7 +424,7 @@
                 "id": 3,
                 "name": "James",
                 "css_class": "james",
-                "creature_ids": [785, 802, 801, 115, 385, 778, 468, 445, 787, 598,  94, 648, 386, 795, 800, 748, 113, 806, 793, 310],
+                "creature_ids": [802, 801, 115, 385, 778, 468, 445, 787, 598,  94, 648, 386, 795, 800, 748, 113, 806, 793, 310, 645, 786],
                 "trainer_sprite": "angel.png"
             },
         ],
@@ -1088,6 +1088,28 @@
                             "from_player_id": 1,
                             "to_player_id": 2,
                             "creature_id": 637
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "trade",
+                "date": "2021/06/26 21:45",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 3,
+                            "to_player_id": 1,
+                            "creature_id": 785
+                        }, {
+                            "from_player_id": 1,
+                            "to_player_id": 3,
+                            "creature_id": 645
+                        }, {
+                            "from_player_id": 1,
+                            "to_player_id": 3,
+                            "creature_id": 786
                         }
                     ]
                 }
@@ -1893,7 +1915,26 @@
                 create_element({tag: "th", innerHTML: "To"}),
                 create_element({tag: "th", innerHTML: "From"})
             ]}));
-            for (var creature_team_change of this.creature_team_changes) {
+            var creature_team_changes = this.creature_team_changes.sort(function(a, b) {
+                if (a.creature_id < b.creature_id) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }).sort(function(a, b) {
+                if (a.from_player_id < b.from_player_id) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }).sort(function(a, b) {
+                if (a.to_player_id < b.to_player_id) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            });
+            for (var creature_team_change of creature_team_changes) {
                 var creature = creatures[creature_team_change.creature_id - 1];
                 var to_player = players[creature_team_change.to_player_id];
                 var from_player = players[creature_team_change.from_player_id];
