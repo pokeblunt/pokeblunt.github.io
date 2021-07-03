@@ -1321,8 +1321,12 @@
                 return -Infinity;
             }
             var v = $(elm).children("td").eq(n).text().toUpperCase();
-            if($.isNumeric(v)){
-                v = parseInt(v,10);
+            if($.isNumeric(v)) {
+                if (!isNaN(parseFloat(v))) {
+                    v = parseFloat(v)
+                } else {
+                    v = parseInt(v, 10);
+                }
             }
             return v;
         }
