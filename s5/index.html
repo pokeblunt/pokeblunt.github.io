@@ -1475,7 +1475,7 @@
             }, {
                 "type": "round",
                 "date": "2021/12/27 19:00",
-                "description": "",
+                "description": "Steve's rain dance team swept through the competition like a hurricane!",
                 "kwargs": {
                     "matches": [
                         {
@@ -1494,7 +1494,7 @@
             }, {
                 "type": "round",
                 "date": "2021/12/27 20:00",
-                "description": "",
+                "description": "After JaeBird's direct counter to Steve's rain dance team, Steve struck back with double intimidate and calm mind Cresselia. In the final match, Zapdos and Tapu Fini dominated the competition!",
                 "kwargs": {
                     "matches": [
                         {
@@ -1518,7 +1518,7 @@
             }, {
                 "type": "round",
                 "date": "2021/12/27 21:00",
-                "description": "",
+                "description": "In a return to the relentless days of old, Kamon swept JaeBird. A few matches were close, but in the end JaeBird was no match for Kamon's fully developed Celesteela.",
                 "kwargs": {
                     "matches": [
                         {
@@ -2443,6 +2443,7 @@
          */
         draw(players, creatures) {
             var dom_span = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var dom_description = create_element({tag: "span", innerHTML: this.description});
 
             // Player table with wins and ranking
             var player_ids, n_wins, n_loss;
@@ -2501,7 +2502,7 @@
                 ]}));
             }
 
-            return super.draw([dom_span, dom_player_table, dom_matches_table], "Playoff Round " + this.number, "round");
+            return super.draw([dom_span, dom_description, dom_player_table, dom_matches_table], "Playoff Round " + this.number, "round");
         }
         update_statistics(players, creatures) {
             var player_ids, n_wins, n_loss;
