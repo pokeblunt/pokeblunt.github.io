@@ -1,0 +1,1643 @@
+<!doctype html>
+
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head><style>
+    html * {
+        color: #000;
+        font-family: Arial;
+    }
+    html {
+        background-color: #ecf0f1;
+    }
+    h2 {
+        padding-top: 20px;
+        margin-bottom: 0px;
+    }
+    h2 > img {
+        height: 1.5em;
+    }
+    body > p {
+        margin-top: 5px;
+    }
+    p.margin-bottom-0 {
+        margin-bottom: 0px;
+    }
+    .tournaments table,
+    #playoffs    table,
+    #drafts      table,
+    #trades      table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .tournaments table tr:first-child td,
+    #playoffs    table tr:first-child td,
+    #drafts      table tr:first-child td,
+    #trades      table tr:first-child td {
+        font-weight: bold;
+        padding-bottom: 8px;
+    }
+    .tournaments table tr:not(:first-child) td,
+    #playoffs    table tr:not(:first-child) td,
+    #drafts      table tr:not(:first-child) td {
+        padding-right: 30px;
+    }
+    .tournaments table tr:not(:first-child) td:nth-child(3),
+    #trades      table tr:not(:first-child) td:nth-child(3) {
+        text-align: center;
+    }
+    .tournaments table tr.winner {
+        font-weight: bold;
+    }
+    .tournaments div.match {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin-right: 20px;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .tournaments div.match.win {
+        background-color: #2ecc71;
+    }
+    .tournaments div.match.loss {
+        background-color: #e74c3c;
+    }
+    .tournaments div.match.none {
+        visibility: hidden;
+    }
+    #drafts {
+        max-width: 400px;
+    }
+    #drafts table tr:not(:first-child) td {
+        padding-bottom: 10px;
+    }
+    #trades table tr:not(:first-child) td {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .pokemon-large {
+        display: inline-block;
+        border: 3px solid #444;
+        border-radius: 10px;
+        margin: 5px;
+    }
+    .pokemon-img {
+        border-radius: 50%;
+        width: 125px;
+    }
+    .pokemon-large > p {
+        text-align: center;
+        margin-top: 0px;
+    }
+    .pokemon-img.kamon, .tournaments table tr.winner.kamon, #drafts table tr.kamon, #trades table tr.kamon, #playoffs td.winner.kamon {
+        background: radial-gradient(#e74c3c 5%, #ecf0f1 70%);
+    }
+    .pokemon-img.jbird, .tournaments table tr.winner.jbird, #drafts table tr.jbird, #trades table tr.jbird, #playoffs td.winner.jbird {
+        background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
+    }
+    .pokemon-img.steve, .tournaments table tr.winner.steve, #drafts table tr.steve, #trades table tr.steve, #playoffs td.winner.steve {
+        background: radial-gradient(#9b59b6 5%, #ecf0f1 70%);
+    }
+    .pokemon-img.james, .tournaments table tr.winner.james, #drafts table tr.james, #trades table tr.james, #playoffs td.winner.james {
+        background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
+    }
+    .pokemon-img.arod, .tournaments table tr.winner.arod, #drafts table tr.arod, #trades table tr.arod, #playoffs td.winner.arod {
+        background: radial-gradient(#e67e22 15%, #ecf0f1 70%);
+    }
+    a:hover > .pokemon-large > p {
+        text-decoration: underline;
+    }
+    a:hover .pokemon-img.kamon {
+        background: radial-gradient(#e74c3c 50%, #ecf0f1 70%);
+    }
+    a:hover .pokemon-img.jbird {
+        background: radial-gradient(#f1c40f 50%, #ecf0f1 70%);
+    }
+    a:hover .pokemon-img.steve {
+        background: radial-gradient(#9b59b6 50%, #ecf0f1 70%);
+    }
+    a:hover .pokemon-img.james {
+        background: radial-gradient(#74b9ff 50%, #ecf0f1 70%);
+    }
+    a:hover .pokemon-img.arod {
+        background: radial-gradient(#e67e22 50%, #ecf0f1 70%);
+    }
+    .pokemon-large.kamon {
+        border-color: #e74c3c;
+    }
+    .pokemon-large.jbird {
+        border-color: #f1c40f;
+    }
+    .pokemon-large.steve {
+        border-color: #9b59b6;
+    }
+    .pokemon-large.james {
+        border-color: #74b9ff;
+    }
+    .pokemon-large.arod {
+        border-color: #e67e22;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+    h2 {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    span {
+        display: block;
+        padding-bottom: 10px;
+    }
+    .pointer {
+        cursor: pointer;
+    }
+    .visibility-hidden {
+        visibility: hidden;
+    }
+    a.art-holder {
+        display: inline-block;
+        padding-bottom: 15px;
+        text-decoration: none;
+    }
+    a.art-holder > span {
+        text-align: center;
+        padding: 0px;
+    }
+    div.champ {
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+    }
+    div.event {
+        margin-top: 40px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        font-size: 20px;
+    }
+    div.event > div.body {
+        padding: 10px;
+    }
+    div.event > div.header {
+        border-radius: 5px 5px 0px 0px;
+        padding: 10px 10px;
+        border-bottom: 1px solid #444;
+        font-weight: bold;
+    }
+    div.event.grey > div.header {
+        background-color: #2d3436;
+        color: #dfe6e9;
+    }
+    div.event.draft > div.header {
+        background-color: #f39c12;
+    }
+    div.event.draft {
+        max-height: 33em;
+        overflow: hidden;
+    }
+    div.event.draft:hover {
+        cursor: pointer;
+    }
+    div.event.draft.expanded {
+        max-height: none;
+    }
+    div.event.round > div.header {
+        background-color: #e74c3c;
+    }
+    div.event.tournament > div.header {
+        background-color: #3498db;
+    }
+    div.event.trade > div.header {
+        background-color: #27ae60;
+    }
+    div.event.unofficial-tournament > div.header {
+        background-color: #9b59b6;
+    }
+    img.art {
+        width: 125px;
+    }
+    img.art.large {
+        height: 256px;
+        width: auto;
+    }
+    img.sprite {
+        width: 48px;
+    }
+    img.trainer_sprite {
+        height: 64px;
+    }
+    img.trainer_sprite.large {
+        height: 256px;
+    }
+    li.allowed {
+        color: #27ae60;
+    }
+    li.restricted {
+        color: #c0392b;
+    }
+    table.standard {
+        margin-top: 10px;
+        text-align: center;
+        border-spacing: 5px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    table.standard th {
+        background-color: #bdc3c7;
+        border-radius: 5px;
+    }
+    table.standard td,
+    table.standard th {
+        margin-top: 10px;
+        padding: 5px 10px;
+    }
+    table.standard > tr > td.james.winner,
+    table.standard > tr.james.winner > td,
+    div.james.winner > img {
+        background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
+    }
+    table.standard > tr > td.jbird.winner,
+    table.standard > tr.jbird.winner > td,
+    div.jbird.winner > img {
+        background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
+    }
+    table.standard > tr > td.kamon.winner,
+    table.standard > tr.kamon.winner > td,
+    div.kamon.winner > img {
+        background: radial-gradient(#e74c3c 3%, #ecf0f1 70%);
+    }
+    table.standard > tr > td.steve.winner,
+    table.standard > tr.steve.winner > td,
+    div.steve.winner > img {
+        background: radial-gradient(#9b59b6 3%, #ecf0f1 70%);
+    }
+    table.standard > tr > td.arod.winner,
+    table.standard > tr.arod.winner > td,
+    div.arod.winner > img {
+        background: radial-gradient(#e67e22 15%, #ecf0f1 70%);
+    }
+    #cst > tr > td {
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style></head>
+
+<head><title>Pokemasters - Season 5</title></head>
+<head><link rel="shortcut icon" type="image/png" href="favicon.png"/></head>
+
+<body>
+    <h1>Pokemasters</h1>
+    <h2><img src="favicon.png"> Season 6 <img src="favicon.png"></h2>
+
+    <div>
+        <div id="events"></div>
+    </div>
+
+    <div class="event grey">
+        <div class="header">Pokemon Statistics</div>
+        <div class="body" style="overflow-x: scroll" id="put-pokemon-stats-table-here">
+            Key:
+            <ul>
+                <li>M+MW: Two points for match win. One point for match loss</li>
+                <li>MW: Match wins</li>
+                <li>M: Matches</li>
+                <li>MW%: Percent of matches won</li>
+                <li>TMW: Tournament match wins</li>
+                <li>TM: Tournament matches</li>
+                <li>TW: Tournament wins</li>
+                <li>T: Tournaments</li>
+                <li>PMW: Playoff match wins</li>
+                <li>PM: Playoff matches</li>
+                <li>R: Trades</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="event grey">
+        <div class="header">Rules</div>
+        <div class="body">
+            <h2>Links</h2>
+            <ul>
+                <li><a href="https://www.smogon.com/dex/ss/formats/doubles/" target="_blank">Smogon Gen 8 Doubles OU Format</a> - Default battle rules we go by with the exception of our own battle clauses</li>
+                <li><a href="https://www.smogon.com/forums/threads/ss-doubles-ou-viability-rankings-v-2.3673519/" target="_blank">Smogon Gen 8 Doubles OU Viability Rankings</a> - Reference for what is currently considered viable as of 2022/02/26</li>
+                <li><a href="draft1.html">Season 6 Draft</a> - Inital draft for Season 6 of Pokemasters</li>
+            </ul>
+
+            <h2>Rules</h2>
+            <p>We generally follow Smogon's Gen 8 Doubles OU rules. In a season, we play several tournaments and then playoffs are held at the end of each season.</p>
+            <h4>Draft rules</h4>
+            <p>The draft pick order is determined by an unofficial tournament at the start of the season. Players iteratively choose pokemon for their roster in a snake draft, meaning every even round is picked in reverse order (ex: 1 2 3 4 5 5 4 3 2 1 1 2 ...). Each pokemon (along with associated forms and megas) can only be on one player's roster. Pokemon from the same evolutionary line can belong to different players.</p>
+            <h4>Battle rules</h4>
+            <p>Use Smogon's Gen 8 (Sword & Shield) <a href="https://www.smogon.com/dex/ss/formats/doubles/" target="_blank">Gen 8 Double OU rules</a> with the following additions and exceptions:</p>
+            <ul>
+                <li>
+                    Pokemon restrictions. Pokemon with greater than 600 base stats cannot be drafted:
+                    <ul>
+                        <li class="restricted">Any pokemon with > 600 base stats</li>
+                    </ul>
+                </li>
+                <li>
+                    Form restrictions. Pokemon with greater than 600 base stats cannot enter battle:
+                    <ul>
+                        <li class="restricted">Kyurem-Black</li>
+                        <li class="restricted">Kyurem-White</li>
+                        <li class="restricted">Hoopa-Unbound</li>
+                        <li class="restricted">Necrozma-Dawn Wings</li>
+                        <li class="restricted">Necrozma-Dusk Mane</li>
+                        <li class="restricted">Ultra Necrozma</li>
+                        <li class="restricted">Urshifu (Single Strike)</li>
+                        <li class="restricted">Calyrex-Ice</li>
+                        <li class="restricted">Calyrex-Shadow</li>
+                    </ul>
+                </li>
+                <li>
+                    Move restrictions. Pokemon cannot use these moves:
+                    <ul>
+                        <li class="restricted">Dark Void</li>
+                        <li class="restricted">Double Team</li>
+                        <li class="restricted">Minimize</li>
+                    </ul>
+                </li>
+                <li>
+                    Ability restrictions: Pokemon cannot have these abilities:
+                    <ul>
+                        <li class="restricted">Power Construct</li>
+                    </ul>
+                </li>
+                <li>
+                    Dynamax ban:
+                    <ul>
+                        <li class="restricted">Dynamax</li>
+                        <li class="restricted">Gigantamax</li>
+                    </ul>
+                </li>
+                <li>
+                    Pokemon allowed. All 600- pokemon are allowed including these banned by Smogon:
+                    <ul>
+                        <li class="allowed">Jirachi</li>
+                        <li class="allowed">Kartana</li>
+                        <li class="allowed">Magearna</li>
+                        <li class="allowed">Marshadow</li>
+                        <li class="allowed">Melmetal</li>
+                        <li class="allowed">Urshifu (Single Strike)</li>
+                    </ul>
+                </li>
+                <li>
+                    Move allowed. All moves that are not restricted are allowedd including these banned by Smogon:
+                    <ul>
+                        <li class="allowed">Fissure</li>
+                        <li class="allowed">Guillotine</li>
+                        <li class="allowed">Horn Drill</li>
+                        <li class="allowed">Sheer Cold</li>
+                        <li class="allowed">Swagger</li>
+                    </ul>
+                </li>
+                <li>
+                    Ability allowed: Pokemon can have these abilities:
+                    <ul>
+                        <li class="allowed">Moody</li>
+                        <li class="allowed">Shadow Tag</li>
+                    </ul>
+                </li>
+                <li>Roster clause: Players can only use Pokemon from their roster.</li>
+            </ul>
+            <h4>Tournament rules</h4>
+            <p>Use the following rules for each tournament:</p>
+            <ol>
+                <li>Each player chooses a team of 6 pokemon to use the entire tournament.</li>
+                <li>Each player plays all other players exactly once.</li>
+                <li>The player who won the most battles wins the tournament. If two or more players are tied with the most wins, all other players are eliminated and the remaining players repeat steps 2 and 3.</li>
+            </ol>
+            <h4>Season rules</h4>
+            <p>Each player plays 8 tournaments and there are a total of 10 tournaments this season (meaning each player sits out for 2 tournaments). The order each player sits out is determined randomly at the beginning of the season. All players advance to the playoffs. Players are ranked by tournament wins and then number of match wins if tied. If still tied, play single matches to determine an order.</p>
+            <h4>Playoff rules</h4>
+            <p>Players can use different pokemon for each battle. All playoff rounds before the finals are best 2 out of 3 and the finals are best 3 out of 5. Play a single elimination bracket using byes. Also include a best 2 out of 3 round for 3rd and 4th place before the finals. The champion of the finals wins the season and picks their MVP (Most Valuable Pokemon) for the season.</p>
+        </div>
+    </div>
+<script>
+
+    // Good trainer sprite resource https://archives.bulbagarden.net/wiki/Category:Generation_V_Trainer_sprites
+    // More trainer sprite resource https://pokemon.gamepedia.com/Category:Trainer_sprites
+    var raw = {
+        "players": [
+            {
+                "id": 0,
+                "name": "Kamon",
+                "css_class": "kamon",
+                "creature_ids": [],
+                "trainer_sprite": "giovanni.png"
+            }, {
+                "id": 1,
+                "name": "JaeBird",
+                "css_class": "jbird",
+                "creature_ids": [],
+                "trainer_sprite": "zen.gif"
+            }, {
+                "id": 2,
+                "name": "Steve",
+                "css_class": "steve",
+                "creature_ids": [],
+                "trainer_sprite": "Spr_B2W2_Alder.png"
+            }, {
+                "id": 3,
+                "name": "James",
+                "css_class": "james",
+                "creature_ids": [],
+                "trainer_sprite": "angel.png"
+            }, {
+                "id": 4,
+                "name": "A-Rod",
+                "css_class": "arod",
+                "creature_ids": [],
+                "trainer_sprite": "LtSurge.gif"
+            }
+        ],
+        "events": [
+
+        ],
+        "creatures": ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise', 'Caterpie', 'Metapod', 'Butterfree', 'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata', 'Raticate', 'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu', 'Sandshrew', 'Sandslash', 'Nidoran♀', 'Nidorina', 'Nidoqueen', 'Nidoran♂', 'Nidorino', 'Nidoking', 'Clefairy', 'Clefable', 'Vulpix', 'Ninetales', 'Jigglypuff', 'Wigglytuff', 'Zubat', 'Golbat', 'Oddish', 'Gloom', 'Vileplume', 'Paras', 'Parasect', 'Venonat', 'Venomoth', 'Diglett', 'Dugtrio', 'Meowth', 'Persian', 'Psyduck', 'Golduck', 'Mankey', 'Primeape', 'Growlithe', 'Arcanine', 'Poliwag', 'Poliwhirl', 'Poliwrath', 'Abra', 'Kadabra', 'Alakazam', 'Machop', 'Machoke', 'Machamp', 'Bellsprout', 'Weepinbell', 'Victreebel', 'Tentacool', 'Tentacruel', 'Geodude', 'Graveler', 'Golem', 'Ponyta', 'Rapidash', 'Slowpoke', 'Slowbro', 'Magnemite', 'Magneton', 'Farfetch’d', 'Doduo', 'Dodrio', 'Seel', 'Dewgong', 'Grimer', 'Muk', 'Shellder', 'Cloyster', 'Gastly', 'Haunter', 'Gengar', 'Onix', 'Drowzee', 'Hypno', 'Krabby', 'Kingler', 'Voltorb', 'Electrode', 'Exeggcute', 'Exeggutor', 'Cubone', 'Marowak', 'Hitmonlee', 'Hitmonchan', 'Lickitung', 'Koffing', 'Weezing', 'Rhyhorn', 'Rhydon', 'Chansey', 'Tangela', 'Kangaskhan', 'Horsea', 'Seadra', 'Goldeen', 'Seaking', 'Staryu', 'Starmie', 'Mr. Mime', 'Scyther', 'Jynx', 'Electabuzz', 'Magmar', 'Pinsir', 'Tauros', 'Magikarp', 'Gyarados', 'Lapras', 'Ditto', 'Eevee', 'Vaporeon', 'Jolteon', 'Flareon', 'Porygon', 'Omanyte', 'Omastar', 'Kabuto', 'Kabutops', 'Aerodactyl', 'Snorlax', 'Articuno', 'Zapdos', 'Moltres', 'Dratini', 'Dragonair', 'Dragonite', 'Mewtwo', 'Mew', 'Chikorita', 'Bayleef', 'Meganium', 'Cyndaquil', 'Quilava', 'Typhlosion', 'Totodile', 'Croconaw', 'Feraligatr', 'Sentret', 'Furret', 'Hoothoot', 'Noctowl', 'Ledyba', 'Ledian', 'Spinarak', 'Ariados', 'Crobat', 'Chinchou', 'Lanturn', 'Pichu', 'Cleffa', 'Igglybuff', 'Togepi', 'Togetic', 'Natu', 'Xatu', 'Mareep', 'Flaaffy', 'Ampharos', 'Bellossom', 'Marill', 'Azumarill', 'Sudowoodo', 'Politoed', 'Hoppip', 'Skiploom', 'Jumpluff', 'Aipom', 'Sunkern', 'Sunflora', 'Yanma', 'Wooper', 'Quagsire', 'Espeon', 'Umbreon', 'Murkrow', 'Slowking', 'Misdreavus', 'Unown', 'Wobbuffet', 'Girafarig', 'Pineco', 'Forretress', 'Dunsparce', 'Gligar', 'Steelix', 'Snubbull', 'Granbull', 'Qwilfish', 'Scizor', 'Shuckle', 'Heracross', 'Sneasel', 'Teddiursa', 'Ursaring', 'Slugma', 'Magcargo', 'Swinub', 'Piloswine', 'Corsola', 'Remoraid', 'Octillery', 'Delibird', 'Mantine', 'Skarmory', 'Houndour', 'Houndoom', 'Kingdra', 'Phanpy', 'Donphan', 'Porygon2', 'Stantler', 'Smeargle', 'Tyrogue', 'Hitmontop', 'Smoochum', 'Elekid', 'Magby', 'Miltank', 'Blissey', 'Raikou', 'Entei', 'Suicune', 'Larvitar', 'Pupitar', 'Tyranitar', 'Lugia', 'Ho-Oh', 'Celebi', 'Treecko', 'Grovyle', 'Sceptile', 'Torchic', 'Combusken', 'Blaziken', 'Mudkip', 'Marshtomp', 'Swampert', 'Poochyena', 'Mightyena', 'Zigzagoon', 'Linoone', 'Wurmple', 'Silcoon', 'Beautifly', 'Cascoon', 'Dustox', 'Lotad', 'Lombre', 'Ludicolo', 'Seedot', 'Nuzleaf', 'Shiftry', 'Taillow', 'Swellow', 'Wingull', 'Pelipper', 'Ralts', 'Kirlia', 'Gardevoir', 'Surskit', 'Masquerain', 'Shroomish', 'Breloom', 'Slakoth', 'Vigoroth', 'Slaking', 'Nincada', 'Ninjask', 'Shedinja', 'Whismur', 'Loudred', 'Exploud', 'Makuhita', 'Hariyama', 'Azurill', 'Nosepass', 'Skitty', 'Delcatty', 'Sableye', 'Mawile', 'Aron', 'Lairon', 'Aggron', 'Meditite', 'Medicham', 'Electrike', 'Manectric', 'Plusle', 'Minun', 'Volbeat', 'Illumise', 'Roselia', 'Gulpin', 'Swalot', 'Carvanha', 'Sharpedo', 'Wailmer', 'Wailord', 'Numel', 'Camerupt', 'Torkoal', 'Spoink', 'Grumpig', 'Spinda', 'Trapinch', 'Vibrava', 'Flygon', 'Cacnea', 'Cacturne', 'Swablu', 'Altaria', 'Zangoose', 'Seviper', 'Lunatone', 'Solrock', 'Barboach', 'Whiscash', 'Corphish', 'Crawdaunt', 'Baltoy', 'Claydol', 'Lileep', 'Cradily', 'Anorith', 'Armaldo', 'Feebas', 'Milotic', 'Castform', 'Kecleon', 'Shuppet', 'Banette', 'Duskull', 'Dusclops', 'Tropius', 'Chimecho', 'Absol', 'Wynaut', 'Snorunt', 'Glalie', 'Spheal', 'Sealeo', 'Walrein', 'Clamperl', 'Huntail', 'Gorebyss', 'Relicanth', 'Luvdisc', 'Bagon', 'Shelgon', 'Salamence', 'Beldum', 'Metang', 'Metagross', 'Regirock', 'Regice', 'Registeel', 'Latias', 'Latios', 'Kyogre', 'Groudon', 'Rayquaza', 'Jirachi', 'Deoxys', 'Turtwig', 'Grotle', 'Torterra', 'Chimchar', 'Monferno', 'Infernape', 'Piplup', 'Prinplup', 'Empoleon', 'Starly', 'Staravia', 'Staraptor', 'Bidoof', 'Bibarel', 'Kricketot', 'Kricketune', 'Shinx', 'Luxio', 'Luxray', 'Budew', 'Roserade', 'Cranidos', 'Rampardos', 'Shieldon', 'Bastiodon', 'Burmy', 'Wormadam', 'Mothim', 'Combee', 'Vespiquen', 'Pachirisu', 'Buizel', 'Floatzel', 'Cherubi', 'Cherrim', 'Shellos', 'Gastrodon', 'Ambipom', 'Drifloon', 'Drifblim', 'Buneary', 'Lopunny', 'Mismagius', 'Honchkrow', 'Glameow', 'Purugly', 'Chingling', 'Stunky', 'Skuntank', 'Bronzor', 'Bronzong', 'Bonsly', 'Mime Jr.', 'Happiny', 'Chatot', 'Spiritomb', 'Gible', 'Gabite', 'Garchomp', 'Munchlax', 'Riolu', 'Lucario', 'Hippopotas', 'Hippowdon', 'Skorupi', 'Drapion', 'Croagunk', 'Toxicroak', 'Carnivine', 'Finneon', 'Lumineon', 'Mantyke', 'Snover', 'Abomasnow', 'Weavile', 'Magnezone', 'Lickilicky', 'Rhyperior', 'Tangrowth', 'Electivire', 'Magmortar', 'Togekiss', 'Yanmega', 'Leafeon', 'Glaceon', 'Gliscor', 'Mamoswine', 'Porygon-Z', 'Gallade', 'Probopass', 'Dusknoir', 'Froslass', 'Rotom', 'Uxie', 'Mesprit', 'Azelf', 'Dialga', 'Palkia', 'Heatran', 'Regigigas', 'Giratina', 'Cresselia', 'Phione', 'Manaphy', 'Darkrai', 'Shaymin', 'Arceus', 'Victini', 'Snivy', 'Servine', 'Serperior', 'Tepig', 'Pignite', 'Emboar', 'Oshawott', 'Dewott', 'Samurott', 'Patrat', 'Watchog', 'Lillipup', 'Herdier', 'Stoutland', 'Purrloin', 'Liepard', 'Pansage', 'Simisage', 'Pansear', 'Simisear', 'Panpour', 'Simipour', 'Munna', 'Musharna', 'Pidove', 'Tranquill', 'Unfezant', 'Blitzle', 'Zebstrika', 'Roggenrola', 'Boldore', 'Gigalith', 'Woobat', 'Swoobat', 'Drilbur', 'Excadrill', 'Audino', 'Timburr', 'Gurdurr', 'Conkeldurr', 'Tympole', 'Palpitoad', 'Seismitoad', 'Throh', 'Sawk', 'Sewaddle', 'Swadloon', 'Leavanny', 'Venipede', 'Whirlipede', 'Scolipede', 'Cottonee', 'Whimsicott', 'Petilil', 'Lilligant', 'Basculin', 'Sandile', 'Krokorok', 'Krookodile', 'Darumaka', 'Darmanitan', 'Maractus', 'Dwebble', 'Crustle', 'Scraggy', 'Scrafty', 'Sigilyph', 'Yamask', 'Cofagrigus', 'Tirtouga', 'Carracosta', 'Archen', 'Archeops', 'Trubbish', 'Garbodor', 'Zorua', 'Zoroark', 'Minccino', 'Cinccino', 'Gothita', 'Gothorita', 'Gothitelle', 'Solosis', 'Duosion', 'Reuniclus', 'Ducklett', 'Swanna', 'Vanillite', 'Vanillish', 'Vanilluxe', 'Deerling', 'Sawsbuck', 'Emolga', 'Karrablast', 'Escavalier', 'Foongus', 'Amoonguss', 'Frillish', 'Jellicent', 'Alomomola', 'Joltik', 'Galvantula', 'Ferroseed', 'Ferrothorn', 'Klink', 'Klang', 'Klinklang', 'Tynamo', 'Eelektrik', 'Eelektross', 'Elgyem', 'Beheeyem', 'Litwick', 'Lampent', 'Chandelure', 'Axew', 'Fraxure', 'Haxorus', 'Cubchoo', 'Beartic', 'Cryogonal', 'Shelmet', 'Accelgor', 'Stunfisk', 'Mienfoo', 'Mienshao', 'Druddigon', 'Golett', 'Golurk', 'Pawniard', 'Bisharp', 'Bouffalant', 'Rufflet', 'Braviary', 'Vullaby', 'Mandibuzz', 'Heatmor', 'Durant', 'Deino', 'Zweilous', 'Hydreigon', 'Larvesta', 'Volcarona', 'Cobalion', 'Terrakion', 'Virizion', 'Tornadus', 'Thundurus', 'Reshiram', 'Zekrom', 'Landorus', 'Kyurem', 'Keldeo', 'Meloetta', 'Genesect', 'Chespin', 'Quilladin', 'Chesnaught', 'Fennekin', 'Braixen', 'Delphox', 'Froakie', 'Frogadier', 'Greninja', 'Bunnelby', 'Diggersby', 'Fletchling', 'Fletchinder', 'Talonflame', 'Scatterbug', 'Spewpa', 'Vivillon', 'Litleo', 'Pyroar', 'Flabébé', 'Floette', 'Florges', 'Skiddo', 'Gogoat', 'Pancham', 'Pangoro', 'Furfrou', 'Espurr', 'Meowstic', 'Honedge', 'Doublade', 'Aegislash', 'Spritzee', 'Aromatisse', 'Swirlix', 'Slurpuff', 'Inkay', 'Malamar', 'Binacle', 'Barbaracle', 'Skrelp', 'Dragalge', 'Clauncher', 'Clawitzer', 'Helioptile', 'Heliolisk', 'Tyrunt', 'Tyrantrum', 'Amaura', 'Aurorus', 'Sylveon', 'Hawlucha', 'Dedenne', 'Carbink', 'Goomy', 'Sliggoo', 'Goodra', 'Klefki', 'Phantump', 'Trevenant', 'Pumpkaboo', 'Gourgeist', 'Bergmite', 'Avalugg', 'Noibat', 'Noivern', 'Xerneas', 'Yveltal', 'Zygarde', 'Diancie', 'Hoopa', 'Volcanion', 'Rowlet', 'Dartrix', 'Decidueye', 'Litten', 'Torracat', 'Incineroar', 'Popplio', 'Brionne', 'Primarina', 'Pikipek', 'Trumbeak', 'Toucannon', 'Yungoos', 'Gumshoos', 'Grubbin', 'Charjabug', 'Vikavolt', 'Crabrawler', 'Crabominable', 'Oricorio', 'Cutiefly', 'Ribombee', 'Rockruff', 'Lycanroc', 'Wishiwashi', 'Mareanie', 'Toxapex', 'Mudbray', 'Mudsdale', 'Dewpider', 'Araquanid', 'Fomantis', 'Lurantis', 'Morelull', 'Shiinotic', 'Salandit', 'Salazzle', 'Stufful', 'Bewear', 'Bounsweet', 'Steenee', 'Tsareena', 'Comfey', 'Oranguru', 'Passimian', 'Wimpod', 'Golisopod', 'Sandygast', 'Palossand', 'Pyukumuku', 'Type: Null', 'Silvally', 'Minior', 'Komala', 'Turtonator', 'Togedemaru', 'Mimikyu', 'Bruxish', 'Drampa', 'Dhelmise', 'Jangmo-o', 'Hakamo-o', 'Kommo-o', 'Tapu Koko', 'Tapu Lele', 'Tapu Bulu', 'Tapu Fini', 'Cosmog', 'Cosmoem', 'Solgaleo', 'Lunala', 'Nihilego', 'Buzzwole', 'Pheromosa', 'Xurkitree', 'Celesteela', 'Kartana', 'Guzzlord', 'Necrozma', 'Magearna', 'Marshadow', 'Poipole', 'Naganadel', 'Stakataka', 'Blacephalon', 'Zeraora', 'Meltan', 'Melmetal', "Grookey", "Thwackey", "Rillaboom", "Scorbunny", "Raboot", "Cinderace", "Sobble", "Drizzile", "Inteleon", "Skwovet", "Greedent", "Rookidee", "Corvisquire", "Corviknight", "Blipbug", "Dottler", "Orbeetle", "Nickit", "Thievul", "Gossifleur", "Eldegoss", "Wooloo", "Dubwool", "Chewtle", "Drednaw", "Yamper", "Boltund", "Rolycoly", "Carkol", "Coalossal", "Applin", "Flapple", "Appletun", "Silicobra", "Sandaconda", "Cramorant", "Arrokuda", "Barraskewda", "Toxel", "Toxtricity", "Sizzlipede", "Centiskorch", "Clobbopus", "Grapploct", "Sinistea", "Polteageist", "Hatenna", "Hattrem", "Hatterene", "Impidimp", "Morgrem", "Grimmsnarl", "Obstagoon", "Perrserker", "Cursola", "Sirfetchd", "Mr.Rime", "Runerigus", "Milcery", "Alcremie", "Falinks", "Pincurchin", "Snom", "Frosmoth", "Stonjourner", "Eiscue", "Indeedee", "Morpeko", "Cufant", "Copperajah", "Dracozolt", "Arctozolt", "Dracovish", "Arctovish", "Duraludon", "Dreepy", "Drakloak", "Dragapult", "Zacian", "Zamazenta", "Eternatus", "Kubfu", "Urshifu", "Zarude", "Regieleki", "Regidrago", "Glastrier", "Spectrier", "Calyrex", "Wyrdeer", "Kleavor", "Ursaluna", "Basculegion", "Sneasler", "Overqwil", "Enamorus"]
+    }
+
+    /**
+     * [bar description]
+     * @param  {[type]} foo [description]
+     * @return {[type]}     [description]
+     */
+
+    /**
+     * Load raw data and add to html
+     * @param  {object} raw Dictionary of raw data. Should include the following fields:
+     *     "events", "players"
+     * @return {None}
+     */
+    function main(raw) {
+        [players, events, creatures] = parse_raw(raw);
+        draw_events(events, players, creatures, document.getElementById("events"));
+        draw_players(players, creatures, document.getElementById("events"));
+        draw_creature_statistics_table(players, creatures, document.getElementById("events"));
+    }
+
+    /**
+     * Parse raw data into players and events objects
+     * @param  {[object]} raw [Must contain "players" and "events" attributes]
+     * @return {array} [players, events] Players is list of players. Events is list of events
+     */
+    function parse_raw(raw) {
+        assert("players" in raw, "'players' attribute must be in the raw object")
+        var players = [];
+        for (raw_player of raw["players"]) {
+            players.push(Player.from_raw(raw_player));
+        }
+        
+        assert("events" in raw, "'events' attribute must be in the raw object")
+        var events = [];
+        for (raw_event of raw["events"]) {
+            events.push(Event.from_raw(raw_event));
+        }
+        events = events.sort(function(a, b) { return a.date < b.date ? -1 : 1 });  // Order from earliest to latest to number
+        counter = {"Draft": 0, "Round": 0, "Tournament": 0, "Trade": 0, "UnofficialTournament": 0};
+        for (var event of events) {
+            type_str = event.constructor.name;
+            counter[type_str] += 1;
+            event.set_number(counter[type_str]);
+        }
+        events = events.sort(function(a, b) { return a.date > b.date ? -1 : 1 });  // Order from latest to earliest for display
+        
+        assert("creatures" in raw, "'creatures' attribute must be in the raw object")
+        var creatures = [];
+        for (var i = 0; i < raw["creatures"].length; i++) {
+            creatures.push(Creature.from_raw(raw["creatures"][i], i + 1));
+        }
+
+        set_statistics(events, players, creatures);
+        return [players, events, creatures]
+    }
+
+    /**
+     * [Collect statistics from each event and update each relevent player and creature]
+     */
+    function set_statistics(events, players, creatures) {
+        for (let event of events) {
+            event.update_statistics(players, creatures);
+        }
+    }
+
+    /**
+     * [Draw events to HTMl]
+     * @param  {[array]} events [Each event to be drawn in html]
+     * @param  {[array]} players [Each player. Used to draw information about the players in events]
+     * @param  {[array]} creatures [Each creature. Used to draw information about each of the creatures used in events]
+     * @param  {[dom]} dom [DOM element]
+     * @return {array} [players, events] Players is list of players. Events is list of events
+     */
+    function draw_events(events, players, creatures, dom) {
+        for (let event of events) {
+            dom.appendChild(event.draw(players, creatures));
+        }
+    }
+
+    function draw_players(players, creatures, dom) {
+        for (let player of players) {
+            dom.appendChild(player.draw(creatures));
+        }
+    }
+
+    function draw_creature_statistics_table(players, creatures, dom) {
+        var table_rows = [create_element({tag: "tr", children: [
+            create_element({tag: "th", innerHTML: "No", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 0, false)"}}),
+            create_element({tag: "th", innerHTML: "Pokemon", classList: ["pointer"], attributes: {colspan: 2, onClick: "sortTable('cst', 2, false)"}}),
+            create_element({tag: "th", innerHTML: "M+MW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 3, true)"}}),
+            create_element({tag: "th", innerHTML: "MW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 4, true)"}}),
+            create_element({tag: "th", innerHTML: "M", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 5, true)"}}),
+            create_element({tag: "th", innerHTML: "MW%", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 6, true)"}}),
+            create_element({tag: "th", innerHTML: "TMW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 7, true)"}}),
+            create_element({tag: "th", innerHTML: "TM", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 8, true)"}}),
+            create_element({tag: "th", innerHTML: "TW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 9, true)"}}),
+            create_element({tag: "th", innerHTML: "T", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 10, true)"}}),
+            create_element({tag: "th", innerHTML: "PMW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 11, true)"}}),
+            create_element({tag: "th", innerHTML: "PM", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 12, true)"}}),
+            create_element({tag: "th", innerHTML: "R", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 13, true)"}}),
+        ]})];
+        for (var player of players) {
+            var player_creatures = Creature.get_by_ids(creatures, player.creature_ids);
+            for (var creature of player_creatures) {
+                table_rows.push(create_element({tag: "tr", children: [
+                    create_element({tag: "td", innerHTML: creature.id}),
+                    create_element({tag: "td", children: [creature.draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: creature.name}),
+                    create_element({tag: "td", innerHTML: creature.stat.matches + creature.stat.match_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.match_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.matches}),
+                    create_element({tag: "td", innerHTML: creature.stat.match_win_percent_str}),
+                    create_element({tag: "td", innerHTML: creature.stat.tournament_match_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.tournament_matches}),
+                    create_element({tag: "td", innerHTML: creature.stat.tournament_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.tournaments}),
+                    create_element({tag: "td", innerHTML: creature.stat.round_match_wins}),
+                    create_element({tag: "td", innerHTML: creature.stat.round_matches}),
+                    create_element({tag: "td", innerHTML: creature.stat.trades}),
+                ]}));
+            }
+        }
+
+        var table_dom = create_element({tag: "table", attributes: {id: "cst"}, classList: ["standard"], children: table_rows});
+        var outer_dom = document.getElementById("put-pokemon-stats-table-here");
+        outer_dom.appendChild(table_dom);
+        sortTable('cst', 0, false);
+    }
+
+    function sortTable(table_id, n, decending) {
+        if (decending) {
+            f = -1;
+        } else {
+            f = 1;
+        }
+        var table_selector = "#" + table_id;
+        var rows = $(table_selector + " tr").get();
+
+        rows.sort(function(a, b) {
+            var A = getVal(a);
+            var B = getVal(b);
+            if(A < B) {
+                return -1 * f;
+            }
+            if(A > B) {
+                return 1 * f;
+            }
+            return 0;
+        });
+
+        function getVal(elm) {
+            if ($(elm).children("th").length > 0) {
+                if (decending) {
+                    return Infinity;
+                }
+                return -Infinity;
+            }
+            var v = $(elm).children("td").eq(n).text().toUpperCase();
+            if($.isNumeric(v)) {
+                if (!isNaN(parseFloat(v))) {
+                    v = parseFloat(v)
+                } else {
+                    v = parseInt(v, 10);
+                }
+            }
+            return v;
+        }
+
+        var table_dom = document.getElementById(table_id);
+        for (var row of rows) {
+            table_dom.append(row);
+        }
+    }
+
+    function print(x) {
+        console.log(x);
+    }
+
+    function assert(condition, message) {
+        if (!condition) {
+            throw new Error(message || "Assertion failed");
+        }
+    }
+
+    function argfind(list, element) {
+        for (let i = 0; i < list.length; i++) {
+            if (list[i] === element) {
+                return i;
+            }
+        }
+        throw new Error("Did not find element " + element + " in list " + list);
+    }
+
+    function argsort(nums) {
+        nums_with_idx = [];
+        for (var i in nums) {
+            nums_with_idx.push([nums[i], i]);
+        }
+        nums_with_idx.sort(function(left, right) {
+          return left[0] < right[0] ? -1 : 1;
+        });
+        var idx = [];
+        for (var j in nums_with_idx) {
+            idx.push(parseInt(nums_with_idx[j][1]));
+        }
+        return idx;
+    }
+
+    /**
+     * [Player IDs and number of wins for each player sorted by number of wins]
+     * @param {[array]} nums [List of non-unique elements]
+     * @return {[array]} uniques [Unique elements sorted by count]
+     * @return {[array]} counts [Count (or frequency of occurence) for each unique element in non decreasing order]
+     */
+    function unique_counts(nums) {
+        var counts = {};
+        for (var i = 0; i < nums.length; i++) {
+            var num = nums[i];
+            counts[num] = counts[num] ? counts[num] + 1 : 1;
+        }
+        var keys = Object.keys(counts);
+        var vals = [];
+        for (key of keys) {
+            vals.push(counts[key]);
+        }
+        var idx = argsort(vals);
+        var keys_sorted = [];
+        var vals_sorted = [];
+        for (var i of idx) {
+            keys_sorted.push(keys[i]);
+            vals_sorted.push(vals[i]);
+        }
+        return [keys_sorted, vals_sorted];
+    }
+
+    function pad(num, size) {
+        var s = "000000000" + num;
+        return s.substr(s.length-size);
+    }
+
+    class Player {
+        /**
+         * [Creature Player object]
+         * @param  {[int]} id [ID for player]
+         * @param  {[str]} name [Name of player]
+         * @param  {[array]} creature_ids [ID for each creature belonging to player]
+         * @param  {[str]} css_class [Class name to be used as HTMl class for CSS decoration]
+         * @param  {[str]} trainer_sprite [Image to be used for this player]
+         * @return {[Player]}
+         */
+        constructor(id, name, creature_ids, css_class, trainer_sprite) {
+            this.id = id;
+            this.name = name;
+            this.creature_ids = creature_ids;
+            this.css_class = css_class;
+            this.trainer_sprite = trainer_sprite;
+            this.stat = new StatisticHolder();
+        }
+        /**
+         * [Create Player object from raw player data]
+         * @param  {[object]} raw [Should have a "id" and "creature_ids" fields]
+         * @return {[Player]}
+         */
+        static from_raw(raw) {
+            assert("id" in raw, "Raw player data should have 'id' field");
+            assert("name" in raw, "Raw player data should have 'name' field");
+            assert("creature_ids" in raw, "Raw player data should have 'creature_ids' field");
+            assert("css_class" in raw, "Raw player data should have 'css_class' field");
+            assert("trainer_sprite" in raw, "Raw player data should have 'trainer_sprite' field");
+            return new Player(raw.id, raw.name, raw.creature_ids, raw.css_class, raw.trainer_sprite);
+        }
+        static get_by_id(players, player_id) {
+            for (var player of players) {
+                if (player.id === player_id) {
+                    return player;
+                }
+            }
+            throw new Error("Found no player with ID " + player_id);
+        }
+        static get_by_ids(players, player_ids) {
+            var id2player = {};
+            for (var player of players) {
+                id2player[player.id] = player;
+            }
+            var players_ordered = [];
+            for (var player_id of player_ids) {
+                players_ordered.push(id2player[player_id]);
+            }
+            return players_ordered;
+        }
+        draw(creatures) {
+            var dom_stats_table = create_element({tag: "table", classList: ["players", "standard"], children: [
+                create_element({tag: "tr", children: [
+                    create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                    create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                    create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                    create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                    create_element({tag: "th", innerHTML: "Tournaments", attributes: {"colspan": 4}}),
+                    create_element({tag: "th", innerHTML: "Playoffs", attributes: {"colspan": 4}}),
+                ]}),
+                create_element({tag: "tr", children: [
+                    create_element({tag: "th", innerHTML: "Name"}),
+                    create_element({tag: "th", innerHTML: "Trainer"}),
+                    create_element({tag: "th", innerHTML: "MW"}),
+                    create_element({tag: "th", innerHTML: "M"}),
+                    create_element({tag: "th", innerHTML: "TMW"}),
+                    create_element({tag: "th", innerHTML: "TM"}),
+                    create_element({tag: "th", innerHTML: "TW"}),
+                    create_element({tag: "th", innerHTML: "T"}),
+                    create_element({tag: "th", innerHTML: "PMW"}),
+                    create_element({tag: "th", innerHTML: "PM"}),
+                    create_element({tag: "th", innerHTML: "PW"}),
+                    create_element({tag: "th", innerHTML: "P"}),
+                ]}),
+                create_element({tag: "tr", classList: [], children: [
+                    create_element({tag: "td", innerHTML: this.name, classList: ["winner", this.css_class]}),
+                    create_element({tag: "td", children: [this.draw_sprite()], classList: ["winner", this.css_class]}),
+                    create_element({tag: "td", innerHTML: this.stat.match_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.matches}),
+                    create_element({tag: "td", innerHTML: this.stat.tournament_match_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.tournament_matches}),
+                    create_element({tag: "td", innerHTML: this.stat.tournament_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.tournaments}),
+                    create_element({tag: "td", innerHTML: this.stat.round_match_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.round_matches}),
+                    create_element({tag: "td", innerHTML: this.stat.round_wins}),
+                    create_element({tag: "td", innerHTML: this.stat.rounds}),
+                ]})
+            ]});
+
+            var dom_creature_arts = [];
+            var creatures_this_player = Creature.get_by_ids(creatures, this.creature_ids);
+            creatures_this_player = creatures_this_player.sort(function(a, b) {
+                if (a.id < b.id) {
+                    return -1;
+                }
+                return 1;
+            });
+            creatures_this_player = creatures_this_player.sort(function(a, b) {
+                if (a.stat.matches + a.stat.match_wins > b.stat.matches + b.stat.match_wins) {
+                    return -1;
+                }
+                return 1;
+            });
+            for (let creature of creatures_this_player) {
+                dom_creature_arts.push(creature.draw_art_with_discription());
+            }
+
+            return create_element({tag: "div", classList: ["event", "grey"], children: [
+                create_element({tag: "div", classList: ["header"], innerHTML: "Trainer: " + this.name}),
+                create_element({tag: "div", classList: ["body"], children: [dom_stats_table].concat(dom_creature_arts)}),
+            ]});
+        }
+        draw_sprite() {
+            return create_element({tag: "img", attributes: {"src": this.trainer_sprite}, classList: ["trainer_sprite"]});
+        }
+        draw_large_sprite() {
+            return create_element({tag: "img", attributes: {"src": this.trainer_sprite}, classList: ["trainer_sprite", "large"]});
+        }
+    }
+
+    class StatisticHolder {
+        constructor() {
+            this.tournament_matches = 0;
+            this.tournament_match_wins = 0;
+            this.tournaments = 0;
+            this.tournament_wins = 0;
+            this.round_matches = 0;
+            this.round_match_wins = 0;
+            this.rounds = 0;
+            this.round_wins = 0;
+            this.trades = 0;
+        }
+        get matches() {
+            return this.tournament_matches + this.round_matches;
+        }
+        get match_wins() {
+            return this.tournament_match_wins + this.round_match_wins;
+        }
+        get match_win_percent_str() {
+            if (this.matches == 0) {
+                return "0.000"
+            }
+            return (this.match_wins / this.matches).toFixed(3);
+        }
+        get tournament_match_losses() {
+            return this.tournament_matches - this.tournament_match_wins;
+        }
+        get tournament_losses() {
+            return this.tournaments - this.tournament_wins;
+        }
+        get round_match_losses() {
+            return this.round_matches - this.round_match_wins;
+        }
+        get round_losses() {
+            return this.rounds - this.round_wins;
+        }
+        add_tournament_match_wins(n_wins) {
+            this.tournament_matches += n_wins;
+            this.tournament_match_wins += n_wins;
+        }
+        add_tournament_match_losses(n_losses) {
+            this.tournament_matches += n_losses;
+        }
+        add_tournament_win_loss(win) {
+            if (win) {
+                this.tournament_wins += 1;
+            }
+            this.tournaments += 1;
+        }
+        add_round_match_wins(n_wins) {
+            this.round_matches += n_wins;
+            this.round_match_wins += n_wins;
+        }
+        add_round_match_losses(n_losses) {
+            this.round_matches += n_losses;
+        }
+        add_round_win_loss(win) {
+            if (win) {
+                this.round_wins += 1;
+            }
+            this.rounds += 1;
+        }
+        add_trade() {
+            this.trades += 1;
+        }
+    }
+
+    class Creature {
+        constructor(name, id) {
+            this.name = name;
+            this.id = id;
+            this.stat = new StatisticHolder();
+        }
+        static from_raw(creature_name, creature_id) {
+            return new Creature(creature_name, creature_id);
+        }
+        draw_sprite() {
+            return create_element({tag: "img", classList: ["sprite"], attributes: {
+                src: "https://www.serebii.net/pokedex-swsh/icon/" + pad(this.id, 3) + ".png"
+            }});
+        }
+        draw_art() {
+            return create_element({tag: "img", classList: ["art"], attributes: {
+                src: "https://www.serebii.net/pokemon/art/" + pad(this.id, 3) + ".png"
+            }});
+        }
+        draw_large_art() {
+            return create_element({tag: "img", classList: ["art", "large"], attributes: {
+                src: "https://www.serebii.net/pokemon/art/" + pad(this.id, 3) + ".png"
+            }});
+        }
+        draw_art_with_discription() {
+            var href = "https://www.smogon.com/dex/ss/pokemon/" + this.name + "/doubles/"
+            return create_element({tag: "a", attributes: {href: href, target: "_blank"}, classList: ["art-holder"], children: [
+                this.draw_art(),
+                create_element({tag: "span", innerHTML: this.name}),
+                create_element({tag: "span", innerHTML: "#" + this.id})
+            ]});
+        }
+        static get_by_ids(creatures, creature_ids) {
+            var id2creature = {};
+            for (var creature of creatures) {
+                id2creature[creature.id] = creature;
+            }
+            var creatures_ordered = [];
+            for (var creature_id of creature_ids) {
+                creatures_ordered.push(id2creature[creature_id]);
+            }
+            return creatures_ordered;
+        }
+        static get_by_id(creatures, creature_id) {
+            var id2creature = {};
+            for (var creature of creatures) {
+                id2creature[creature.id] = creature;
+            }
+            return id2creature[creature_id];
+        }
+    }
+
+    class Event {
+        constructor(date_str, description) {
+            this.date = new Date(date_str);
+            this.description = description;
+        }
+        static from_raw(raw) {
+            assert("type" in raw, "Raw event data should have 'type' field");
+            assert("date" in raw, "Raw event data should have 'date' field");
+            assert("description" in raw, "Raw event data should have 'description' field");
+            assert("kwargs" in raw, "Raw event data should have 'kwargs' field");
+            if (raw.type === "tournament") {
+                return Tournament.from_raw(raw);
+            } else if (raw.type === "draft") {
+                return Draft.from_raw(raw);
+            } else if (raw.type === "trade") {
+                return Trade.from_raw(raw);
+            } else if (raw.type === "round") {
+                return Round.from_raw(raw);
+            } else if (raw.type === "unofficial-tournament") {
+                return UnofficialTournament.from_raw(raw);
+            } else if (raw.type == "champion") {
+                return Champion.from_raw(raw);
+            } else {
+                throw new Error("Unrecognized event type '" + raw.type + "'")
+            }
+        }
+        set_number(value) {
+            this.number = value;
+        }
+        /**
+         * [Draw the event card with a title and the inner dom]
+         * @param  {[array]} children [List of DOM to make content of the card]
+         * @param  {[str]} title [Title of the card. Should be something like "Tournament" or "Draft"]
+         * @param  {[str]} css_class [CSS class to be added to the div "event" div]
+         * @return {[Player]}
+         */
+        draw(children, title, css_class) {
+            return create_element({tag: "div", classList: ["event", css_class], attributes: {onclick: "toggle_expanded(this)"}, children: [
+                create_element({tag: "div", classList: ["header"], innerHTML: title}),
+                create_element({tag: "div", classList: ["body"], children: children}),
+            ]});
+        }
+        update_statistics(players, creatures) {
+        }
+    }
+
+    class Champion extends Event {
+        constructor(date, description, teams, mvp_creature_id) {
+            super(date, description)
+            this.teams = teams
+            this.mvp_creature_id = mvp_creature_id
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("teams" in kwargs, "Raw tournemnt data should have 'teams' field");
+            assert("mvp_creature_id" in kwargs, "Raw tournemnt data should have 'mvp_creature_id' field");
+            let teams = [];
+            for (let raw_team of kwargs.teams) {
+                teams.push(Team.from_raw(raw_team))
+            }
+            return new Champion(raw.date, raw.description, teams, kwargs.mvp_creature_id);
+        }
+        draw(players, creatures) {
+            var dom_date = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var dom_description = create_element({tag: "span", innerHTML: this.description});
+
+            let player_ids = this.teams.map(({ player_id }) => player_id);
+            var players = Player.get_by_ids(players, player_ids);  // Order players by rank (in order of teams)
+
+            // var creature = creatures[this.mvp_creature_id];
+            var creature = Creature.get_by_id(creatures, this.mvp_creature_id);
+            var dom_champ = create_element({tag: "div", classList: ["winner", players[0].css_class, "champ"], children: [
+                players[0].draw_large_sprite(),
+                creature.draw_large_art(),
+            ]});
+
+            var dom_player_table = create_element({tag: "table", classList: ["players", "standard"]});
+            dom_player_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Place"}),
+                create_element({tag: "th", innerHTML: "Trainer"}),
+                create_element({tag: "th", innerHTML: "Name"}),
+                create_element({tag: "th", innerHTML: "Favorite Pokemon"})
+            ]}));
+            for (var i = 0; i < player_ids.length; i++) {
+                var class_list = [players[i].css_class, "winner"];
+                dom_player_table.appendChild(create_element({tag: "tr", classList: class_list, children: [
+                    create_element({tag: "td", innerHTML: i + 1}),
+                    create_element({tag: "td", children: [players[i].draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: players[i].name}),
+                    create_element({tag: "td", children: [this.teams[i].draw_sprites(players, creatures)]})
+                ]}));
+            }
+
+            return super.draw([dom_date, dom_description, dom_champ, dom_player_table], "Champion!", "grey");
+        }
+    }
+
+    class Tournament extends Event {
+        constructor(date, description, teams, matches) {
+            super(date, description);
+            this.teams = teams;
+            this.matches = matches;
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("teams" in kwargs, "Raw tournemnt data should have 'teams' field");
+            assert("matches" in kwargs, "Raw tournemnt data should have 'matches' field");
+            let teams = [];
+            for (let raw_team of kwargs.teams) {
+                teams.push(Team.from_raw(raw_team))
+            }
+            let matches = [];
+            for (let raw_match of kwargs.matches) {
+                matches.push(Match.from_raw(raw_match, teams));
+            }
+            return new Tournament(raw.date, raw.description, teams, matches);
+        }
+        /**
+         * [Draw event has HTML DOM]
+         * @param  {[array]} players [Each player's information]
+         * @param  {[array]} creatures [Each creatures's information]
+         * @param  {[bool]} is_official [true if is official tournement. false if we should add "unofficial" name and css classes]
+         * @return {[dom]} dom [DOM element representation of event]
+         */
+        draw_with_is_official(players, creatures, is_official) {
+            var dom_date = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var dom_description = create_element({tag: "span", innerHTML: this.description});
+            
+            // Draw player-team table
+            var player_ids, n_wins, n_loss;
+            [player_ids, n_wins, n_loss] = Match.get_player_ids_wins_and_loses(this.matches);
+            var player_ranks = rank_scores(n_wins);
+            var player_is_winner = [];
+            for (var player_rank of player_ranks) {
+                player_is_winner.push(player_rank === 1);
+            }
+            var players_by_n_wins = Player.get_by_ids(players, player_ids);  // Order players by n_wins
+            var teams = Team.get_by_player_ids(this.teams, player_ids);
+            var dom_player_table = create_element({tag: "table", classList: ["players", "standard"]});
+            dom_player_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Rank"}),
+                create_element({tag: "th", innerHTML: "Trainer"}),
+                create_element({tag: "th", innerHTML: "Name"}),
+                create_element({tag: "th", innerHTML: "Pokemon"}),
+                create_element({tag: "th", innerHTML: "Wins"}),
+                create_element({tag: "th", innerHTML: "Losses"})
+            ]}));
+            for (var i = 0; i < player_ids.length; i++) {
+                var class_list = [players_by_n_wins[i].css_class];
+                if (player_is_winner[i]) {
+                    class_list.push("winner");
+                }
+                dom_player_table.appendChild(create_element({tag: "tr", classList: class_list, children: [
+                    create_element({tag: "td", innerHTML: player_ranks[i]}),
+                    create_element({tag: "td", children: [players_by_n_wins[i].draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: players_by_n_wins[i].name}),
+                    create_element({tag: "td", children: [teams[i].draw_sprites(players_by_n_wins, creatures)]}),
+                    create_element({tag: "td", innerHTML: n_wins[i]}),
+                    create_element({tag: "td", innerHTML: n_loss[i]}),
+                ]}));
+            }
+
+            // Draw matches table
+            var dom_matches_table = create_element({tag: "table", classList: ["matches", "standard"]});
+            dom_matches_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                create_element({tag: "th", innerHTML: "Win", attributes: {"colspan": 2}}),
+                create_element({tag: "th", innerHTML: "Lose", attributes: {"colspan": 2}}),
+            ]}));
+            dom_matches_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Match"}),
+                create_element({tag: "th", innerHTML: "Player"}),
+                create_element({tag: "th", innerHTML: "Pokemon"}),
+                create_element({tag: "th", innerHTML: "Player"}),
+                create_element({tag: "th", innerHTML: "Pokemon"}),
+            ]}));
+            for (let i = 0; i < this.matches.length; i++) {
+                let match = this.matches[i];
+                var winner_class_list = [players[match.win_team.player_id].css_class, "winner"];
+                dom_matches_table.appendChild(create_element({tag: "tr", children: [
+                    create_element({tag: "td", innerHTML: i + 1}),
+                    create_element({tag: "td", innerHTML: players[match.win_team.player_id].name, classList: winner_class_list}),
+                    create_element({tag: "td", children: [match.win_team.draw_sprites(players, creatures)], classList: winner_class_list}),
+                    create_element({tag: "td", innerHTML: players[match.lose_team.player_id].name}),
+                    create_element({tag: "td", children: [match.lose_team.draw_sprites(players, creatures)]}),
+                ]}));
+            }
+
+            if (is_official) {
+                return super.draw([dom_date, dom_description, dom_player_table, dom_matches_table], "Tournament " + this.number, "tournament");
+            }
+            return super.draw([dom_date, dom_description, dom_player_table, dom_matches_table], "Unofficial Tournament " + this.number, "unofficial-tournament");
+        }
+        draw(players, creatures) {
+            return this.draw_with_is_official(players, creatures, true);
+        }
+        update_statistics(players, creatures) {
+            var player_ids, n_wins, n_loss;
+            [player_ids, n_wins, n_loss] = Match.get_player_ids_wins_and_loses(this.matches);
+            var player_ranks = rank_scores(n_wins);
+            var player_is_winner = [];
+            for (var player_rank of player_ranks) {
+                player_is_winner.push(player_rank === 1);
+            }
+            var teams = Team.get_by_player_ids(this.teams, player_ids);
+
+            // Update player statistics
+            for (let i = 0; i < player_ids.length; i++) {
+                let player_id = player_ids[i];
+                players[player_id].stat.add_tournament_match_wins(n_wins[i]);
+                players[player_id].stat.add_tournament_match_losses(n_loss[i]);
+                players[player_id].stat.add_tournament_win_loss(player_is_winner[i]);
+                var player_creatures = Creature.get_by_ids(creatures, teams[i].creature_ids);
+                for (var creature of player_creatures) {
+                    creature.stat.add_tournament_match_wins(n_wins[i]);
+                    creature.stat.add_tournament_match_losses(n_loss[i]);
+                    creature.stat.add_tournament_win_loss(player_is_winner[i]);
+                }
+            }
+        }
+    }
+
+    class UnofficialTournament extends Tournament {
+        constructor(date, description, teams, matches) {
+            super(date, description, teams, matches);
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("teams" in kwargs, "Raw tournemnt data should have 'teams' field");
+            assert("matches" in kwargs, "Raw tournemnt data should have 'matches' field");
+            let teams = [];
+            for (let raw_team of kwargs.teams) {
+                teams.push(Team.from_raw(raw_team))
+            }
+            let matches = [];
+            for (let raw_match of kwargs.matches) {
+                matches.push(Match.from_raw(raw_match, teams));
+            }
+            return new UnofficialTournament(raw.date, raw.description, teams, matches);
+        }
+        draw(players, creatures) {
+            return this.draw_with_is_official(players, creatures, false);
+        }
+        update_statistics(players, creatures) {
+        }
+    }
+
+    class Draft extends Event {
+        constructor(date, description, creatures_drafted) {
+            super(date, description);
+            this.creatures_drafted = creatures_drafted
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("creatures_drafted" in kwargs, "Raw draft data should have 'creatures_drafted' field");
+            let creatures_drafted = [];
+            for (let raw_creature_drafted of kwargs.creatures_drafted) {
+                creatures_drafted.push(CreatureDrafted.from_raw(raw_creature_drafted))
+            }
+            return new Draft(raw.date, raw.description, creatures_drafted);
+        }
+        /**
+         * [Draw event has HTML DOM]
+         * @param  {[array]} players [Each player's information]
+         * @param  {[array]} creatures [Each creatures's information]
+         * @return {[dom]} dom [DOM element representation of event]
+         */
+        draw(players, creatures) {
+            var dom_span = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            
+            var dom_table = create_element({tag: "table", classList: ["standard"]});
+            dom_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Pick"}),
+                create_element({tag: "th", innerHTML: "Trainer"}),
+                create_element({tag: "th", innerHTML: "Pokemon"}),
+                create_element({tag: "th", innerHTML: "Number"})
+            ]}));
+            for (var i = 0; i < this.creatures_drafted.length; i++) {
+                var player = players[this.creatures_drafted[i].player_id];
+                var creature = creatures[this.creatures_drafted[i].creature_id - 1];
+                dom_table.appendChild(create_element({tag: "tr", classList: ["winner", player.css_class], children: [
+                    create_element({tag: "td", innerHTML: i + 1}),
+                    create_element({tag: "td", innerHTML: player.name}),
+                    create_element({tag: "td", children: [creature.draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: creature.id}),
+                ]}));
+            }
+
+            return super.draw([dom_span, dom_table], "Draft " + this.number, "draft");
+        }
+    }
+
+    class Trade extends Event {
+        constructor(date, description, creature_team_changes) {
+            super(date, description);
+            this.creature_team_changes = creature_team_changes;
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("creatures" in kwargs, "Raw draft data should have 'creatures' field");
+            let creature_team_changes = [];
+            for (let raw_creature_team_change of kwargs.creatures) {
+                creature_team_changes.push(CreatureTeamChange.from_raw(raw_creature_team_change))
+            }
+            return new Trade(raw.date, raw.description, creature_team_changes);
+        }
+        /**
+         * [Draw event has HTML DOM]
+         * @param  {[array]} players [Each player's information]
+         * @param  {[array]} creatures [Each creatures's information]
+         * @return {[dom]} dom [DOM element representation of event]
+         */
+        draw(players, creatures) {
+            var dom_span = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var dom_description = create_element({tag: "span", innerHTML: this.description});
+            var dom_trade_table = create_element({tag: "table", classList: ["trades", "standard"]});
+            dom_trade_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "No"}),
+                create_element({tag: "th", innerHTML: "Pokemon", attributes: {colspan: 2}}),
+                create_element({tag: "th", innerHTML: "To"}),
+                create_element({tag: "th", innerHTML: "From"})
+            ]}));
+            var creature_team_changes = this.creature_team_changes.sort(function(a, b) {
+                if (a.creature_id < b.creature_id) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }).sort(function(a, b) {
+                if (a.from_player_id < b.from_player_id) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }).sort(function(a, b) {
+                if (a.to_player_id < b.to_player_id) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            });
+            for (var creature_team_change of creature_team_changes) {
+                var creature = creatures[creature_team_change.creature_id - 1];
+                var to_player = players[creature_team_change.to_player_id];
+                var from_player = players[creature_team_change.from_player_id];
+                var classList = ["winner", to_player.css_class];
+                dom_trade_table.appendChild(create_element({tag: "tr", children: [
+                    create_element({tag: "td", innerHTML: creature.id}),
+                    create_element({tag: "td", children: [creature.draw_sprite()], classList: classList}),
+                    create_element({tag: "td", innerHTML: creature.name}),
+                    create_element({tag: "td", innerHTML: to_player.name, classList: classList}),
+                    create_element({tag: "td", innerHTML: from_player.name}),
+                ]}));
+            }
+            return super.draw([dom_span, dom_description, dom_trade_table], "Trade " + this.number, "trade");
+        }
+        update_statistics(players, creatures) {
+            var creature_ids = [];
+            for (let creature_team_change of this.creature_team_changes) {
+                players[creature_team_change.from_player_id].stat.add_trade();
+                players[creature_team_change.to_player_id].stat.add_trade();
+                creature_ids.push(creature_team_change.creature_id);
+            }
+            var creatures_in_trade = Creature.get_by_ids(creatures, creature_ids);
+            for (var creature of creatures_in_trade) {
+                creature.stat.add_trade();
+            }
+        }
+    }
+
+    class Round extends Event {
+        constructor(date, description, matches) {
+            super(date, description)
+            this.matches = matches
+        }
+        static from_raw(raw) {
+            let kwargs = raw.kwargs;
+            assert("matches" in kwargs, "Raw round data should have a 'matches' field");
+            let matches = [];
+            for (let raw_match of kwargs.matches) {
+                assert("win_player_id" in raw_match, "Raw match data in playoff round should each have a 'win_player_id' field");
+                assert("lose_player_id" in raw_match, "Raw match data in playoff round should each have a 'lose_player_id' field");
+                assert("win_creature_ids" in raw_match, "Raw match data in playoff round should each have a 'win_creature_ids' field");
+                assert("lose_creature_ids" in raw_match, "Raw match data in playoff round should each have a 'lose_creature_ids' field");
+                let win_team = new Team(raw_match.win_player_id, raw_match.win_creature_ids);
+                let lose_team = new Team(raw_match.lose_player_id, raw_match.lose_creature_ids);
+                matches.push(new Match(win_team, lose_team));
+            }
+            return new Round(raw.date, raw.description, matches);
+        }
+        /**
+         * [Draw event has HTML DOM]
+         * @param  {[array]} players [Each player's information]
+         * @param  {[array]} creatures [Each creatures's information]
+         * @return {[dom]} dom [DOM element representation of event]
+         */
+        draw(players, creatures) {
+            var dom_span = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var dom_description = create_element({tag: "span", innerHTML: this.description});
+
+            // Player table with wins and ranking
+            var player_ids, n_wins, n_loss;
+            [player_ids, n_wins, n_loss] = Match.get_player_ids_wins_and_loses(this.matches);
+            var player_ranks = rank_scores(n_wins);
+            var player_is_winner = [];
+            for (var player_rank of player_ranks) {
+                player_is_winner.push(player_rank === 1);
+            }
+            var players_by_n_wins = Player.get_by_ids(players, player_ids);  // Order players by n_wins
+            var dom_player_table = create_element({tag: "table", classList: ["players", "standard"]});
+            dom_player_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Rank"}),
+                create_element({tag: "th", innerHTML: "Trainer"}),
+                create_element({tag: "th", innerHTML: "Name"}),
+                create_element({tag: "th", innerHTML: "Wins"}),
+                create_element({tag: "th", innerHTML: "Losses"})
+            ]}));
+            for (var i = 0; i < player_ids.length; i++) {
+                var class_list = [players_by_n_wins[i].css_class];
+                if (player_is_winner[i]) {
+                    class_list.push("winner");
+                }
+                dom_player_table.appendChild(create_element({tag: "tr", classList: class_list, children: [
+                    create_element({tag: "td", innerHTML: player_ranks[i]}),
+                    create_element({tag: "td", children: [players_by_n_wins[i].draw_sprite()]}),
+                    create_element({tag: "td", innerHTML: players_by_n_wins[i].name}),
+                    create_element({tag: "td", innerHTML: n_wins[i]}),
+                    create_element({tag: "td", innerHTML: n_loss[i]}),
+                ]}));
+            }
+
+            // Matches table with teams
+            var dom_matches_table = create_element({tag: "table", classList: ["matches", "standard"]});
+            dom_matches_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
+                create_element({tag: "th", innerHTML: "Win", attributes: {"colspan": 2}}),
+                create_element({tag: "th", innerHTML: "Lose", attributes: {"colspan": 2}}),
+            ]}));
+            dom_matches_table.appendChild(create_element({tag: "tr", children: [
+                create_element({tag: "th", innerHTML: "Match"}),
+                create_element({tag: "th", innerHTML: "Player"}),
+                create_element({tag: "th", innerHTML: "Pokemon"}),
+                create_element({tag: "th", innerHTML: "Player"}),
+                create_element({tag: "th", innerHTML: "Pokemon"}),
+            ]}));
+            for (let i = 0; i < this.matches.length; i++) {
+                let match = this.matches[i];
+                var winner_class_list = [players[match.win_team.player_id].css_class, "winner"];
+                dom_matches_table.appendChild(create_element({tag: "tr", children: [
+                    create_element({tag: "td", innerHTML: i + 1}),
+                    create_element({tag: "td", innerHTML: players[match.win_team.player_id].name, classList: winner_class_list}),
+                    create_element({tag: "td", children: [match.win_team.draw_sprites(players, creatures)], classList: winner_class_list}),
+                    create_element({tag: "td", innerHTML: players[match.lose_team.player_id].name}),
+                    create_element({tag: "td", children: [match.lose_team.draw_sprites(players, creatures)]}),
+                ]}));
+            }
+
+            return super.draw([dom_span, dom_description, dom_player_table, dom_matches_table], "Playoff Round " + this.number, "round");
+        }
+        update_statistics(players, creatures) {
+            var player_ids, n_wins, n_loss;
+            [player_ids, n_wins, n_loss] = Match.get_player_ids_wins_and_loses(this.matches);
+            var player_ranks = rank_scores(n_wins);
+            var player_is_winner = [];
+            for (var player_rank of player_ranks) {
+                player_is_winner.push(player_rank === 1);
+            }
+
+            for (let i = 0; i < player_ids.length; i++) {
+                let player_id = player_ids[i];
+                players[player_id].stat.add_round_match_wins(n_wins[i]);
+                players[player_id].stat.add_round_match_losses(n_loss[i]);
+                players[player_id].stat.add_round_win_loss(player_is_winner[i]);
+            }
+            for (var match of this.matches) {
+                for (var creature of Creature.get_by_ids(creatures, match.win_team.creature_ids)) {
+                    creature.stat.add_round_match_wins(1);
+                }
+                for (var creature of Creature.get_by_ids(creatures, match.lose_team.creature_ids)) {
+                    creature.stat.add_round_match_losses(1);
+                }
+            }
+        }
+    }
+
+    class CreatureTeamChange {
+        constructor(creature_id, from_player_id, to_player_id) {
+            this.creature_id = creature_id;
+            this.from_player_id = from_player_id;
+            this.to_player_id = to_player_id;
+        }
+        static from_raw(raw) {
+            assert("from_player_id" in raw, "Raw creature team change data should have a 'from_player_id' field");
+            assert("to_player_id" in raw, "Raw creature team change data should have a 'to_player_id' field");
+            assert("creature_id" in raw, "Raw creature team change data should have a 'creature_id' field");
+            return new CreatureTeamChange(raw.creature_id, raw.from_player_id, raw.to_player_id);
+        }
+    }
+
+    class CreatureDrafted {
+        constructor(creature_id, player_id) {
+            this.creature_id = creature_id;
+            this.player_id = player_id;
+        }
+        static from_raw(raw) {
+            assert("creature_id" in raw, "Raw creature team change data should have a 'creature_id' field");
+            assert("player_id" in raw, "Raw creature team change data should have a 'player_id' field");
+            return new CreatureDrafted(raw.creature_id, raw.player_id);
+        }
+    }
+
+    class Team {
+        /**
+         * Create Team object that consists of a player and their creatures used in a match
+         * @param  {[int]} player_id ID of player
+         * @param  {[array]} creature_ids IDs of creatures
+         * @return {Team}
+         */
+        constructor(player_id, creature_ids) {
+            this.player_id = player_id;
+            this.creature_ids = creature_ids;
+        }
+        static from_raw(raw) {
+            assert("player_id" in raw, "Raw team data should have 'player_id' field");
+            assert("creature_ids" in raw, "Raw team data should have 'creature_ids' field");
+            return new Team(raw.player_id, raw.creature_ids);
+        }
+        draw_sprites(players, creatures) {
+            var team_player = Player.get_by_id(players, this.player_id);
+            var team_creatures = Creature.get_by_ids(creatures, this.creature_ids.sort(function(a, b) {
+                if (a < b) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }));
+            var dom = document.createElement("div");
+            dom.classList.add("team");
+            dom.classList.add(team_player.css_class);
+            for (var i = 0; i < team_creatures.length; i++) {
+                var dom_img = team_creatures[i].draw_sprite();
+                dom_img.classList.add(team_player.css_class);
+                dom.appendChild(dom_img);
+            }
+            return dom;
+        }
+        static get_by_player_ids(teams, player_ids) {
+            var id2team = {};
+            for (var team of teams) {
+                id2team[team.player_id] = team;
+            }
+            var teams_ordered = [];
+            for (var player_id of player_ids) {
+                teams_ordered.push(id2team[player_id]);
+            }
+            return teams_ordered;
+        }
+    }
+
+    class Match {
+        /**
+         * Create Match object that has a winner and loser team
+         * @param  {[Team]} win_team
+         * @param  {[Team]} lose_team
+         * @return {Match}
+         */
+         constructor(win_team, lose_team) {
+            this.win_team = win_team;
+            this.lose_team = lose_team;
+         }
+         /**
+         * Create Match object from raw match data and a list of possible teams
+         * @param  {[object]} raw [Must contain a "win_player_id" and a "lose_player_id" field]
+         * @param  {[array]} teams [Possible teams to select from. These could be teams for all the players in a tournament
+         *     but has to at least include teams for the winning and losing players]
+         * @return {Match}
+         */
+         static from_raw(raw, teams) {
+            assert("win_player_id" in raw, "Raw match data should have a 'win_player_id' field");
+            assert("lose_player_id" in raw, "Raw match data should have a 'lose_player_id' field");
+            let win_player_id = raw.win_player_id;
+            let lose_player_id = raw.lose_player_id;
+            let player_ids = [];
+            for (let team of teams) {
+                player_ids.push(team.player_id);
+            }
+            let player_id_set = new Set(player_ids);
+            assert(player_ids.length === player_id_set.size, "Teams should belong to different players when making a Match");
+            assert(player_id_set.has(win_player_id), "Winning player ID must have a team");
+            assert(player_id_set.has(lose_player_id), "Losing player ID must have a team");
+            let win_team_index = argfind(player_ids, win_player_id);
+            let lose_team_index = argfind(player_ids, lose_player_id);
+            return new Match(teams[win_team_index], teams[lose_team_index]);
+         }
+         /**
+         * [Player IDs and number of wins for each player sorted by number of wins]
+         * @param {[array]} matches [List of matches for one tournament or one playoff round]
+         * @return {[array]} player_ids [ID for each player]
+         * @return {[array]} wins [Number of wins for each player (in descending order). Corresponds to returned player_ids]
+         */
+         static get_player_ids_wins_and_loses(matches) {
+            var win_player_ids = [];
+            var lose_player_ids = [];
+            for (let match of matches) {
+                win_player_ids.push(match.win_team.player_id);
+                lose_player_ids.push(match.lose_team.player_id);
+            }
+            var player_and_wins = unique_counts(win_player_ids);
+            var player2wins = {};
+            for (var i = 0; i < player_and_wins[0].length; i++) {
+                player2wins[player_and_wins[0][i]] = player_and_wins[1][i];
+            }
+            var player_and_losses = unique_counts(lose_player_ids);
+            var player2losses = {};
+            for (var i = 0; i < player_and_losses[0].length; i++) {
+                player2losses[player_and_losses[0][i]] = player_and_losses[1][i];
+            }
+            var player_id_set = new Set();
+            for (var match of matches) {
+                player_id_set.add(match.win_team.player_id);
+                player_id_set.add(match.lose_team.player_id);
+            }
+            var player_ids = Array.from(player_id_set);
+            for (var player_id of player_ids) {
+                if (!(player_id in player2wins)) {
+                    player2wins[player_id] = 0;
+                }
+                if (!(player_id in player2losses)) {
+                    player2losses[player_id] = 0;
+                }
+            }
+            var player2score = {}
+            var scores = []
+            for (var player_id of player_ids) {
+                scores.push(player2wins[player_id] - player2losses[player_id]);
+            }
+            var idx = argsort(scores).reverse();
+            var player_ids_sorted = [];
+            for (var i of idx) {
+                player_ids_sorted.push(player_ids[i]);
+            }
+            var n_wins_sorted = [];
+            var n_loss_sorted = [];
+            for (var player_id of player_ids_sorted) {
+                n_wins_sorted.push(player2wins[player_id]);
+                n_loss_sorted.push(player2losses[player_id]);
+            }
+            return [player_ids_sorted, n_wins_sorted, n_loss_sorted];
+        }
+    }
+
+    function create_element({tag = "div", innerHTML = "", children = [], classList = [], attributes={}}={}) {
+        dom = document.createElement(tag);
+        dom.innerHTML = innerHTML;
+        for (var css_class of classList) {
+            dom.classList.add(css_class);
+        }
+        for (var child of children) {
+            dom.appendChild(child);
+        }
+        for (var key in attributes) {
+            dom.setAttribute(key, attributes[key]);
+        }
+        return dom;
+    }
+
+    function create_elements(count, innerHTML = "", tag = "div", children = [], classList = []) {
+        var elements = [];
+        for (var i = 0; i < count; i++) {
+            elements.push(create_element({tag: tag, innerHTML: innerHTML, children: children, classList: classList}))
+        }
+        return elements;
+    }
+
+    /**
+     * @param [object] dom Dom element to toggle a css "expanded" class on
+     */
+    function toggle_expanded(dom) {
+        if (dom.classList.contains("expanded")) {
+            dom.classList.remove("expanded");
+        } else {
+            dom.classList.add("expanded");
+        }
+    }
+
+    /**
+     * [Rank play]
+     * @param  {[array]} scores [Score for each element. Could be number of match wins for each player in a tournament]
+     * @return {[array]} ranks [Rank of each element with higher scores getting a higher rank]
+     */
+    function rank_scores(scores) {
+        var sorted = scores.slice().sort(function(a,b){return b - a})
+        return scores.map(function(v){ return sorted.indexOf(v)+1 });
+    }
+
+
+    main(raw);
+</script>
+</body>
+</html>
