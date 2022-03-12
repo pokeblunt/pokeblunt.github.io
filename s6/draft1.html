@@ -47,9 +47,9 @@
 
     <div class="col" id="player1"><h2>Kamon</h2></div>
     <div class="col" id="player2"><h2>JaeBird</h2></div>
-    <div class="col" id="player3"><h2>Steve</h2></div>
+    <div class="col" id="player3"><h2>A-Rod</h2></div>
     <div class="col" id="player4"><h2>James</h2></div>
-    <div class="col" id="player5"><h2>A-Rod</h2></div>
+    <div class="col" id="player5"><h2>Steve</h2></div>
 
     <div id="newcomers"><h2>Gen 8 Newcomers (Sorted by Pokemon Number)</h2></div>
     <div id="available"><h2>Drafted last season (Sorted by Matches + Match Wins in Season 5)</h2></div>
@@ -85,6 +85,21 @@
         [1],
         [1]
     ];
+    var player_pokemon_flat = player_pokemon.flat();
+
+    // Remove pokemon chosen by players
+    available_pokemon = available_pokemon.filter(function(el) {
+        return player_pokemon_flat.indexOf(el) < 0;
+    });
+    newcomers = newcomers.filter(function(el) {
+        return player_pokemon_flat.indexOf(el) < 0;
+    });
+    nodraft = nodraft.filter(function(el) {
+        return player_pokemon_flat.indexOf(el) < 0;
+    });
+    noviable = noviable.filter(function(el) {
+        return player_pokemon_flat.indexOf(el) < 0;
+    });
 
     function makeDOM_div_pokemon(pokemon_id, pokemon_name) {
         var a   = document.createElement("a");
