@@ -219,6 +219,21 @@
     img.art {
         width: 125px;
     }
+    div.kamon img.art {
+        background: radial-gradient(#e74c3c 3%, #ecf0f1 70%);
+    }
+    div.jbird img.art {
+        background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
+    }
+    div.steve img.art {
+        background: radial-gradient(#9b59b6 3%, #ecf0f1 70%);
+    }
+    div.james img.art {
+        background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
+    }
+    div.arod img.art {
+        background: radial-gradient(#e67e22 15%, #ecf0f1 70%);
+    }
     img.art.large {
         height: 256px;
         width: auto;
@@ -1071,7 +1086,7 @@
                 dom_creature_arts.push(creature.draw_art_with_discription());
             }
 
-            return create_element({tag: "div", classList: ["event", "grey"], children: [
+            return create_element({tag: "div", classList: ["event", "grey", this.css_class], children: [
                 create_element({tag: "div", classList: ["header"], innerHTML: "Trainer: " + this.name}),
                 create_element({tag: "div", classList: ["body"], children: [dom_stats_table].concat(dom_creature_arts)}),
             ]});
