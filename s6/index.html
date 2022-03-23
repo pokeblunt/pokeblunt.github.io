@@ -299,7 +299,42 @@
         padding-left: 10px;
         padding-right: 10px;
     }
-</style></head>
+</style>
+<script>
+    function make_random_tournament_text(dom_id) {
+        const shuffleArray = array => {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                const temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+        var names = [
+            "Matts",
+            "Jesse",
+            "Steve",
+            "James",
+            "A-Rod",
+        ]
+        shuffleArray(names);
+        var [a, b, c, d, e] = names
+        msg = "---- Day 1 ----<br/>"
+        msg += a + " vs " + b + "<br/>"
+        msg += c + " vs " + d + "<br/>"
+        msg += e + " vs " + a + "<br/>"
+        msg += b + " vs " + c + "<br/>"
+        msg += d + " vs " + e + "<br/>"
+        msg += "---- Day 2 ----<br/>"
+        msg += a + " vs " + c + "<br/>"
+        msg += b + " vs " + d + "<br/>"
+        msg += c + " vs " + e + "<br/>"
+        msg += a + " vs " + d + "<br/>"
+        msg += b + " vs " + e + "<br/>"
+        document.getElementById(dom_id).innerHTML = msg;
+    }
+</script>
+</head>
 
 <head><title>Pokemasters - Season 6</title></head>
 <head><link rel="shortcut icon" type="image/png" href="favicon.png"/></head>
@@ -341,6 +376,10 @@
                 <li><a href="https://www.smogon.com/forums/threads/ss-doubles-ou-viability-rankings-v-2.3673519/" target="_blank">Smogon Gen 8 Doubles OU Viability Rankings</a> - Reference for what is currently considered viable as of 2022/02/26</li>
                 <li><a href="draft1.html">Season 6 Draft</a> - Inital draft for Season 6 of Pokemasters</li>
             </ul>
+            <button onclick="make_random_tournament_text('random_tournament_text')">Random Tournament Order</button>
+            <div id="random_tournament_text" style='font-family: "Courier New"'>
+                ^^^ Click this ^^^
+            </div>
 
             <h2>Rules</h2>
             <p>We generally follow Smogon's Gen 8 Doubles OU rules. In a season, we play several tournaments and then playoffs are held at the end of each season.</p>
@@ -1912,7 +1951,6 @@
         var sorted = scores.slice().sort(function(a,b){return b - a})
         return scores.map(function(v){ return sorted.indexOf(v)+1 });
     }
-
 
     main(raw);
 </script>
