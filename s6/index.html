@@ -922,7 +922,22 @@
                         }, {
                             "win_player_id": 2,
                             "lose_player_id": 4,
-                        },
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 1,
+                        }, {
+                            "win_player_id": 3,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 4,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 3,
+                            "lose_player_id": 4,
+                        }
                     ]
                 }
             }
@@ -1369,6 +1384,7 @@
         draw_sprite() {
             return create_element({tag: "img", classList: ["sprite"], attributes: {
                 src: "https://www.serebii.net/pokedex-swsh/icon/" + pad(this.id, 3) + ".png"
+                // src: "https://play.pokemonshowdown.com/sprites/afd/" + this.name.toLowerCase().replace(/\s/g, '') + ".png"
             }});
         }
         draw_art() {
