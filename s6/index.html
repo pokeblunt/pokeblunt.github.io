@@ -1437,7 +1437,6 @@
             counter[type_str] += 1;
             event.set_number(counter[type_str]);
         }
-        events = events.sort(function(a, b) { return a.date > b.date ? -1 : 1 });  // Order from latest to earliest for display
         
         assert("creatures" in raw, "'creatures' attribute must be in the raw object")
         var creatures = [];
@@ -1445,7 +1444,10 @@
             creatures.push(Creature.from_raw(raw["creatures"][i], i + 1));
         }
 
+        events = events.sort(function(a, b) { return a.date < b.date ? -1 : 1 });  // Order from earliest to latest for stats
         set_statistics(events, players, creatures);
+
+        events = events.sort(function(a, b) { return a.date > b.date ? -1 : 1 });  // Order from latest to earliest for display
         return [players, events, creatures]
     }
 
@@ -1493,13 +1495,14 @@
             create_element({tag: "th", innerHTML: "PMW", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 11, true)"}}),
             create_element({tag: "th", innerHTML: "PM", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 12, true)"}}),
             create_element({tag: "th", innerHTML: "R", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 13, true)"}}),
+            create_element({tag: "th", innerHTML: "ELO", classList: ["pointer"], attributes: {onClick: "sortTable('cst', 14, true)"}}),
         ]})];
         for (var player of players) {
             var player_creatures = Creature.get_by_ids(creatures, player.creature_ids);
             for (var creature of player_creatures) {
                 table_rows.push(create_element({tag: "tr", children: [
                     create_element({tag: "td", innerHTML: creature.id}),
-                    create_element({tag: "td", children: [creature.draw_sprite()]}),
+                    create_element({tag: "td", children: [creature.draw_sprite()], classList: ["winner", player.css_class]}),
                     create_element({tag: "td", innerHTML: creature.name}),
                     create_element({tag: "td", innerHTML: creature.stat.matches + creature.stat.match_wins}),
                     create_element({tag: "td", innerHTML: creature.stat.match_wins}),
@@ -1512,6 +1515,7 @@
                     create_element({tag: "td", innerHTML: creature.stat.round_match_wins}),
                     create_element({tag: "td", innerHTML: creature.stat.round_matches}),
                     create_element({tag: "td", innerHTML: creature.stat.trades}),
+                    create_element({tag: "td", innerHTML: Math.round(creature.stat.elo)}),
                 ]}));
             }
         }
@@ -1626,6 +1630,24 @@
             vals_sorted.push(vals[i]);
         }
         return [keys_sorted, vals_sorted];
+    }
+
+    function mean_columns(array) {
+        const newArray = [];
+        var n_col = array[0].length;
+        array.forEach(sub => {
+          sub.forEach((num, index) => {
+             if(newArray[index]){
+                newArray[index] += num;
+             }else{
+                newArray[index] = num;
+             }
+          });
+        });
+        newArray.forEach((num, index) => {
+            newArray[index] /= n_col;
+        });
+        return newArray;
     }
 
     function pad(num, size) {
@@ -1765,6 +1787,7 @@
             this.rounds = 0;
             this.round_wins = 0;
             this.trades = 0;
+            this.elo = 1000;
         }
         get matches() {
             return this.tournament_matches + this.round_matches;
@@ -2093,6 +2116,11 @@
                     creature.stat.add_tournament_win_loss(player_is_winner[i]);
                 }
             }
+
+            // Update ELO
+            for (let i = 0; i < this.matches.length; i++) {
+                this.matches[i].update_elos(creatures);
+            }
         }
     }
 
@@ -2355,6 +2383,7 @@
                 for (var creature of Creature.get_by_ids(creatures, match.lose_team.creature_ids)) {
                     creature.stat.add_round_match_losses(1);
                 }
+                match.update_elos(creatures);
             }
         }
     }
@@ -2523,6 +2552,34 @@
             }
             return [player_ids_sorted, n_wins_sorted, n_loss_sorted];
         }
+
+        /**
+         * [Update the ELO of each creature]
+         * @param {[array]} creatures [List of all creatures]
+         */
+        update_elos(creatures) {
+            var win_creatures = Creature.get_by_ids(creatures, this.win_team.creature_ids)
+            var lose_creatures = Creature.get_by_ids(creatures, this.lose_team.creature_ids)
+            var nw = win_creatures.length
+            var nl = lose_creatures.length
+            var win_elos = new Array(nw).fill(0).map(() => new Array(nl).fill(0));
+            var lose_elos = new Array(nl).fill(0).map(() => new Array(nw).fill(0));
+            win_creatures.forEach(function (win_creature, i) {
+                lose_creatures.forEach(function (lose_creature, j) {
+                    var [ew, el] = elo_update(win_creature.stat.elo, lose_creature.stat.elo, 32);
+                    win_elos[i][j] = ew;
+                    lose_elos[j][i] = el;
+                });
+            });
+            var win_elos = mean_columns(win_elos);  // Use the average elo change across enemy creatures
+            var lose_elos = mean_columns(lose_elos);
+            win_creatures.forEach(function (creature, i) {
+                creature.stat.elo = Math.max(1000, win_elos[i]);
+            });
+            lose_creatures.forEach(function (creature, i) {
+                creature.stat.elo = Math.max(1000, lose_elos[i]);
+            });
+        }
     }
 
     function create_element({tag = "div", innerHTML = "", children = [], classList = [], attributes={}}={}) {
@@ -2567,6 +2624,26 @@
     function rank_scores(scores) {
         var sorted = scores.slice().sort(function(a,b){return b - a})
         return scores.map(function(v){ return sorted.indexOf(v)+1 });
+    }
+
+    /**
+     * [Rank play]
+     * Args:
+     *     r1 (float) Elo for winning player
+     *     r2 (float) Elo for losing player
+     *     k (int) The "K-factor" which says how much to adjust the ranks
+     * Returns:
+     *     r1_new (float) New calculation of Elo for winning player
+     *     r2_new (float) New calculation of Elo for losing player
+     */
+    function elo_update(r1, r2, k = 32) {
+        var q1 = Math.pow(10, r1 / 400);
+        var q2 = Math.pow(10, r2 / 400);
+        var e1 = q1 / (q1 + q2);
+        var e2 = q2 / (q1 + q2);
+        var r1_new = r1 + k * (1 - e1);
+        var r2_new = r2 + k * (0 - e2);
+        return [r1_new, r2_new];
     }
 
     main(raw);
