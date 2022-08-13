@@ -1633,22 +1633,16 @@
         return [keys_sorted, vals_sorted];
     }
 
-    function mean_columns(array) {
-        const newArray = [];
-        var n_col = array[0].length;
-        array.forEach(sub => {
-          sub.forEach((num, index) => {
-             if(newArray[index]){
-                newArray[index] += num;
-             }else{
-                newArray[index] = num;
-             }
-          });
-        });
-        newArray.forEach((num, index) => {
-            newArray[index] /= n_col;
-        });
-        return newArray;
+    function mean_rows(arr) {
+        var result = [];
+        for (let i = 0; i < arr.length; i++) {
+            result[i] = 0;
+            for (let j = 0; j < arr[i].length; j++) {
+                result[i] += arr[i][j];
+            }
+            result[i] /= arr[i].length;
+        }
+        return result;
     }
 
     function pad(num, size) {
@@ -1756,6 +1750,12 @@
             });
             creatures_this_player = creatures_this_player.sort(function(a, b) {
                 if (a.stat.matches + a.stat.match_wins > b.stat.matches + b.stat.match_wins) {
+                    return -1;
+                }
+                return 1;
+            });
+            creatures_this_player = creatures_this_player.sort(function(a, b) {
+                if (a.stat.elo > b.stat.elo) {
                     return -1;
                 }
                 return 1;
@@ -2572,8 +2572,8 @@
                     lose_elos[j][i] = el;
                 });
             });
-            var win_elos = mean_columns(win_elos);  // Use the average elo change across enemy creatures
-            var lose_elos = mean_columns(lose_elos);
+            var win_elos = mean_rows(win_elos);  // Use the average elo change across enemy creatures
+            var lose_elos = mean_rows(lose_elos);
             win_creatures.forEach(function (creature, i) {
                 creature.stat.elo = Math.max(1000, win_elos[i]);
             });
