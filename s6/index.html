@@ -2566,7 +2566,7 @@
             var lose_elos = new Array(nl).fill(0).map(() => new Array(nw).fill(0));
             win_creatures.forEach(function (win_creature, i) {
                 lose_creatures.forEach(function (lose_creature, j) {
-                    var [ew, el] = elo_update(win_creature.stat.elo, lose_creature.stat.elo, 32);
+                    var [ew, el] = elo_update(win_creature.stat.elo, lose_creature.stat.elo);
                     win_elos[i][j] = ew;
                     lose_elos[j][i] = el;
                 });
@@ -2631,19 +2631,38 @@
      * Args:
      *     r1 (float) Elo for winning player
      *     r2 (float) Elo for losing player
-     *     k (int) The "K-factor" which says how much to adjust the ranks
      * Returns:
      *     r1_new (float) New calculation of Elo for winning player
      *     r2_new (float) New calculation of Elo for losing player
      */
-    function elo_update(r1, r2, k = 32) {
+    function elo_update(r1, r2) {
+        var k1 = elo_k_calc(r1, true);
+        var k2 = elo_k_calc(r2, false);
+
         var q1 = Math.pow(10, r1 / 400);
         var q2 = Math.pow(10, r2 / 400);
         var e1 = q1 / (q1 + q2);
         var e2 = q2 / (q1 + q2);
-        var r1_new = r1 + k * (1 - e1);
-        var r2_new = r2 + k * (0 - e2);
+        var r1_new = r1 + k1 * (1 - e1);
+        var r2_new = r2 + k2 * (0 - e2);
         return [r1_new, r2_new];
+    }
+
+    function elo_k_calc(r, is_winner) {
+        if (r < 1100) {
+            var x = (r - 1000) / 100;  // A percent between 1000 and 1100
+            if (is_winner) {
+                return 80 * (1 - x) + 50 * x;
+            } else {
+                return 20 * (1 - x) + 50 * x;
+            }
+        } else if (r < 1300) {
+            return 50;
+        } else if (r < 1600) {
+            return 40;
+        } else {
+            return 32;
+        }
     }
 
     main(raw);
