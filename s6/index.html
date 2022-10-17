@@ -10,6 +10,9 @@
     html {
         background-color: #ecf0f1;
     }
+    h1 {
+        margin-top: 100px;
+    }
     h2 {
         padding-top: 20px;
         margin-bottom: 0px;
@@ -17,8 +20,58 @@
     h2 > img {
         height: 1.5em;
     }
+    body {
+        margin: 0;
+    }
     body > p {
         margin-top: 5px;
+    }
+    ul.navbar {
+        top: 0;
+        position: fixed;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        width: 100%;
+        opacity: 0.95;
+    }
+    ul.navbar > li {
+        float: left;
+    }
+    ul.navbar > li > a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    ul.navbar > li > a.active.everything {
+        background-color: #ecf0f1;
+        color: #333;
+    }
+    ul.navbar > li > a.active.tournament {
+        background-color: #3498db;
+    }
+    ul.navbar > li > a.active.trainer {
+        background-color: #ecf0f1;
+        color: #333;
+    }
+    ul.navbar > li > a.active.trade {
+        background-color: #27ae60;
+    }
+    ul.navbar > li > a.active.draft {
+        background-color: #f39c12;
+    }
+    ul.navbar > li > a.active.unofficial-tournament {
+        background-color: #9b59b6;
+    }
+    ul.navbar > li > a:hover {
+        background-color: #111;
     }
     p.margin-bottom-0 {
         margin-bottom: 0px;
@@ -340,6 +393,15 @@
 <head><link rel="shortcut icon" type="image/png" href="favicon.png"/></head>
 
 <body>
+    <ul class="navbar">
+        <li><a onclick="filter_cards('')" class="tab everything active">Everything</a></li>
+        <li><a onclick="filter_cards('tournament')" class="tab tournament">Tournaments</a></li>
+        <li><a onclick="filter_cards('trainer')" class="tab trainer">Trainers</a></li>
+        <li><a onclick="filter_cards('trade')" class="tab trade">Trades</a></li>
+        <li><a onclick="filter_cards('draft')" class="tab draft">Drafts</a></li>
+        <li><a onclick="filter_cards('unofficial-tournament')" class="tab unofficial-tournament">Unofficials</a></li>
+    </ul>
+
     <h1>Pokemasters</h1>
     <h2><img src="favicon.png"> Season 6 <img src="favicon.png"></h2>
 
@@ -347,7 +409,7 @@
         <div id="events"></div>
     </div>
 
-    <div class="event grey">
+    <div class="event grey trainer">
         <div class="header">Pokemon Statistics</div>
         <div class="body" style="overflow-x: scroll" id="put-pokemon-stats-table-here">
             Key:
@@ -368,7 +430,7 @@
         </div>
     </div>
 
-    <div class="event grey">
+    <div class="event grey trainer">
         <div class="header">Rules</div>
         <div class="body">
             <h2>Links</h2>
@@ -2250,7 +2312,7 @@
                 dom_creature_arts.push(creature.draw_art_with_discription());
             }
 
-            return create_element({tag: "div", classList: ["event", "grey", this.css_class], children: [
+            return create_element({tag: "div", classList: ["event", "grey", "trainer", this.css_class], children: [
                 create_element({tag: "div", classList: ["header"], innerHTML: "Trainer: " + this.name}),
                 create_element({tag: "div", classList: ["body"], children: [dom_stats_table].concat(dom_creature_arts)}),
             ]});
@@ -3149,6 +3211,31 @@
             return 40;
         } else {
             return 32;
+        }
+    }
+
+    function filter_cards(css_class) {
+        let collection = document.getElementsByClassName("event");
+        for (let i = 0; i < collection.length; i++) {
+            collection[i].style.display = "none";
+        }
+        if (css_class === "") {
+            css_class = "event";
+        }
+        collection = document.getElementsByClassName(css_class);
+        for (let i = 0; i < collection.length; i++) {
+            collection[i].style.display = "block";
+        }
+        collection = document.getElementsByClassName("tab");
+        for (let i = 0; i < collection.length; i++) {
+            collection[i].classList.remove("active");
+        }
+        if (css_class == "event") {
+            css_class = "everything"
+        }
+        collection = document.getElementsByClassName("tab " + css_class);
+        for (let i = 0; i < collection.length; i++) {
+            collection[i].classList.add("active");
         }
     }
 
