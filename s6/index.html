@@ -2231,25 +2231,50 @@
                         {
                             "win_player_id": 0,
                             "lose_player_id": 3,
-                            "win_creature_ids": [],
-                            "lose_creature_ids": []
+                            "win_creature_ids": [233, 807, 727, 861, 793],
+                            "lose_creature_ids": [488, 797, 802, 645, 805, 683]
                         }, {
                             "win_player_id": 0,
                             "lose_player_id": 3,
-                            "win_creature_ids": [],
-                            "lose_creature_ids": []
+                            "win_creature_ids": [233, 894, 882, 641, 895, 279],
+                            "lose_creature_ids": [802, 143, 788, 875, 713, 707]
                         }, {
                             "win_player_id": 0,
                             "lose_player_id": 3,
-                            "win_creature_ids": [],
-                            "lose_creature_ids": []
+                            "win_creature_ids": [806, 233, 245, 895, 882, 727],
+                            "lose_creature_ids": [683, 805, 797, 488, 645, 802]
                         }, {
                             "win_player_id": 0,
                             "lose_player_id": 3,
-                            "win_creature_ids": [],
-                            "lose_creature_ids": []
+                            "win_creature_ids": [894, 861, 807, 785, 36, 146],
+                            "lose_creature_ids": [645, 787, 802, 324, 778, 286]
                         }
                     ]
+                }
+            }, {
+                "type": "champion",
+                "date": "2022/12/27 01:00",
+                "description": '',
+                "kwargs": {
+                    "mvp_creature_id": 233,
+                    "teams": [
+                        {
+                            "player_id": 0,
+                            "creature_ids": [233, 727, 807, 882, 809, 894],
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [645, 797, 788, 802, 324, 143],
+                        }, {
+                            "player_id": 2,
+                            "creature_ids": [151, 892, 800, 876, 591, 719],
+                        }, {
+                            "player_id": 1,
+                            "creature_ids": [812, 248, 721, 145, 801, 423],
+                        }, {
+                            "player_id": 4,
+                            "creature_ids": [748, 718, 620, 376, 485, 494],
+                        }
+                    ],
                 }
             }
         ],
@@ -2506,6 +2531,17 @@
         return result;
     }
 
+    function max_rows(arr) {
+        var result = [];
+        for (let i = 0; i < arr.length; i++) {
+            result[i] = arr[i][0];
+            for (let j = 0; j < arr[i].length; j++) {
+                result[i] = Math.max(result[i], arr[i][j]);
+            }
+        }
+        return result;
+    }
+
     function pad(num, size) {
         var s = "000000000" + num;
         return s.substr(s.length-size);
@@ -2615,12 +2651,12 @@
                 }
                 return 1;
             });
-            creatures_this_player = creatures_this_player.sort(function(a, b) {
-                if (a.stat.elo > b.stat.elo) {
-                    return -1;
-                }
-                return 1;
-            });
+            // creatures_this_player = creatures_this_player.sort(function(a, b) {
+            //     if (a.stat.elo > b.stat.elo) {
+            //         return -1;
+            //     }
+            //     return 1;
+            // });
             for (let creature of creatures_this_player) {
                 dom_creature_arts.push(creature.draw_art_with_discription());
             }
