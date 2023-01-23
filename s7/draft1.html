@@ -38,7 +38,7 @@
 <head><link rel="shortcut icon" type="image/png" href="favicon.png"/></head>
 
 <body>
-    <h1>Pokemasters Draft: Season 7 - 2023/MM/DD</h1>
+    <h1>Pokemasters Draft: Season 7 - 2023/01/22</h1>
 
     <h2>Links</h2>
     <ul>
@@ -72,12 +72,12 @@
     nodraft.sort(function(a, b){return a - b});
 
     var player_pokemon = [
-        [1],
-        [1],
-        [1],
-        [1],
-        [1],
-        [1]
+        [1000, 992, 289, 591, 445, 778, 983, 488, 785, 977, 945],
+        [1004, 987, 892, 894, 991, 905, 485, 972, 248, 748],
+        [801, 727, 908, 149, 1003, 645, 887, 986, 547, 978],
+        [1002, 1005, 861, 979, 876, 936, 998, 934, 324, 981],
+        [964, 970, 233, 797, 967, 984, 925, 279, 494, 937],
+        [812, 718, 151, 807, 721, 802, 719, 993, 641, 882]
     ];
     var player_pokemon_flat = player_pokemon.flat();
 
@@ -134,7 +134,7 @@
         div.appendChild(img);
         div.appendChild(p);
         pokemon_id = pokemon_id_to_number(pokemon_id);
-        img.src = "https://www.serebii.net/pokedex-swsh/icon/" + pokemon_id + ".png";
+        img.src = "https://www.serebii.net/pokedex-sv/icon/" + pokemon_id + ".png";
         p.innerHTML = pokemon_id;
         div.classList.add("pokemon-icon");
         return div;
