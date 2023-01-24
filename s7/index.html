@@ -572,13 +572,13 @@
                 "id": 1,
                 "name": "JaeBird",
                 "css_class": "jbird",
-                "creature_ids": [801, 727, 809, 149, 1003, 645, 887, 986, 547, 978, 492, 788],
+                "creature_ids": [801, 727, 809, 149, 1003, 645, 887, 986, 547, 492, 788, 9],
                 "trainer_sprite": "zen.gif"
             }, {
                 "id": 2,
                 "name": "Stephen",
                 "css_class": "steve",
-                "creature_ids": [1002, 1005, 861, 979, 876, 936, 998, 934, 324, 981, 184, 145],
+                "creature_ids": [1002, 1005, 861, 979, 876, 936, 998, 934, 324, 184, 145, 800],
                 "trainer_sprite": "Spr_B2W2_Alder.png"
             }, {
                 "id": 3,
@@ -590,7 +590,7 @@
                 "id": 4,
                 "name": "A-Rod",
                 "css_class": "arod",
-                "creature_ids": [1004, 987, 892, 894, 991, 905, 485, 972, 248, 748, 959, 113],
+                "creature_ids": [1004, 987, 892, 894, 991, 905, 485, 972, 248, 748, 959, 978],
                 "trainer_sprite": "ManiacHGSSsprite.png"
             }, {
                 "id": 5,
@@ -681,6 +681,57 @@
                         {'creature_id': 788, 'player_id': 1},
                         {'creature_id': 113, 'player_id': 4},
                         {'creature_id': 245, 'player_id': 5}
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/01/24 10:14",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": -1,
+                            "to_player_id": 2,
+                            "creature_id": 800
+                        }, {
+                            "from_player_id": 2,
+                            "to_player_id": -1,
+                            "creature_id": 981
+                        }
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/01/24 10:16",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": -1,
+                            "to_player_id": 1,
+                            "creature_id": 9
+                        }, {
+                            "from_player_id": 1,
+                            "to_player_id": -1,
+                            "creature_id": 978
+                        }
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/01/24 11:02",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": -1,
+                            "to_player_id": 4,
+                            "creature_id": 978
+                        }, {
+                            "from_player_id": 4,
+                            "to_player_id": -1,
+                            "creature_id": 113
+                        }
                     ]
                 }
             }
@@ -1559,13 +1610,22 @@
                 var creature = creatures[creature_team_change.creature_id - 1];
                 var to_player = players[creature_team_change.to_player_id];
                 var from_player = players[creature_team_change.from_player_id];
-                var classList = ["winner", to_player.css_class];
+                var classList = ["winner"];
+                var to_player_name = "Undrafted"
+                var from_player_name = "Undrafted"
+                if (to_player) {
+                    classList.push(to_player.css_class);
+                    to_player_name = to_player.name;
+                }
+                if (from_player) {
+                    from_player_name = from_player.name;
+                }
                 dom_trade_table.appendChild(create_element({tag: "tr", children: [
                     create_element({tag: "td", innerHTML: creature.id}),
                     create_element({tag: "td", children: [creature.draw_sprite()], classList: classList}),
                     create_element({tag: "td", innerHTML: creature.name}),
-                    create_element({tag: "td", innerHTML: to_player.name, classList: classList}),
-                    create_element({tag: "td", innerHTML: from_player.name}),
+                    create_element({tag: "td", innerHTML: to_player_name, classList: classList}),
+                    create_element({tag: "td", innerHTML: from_player_name}),
                 ]}));
             }
             return super.draw([dom_span, dom_description, dom_trade_table], "Trade " + this.number, "trade");
@@ -1573,8 +1633,12 @@
         update_statistics(players, creatures) {
             var creature_ids = [];
             for (let creature_team_change of this.creature_team_changes) {
-                players[creature_team_change.from_player_id].stat.add_trade();
-                players[creature_team_change.to_player_id].stat.add_trade();
+                if (creature_team_change.from_player_id >= 0) {
+                    players[creature_team_change.from_player_id].stat.add_trade();
+                }
+                if (creature_team_change.to_player_id >= 0) {
+                    players[creature_team_change.to_player_id].stat.add_trade();
+                }
                 creature_ids.push(creature_team_change.creature_id);
             }
             var creatures_in_trade = Creature.get_by_ids(creatures, creature_ids);
