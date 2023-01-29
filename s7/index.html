@@ -585,7 +585,7 @@
                 "name": "James",
                 "css_class": "james",
                 "creature_ids": [964, 970, 233, 797, 967, 984, 925, 279, 494, 937, 923, 741],
-                "trainer_sprite": "Marsteela.png"
+                "trainer_sprite": "li.png"
             }, {
                 "id": 4,
                 "name": "A-Rod",
@@ -596,7 +596,7 @@
                 "id": 5,
                 "name": "Nolan",
                 "css_class": "nolan",
-                "creature_ids": [1000, 992, 289, 591, 445, 778, 983, 488, 977, 945, 245, 978],
+                "creature_ids": [1000, 992, 289, 591, 445, 778, 983, 488, 977, 945, 978, 198],
                 "trainer_sprite": "Spr_BW_Backpacker_M.png"
             }
         ],
@@ -748,6 +748,76 @@
                             "from_player_id": 5,
                             "to_player_id": 4,
                             "creature_id": 785
+                        }
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/01/28 10:46",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": -1,
+                            "to_player_id": 5,
+                            "creature_id": 198
+                        }, {
+                            "from_player_id": 5,
+                            "to_player_id": -1,
+                            "creature_id": 245
+                        }
+                    ]
+                }
+            }, {
+                "type": "tournament",
+                "date": "2023/01/28 14:00",
+                "description": `
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1785731771' target='_blank'>Game 1 - Stephen beat Nolan</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1785725647' target='_blank'>Game 2 - Arod beat James</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1785739654' target='_blank'>Game 3 - James beat Stephen</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1785748676' target='_blank'>Game 4 - Arod beat Nolan</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1785758603' target='_blank'>Game 5 - Stephen beat Arod</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1785771142' target='_blank'>Game 6 - Nolan beat James</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1785796748' target='_blank'>Game 7 - Stephen beat Arod</a><br/>
+                `,
+                "kwargs": {
+                    "teams": [
+                        {
+                            "player_id": 2,
+                            "creature_ids": [876, 979, 861, 1002, 934, 800],
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [279, 964, 970, 967, 923, 494],
+                        }, {
+                            "player_id": 4,
+                            "creature_ids": [248, 972, 894, 892, 785, 991],
+                        }, {
+                            "player_id": 5,
+                            "creature_ids": [1000, 198, 445, 992, 289, 945],
+                        }
+                    ],
+                    "matches": [
+                        {
+                            "win_player_id": 2,
+                            "lose_player_id": 5,
+                        }, {
+                            "win_player_id": 4,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 3,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 4,
+                            "lose_player_id": 5,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 4,
+                        }, {
+                            "win_player_id": 5,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 4,
                         }
                     ]
                 }
