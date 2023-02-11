@@ -584,7 +584,7 @@
                 "id": 3,
                 "name": "James",
                 "css_class": "james",
-                "creature_ids": [964, 970, 233, 797, 967, 984, 925, 279, 494, 937, 923, 741],
+                "creature_ids": [964, 970, 233, 797, 967, 984, 925, 279, 494, 937, 923, 36],
                 "trainer_sprite": "li.png"
             }, {
                 "id": 4,
@@ -886,6 +886,56 @@
                             "from_player_id": 2,
                             "to_player_id": -1,
                             "creature_id": 145
+                        }
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/02/10 16:10",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": -1,
+                            "to_player_id": 3,
+                            "creature_id": 36
+                        }, {
+                            "from_player_id": 3,
+                            "to_player_id": -1,
+                            "creature_id": 741
+                        }
+                    ]
+                }
+            }, {
+                "type": "tournament",
+                "date": "2023/02/10 18:00",
+                "description": `
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1797318690' target='_blank'>Game 1 - Matt beat Nolan</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1797334507' target='_blank'>Game 2 - Matt beat Arod</a><br/>
+                `,
+                "kwargs": {
+                    "teams": [
+                        {
+                            "player_id": 0,
+                            "creature_ids": [718, 707, 641, 802, 807, 812],
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [],
+                        }, {
+                            "player_id": 4,
+                            "creature_ids": [248, 892, 972, 991, 748, 959],
+                        }, {
+                            "player_id": 5,
+                            "creature_ids": [1000, 198, 992, 973, 977, 978],
+                        }
+                    ],
+                    "matches": [
+                        {
+                            "win_player_id": 0,
+                            "lose_player_id": 5,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 4,
                         }
                     ]
                 }
