@@ -590,7 +590,7 @@
                 "id": 4,
                 "name": "A-Rod",
                 "css_class": "arod",
-                "creature_ids": [1004, 987, 892, 894, 991, 905, 485, 972, 248, 748, 959, 785],
+                "creature_ids": [1004, 987, 892, 894, 991, 485, 972, 248, 748, 959, 785, 663],
                 "trainer_sprite": "ManiacHGSSsprite.png"
             }, {
                 "id": 5,
@@ -1003,6 +1003,72 @@
                             "from_player_id": 3,
                             "to_player_id": -1,
                             "creature_id": 36
+                        }
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/02/19 16:45",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": -1,
+                            "to_player_id": 4,
+                            "creature_id": 663
+                        }, {
+                            "from_player_id": 4,
+                            "to_player_id": -1,
+                            "creature_id": 905
+                        }
+                    ]
+                }
+            }, {
+                "type": "tournament",
+                "date": "2023/02/19 17:00",
+                "description": `
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1804314686' target='_blank'>Game 1 - Matt beat Arod</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1804324164' target='_blank'>Game 2 - Jesse beat Stephen</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1804334332' target='_blank'>Game 3 - Matt beat Jesse</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1804345852' target='_blank'>Game 4 - Stephen beat Arod</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1804358983' target='_blank'>Game 5 - Jesse beat Arod</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1804368160' target='_blank'>Game 6 - Matt beat Stephen</a><br/>
+                `,
+                "kwargs": {
+                    "teams": [
+                        {
+                            "player_id": 0,
+                            "creature_ids": [718, 802, 807, 812, 151, 721],
+                        }, {
+                            "player_id": 1,
+                            "creature_ids": [9, 488, 801, 809, 887, 1003],
+                        }, {
+                            "player_id": 2,
+                            "creature_ids": [861, 979, 1002, 788, 936, 1005],
+                        }, {
+                            "player_id": 4,
+                            "creature_ids": [892, 972, 991, 748, 959, 663],
+                        }
+                    ],
+                    "matches": [
+                        {
+                            "win_player_id": 0,
+                            "lose_player_id": 4,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 1,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 4,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 4,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 2,
                         }
                     ]
                 }
