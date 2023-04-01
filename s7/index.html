@@ -1865,13 +1865,16 @@
         }
         draw_sprite() {
             return create_element({tag: "img", classList: ["sprite"], attributes: {
-                src: "https://www.serebii.net/pokedex-sv/icon/" + this.number + ".png"
-                // src: "https://play.pokemonshowdown.com/sprites/afd/" + this.name.toLowerCase().replace(/\s/g, '') + ".png"
+                // src: "https://www.serebii.net/pokedex-sv/icon/" + this.number + ".png"
+                src: "https://play.pokemonshowdown.com/sprites/afd/" + this.name.toLowerCase().replace(/\s/g, '').split('-').join('') + ".png"
             }});
         }
         draw_art() {
+            // return create_element({tag: "img", classList: ["art"], attributes: {
+            //     src: "https://www.serebii.net/pokemon/art/" + this.number + ".png"
+            // }});
             return create_element({tag: "img", classList: ["art"], attributes: {
-                src: "https://www.serebii.net/pokemon/art/" + this.number + ".png"
+                src: "https://play.pokemonshowdown.com/sprites/afd/" + this.name.toLowerCase().replace(/\s/g, '').split('-').join('') + ".png"
             }});
         }
         draw_large_art() {
