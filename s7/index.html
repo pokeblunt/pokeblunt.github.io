@@ -1384,39 +1384,51 @@
                     ]
                 }
             }, {
-                "type": "trade",
-                "date": "2023/04/01 10:40",
-                "description": "",
+                "type": "tournament",
+                "date": "2023/04/01 15:30",
+                "description": `
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1834870191' target='_blank'>Game 1 - Stephen beat James</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1834876151' target='_blank'>Game 2 - Jesse beat Nolan</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1834882284' target='_blank'>Game 3 - Jesse beat Stephen</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1834896212' target='_blank'>Game 4 - James beat Nolan</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1834902431' target='_blank'>Game 5 - Jesse beat James</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1834910763' target='_blank'>Game 6 - Stephen beat Nolan</a><br/>
+                `,
                 "kwargs": {
-                    "creatures": [
+                    "teams": [
                         {
-                            "from_player_id": 0,
-                            "to_player_id": -1,
-                            "creature_id": 812
+                            "player_id": 1,
+                            "creature_ids": [801, 488, 149, 727, 38, 902],
                         }, {
-                            "from_player_id": 0,
-                            "to_player_id": -1,
-                            "creature_id": 807
+                            "player_id": 2,
+                            "creature_ids": [861, 979, 233, 598, 901, 637],
                         }, {
-                            "from_player_id": 0,
-                            "to_player_id": -1,
-                            "creature_id": 151
+                            "player_id": 3,
+                            "creature_ids": [279, 964, 967, 771, 952, 984],
                         }, {
-                            "from_player_id": 0,
-                            "to_player_id": -1,
-                            "creature_id": 718
+                            "player_id": 5,
+                            "creature_ids": [198, 1000, 591, 784, 778, 983],
+                        }
+                    ],
+                    "matches": [
+                        {
+                            "win_player_id": 2,
+                            "lose_player_id": 3,
                         }, {
-                            "from_player_id": 0,
-                            "to_player_id": -1,
-                            "creature_id": 721
+                            "win_player_id": 1,
+                            "lose_player_id": 5,
                         }, {
-                            "from_player_id": 0,
-                            "to_player_id": -1,
-                            "creature_id": 802
+                            "win_player_id": 1,
+                            "lose_player_id": 2,
                         }, {
-                            "from_player_id": -1,
-                            "to_player_id": 0,
-                            "creature_id": 960
+                            "win_player_id": 3,
+                            "lose_player_id": 5,
+                        }, {
+                            "win_player_id": 1,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 5,
                         }
                     ]
                 }
@@ -1902,17 +1914,17 @@
         }
         draw_sprite() {
             return create_element({tag: "img", classList: ["sprite"], attributes: {
-                // src: "https://www.serebii.net/pokedex-sv/icon/" + this.number + ".png"
-                src: "https://play.pokemonshowdown.com/sprites/afd/" + this.name.toLowerCase().replace(/\s/g, '').split('-').join('') + ".png"
+                src: "https://www.serebii.net/pokedex-sv/icon/" + this.number + ".png"
+                // src: "https://play.pokemonshowdown.com/sprites/afd/" + this.name.toLowerCase().replace(/\s/g, '').split('-').join('') + ".png"
             }});
         }
         draw_art() {
-            // return create_element({tag: "img", classList: ["art"], attributes: {
-            //     src: "https://www.serebii.net/pokemon/art/" + this.number + ".png"
-            // }});
             return create_element({tag: "img", classList: ["art"], attributes: {
-                src: "https://play.pokemonshowdown.com/sprites/afd/" + this.name.toLowerCase().replace(/\s/g, '').split('-').join('') + ".png"
+                src: "https://www.serebii.net/pokemon/art/" + this.number + ".png"
             }});
+            // return create_element({tag: "img", classList: ["art"], attributes: {
+            //     src: "https://play.pokemonshowdown.com/sprites/afd/" + this.name.toLowerCase().replace(/\s/g, '').split('-').join('') + ".png"
+            // }});
         }
         draw_large_art() {
             return create_element({tag: "img", classList: ["art", "large"], attributes: {
