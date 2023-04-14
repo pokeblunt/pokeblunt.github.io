@@ -305,6 +305,11 @@
         height: 256px;
         width: auto;
     }
+    img.art.large.centered {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
     img.sprite {
         width: 48px;
     }
@@ -1572,6 +1577,7 @@
      */
     function main(raw) {
         [players, events, creatures] = parse_raw(raw);
+        events = [new PokemonOfTheDay(new Date().toJSON().slice(0, 10)), ...events]
         draw_events(events, players, creatures, document.getElementById("events"));
         draw_players(players, creatures, document.getElementById("events"));
         draw_creature_statistics_table(players, creatures, document.getElementById("events"));
@@ -2047,8 +2053,8 @@
             //     src: "https://play.pokemonshowdown.com/sprites/afd/" + this.name.toLowerCase().replace(/\s/g, '').split('-').join('') + ".png"
             // }});
         }
-        draw_large_art() {
-            return create_element({tag: "img", classList: ["art", "large"], attributes: {
+        draw_large_art(classList = []) {
+            return create_element({tag: "img", classList: ["art", "large"].concat(classList), attributes: {
                 src: "https://www.serebii.net/pokemon/art/" + this.number + ".png"
             }});
         }
@@ -2125,6 +2131,32 @@
         }
         update_statistics(players, creatures) {
         }
+    }
+
+    class PokemonOfTheDay extends Event {
+        constructor(date) {
+            super(date)
+        }
+
+        draw(players, creatures) {
+            var dom_date = create_element({tag: "span", innerHTML: this.date.toLocaleString()});
+            var hash = hashCode(this.date.toLocaleDateString());
+            var creature_id = Math.abs(hash) % creatures.length;
+            var creature = Creature.get_by_id(creatures, creature_id);
+            var creature_dom = creature.draw_large_art(["centered"]);
+            var dom_description = create_element({tag: "span", innerHTML: "Today's Pokemon of the Day is " + creature.name + "!"});
+            return super.draw([dom_date, dom_description, creature_dom], "Pokemon of the Day", "grey");
+        }
+    }
+
+    function hashCode(str) {
+        let hash = 0;
+        for (let i = 0, len = str.length; i < len; i++) {
+            let chr = str.charCodeAt(i);
+            hash = (hash << 5) - hash + chr;
+            hash |= 0;
+        }
+        return hash;
     }
 
     class Champion extends Event {
