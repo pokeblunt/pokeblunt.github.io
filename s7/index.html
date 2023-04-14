@@ -1577,7 +1577,7 @@
      */
     function main(raw) {
         [players, events, creatures] = parse_raw(raw);
-        events = [new PokemonOfTheDay(new Date().toJSON().slice(0, 10)), ...events]
+        events = [new PokemonOfTheDay(new Date().toJSON()), ...events]
         draw_events(events, players, creatures, document.getElementById("events"));
         draw_players(players, creatures, document.getElementById("events"));
         draw_creature_statistics_table(players, creatures, document.getElementById("events"));
