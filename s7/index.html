@@ -583,7 +583,7 @@
                 "id": 2,
                 "name": "Stephen",
                 "css_class": "steve",
-                "creature_ids": [1002, 979, 876, 800, 649, 598, 373, 146, 637, 132, 245, 707, 719, 793, 130, 700, 964, 279, 460, 809, 858, 302],
+                "creature_ids": [1002, 979, 876, 800, 649, 598, 373, 146, 637, 132, 707, 719, 793, 130, 700, 964, 279, 460, 809, 858, 302, 763],
                 "trainer_sprite": "Spr_B2W2_Alder.png"
             }, {
                 "id": 3,
@@ -2169,6 +2169,72 @@
                             "from_player_id": -1,
                             "to_player_id": 1,
                             "creature_id": 900
+                        }
+                    ]
+                }
+            }, {
+                "type": "tournament",
+                "date": "2023/07/09 17:00",
+                "description": `
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1900863554' target='_blank'>Game 1 - Jesse beat James</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1900871704' target='_blank'>Game 2 - Arod beat Stephen</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1900882678' target='_blank'>Game 3 - Arod beat Jesse</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1900897596' target='_blank'>Game 4 - Stephen beat James</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1900903144' target='_blank'>Game 5 - Stephen beat Jesse</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1900911269' target='_blank'>Game 6 - Arod beat James</a><br/>
+                `,
+                "kwargs": {
+                    "teams": [
+                        {
+                            "player_id": 1,
+                            "creature_ids": [149, 235, 902, 547, 1003, 900],
+                        }, {
+                            "player_id": 2,
+                            "creature_ids": [809, 964, 279, 719, 800, 302],
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [892, 797, 771, 923, 795, 1006],
+                        }, {
+                            "player_id": 4,
+                            "creature_ids": [423, 1004, 1009, 324, 959, 987],
+                        }
+                    ],
+                    "matches": [
+                        {
+                            "win_player_id": 1,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 4,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 4,
+                            "lose_player_id": 1,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 1,
+                        }, {
+                            "win_player_id": 4,
+                            "lose_player_id": 3,
+                        }
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/07/09 20:44",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 2,
+                            "to_player_id": -1,
+                            "creature_id": 245
+                        }, {
+                            "from_player_id": -1,
+                            "to_player_id": 2,
+                            "creature_id": 763
                         }
                     ]
                 }
