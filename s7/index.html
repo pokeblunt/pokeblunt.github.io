@@ -583,19 +583,19 @@
                 "id": 2,
                 "name": "Stephen",
                 "css_class": "steve",
-                "creature_ids": [1002, 979, 876, 800, 649, 598, 373, 146, 637, 132, 707, 719, 793, 130, 700, 964, 279, 460, 809, 858, 302, 763],
+                "creature_ids": [1002, 979, 876, 800, 649, 598, 373, 637, 132, 707, 719, 793, 130, 700, 964, 279, 460, 809, 858, 302, 763, 804],
                 "trainer_sprite": "Spr_B2W2_Alder.png"
             }, {
                 "id": 3,
                 "name": "James",
                 "css_class": "james",
-                "creature_ids": [970, 797, 967, 984, 925, 494, 937, 923, 687, 908, 952, 771, 1006, 282, 795, 934, 706, 491, 892, 765, 788],
+                "creature_ids": [970, 797, 967, 984, 494, 937, 923, 908, 952, 771, 1006, 282, 795, 934, 706, 491, 892, 765, 788, 959, 146],
                 "trainer_sprite": "li.png"
             }, {
                 "id": 4,
                 "name": "A-Rod",
                 "css_class": "arod",
-                "creature_ids": [1004, 987, 894, 991, 485, 972, 248, 748, 959, 785, 1009, 423, 59, 635, 985, 962, 386, 939, 914, 982, 324, 1005, 973],
+                "creature_ids": [1004, 987, 894, 991, 485, 972, 248, 748, 785, 1009, 423, 59, 635, 985, 962, 386, 939, 914, 982, 324, 1005, 973, 925],
                 "trainer_sprite": "ManiacHGSSsprite.png"
             }, {
                 "id": 5,
@@ -2243,6 +2243,106 @@
                             "from_player_id": -1,
                             "to_player_id": 2,
                             "creature_id": 763
+                        }
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/07/16 16:28",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 4,
+                            "to_player_id": 3,
+                            "creature_id": 959
+                        }, {
+                            "from_player_id": 3,
+                            "to_player_id": 4,
+                            "creature_id": 925
+                        }
+                    ]
+                }
+            }, {
+                "type": "unofficial-tournament",
+                "date": "2023/08/01 19:02",
+                "description": `
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1915157431' target='_blank'>Game 1 - Arod beat James</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1915165410' target='_blank'>Game 2 - Matt beat Stephen</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1915174216' target='_blank'>Game 3 - Matt beat Arod</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1915181764' target='_blank'>Game 4 - Stephen beat James</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1915189183' target='_blank'>Game 5 - Stephen beat Arod</a><br/>
+                <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-1915199521' target='_blank'>Game 6 - Matt beat James</a><br/>
+                `,
+                "kwargs": {
+                    "teams": [
+                        {
+                            "player_id": 0,
+                            "creature_ids": [235, 235, 235, 235, 235, 235],
+                        }, {
+                            "player_id": 2,
+                            "creature_ids": [235, 235, 235, 235, 235, 235],
+                        }, {
+                            "player_id": 3,
+                            "creature_ids": [235, 235, 235, 235, 235, 235],
+                        }, {
+                            "player_id": 4,
+                            "creature_ids": [235, 235, 235, 235, 235, 235],
+                        }
+                    ],
+                    "matches": [
+                        {
+                            "win_player_id": 4,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 2,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 4,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 3,
+                        }, {
+                            "win_player_id": 2,
+                            "lose_player_id": 4,
+                        }, {
+                            "win_player_id": 0,
+                            "lose_player_id": 3,
+                        }
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/08/06 17:43",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 3,
+                            "to_player_id": -1,
+                            "creature_id": 687
+                        }, {
+                            "from_player_id": -1,
+                            "to_player_id": 3,
+                            "creature_id": 804
+                        }
+                    ]
+                }
+            }, {
+                "type": "trade",
+                "date": "2023/08/06 17:44",
+                "description": "",
+                "kwargs": {
+                    "creatures": [
+                        {
+                            "from_player_id": 3,
+                            "to_player_id": 2,
+                            "creature_id": 804
+                        }, {
+                            "from_player_id": 2,
+                            "to_player_id": 3,
+                            "creature_id": 146
                         }
                     ]
                 }
