@@ -3045,7 +3045,8 @@
         }
         draw_art_with_discription() {
             // var href = "https://www.smogon.com/dex/ss/pokemon/" + this.name + "/doubles/"
-            var href = "https://www.serebii.net/pokedex-sv/" + this.name.toLowerCase().replace(" ", "");
+            // var href = "https://www.serebii.net/pokedex-sv/" + this.name.toLowerCase().replace(" ", "");
+            var href = "https://bulbapedia.bulbagarden.net/wiki/" + this.name.replace(" ", "_");
             return create_element({tag: "a", attributes: {href: href, target: "_blank"}, classList: ["art-holder"], children: [
                 this.draw_art(),
                 create_element({tag: "span", innerHTML: this.name}),
