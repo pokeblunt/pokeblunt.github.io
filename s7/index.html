@@ -3919,10 +3919,12 @@
             var win_elos = mean_rows(win_elos);  // Use the average elo change across enemy creatures
             var lose_elos = mean_rows(lose_elos);
             win_creatures.forEach(function (creature, i) {
-                creature.stat.elo = Math.max(1000, win_elos[i]);
+                // creature.stat.elo = Math.max(1000, win_elos[i]);
+                creature.stat.elo = win_elos[i];
             });
             lose_creatures.forEach(function (creature, i) {
-                creature.stat.elo = Math.max(1000, lose_elos[i]);
+                // creature.stat.elo = Math.max(1000, lose_elos[i]);
+                creature.stat.elo = lose_elos[i];
             });
         }
     }

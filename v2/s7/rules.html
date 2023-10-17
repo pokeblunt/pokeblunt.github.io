@@ -1,0 +1,102 @@
+<div class="header">Rules</div>
+<div class="body">
+    <h2>Schedule</h2>
+    <pre style='font-family: "Courier New"'>
+Tournament 1: Arod, James, Nolan, Stephen
+Tournament 2: Arod, James, Matt, Nolan
+Tournament 3: Arod, Jesse, Matt, Stephen
+Tournament 4: Arod, James, Jesse, Matt
+Tournament 5: Jesse, Matt, Nolan, Stephen
+Tournament 6: James, Jesse, Nolan, Stephen
+Tournament 7: Arod, James, Jesse, Nolan
+Tournament 8: Arod, James, Matt, Stephen
+Tournament 9: Arod, Jesse, Matt, Nolan
+Tournament 10: James, Jesse, Matt, Stephen
+Tournament 11: James, Matt, Nolan, Stephen
+Tournament 12: Arod, James, Jesse, Stephen
+Tournament 13: Arod, Matt, Nolan, Stephen
+Tournament 14: James, Jesse, Matt, Nolan
+Tournament 15: Arod, Jesse, Nolan, Stephen
+
+Arod: 1, 2, 3, 4,  ,  , 7, 8, 9,   ,   , 12, 13,   , 15
+James: 1, 2,  , 4,  , 6, 7, 8,  , 10, 11, 12,   , 14,   
+Jesse:  ,  , 3, 4, 5, 6, 7,  , 9, 10,   , 12,   , 14, 15
+Matt:  , 2, 3, 4, 5,  ,  , 8, 9, 10, 11,   , 13, 14,   
+Nolan: 1, 2,  ,  , 5, 6, 7,  , 9,   , 11,   , 13, 14, 15
+Stephen: 1,  , 3,  , 5, 6,  , 8,  , 10, 11, 12, 13,   , 15
+    </pre>
+    <h2>Links</h2>
+    <ul>
+        <li><a href="https://www.smogon.com/dex/sv/formats/doubles/" target="_blank">Smogon Gen 9 Doubles OU Format</a> - Default battle rules we go by with the exception of our own battle clauses</li>
+        <li><a href="https://www.smogon.com/forums/threads/sv-doubles-ou-viability-rankings.3710905/" target="_blank">Smogon Gen 9 Doubles OU Viability Rankings</a> - Reference for what is currently considered viable as of 2023/01/09</li>
+        <li><a>[Not Posted Yet] Season 7 Draft</a> - Inital draft for Season 7 of Pokemasters</li>
+    </ul>
+    <button onclick="make_random_tournament_text('random_tournament_text')">Random Tournament Order</button>
+    <div id="random_tournament_text" style='font-family: "Courier New"'>
+        ^^^ Click this ^^^
+    </div>
+
+    <h2>Rules</h2>
+    <p>We generally follow Smogon's Gen 9 Doubles OU rules. In a season, we play several tournaments and then playoffs are held at the end of each season.</p>
+    <h4>Draft rules</h4>
+    <p>The draft pick order is reverse order of placement for last season with any newcomers going first. Players iteratively choose pokemon for their roster in a snake draft, meaning every even round is picked in reverse order (ex: 1 2 3 4 5 6 6 5 4 3 2 1 1 2 ...). A pokemon is defined by their national dex number. For example, if you pick pokemon No. 38 (Ninetails) then you get Kanto Ninetails and Alolan Ninetails. Pokemon from the same evolutionary line can belong to different players.</p>
+    <h4>Battle rules</h4>
+    <p>Use Smogon's Gen 9 (Scarlet & Violet) <a href="https://www.smogon.com/dex/sv/formats/doubles/" target="_blank">Gen 9 Double OU rules</a> with the following additions and exceptions:</p>
+    <ol>
+        <li><strong>Roster clause</strong>. Players can only use Pokemon from their roster.</li>
+        <li>
+            <strong>Previous generations clause</strong>. Pokemon from previous generations 1 - 8 are allowed. Pokemon that do not appear in Gen 9 must use moves and abilities from their most recent generation.
+            <ul>
+                <li class="allowed">Pokemon from previous generations</li>
+            </ul>
+        </li>
+        <li>
+            <strong>600 base stat limit clause</strong>. Pokemon that start matches with greater than 600 base stats are not allowed. All pokemon with less than or equal to 600 base stats are allowed.
+            <ul>
+                <li class="allowed">Any pokemon with ≤ 600 base stats</li>
+                <li class="restricted">Any pokemon with > 600 base stats</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Non legendary and non mythical clause</strong>. All non legendary and non mythical pokemon are allowed.
+            <ul>
+                <li class="allowed">Slaking</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Abilities clause</strong>. The following abilities are allowed.
+            <ul>
+                <li class="allowed">Moody</li>
+                <li class="allowed">Shadow Tag</li>
+            </ul>
+            The following abilities are not allowed.
+            <ul>
+                <li class="restricted">Power Construct</li>
+                <li class="restricted">Wonder Guard</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Moves clause</strong>. The following moves are allowed.
+            <ul>
+                <li class="allowed">Fissure</li>
+                <li class="allowed">Guillotine</li>
+                <li class="allowed">Horn Drill</li>
+                <li class="allowed">Sheer Cold</li>
+                <li class="allowed">Swagger</li>
+            </ul>
+        </li>
+    </ol>
+    <h4>Tournament rules</h4>
+    <p>Use the following rules for each tournament:</p>
+    <ol>
+        <li>Four players participate in each tournament.</li>
+        <li>Each participant chooses a team of 6 pokemon to use for the entire tournament.</li>
+        <li>Each participant plays all other players in the tournament exactly once.</li>
+        <li>The player who won the most battles wins the tournament. If two or more players are tied with the most wins, all other players are eliminated and the remaining players repeat steps 2 and 3.</li>
+    </ol>
+    <h4>Season rules</h4>
+    <p>Tournaments consist of 4 players and there are 15 tournaments this season (one for every combination of 4 players). This means each player will participate in 10 tournaments for a total of at least 30 matches.</p>
+    <p>All players advance to the playoffs. Players are ranked by tournament wins and then number of match wins if tied. If still tied, play single matches to determine an order.</p>
+    <h4>Playoff rules</h4>
+    <p>Players can use different pokemon for each match even within one playoff round. Seed a 6 person single elimination bracket (top 2 players get byes). The first round is best 2 out of 3. The semi-finals are best 3 out of 5. The finals and 3rd vs 4th place match are best 4 our of 7. The champion of the finals wins the season and picks their MVP (Most Valuable Pokemon) for the season.</p>
+</div>
