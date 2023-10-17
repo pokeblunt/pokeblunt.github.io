@@ -12,7 +12,10 @@
  */
 function main(raw) {
     [players, events, creatures] = parse_raw(raw);
-    events = [new PokemonOfTheDay(new Date().toJSON()), ...events]
+    // Only use pokemon of the day for this year
+    if (events[0].date.getYear() == (new Date()).getYear()) {
+        events = [new PokemonOfTheDay(new Date().toJSON()), ...events]
+    }
     draw_events(events, players, creatures, document.getElementById("events"));
     draw_players(players, creatures, document.getElementById("events"));
     draw_creature_statistics_table(players, creatures, document.getElementById("events"));
