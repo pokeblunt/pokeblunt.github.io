@@ -2336,19 +2336,19 @@ var raw = {
         }, {
             "type": "champion",
             "date": "2024/12/22 21:00",
-            "description": '[Temporary] Kamon wins Season 7! Zygard is named Season 7 MVP!',
+            "description": 'Kamon wins Season 7! Zygard is named Season 7 MVP!',
             "kwargs": {
                 "mvp_creature_id": 718,
                 "teams": [
                     {
                         "player_id": 0,
-                        "creature_ids": [812, 807, 861, 721, 151, 718],
+                        "creature_ids": [812, 807, 721, 151, 718, 802],
                     }, {
                         "player_id": 1,
                         "creature_ids": [488, 801, 149, 727, 645, 902],
                     }, {
                         "player_id": 2,
-                        "creature_ids": [892, 964, 279, 984, 800, 876],
+                        "creature_ids": [892, 984, 800, 876, 700, 637],
                     }, {
                         "player_id": 4,
                         "creature_ids": [1004, 991, 423, 1009, 324, 987],
