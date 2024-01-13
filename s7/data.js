@@ -2213,7 +2213,7 @@ var raw = {
             }
         }, {
             "type": "round",
-            "date": "2024/12/22 16:00",
+            "date": "2023/12/22 16:00",
             "description": `
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017833570' target='_blank'>Game 1 - Stephen beat Nolan</a><br/>
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017855054' target='_blank'>Game 2 - Stephen beat Nolan</a><br/>
@@ -2235,7 +2235,7 @@ var raw = {
             }
         }, {
             "type": "round",
-            "date": "2024/12/22 17:00",
+            "date": "2023/12/22 17:00",
             "description": `
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017843144' target='_blank'>Game 1 - Arod beat James</a><br/>
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017872021' target='_blank'>Game 2 - Arod beat James</a><br/>
@@ -2257,7 +2257,7 @@ var raw = {
             }
         }, {
             "type": "round",
-            "date": "2024/12/22 18:00",
+            "date": "2023/12/22 18:00",
             "description": `
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017881781' target='_blank'>Game 1 - Jesse beat Stephen</a><br/>
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017895852' target='_blank'>Game 2 - Jesse beat Stephen</a><br/>
@@ -2279,7 +2279,7 @@ var raw = {
             }
         }, {
             "type": "round",
-            "date": "2024/12/22 19:00",
+            "date": "2023/12/22 19:00",
             "description": `
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017889537' target='_blank'>Game 1 - Matt beat Arod</a><br/>
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017907331' target='_blank'>Game 2 - Matt beat Arod</a><br/>
@@ -2301,7 +2301,7 @@ var raw = {
             }
         }, {
             "type": "round",
-            "date": "2024/12/22 20:00",
+            "date": "2023/12/22 20:00",
             "description": `
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017915638' target='_blank'>Game 1 - Matt beat Jesse</a><br/>
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2017926301' target='_blank'>Game 2 - Matt beat Jesse</a><br/>
@@ -2335,7 +2335,7 @@ var raw = {
             }
         }, {
             "type": "champion",
-            "date": "2024/12/22 21:00",
+            "date": "2023/12/22 21:00",
             "description": 'Kamon wins Season 7! Zygard is named Season 7 MVP!',
             "kwargs": {
                 "mvp_creature_id": 718,
@@ -2351,7 +2351,7 @@ var raw = {
                         "creature_ids": [892, 984, 800, 876, 700, 637],
                     }, {
                         "player_id": 4,
-                        "creature_ids": [1004, 991, 423, 1009, 324, 987],
+                        "creature_ids": [1004, 991, 1009, 324, 987, 748],
                     }, {
                         "player_id": 3,
                         "creature_ids": [979, 809, 719, 771, 494, 797],
