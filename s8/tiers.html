@@ -16,7 +16,7 @@
     tr {
         border: 1px solid #000;
         float: left;
-        width: 49%;
+        width: 19%;
     }
     td {
         padding: 0px 10px;
@@ -45,7 +45,8 @@
         text-align: center;
     }
     img.pokemon {
-        width: 2em;
+        width: 10em;
+        /*width: 100%;*/
     }
     div.pokemon-with-description {
         padding-bottom: 20px;
@@ -605,8 +606,8 @@
         classList.push("tier" + creature.tier)
         var tr = create_element({tag: "tr", classList: classList, children: [
             create_element({tag: "td", innerHTML: creature.tier}),
-            create_element({tag: "td", innerHTML: index}),
-            create_element({tag: "td", innerHTML: "#" + creature.number}),
+            // create_element({tag: "td", innerHTML: index}),
+            // create_element({tag: "td", innerHTML: "#" + creature.number}),
             create_element({tag: "td", children: [
                 create_element({tag: "a", attributes: {
                     href: creature.get_link(),
@@ -617,8 +618,8 @@
                     }})
                 ]})
             ]}),
-            create_element({tag: "td", innerHTML: creature.name}),
-            create_element({tag: "td", innerHTML: creature.description}),
+            // create_element({tag: "td", innerHTML: creature.name}),
+            // create_element({tag: "td", innerHTML: creature.description}),
         ]});
         return tr;
     }
@@ -675,7 +676,7 @@
         info = creature_infos[i];
         creatures.push(new Creature(creature_names[(info.number - 1).toString()], info.number, info.description, info.tier));
     }
-    creatures = creatures.sort(function(a, b) { return a.number < b.number ? -1 : 1 });
+    creatures = creatures.sort(function(a, b) { return a.id < b.id ? -1 : 1 });
     creatures = creatures.sort(function(a, b) { return a.tier_index < b.tier_index ? -1 : 1 });
     var index = 0;
     var tier = "S";
