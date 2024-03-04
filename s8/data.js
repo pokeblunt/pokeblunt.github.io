@@ -6,37 +6,37 @@ var raw = {
             "id": 0,
             "name": "Kamon",
             "css_class": "kamon",
-            "creature_ids": [],
+            "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 894],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [],
+            "creature_ids": [807, 987, 151, 485, 901, 641, 591, 902, 895, 212],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [],
+            "creature_ids": [727, 6, 991, 645, 547, 992, 905, 303, 149, 785],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [],
+            "creature_ids": [718, 94, 1004, 233, 257, 1002, 1017, 598, 649, 923],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [],
+            "creature_ids": [812, 9, 488, 887, 1000, 1020, 1009, 38, 494, 279],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
             "name": "Nolan",
             "css_class": "nolan",
-            "creature_ids": [],
+            "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858],
             "trainer_sprite": "../img/Spr_BW_Backpacker_M.png"
         }
     ],
