@@ -149,7 +149,7 @@
         }, {
             "number": 882,
             "description": "",
-            "tier": "B"
+            "tier": "A"
         }, {
             "number": 786,
             "description": "",
@@ -585,7 +585,7 @@
         }, {
             "number": 380,
             "description": "",
-            "tier": "C"
+            "tier": "B"
         }, {
             "number": 620,
             "description": "",
@@ -895,6 +895,14 @@
         index++;
         pokemon_table.appendChild(get_table_row(creatures[i], index));
     }
+
+    var creature_ids = [];
+    msg = "["
+    for (var i = 0; i < creatures.length; i++) {
+        msg = msg + creatures[i].id + ", "
+    }
+    msg += "]"
+    console.log(msg);
 </script>
 </body>
 </html>
