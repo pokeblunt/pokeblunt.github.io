@@ -45,7 +45,11 @@ var raw = {
             "type": "draft",
             "date": "2024/03/03",
             "description": `
-            <a href='tiers.html' target='_blank'>Tier List</a>
+            <a href='tiers.html' target='_blank'>Tier List (before draft)</a>
+            <br/>
+            <a href='tiers_after_draft.html' target='_blank'>Tier List (after draft)</a>
+            <br/><br/>
+            <a href='draft1.html' target='_blank'>Draft</a>
             `,
             "kwargs": {
                 "creatures_drafted": [

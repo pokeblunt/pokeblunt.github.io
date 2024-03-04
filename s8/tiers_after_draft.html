@@ -94,7 +94,7 @@
 </style></head>
 
 <body>
-    <h1>Season 8 Tiers</h1>
+    <h1>Season 8 Tiers (After Draft)</h1>
 
     <p class="subtitle">Pokemon sorted into tiers by Jesse. Included are all pokemon from last season, all mega pokemon, and any pokemon that came out since the start of last season. You can still pick any pokemon with 600 base stats or less that I forgot to put here.</p>
 
@@ -878,10 +878,16 @@
     var pokemon_table = create_element({tag: "div"})
     pokemon_list_div.appendChild(pokemon_table);
 
+    var creature_ids_taken = new Set([802, 719, 721, 876, 386, 861, 798, 115, 1003, 894, 807, 987, 151, 485, 901, 641, 591, 902, 895, 212, 727, 6, 991, 645, 547, 992, 905, 303, 149, 785, 718, 94, 1004, 233, 257, 1002, 1017, 598, 649, 923, 812, 9, 488, 887, 1000, 1020, 1009, 38, 494, 279, 801, 376, 892, 882, 260, 809, 324, 979, 637, 858]);
+    console.log(creature_ids_taken);
+
     var creatures = [];
     for (var i = 0; i < creature_infos.length; i++) {
         info = creature_infos[i];
-        creatures.push(new Creature(creature_names[(info.number - 1).toString()], info.number, info.description, info.tier));
+        if (creature_ids_taken.has(info.number)) {
+        } else {
+            creatures.push(new Creature(creature_names[(info.number - 1).toString()], info.number, info.description, info.tier));
+        }
     }
     creatures = creatures.sort(function(a, b) { return a.id < b.id ? -1 : 1 });
     creatures = creatures.sort(function(a, b) { return a.tier_index < b.tier_index ? -1 : 1 });
