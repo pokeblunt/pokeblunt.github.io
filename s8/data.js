@@ -6,37 +6,37 @@ var raw = {
             "id": 0,
             "name": "Kamon",
             "css_class": "kamon",
-            "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 894, 492],
+            "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 894, 492, 784],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [807, 987, 151, 485, 901, 641, 591, 902, 895, 212, 146],
+            "creature_ids": [807, 987, 151, 485, 901, 641, 591, 902, 895, 212, 146, 1021],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 6, 991, 645, 547, 992, 905, 303, 149, 785, 1013],
+            "creature_ids": [727, 6, 991, 645, 547, 992, 905, 303, 149, 785, 1013, 385],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 1004, 233, 257, 1002, 1017, 598, 649, 923, 1001],
+            "creature_ids": [718, 94, 1004, 233, 257, 1002, 1017, 598, 649, 923, 1001, 282],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [812, 9, 488, 887, 1000, 1020, 1009, 38, 494, 279, 786],
+            "creature_ids": [812, 9, 488, 887, 1000, 1020, 1009, 38, 494, 279, 786, 65],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
             "name": "Nolan",
             "css_class": "nolan",
-            "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858, 797],
+            "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858, 797, 323],
             "trainer_sprite": "../img/Spr_BW_Backpacker_M.png"
         }
     ],
@@ -53,7 +53,82 @@ var raw = {
             `,
             "kwargs": {
                 "creatures_drafted": [
-                    {'creature_id': 1, 'player_id': 5},
+                    {'creature_id': 801, 'player_id': 5},
+                    {'creature_id': 718, 'player_id': 3},
+                    {'creature_id': 812, 'player_id': 4},
+                    {'creature_id': 727, 'player_id': 2},
+                    {'creature_id': 807, 'player_id': 1},
+                    {'creature_id': 802, 'player_id': 0},
+
+                    {'creature_id': 376, 'player_id': 5},
+                    {'creature_id':  94, 'player_id': 3},
+                    {'creature_id':   9, 'player_id': 4},
+                    {'creature_id':   6, 'player_id': 2},
+                    {'creature_id': 987, 'player_id': 1},
+                    {'creature_id': 719, 'player_id': 0},
+
+                    {'creature_id':  892, 'player_id': 5},
+                    {'creature_id': 1004, 'player_id': 3},
+                    {'creature_id':  488, 'player_id': 4},
+                    {'creature_id':  991, 'player_id': 2},
+                    {'creature_id':  151, 'player_id': 1},
+                    {'creature_id':  721, 'player_id': 0},
+
+                    {'creature_id':  260, 'player_id': 5},
+                    {'creature_id':  257, 'player_id': 3},
+                    {'creature_id': 1000, 'player_id': 4},
+                    {'creature_id':  547, 'player_id': 2},
+                    {'creature_id':  901, 'player_id': 1},
+                    {'creature_id':  386, 'player_id': 0},
+
+                    {'creature_id':  809, 'player_id': 5},
+                    {'creature_id': 1002, 'player_id': 3},
+                    {'creature_id': 1020, 'player_id': 4},
+                    {'creature_id':  992, 'player_id': 2},
+                    {'creature_id':  641, 'player_id': 1},
+                    {'creature_id':  861, 'player_id': 0},
+
+                    {'creature_id':  324, 'player_id': 5},
+                    {'creature_id': 1017, 'player_id': 3},
+                    {'creature_id': 1009, 'player_id': 4},
+                    {'creature_id':  905, 'player_id': 2},
+                    {'creature_id':  591, 'player_id': 1},
+                    {'creature_id':  798, 'player_id': 0},
+
+                    {'creature_id': 979, 'player_id': 5},
+                    {'creature_id': 598, 'player_id': 3},
+                    {'creature_id':  38, 'player_id': 4},
+                    {'creature_id': 303, 'player_id': 2},
+                    {'creature_id': 902, 'player_id': 1},
+                    {'creature_id': 115, 'player_id': 0},
+
+                    {'creature_id':  637, 'player_id': 5},
+                    {'creature_id':  649, 'player_id': 3},
+                    {'creature_id':  494, 'player_id': 4},
+                    {'creature_id':  149, 'player_id': 2},
+                    {'creature_id':  895, 'player_id': 1},
+                    {'creature_id': 1003, 'player_id': 0},
+
+                    {'creature_id': 858, 'player_id': 5},
+                    {'creature_id': 923, 'player_id': 3},
+                    {'creature_id': 279, 'player_id': 4},
+                    {'creature_id': 785, 'player_id': 2},
+                    {'creature_id': 212, 'player_id': 1},
+                    {'creature_id': 894, 'player_id': 0},
+
+                    {'creature_id':  797, 'player_id': 5},
+                    {'creature_id': 1001, 'player_id': 3},
+                    {'creature_id':  786, 'player_id': 4},
+                    {'creature_id': 1013, 'player_id': 2},
+                    {'creature_id':  146, 'player_id': 1},
+                    {'creature_id':  492, 'player_id': 0},
+
+                    {'creature_id':  323, 'player_id': 5},
+                    {'creature_id':  282, 'player_id': 3},
+                    {'creature_id':   65, 'player_id': 4},
+                    {'creature_id':  385, 'player_id': 2},
+                    {'creature_id': 1021, 'player_id': 1},
+                    {'creature_id':  784, 'player_id': 0},
                 ]
             }
         }
