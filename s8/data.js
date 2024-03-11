@@ -18,7 +18,7 @@ var raw = {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 992, 303, 149, 785, 1013, 385, 1004, 1018, 279],
+            "creature_ids": [727, 991, 645, 992, 149, 785, 1013, 385, 1004, 1018, 279, 763],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
@@ -241,6 +241,23 @@ var raw = {
                         "win_player_id": 0,
                         "lose_player_id": 3,
                     },
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/03/10 17:26",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 763
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 303
+                    }
                 ]
             }
         }
