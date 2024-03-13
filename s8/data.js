@@ -12,13 +12,13 @@ var raw = {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [807, 987, 151, 485, 901, 641, 591, 902, 895, 212, 146, 1021],
+            "creature_ids": [807, 987, 151, 485, 901, 641, 591, 895, 212, 1021, 1004, 788],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 992, 149, 785, 1013, 385, 1004, 1018, 279, 763],
+            "creature_ids": [727, 991, 645, 992, 149, 785, 1013, 385, 1018, 279, 763, 902],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
@@ -257,6 +257,40 @@ var raw = {
                         "from_player_id": 2,
                         "to_player_id": -1,
                         "creature_id": 303
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/03/12 19:30",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": 1,
+                        "creature_id": 1004
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": 2,
+                        "creature_id": 902
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/03/12 19:31",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 1,
+                        "creature_id": 788
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 146
                     }
                 ]
             }
