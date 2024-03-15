@@ -24,13 +24,13 @@ var raw = {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 233, 257, 1002, 1017, 598, 649, 923, 1001, 282, 6],
+            "creature_ids": [718, 94, 233, 257, 1002, 1017, 598, 649, 923, 1001, 282, 1000],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [812, 9, 488, 887, 1000, 1020, 1009, 38, 494, 786, 65, 547],
+            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 65, 547, 6, 491],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
@@ -308,6 +308,40 @@ var raw = {
                         "from_player_id": 1,
                         "to_player_id": -1,
                         "creature_id": 146
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/03/14 19:02",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 3,
+                        "to_player_id": 4,
+                        "creature_id": 6
+                    }, {
+                        "from_player_id": 4,
+                        "to_player_id": 3,
+                        "creature_id": 1000
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/03/14 19:20",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 4,
+                        "creature_id": 491
+                    }, {
+                        "from_player_id": 4,
+                        "to_player_id": -1,
+                        "creature_id": 38
                     }
                 ]
             }
