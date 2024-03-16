@@ -18,13 +18,13 @@ var raw = {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 992, 149, 785, 1013, 385, 1018, 279, 763, 902],
+            "creature_ids": [727, 991, 645, 992, 149, 785, 1013, 1018, 279, 763, 902, 282],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 233, 257, 1002, 1017, 598, 649, 923, 1001, 282, 1000],
+            "creature_ids": [718, 94, 233, 257, 1002, 1017, 598, 649, 923, 1001, 1000, 385],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -342,6 +342,23 @@ var raw = {
                         "from_player_id": 4,
                         "to_player_id": -1,
                         "creature_id": 38
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/03/16 11:20",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": 3,
+                        "creature_id": 385
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 2,
+                        "creature_id": 282
                     }
                 ]
             }
