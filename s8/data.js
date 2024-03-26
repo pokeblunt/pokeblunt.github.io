@@ -24,7 +24,7 @@ var raw = {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 233, 257, 1002, 1017, 598, 649, 923, 1001, 385, 1013],
+            "creature_ids": [718, 94, 233, 1002, 1017, 598, 649, 923, 1001, 385, 1013, 198],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -376,6 +376,23 @@ var raw = {
                         "from_player_id": 3,
                         "to_player_id": 2,
                         "creature_id": 1000
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/03/26 10:58",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 3,
+                        "to_player_id": -1,
+                        "creature_id": 257
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 3,
+                        "creature_id": 198
                     }
                 ]
             }
