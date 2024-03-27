@@ -12,19 +12,19 @@ var raw = {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [807, 987, 151, 485, 901, 641, 591, 895, 212, 1021, 1004, 788],
+            "creature_ids": [807, 987, 151, 485, 901, 641, 591, 895, 212, 1004, 788, 373],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 992, 149, 785, 1018, 279, 902, 282, 1000, 38],
+            "creature_ids": [727, 991, 645, 149, 785, 1018, 279, 902, 282, 1000, 38, 1017],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 233, 1002, 1017, 598, 649, 923, 1001, 385, 1013, 198],
+            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 385, 1013, 198, 992],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -459,6 +459,40 @@ var raw = {
                         "from_player_id": -1,
                         "to_player_id": 2,
                         "creature_id": 38
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/03/26 22:10",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": 3,
+                        "creature_id": 992
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 2,
+                        "creature_id": 1017
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/03/26 22:41",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 1,
+                        "creature_id": 373
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 1021
                     }
                 ]
             }
