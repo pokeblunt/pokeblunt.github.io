@@ -12,7 +12,7 @@ var raw = {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [807, 987, 151, 485, 901, 641, 591, 895, 212, 1004, 788, 373],
+            "creature_ids": [807, 987, 151, 901, 641, 591, 895, 212, 1004, 788, 373, 385],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
@@ -24,7 +24,7 @@ var raw = {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 385, 1013, 198, 992],
+            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 1013, 198, 992, 485],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -493,6 +493,23 @@ var raw = {
                         "from_player_id": 1,
                         "to_player_id": -1,
                         "creature_id": 1021
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/04/03 11:02",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": 3,
+                        "creature_id": 485
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 1,
+                        "creature_id": 385
                     }
                 ]
             }
