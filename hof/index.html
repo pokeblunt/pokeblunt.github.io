@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- Development: Must run `npx http-server` on the command line to run locally. -->
+<html lang="en">
+<script>season=8</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head><link rel="stylesheet" href="index.css"></head>
+
+<head><title id="tmp1"></title></head>
+<script>document.getElementById("tmp1").innerHTML = "PB / HOF"</script>
+<head><link id="tmp2" rel="shortcut icon" type="image/png"/></head>
+<script>document.getElementById("tmp2").href = "../img/favicon.png"</script>
+
+<body>
+    <ul class="navbar">
+        <li><a class="tab" href="..">&laquo; Seasons</a></li>
+        
+    </ul>
+
+    <h1>Poke-Blunt</h1>
+    <h2><img class="tmp4"><span id="tmp3" style="display: inline"></span><img class="tmp4"></h2>
+    <script>
+        document.getElementById("tmp3").innerHTML = " Hall of Fame "
+        doms = document.getElementsByClassName("tmp4")
+        for (dom of doms) {
+            dom.src = "../img/favicon.png"
+        }
+    </script>
+
+    <div>
+        <div id="events"></div>
+    </div>
+
+    <div class="event grey trainer" id="tmp5"></div>
+<script src="data.js"></script>
+<script src="index.js"></script>
+<script>
+    main(raw);
+</script>
+</body>
+</html>
