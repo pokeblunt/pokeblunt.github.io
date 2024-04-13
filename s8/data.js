@@ -36,7 +36,7 @@ var raw = {
             "id": 5,
             "name": "Nolan",
             "css_class": "nolan",
-            "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858, 797, 323],
+            "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858, 797, 235],
             "trainer_sprite": "../img/Spr_BW_Backpacker_M.png"
         }
     ],
@@ -510,6 +510,23 @@ var raw = {
                         "from_player_id": 3,
                         "to_player_id": 1,
                         "creature_id": 385
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/04/11 10:26",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 5,
+                        "creature_id": 235
+                    }, {
+                        "from_player_id": 5,
+                        "to_player_id": -1,
+                        "creature_id": 323
                     }
                 ]
             }
