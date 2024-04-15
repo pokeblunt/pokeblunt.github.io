@@ -18,7 +18,7 @@ var raw = {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 149, 785, 1018, 279, 902, 282, 1000, 38, 1017],
+            "creature_ids": [727, 991, 645, 149, 785, 1018, 279, 902, 1000, 38, 1017, 1006],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
@@ -30,7 +30,7 @@ var raw = {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 65, 547, 6, 491],
+            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 903],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
@@ -580,6 +580,40 @@ var raw = {
                     }, {
                         "win_player_id": 1,
                         "lose_player_id": 0,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/04/13 15:42",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 1006
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 282
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/04/14 18:52",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 4,
+                        "creature_id": 903
+                    }, {
+                        "from_player_id": 4,
+                        "to_player_id": -1,
+                        "creature_id": 65
                     }
                 ]
             }
