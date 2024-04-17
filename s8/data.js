@@ -6,37 +6,37 @@ var raw = {
             "id": 0,
             "name": "Kamon",
             "css_class": "kamon",
-            "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 492, 784, 642],
+            "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 492, 784, 642, 970, 806, 248, 530, 763],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [807, 987, 151, 901, 641, 591, 895, 212, 1004, 788, 373, 385],
+            "creature_ids": [807, 987, 151, 901, 641, 591, 895, 212, 1004, 788, 373, 385, 981, 145, 244, 984, 998],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 149, 785, 1018, 279, 902, 1000, 38, 1017, 1006],
+            "creature_ids": [727, 991, 645, 149, 785, 1018, 279, 902, 1000, 38, 1017, 1006, 571, 80, 897, 308, 1022],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 1013, 198, 992, 485],
+            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 1013, 198, 992, 485, 985, 800, 423, 748, 65],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 903],
+            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 903, 1021, 983, 59, 982, 1016],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
             "name": "Nolan",
             "css_class": "nolan",
-            "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858, 797, 235],
+            "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858, 797, 235, 905, 986, 323, 302, 973],
             "trainer_sprite": "../img/Spr_BW_Backpacker_M.png"
         }
     ],
@@ -626,7 +626,42 @@ var raw = {
             <a href='draft2.html' target='_blank'>Draft</a>
             `,
             "kwargs": {
-                "creatures_drafted": []
+                "creatures_drafted": [
+                    {'creature_id': 905, 'player_id': 5},
+                    {'creature_id': 981, 'player_id': 1},
+                    {'creature_id': 1021, 'player_id': 4},
+                    {'creature_id': 571, 'player_id': 2},
+                    {'creature_id': 970, 'player_id': 0},
+                    {'creature_id': 985, 'player_id': 3},
+
+                    {'creature_id': 986, 'player_id': 5},
+                    {'creature_id': 145, 'player_id': 1},
+                    {'creature_id': 983, 'player_id': 4},
+                    {'creature_id':  80, 'player_id': 2},
+                    {'creature_id': 806, 'player_id': 0},
+                    {'creature_id': 800, 'player_id': 3},
+
+                    {'creature_id': 323, 'player_id': 5},
+                    {'creature_id': 244, 'player_id': 1},
+                    {'creature_id':  59, 'player_id': 4},
+                    {'creature_id': 897, 'player_id': 2},
+                    {'creature_id': 248, 'player_id': 0},
+                    {'creature_id': 423, 'player_id': 3},
+
+                    {'creature_id': 302, 'player_id': 5},
+                    {'creature_id': 984, 'player_id': 1},
+                    {'creature_id': 982, 'player_id': 4},
+                    {'creature_id': 308, 'player_id': 2},
+                    {'creature_id': 530, 'player_id': 0},
+                    {'creature_id': 748, 'player_id': 3},
+
+                    {'creature_id':  973, 'player_id': 5},
+                    {'creature_id':  998, 'player_id': 1},
+                    {'creature_id': 1016, 'player_id': 4},
+                    {'creature_id': 1022, 'player_id': 2},
+                    {'creature_id':  763, 'player_id': 0},
+                    {'creature_id':   65, 'player_id': 3},
+                ]
             }
         }
     ],
