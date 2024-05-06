@@ -24,13 +24,13 @@ var raw = {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 1013, 198, 992, 485, 985, 800, 423, 748, 65],
+            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 1013, 198, 992, 485, 985, 423, 748, 65, 448],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 903, 1021, 983, 59, 982, 1016],
+            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 903, 1021, 983, 59, 982, 800],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
@@ -726,6 +726,40 @@ var raw = {
                         "from_player_id": 2,
                         "to_player_id": -1,
                         "creature_id": 308
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/05/05 18:41",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 3,
+                        "creature_id": 448
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": -1,
+                        "creature_id": 800
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/05/05 18:51",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 4,
+                        "creature_id": 800
+                    }, {
+                        "from_player_id": 4,
+                        "to_player_id": -1,
+                        "creature_id": 1016
                     }
                 ]
             }
