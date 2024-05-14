@@ -12,7 +12,7 @@ var raw = {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [807, 987, 151, 901, 641, 591, 895, 212, 1004, 788, 373, 385, 981, 145, 244, 984, 998],
+            "creature_ids": [807, 987, 151, 901, 641, 591, 895, 212, 1004, 788, 373, 385, 981, 145, 244, 998, 787],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
@@ -777,6 +777,23 @@ var raw = {
                         "from_player_id": 3,
                         "to_player_id": 2,
                         "creature_id": 985
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/05/14 15:33",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 1,
+                        "creature_id": 787
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 984
                     }
                 ]
             }
