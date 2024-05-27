@@ -18,7 +18,7 @@ var raw = {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 785, 1018, 279, 902, 1000, 38, 1017, 1006, 571, 80, 897, 1022, 1005, 985],
+            "creature_ids": [727, 991, 645, 785, 1018, 279, 902, 1000, 38, 1017, 1006, 80, 897, 1022, 1005, 985, 805],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
@@ -764,6 +764,52 @@ var raw = {
                 ]
             }
         }, {
+            "type": "unofficial-tournament",
+            "date": "2024/05/06 18:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9natdex6v6doublesdraft-2119280122' target='_blank'>Game 1 - Matt beat Stephen</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2119289407' target='_blank'>Game 2 - Stephen beat Jesse</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2119295951' target='_blank'>Game 3 - Matt beat Jesse</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2119302793' target='_blank'>Game 4 - Matt beat Stephen</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2119311086' target='_blank'>Game 5 - Stephen beat Jesse</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2119319364' target='_blank'>Game 6 - Jesse beat Matt</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [115, 802, 1003, 719, 386, 876],
+                    }, {
+                        "player_id": 1,
+                        "creature_ids": [1004, 987, 373, 998, 984, 901],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [645, 38, 727, 1000, 1005, 1017],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                    }, {
+                        "win_player_id": 2,
+                        "lose_player_id": 1,
+                    }, {
+                        "win_player_id": 0,
+                        "lose_player_id": 1,
+                    }, {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                    }, {
+                        "win_player_id": 2,
+                        "lose_player_id": 1,
+                    }, {
+                        "win_player_id": 1,
+                        "lose_player_id": 0,
+                    }
+                ]
+            }
+        }, {
             "type": "trade",
             "date": "2024/05/10 17:18",
             "description": "",
@@ -794,6 +840,76 @@ var raw = {
                         "from_player_id": 1,
                         "to_player_id": -1,
                         "creature_id": 984
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2024/05/20 20:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2127163975' target='_blank'>Game 1 - James beat Arod</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2127169358' target='_blank'>Game 2 - Jesse beat Stephen</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2127173797' target='_blank'>Game 3 - Arod beat Stephen</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2127183316' target='_blank'>Game 4 - Jesse beat James</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2127186255' target='_blank'>Game 5 - Stephen beat James</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2127202050' target='_blank'>Game 6 - Arod beat Jesse</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2127208649' target='_blank'>Game 7 - Jesse beat Arod</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 1,
+                        "creature_ids": [1004, 151, 212, 901, 641, 987],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [645, 785, 991, 38, 1000, 727],
+                    }, {
+                        "player_id": 3,
+                        "creature_ids": [448, 649, 1001, 1002, 992, 233],
+                    }, {
+                        "player_id": 4,
+                        "creature_ids": [6, 488, 812, 1021, 491, 982],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 3,
+                        "lose_player_id": 4,
+                    }, {
+                        "win_player_id": 1,
+                        "lose_player_id": 2,
+                    }, {
+                        "win_player_id": 4,
+                        "lose_player_id": 2,
+                    }, {
+                        "win_player_id": 1,
+                        "lose_player_id": 3,
+                    }, {
+                        "win_player_id": 2,
+                        "lose_player_id": 3,
+                    }, {
+                        "win_player_id": 4,
+                        "lose_player_id": 1,
+                    }, {
+                        "win_player_id": 1,
+                        "lose_player_id": 4,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/05/21 12:34",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 571
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 805
                     }
                 ]
             }
