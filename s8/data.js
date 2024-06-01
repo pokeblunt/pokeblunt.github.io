@@ -623,7 +623,7 @@ var raw = {
             "description": `
             <a href='tiers2.html' target='_blank'>Tier List (before draft)</a>
             <br/>
-            <a href='tiers2.html' target='_blank'>Tier List (after draft)</a>
+            <a href='tiers2_after_draft.html' target='_blank'>Tier List (after draft)</a>
             <br/><br/>
             <a href='draft2.html' target='_blank'>Draft</a>
             `,
