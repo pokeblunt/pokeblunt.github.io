@@ -621,7 +621,9 @@ var raw = {
             "type": "draft",
             "date": "2024/04/17 17:00",
             "description": `
-            <a href='tiers2.html' target='_blank'>Tier List</a>
+            <a href='tiers2.html' target='_blank'>Tier List (before draft)</a>
+            <br/>
+            <a href='tiers2.html' target='_blank'>Tier List (after draft)</a>
             <br/><br/>
             <a href='draft2.html' target='_blank'>Draft</a>
             `,
