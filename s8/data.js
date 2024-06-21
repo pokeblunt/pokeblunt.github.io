@@ -30,7 +30,7 @@ var raw = {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 903, 1021, 983, 59, 982, 800],
+            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 1021, 983, 59, 982, 800, 130],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
@@ -999,6 +999,40 @@ var raw = {
                         "from_player_id": -1,
                         "to_player_id": 2,
                         "creature_id": 445
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/06/19 14:42",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 4,
+                        "to_player_id": -1,
+                        "creature_id": 903
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 4,
+                        "creature_id": 130
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/06/20 11:21",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 5,
+                        "to_player_id": -1,
+                        "creature_id": 973
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 4,
+                        "creature_id": 186
                     }
                 ]
             }
