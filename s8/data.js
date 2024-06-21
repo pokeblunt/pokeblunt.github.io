@@ -6,37 +6,37 @@ var raw = {
             "id": 0,
             "name": "Kamon",
             "css_class": "kamon",
-            "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 492, 784, 642, 970, 806, 248, 530, 763],
+            "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 492, 784, 642, 970, 806, 248, 530, 763, 3, 380, 936, 571, 880, 157],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [807, 987, 151, 901, 641, 591, 895, 212, 1004, 788, 373, 385, 981, 145, 244, 998, 787],
+            "creature_ids": [807, 987, 151, 901, 641, 591, 895, 212, 1004, 788, 373, 385, 981, 145, 244, 998, 787, 230, 794, 900, 764, 254, 103],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 785, 1018, 279, 902, 1000, 38, 1017, 1006, 80, 897, 1022, 1005, 805, 445],
+            "creature_ids": [727, 991, 645, 785, 1018, 279, 902, 1000, 38, 1017, 1006, 80, 897, 1022, 1005, 805, 445, 490, 925, 894, 964, 707, 12],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 1013, 198, 992, 485, 748, 65, 448, 149, 985],
+            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 1013, 198, 992, 485, 748, 65, 448, 149, 985, 237, 908, 144, 778, 795, 306],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 1021, 983, 59, 982, 800, 130],
+            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 1021, 983, 59, 982, 800, 130, 934, 984, 1023, 823, 381, 160],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
             "name": "Nolan",
             "css_class": "nolan",
-            "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858, 797, 235, 905, 986, 323, 302, 973],
+            "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858, 797, 235, 905, 986, 323, 302, 973, 423, 184, 362, 959, 939, 658],
             "trainer_sprite": "../img/Spr_BW_Backpacker_M.png"
         }
     ],
@@ -1034,6 +1034,78 @@ var raw = {
                         "to_player_id": 4,
                         "creature_id": 186
                     }
+                ]
+            }
+        }, {
+            "type": "draft",
+            "date": "2024/06/20 17:00",
+            "description": `
+            <a href='tiers2.html' target='_blank'>Tier List (before draft)</a>
+            <br/>
+            <a href='tiers2_after_draft.html' target='_blank'>Tier List (after draft)</a>
+            <br/><br/>
+            <a href='draft2.html' target='_blank'>Draft</a>
+            `,
+            "kwargs": {
+                "creatures_drafted": [
+                    {'creature_id': 490, 'player_id': 2},
+                    {'creature_id': 934, 'player_id': 4},
+                    {'creature_id': 3, 'player_id': 0},
+                    {'creature_id': 237, 'player_id': 3},
+                    {'creature_id': 423, 'player_id': 5},
+                    {'creature_id': 230, 'player_id': 1},
+
+                    {'creature_id': 925, 'player_id': 2},
+                    {'creature_id': 984, 'player_id': 4},
+                    {'creature_id': 380, 'player_id': 0},
+                    {'creature_id': 908, 'player_id': 3},
+                    {'creature_id': 184, 'player_id': 5},
+                    {'creature_id': 794, 'player_id': 1},
+
+                    {'creature_id': 894, 'player_id': 2},
+                    {'creature_id': 1023, 'player_id': 4},
+                    {'creature_id': 936, 'player_id': 0},
+                    {'creature_id': 144, 'player_id': 3},
+                    {'creature_id': 362, 'player_id': 5},
+                    {'creature_id': 900, 'player_id': 1},
+
+                    {'creature_id': 964, 'player_id': 2},
+                    {'creature_id': 823, 'player_id': 4},
+                    {'creature_id': 571, 'player_id': 0},
+                    {'creature_id': 778, 'player_id': 3},
+                    {'creature_id': 959, 'player_id': 5},
+                    {'creature_id': 764, 'player_id': 1},
+
+                    {'creature_id': 707, 'player_id': 2},
+                    {'creature_id': 381, 'player_id': 4},
+                    {'creature_id': 880, 'player_id': 0},
+                    {'creature_id': 795, 'player_id': 3},
+                    {'creature_id': 939, 'player_id': 5},
+                    {'creature_id': 254, 'player_id': 1},
+
+                    {'creature_id': 12, 'player_id': 2},
+                    {'creature_id': 160, 'player_id': 4},
+                    {'creature_id': 157, 'player_id': 0},
+                    {'creature_id': 306, 'player_id': 3},
+                    {'creature_id': 658, 'player_id': 5},
+                    {'creature_id': 103, 'player_id': 1},
+                ]
+            }
+        }, {
+            "type": "draft",
+            "date": "2024/06/20 18:00",
+            "description": `
+            Permanent keeps
+            `,
+            "kwargs": {
+                "creatures_drafted": [
+
+                    {'creature_id': 12, 'player_id': 2},
+                    {'creature_id': 160, 'player_id': 4},
+                    {'creature_id': 157, 'player_id': 0},
+                    {'creature_id': 306, 'player_id': 3},
+                    {'creature_id': 658, 'player_id': 5},
+                    {'creature_id': 103, 'player_id': 1},
                 ]
             }
         }
