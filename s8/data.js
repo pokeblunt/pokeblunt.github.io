@@ -18,19 +18,19 @@ var raw = {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 785, 1018, 279, 902, 1000, 38, 1017, 1006, 80, 897, 1022, 1005, 805, 445, 490, 925, 894, 964, 707, 12],
+            "creature_ids": [727, 991, 645, 785, 1018, 279, 902, 1000, 38, 1017, 1006, 80, 897, 1022, 1005, 445, 490, 925, 894, 964, 707, 12, 700],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 1013, 198, 992, 485, 748, 65, 448, 149, 985, 237, 908, 144, 778, 795, 306],
+            "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 1001, 1013, 198, 992, 485, 65, 448, 149, 985, 237, 908, 144, 778, 795, 306, 1023],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 1021, 983, 59, 982, 800, 130, 934, 984, 1023, 823, 381, 160],
+            "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 1021, 983, 59, 982, 800, 130, 934, 984, 823, 381, 160, 748],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
@@ -1154,6 +1154,40 @@ var raw = {
                     }, {
                         "win_player_id": 1,
                         "lose_player_id": 4,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/06/24 15:03",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 805
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 700
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/07/01 21:27",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 3,
+                        "to_player_id": 4,
+                        "creature_id": 748
+                    }, {
+                        "from_player_id": 4,
+                        "to_player_id": 3,
+                        "creature_id": 1023
                     }
                 ]
             }
