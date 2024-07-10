@@ -372,12 +372,12 @@ class Player {
             }
             return 1;
         });
-        // creatures_this_player = creatures_this_player.sort(function(a, b) {
-        //     if (a.stat.elo > b.stat.elo) {
-        //         return -1;
-        //     }
-        //     return 1;
-        // });
+        creatures_this_player = creatures_this_player.sort(function(a, b) {
+            if (a.stat.elo > b.stat.elo) {
+                return -1;
+            }
+            return 1;
+        });
         for (let creature of creatures_this_player) {
             dom_creature_arts.push(creature.draw_art_with_discription());
         }
@@ -1052,7 +1052,7 @@ class Round extends Event {
             for (var creature of Creature.get_by_ids(creatures, match.lose_team.creature_ids)) {
                 creature.stat.add_round_match_losses(1);
             }
-            match.update_elos(creatures);
+            // match.update_elos(creatures);  // Don't update elo from playoffs
         }
     }
 }
