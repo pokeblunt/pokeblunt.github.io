@@ -6,7 +6,7 @@ var raw = {
             "id": 0,
             "name": "Kamon",
             "css_class": "kamon",
-            "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 492, 784, 642, 970, 806, 248, 530, 763, 3, 380, 936, 571, 880, 157],
+            "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 492, 784, 642, 970, 248, 530, 763, 3, 380, 936, 571, 880, 157, 445],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
@@ -1409,6 +1409,23 @@ var raw = {
                     }, {
                         "win_player_id": 4,
                         "lose_player_id": 5,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/10/17 19:11",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 0,
+                        "to_player_id": -1,
+                        "creature_id": 806
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 0,
+                        "creature_id": 445
                     }
                 ]
             }
