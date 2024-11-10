@@ -18,7 +18,7 @@ var raw = {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [727, 991, 645, 785, 902, 1000, 38, 1017, 1006, 80, 897, 1022, 1005, 490, 925, 894, 964, 12, 700, 308, 198, 992, 1013],
+            "creature_ids": [727, 991, 645, 785, 902, 1000, 38, 1017, 1006, 80, 897, 1022, 1005, 490, 925, 894, 12, 700, 308, 198, 992, 1013, 743],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
@@ -1365,7 +1365,7 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/10/05 17:30",
+            "date": "2024/10/03 17:30",
             "description": `
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2215455656' target='_blank'>Game 1 - Nolan beat James</a><br/>
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2215460701' target='_blank'>Game 2 - Arod beat Stephen</a><br/>
@@ -1409,6 +1409,23 @@ var raw = {
                     }, {
                         "win_player_id": 4,
                         "lose_player_id": 5,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/10/04 08:45",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 964
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 743
                     }
                 ]
             }
