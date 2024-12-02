@@ -1518,7 +1518,7 @@ var raw = {
             }
         }, {
             "type": "round",
-            "date": "2024/11/30 20:00",
+            "date": "2024/11/30 8:00",
             "description": `
             Season 8 playoff brackets!
             </br>
@@ -1534,6 +1534,150 @@ var raw = {
             `,
             "kwargs": {
                 "matches": []
+            }
+        }, {
+            "type": "round",
+            "date": "2024/11/30 9:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254004737' target='_blank'>Game 1 - Stephen beat James</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254019574' target='_blank'>Game 2 - Stephen beat James</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "win_player_id": 2,
+                        "lose_player_id": 3,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "win_player_id": 2,
+                        "lose_player_id": 3,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }
+                ]
+            }
+        }, {
+            "type": "round",
+            "date": "2024/11/30 10:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254011409' target='_blank'>Game 1 - Arod beat Nolan</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254024998' target='_blank'>Game 2 - Arod beat Nolan</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "win_player_id": 4,
+                        "lose_player_id": 5,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "win_player_id": 4,
+                        "lose_player_id": 5,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }
+                ]
+            }
+        }, {
+            "type": "round",
+            "date": "2024/11/30 11:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254035551' target='_blank'>Game 1 - Matt beat Stephen</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254065709' target='_blank'>Game 2 - Matt beat Stephen</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }
+                ]
+            }
+        }, {
+            "type": "round",
+            "date": "2024/11/30 12:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254042748' target='_blank'>Game 1 - Arod beat Jesse</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254074251' target='_blank'>Game 2 - Arod beat Jesse</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "win_player_id": 4,
+                        "lose_player_id": 1,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "win_player_id": 4,
+                        "lose_player_id": 1,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }
+                ]
+            }
+        }, {
+            "type": "round",
+            "date": "2024/11/30 13:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254089567' target='_blank'>Game 1 - Matt beat Arod</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254097703' target='_blank'>Game 2 - Matt beat Arod</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2254105017' target='_blank'>Game 3 - Matt beat Arod</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 4,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "win_player_id": 0,
+                        "lose_player_id": 4,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "win_player_id": 0,
+                        "lose_player_id": 4,
+                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                    }
+                ]
+            }
+        }, {
+            "type": "champion",
+            "date": "2024/11/30 14:00",
+            "description": 'Kamon wins Season 8! Volcanion is named Season 8 MVP!',
+            "kwargs": {
+                "mvp_creature_id": 721,
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "player_id": 4,
+                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "player_id": 1,
+                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "player_id": 3,
+                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                    }, {
+                        "player_id": 5,
+                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                    }
+                ],
             }
         }
     ],
