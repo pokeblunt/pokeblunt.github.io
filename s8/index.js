@@ -1054,7 +1054,7 @@ class Round extends Event {
             for (var creature of Creature.get_by_ids(creatures, match.lose_team.creature_ids)) {
                 creature.stat.add_round_match_losses(1);
             }
-            // match.update_elos(creatures);  // Don't update elo from playoffs
+            // match.update_elos(players, creatures);  // Don't update elo from playoffs
         }
     }
 }

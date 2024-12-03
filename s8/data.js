@@ -1547,13 +1547,13 @@ var raw = {
                     {
                         "win_player_id": 2,
                         "lose_player_id": 3,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [727, 645, 198, 992, 1000, 1017],
+                        "lose_creature_ids": [718, 1002, 237, 707, 94, 149],
                     }, {
                         "win_player_id": 2,
                         "lose_player_id": 3,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [727, 645, 198, 992, 1000, 1017],
+                        "lose_creature_ids": [718, 1002, 237, 707, 94, 149],
                     }
                 ]
             }
@@ -1569,13 +1569,13 @@ var raw = {
                     {
                         "win_player_id": 4,
                         "lose_player_id": 5,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [6, 488, 1021, 1009, 9, 547],
+                        "lose_creature_ids": [235, 801, 809, 858, 892, 905],
                     }, {
                         "win_player_id": 4,
                         "lose_player_id": 5,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [1009, 488, 982, 934, 547, 748],
+                        "lose_creature_ids": [235, 376, 979, 637, 892, 801],
                     }
                 ]
             }
@@ -1591,13 +1591,13 @@ var raw = {
                     {
                         "win_player_id": 0,
                         "lose_player_id": 2,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [380, 3, 861, 721, 719, 802],
+                        "lose_creature_ids": [576, 727, 785, 992, 1013, 1017],
                     }, {
                         "win_player_id": 0,
                         "lose_player_id": 2,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [876, 386, 1003, 115, 719, 802],
+                        "lose_creature_ids": [38, 198, 645, 727, 902, 1017],
                     }
                 ]
             }
@@ -1613,13 +1613,13 @@ var raw = {
                     {
                         "win_player_id": 4,
                         "lose_player_id": 1,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [488, 982, 812, 1021, 6, 491],
+                        "lose_creature_ids": [807, 373, 385, 788, 987, 1004],
                     }, {
                         "win_player_id": 4,
                         "lose_player_id": 1,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [9, 488, 982, 934, 547, 748],
+                        "lose_creature_ids": [212, 641, 901, 981, 788, 151],
                     }
                 ]
             }
@@ -1636,18 +1636,18 @@ var raw = {
                     {
                         "win_player_id": 0,
                         "lose_player_id": 4,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [386, 876, 719, 721, 861, 3],
+                        "lose_creature_ids": [6, 9, 547, 488, 1021, 1009],
                     }, {
                         "win_player_id": 0,
                         "lose_player_id": 4,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [721, 861, 719, 784, 876, 3],
+                        "lose_creature_ids": [9, 488, 982, 934, 547, 748],
                     }, {
                         "win_player_id": 0,
                         "lose_player_id": 4,
-                        "win_creature_ids": [1, 1, 1, 1, 1, 1],
-                        "lose_creature_ids": [1, 1, 1, 1, 1, 1],
+                        "win_creature_ids": [115, 802, 719, 721, 861, 642],
+                        "lose_creature_ids": [488, 6, 9, 547, 1021, 1009],
                     }
                 ]
             }
@@ -1660,22 +1660,22 @@ var raw = {
                 "teams": [
                     {
                         "player_id": 0,
-                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                        "creature_ids": [721, 719, 861, 802, 115, 3],
                     }, {
                         "player_id": 4,
-                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                        "creature_ids": [6, 488, 1021, 1009, 9, 812],
                     }, {
                         "player_id": 1,
-                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                        "creature_ids": [1004, 151, 901, 987, 212, 641],
                     }, {
                         "player_id": 2,
-                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                        "creature_ids": [645, 198, 727, 785, 1000, 991],
                     }, {
                         "player_id": 3,
-                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                        "creature_ids": [1002, 233, 718, 94, 1018, 279],
                     }, {
                         "player_id": 5,
-                        "creature_ids": [1, 1, 1, 1, 1, 1],
+                        "creature_ids": [801, 892, 637, 235, 376, 979],
                     }
                 ],
             }
