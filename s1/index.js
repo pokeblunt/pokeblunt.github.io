@@ -325,7 +325,7 @@ class Player {
                 create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
                 create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
                 create_element({tag: "th", innerHTML: "", classList: ["visibility-hidden"]}),
-                create_element({tag: "th", innerHTML: "Tournaments", attributes: {"colspan": 4}}),
+                create_element({tag: "th", innerHTML: "Tournaments", attributes: {"colspan": 5}}),
                 create_element({tag: "th", innerHTML: "Playoffs", attributes: {"colspan": 4}}),
             ]}),
             create_element({tag: "tr", children: [
@@ -337,6 +337,7 @@ class Player {
                 create_element({tag: "th", innerHTML: "TM"}),
                 create_element({tag: "th", innerHTML: "TW"}),
                 create_element({tag: "th", innerHTML: "T"}),
+                create_element({tag: "th", innerHTML: "ELO"}),
                 create_element({tag: "th", innerHTML: "PMW"}),
                 create_element({tag: "th", innerHTML: "PM"}),
                 create_element({tag: "th", innerHTML: "PW"}),
@@ -351,6 +352,7 @@ class Player {
                 create_element({tag: "td", innerHTML: this.stat.tournament_matches}),
                 create_element({tag: "td", innerHTML: this.stat.tournament_wins}),
                 create_element({tag: "td", innerHTML: this.stat.tournaments}),
+                create_element({tag: "td", innerHTML: Math.round(this.stat.elo)}),
                 create_element({tag: "td", innerHTML: this.stat.round_match_wins}),
                 create_element({tag: "td", innerHTML: this.stat.round_matches}),
                 create_element({tag: "td", innerHTML: this.stat.round_wins}),
@@ -774,7 +776,7 @@ class Tournament extends Event {
 
         // Update ELO
         for (let i = 0; i < this.matches.length; i++) {
-            this.matches[i].update_elos(creatures);
+            this.matches[i].update_elos(players, creatures);
         }
     }
 }
@@ -1052,7 +1054,7 @@ class Round extends Event {
             for (var creature of Creature.get_by_ids(creatures, match.lose_team.creature_ids)) {
                 creature.stat.add_round_match_losses(1);
             }
-            // match.update_elos(creatures);  // Don't update elo from playoffs
+            // match.update_elos(players, creatures);  // Don't update elo from playoffs
         }
     }
 }
@@ -1224,9 +1226,15 @@ class Match {
 
     /**
      * [Update the ELO of each creature]
+     * @param {[array]} players [List of all players]
      * @param {[array]} creatures [List of all creatures]
      */
-    update_elos(creatures) {
+    update_elos(players, creatures) {
+        // Update player ELOs (added 2024-12-02)
+        var [ew, el] = elo_update(players[this.win_team.player_id].stat.elo, players[this.lose_team.player_id].stat.elo);
+        players[this.win_team.player_id].stat.elo = ew;
+        players[this.lose_team.player_id].stat.elo = el;
+
         var win_creatures = Creature.get_by_ids(creatures, this.win_team.creature_ids)
         var lose_creatures = Creature.get_by_ids(creatures, this.lose_team.creature_ids)
         var nw = win_creatures.length
