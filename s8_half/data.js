@@ -18,7 +18,7 @@ var raw = {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [29, 30, 31, 45, 56, 14, 15, 52, 143, 16, 132, 43, 102, 71, 28, 60, 61, 129, 73],
+            "creature_ids": [29, 30, 31, 35, 56, 14, 15, 52, 143, 16, 132, 43, 102, 71, 28, 60, 61, 129, 73],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
@@ -69,11 +69,11 @@ var raw = {
                     {'creature_id': 33, 'player_id': 0},
                     {'creature_id': 34, 'player_id': 5},
                     {'creature_id': 35, 'player_id': 0},
+                    {'creature_id': 35, 'player_id': 2},
                     {'creature_id': 37, 'player_id': 4},
                     {'creature_id': 39, 'player_id': 4},
                     {'creature_id': 41, 'player_id': 5},
                     {'creature_id': 43, 'player_id': 2},
-                    {'creature_id': 45, 'player_id': 2},
                     {'creature_id': 46, 'player_id': 3},
                     {'creature_id': 46, 'player_id': 3},
                     {'creature_id': 46, 'player_id': 5},
