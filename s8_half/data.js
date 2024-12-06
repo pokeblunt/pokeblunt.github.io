@@ -12,19 +12,19 @@ var raw = {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [112, 130, 113, 125, 144, 107, 87, 67, 96, 84, 50, 63, 119, 116, 72, 27, 86],
+            "creature_ids": [112, 130, 113, 125, 144, 107, 87, 96, 50, 63, 119, 116, 72, 27, 86, 58, 102],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [29, 30, 31, 35, 56, 14, 15, 52, 143, 16, 132, 43, 102, 71, 28, 60, 61, 129, 73],
+            "creature_ids": [29, 30, 31, 35, 56, 14, 15, 52, 143, 16, 132, 43, 71, 28, 61, 129, 73, 85],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [69, 46, 92, 136, 126, 116, 117, 84, 95, 46, 100, 148, 89, 59, 60, 90, 83, 53],
+            "creature_ids": [69, 46, 92, 136, 126, 116, 117, 95, 46, 100, 148, 89, 59, 60, 90, 83, 53, 60],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -36,7 +36,7 @@ var raw = {
             "id": 5,
             "name": "Nolan",
             "css_class": "nolan",
-            "creature_ids": [123, 63, 84, 142, 34, 41, 96, 67, 131, 92, 1, 58, 79, 146, 80, 2, 98, 46, 100],
+            "creature_ids": [123, 63, 84, 142, 34, 41, 96, 67, 131, 92, 1, 79, 146, 80, 2, 98, 46, 100, 67],
             "trainer_sprite": "../img/Spr_BW_Backpacker_M.png"
         }
     ],
@@ -157,6 +157,78 @@ var raw = {
                     {'creature_id': 144, 'player_id': 1},
                     {'creature_id': 146, 'player_id': 5},
                     {'creature_id': 148, 'player_id': 3}
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/11/30 15:00",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": 5,
+                        "creature_id": 67
+                    }, {
+                        "from_player_id": 5,
+                        "to_player_id": 1,
+                        "creature_id": 58
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/04 11:59",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": 2,
+                        "creature_id": 84
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": 1,
+                        "creature_id": 102
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/04 13:05",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": 3,
+                        "creature_id": 60
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 2,
+                        "creature_id": 84
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/04 13:06",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 84
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 84
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 85
+                    }
                 ]
             }
         }, {
