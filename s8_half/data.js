@@ -6,7 +6,7 @@ var raw = {
             "id": 0,
             "name": "Kamon",
             "css_class": "kamon",
-            "creature_ids": [77, 105, 35, 57, 101, 83, 127, 12, 25, 94, 33, 55, 102, 66, 137, 22, 90, 118, 95],
+            "creature_ids": [77, 105, 35, 57, 101, 83, 127, 12, 25, 94, 33, 102, 66, 137, 22, 118, 95, 91],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
@@ -18,13 +18,13 @@ var raw = {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [29, 30, 31, 35, 56, 14, 15, 52, 143, 16, 132, 43, 71, 28, 61, 129, 73, 85],
+            "creature_ids": [29, 30, 31, 35, 56, 14, 15, 52, 143, 16, 132, 43, 71, 129, 73, 85, 62],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [69, 92, 136, 126, 116, 117, 95, 100, 148, 89, 59, 90, 83, 53, 61, 47],
+            "creature_ids": [69, 92, 136, 126, 116, 117, 95, 100, 148, 89, 59, 83, 53, 47, 55, 28],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -379,6 +379,197 @@ var raw = {
                     }, {
                         "player_id": 2,
                         "creature_ids": [31, 35, 71, 73, 143, 85],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/06 11:38",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 3,
+                        "to_player_id": 0,
+                        "creature_id": 90
+                    }, {
+                        "from_player_id": 0,
+                        "to_player_id": 3,
+                        "creature_id": 55
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/06 11:39",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 0,
+                        "to_player_id": -1,
+                        "creature_id": 90
+                    }, {
+                        "from_player_id": 0,
+                        "to_player_id": -1,
+                        "creature_id": 90
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 0,
+                        "creature_id": 91
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/07 02:13",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": 3,
+                        "creature_id": 28
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 2,
+                        "creature_id": 61
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/07 02:14",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 61
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 61
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 62
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2024/12/07 14:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2258702444' target='_blank'>Matt beat Jesse</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [12, 25, 57, 94, 127, 35],
+                    }, {
+                        "player_id": 1,
+                        "creature_ids": [107, 113, 125, 130, 144, 87],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 1,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2024/12/07 14:20",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2258711561' target='_blank'>Jesse beat Matt</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [137, 105, 91, 12, 25, 35],
+                    }, {
+                        "player_id": 1,
+                        "creature_ids": [107, 113, 125, 130, 144, 87],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 1,
+                        "lose_player_id": 0,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2024/12/08 15:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2259314677' target='_blank'>Stephen beat Matt</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [137, 105, 91, 12, 25, 35],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [62, 73, 35, 31, 71, 143],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 2,
+                        "lose_player_id": 0,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2024/12/08 15:07",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2259320077' target='_blank'>Matt beat Stephen</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [12, 25, 57, 94, 127, 35],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [62, 73, 35, 31, 71, 143],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2024/12/08 15:21",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2259322913' target='_blank'>Matt beat Stephen</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [12, 25, 57, 94, 127, 35],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [62, 73, 35, 31, 71, 143],
                     }
                 ],
                 "matches": [
