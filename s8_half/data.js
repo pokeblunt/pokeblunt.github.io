@@ -12,7 +12,7 @@ var raw = {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [112, 130, 113, 125, 144, 107, 87, 96, 50, 63, 119, 116, 72, 27, 86, 58, 102],
+            "creature_ids": [112, 130, 113, 125, 144, 107, 87, 50, 119, 116, 72, 27, 86, 58, 102, 64],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
@@ -36,7 +36,7 @@ var raw = {
             "id": 5,
             "name": "Nolan",
             "css_class": "nolan",
-            "creature_ids": [123, 63, 84, 142, 34, 41, 96, 131, 92, 1, 79, 146, 80, 2, 98, 46, 100, 68],
+            "creature_ids": [123, 84, 142, 34, 41, 131, 92, 1, 79, 146, 80, 2, 98, 46, 100, 68, 97],
             "trainer_sprite": "../img/Spr_BW_Backpacker_M.png"
         }
     ],
@@ -643,6 +643,111 @@ var raw = {
                     {
                         "win_player_id": 3,
                         "lose_player_id": 0,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/09 12:35",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": 5,
+                        "creature_id": 96
+                    }, {
+                        "from_player_id": 5,
+                        "to_player_id": 1,
+                        "creature_id": 63
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/09 12:36",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 63
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 63
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 1,
+                        "creature_id": 64
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/09 12:37",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 5,
+                        "to_player_id": -1,
+                        "creature_id": 96
+                    }, {
+                        "from_player_id": 5,
+                        "to_player_id": -1,
+                        "creature_id": 96
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 5,
+                        "creature_id": 97
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2024/12/09 14:57",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2259960681' target='_blank'>Matt beat Stephen</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [137, 105, 25, 12, 91, 35],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [62, 31, 71, 143, 85, 35],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2024/12/09 15:07",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2259965487' target='_blank'>Matt beat Stephen</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [137, 105, 25, 12, 91, 35],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [62, 31, 71, 143, 35, 132],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
                     }
                 ]
             }
