@@ -12,7 +12,7 @@ var raw = {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [112, 130, 113, 125, 144, 107, 87, 50, 119, 116, 72, 27, 86, 58, 102, 64],
+            "creature_ids": [112, 130, 113, 125, 144, 107, 50, 119, 116, 72, 27, 86, 58, 102, 64, 126],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
@@ -24,7 +24,7 @@ var raw = {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [69, 92, 136, 126, 116, 117, 95, 100, 148, 89, 59, 83, 53, 47, 55, 28],
+            "creature_ids": [69, 92, 136, 116, 117, 95, 100, 148, 89, 59, 83, 53, 47, 55, 28, 87],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -748,6 +748,46 @@ var raw = {
                     {
                         "win_player_id": 0,
                         "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2024/12/10 19:00",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2260737347' target='_blank'>Nolan beat Jesse</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 1,
+                        "creature_ids": [107, 113, 125, 87, 112, 64],
+                    }, {
+                        "player_id": 5,
+                        "creature_ids": [68, 80, 97, 131, 146, 34],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 5,
+                        "lose_player_id": 1,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/10 20:00",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": 3,
+                        "creature_id": 87
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 1,
+                        "creature_id": 126
                     }
                 ]
             }
