@@ -753,6 +753,29 @@ var raw = {
             }
         }, {
             "type": "tournament",
+            "date": "2024/12/09 20:41",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2260117154' target='_blank'>Stephen beat James</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [62, 85, 35, 143, 71, 31],
+                    }, {
+                        "player_id": 3,
+                        "creature_ids": [47, 55, 59, 89, 148, 126],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 2,
+                        "lose_player_id": 3,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
             "date": "2024/12/10 19:00",
             "description": `
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2260737347' target='_blank'>Nolan beat Jesse</a><br/>
