@@ -24,7 +24,7 @@ var raw = {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [69, 92, 136, 116, 117, 95, 100, 148, 89, 59, 83, 53, 47, 55, 28, 87],
+            "creature_ids": [69, 136, 116, 117, 95, 148, 89, 59, 83, 53, 47, 55, 28, 87, 101],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -36,7 +36,7 @@ var raw = {
             "id": 5,
             "name": "Nolan",
             "css_class": "nolan",
-            "creature_ids": [123, 84, 142, 34, 41, 131, 92, 1, 79, 146, 80, 2, 98, 46, 100, 68, 97],
+            "creature_ids": [123, 84, 142, 34, 41, 131, 1, 79, 146, 80, 2, 98, 46, 68, 97, 93],
             "trainer_sprite": "../img/Spr_BW_Backpacker_M.png"
         }
     ],
@@ -1074,6 +1074,65 @@ var raw = {
                         "from_player_id": 0,
                         "to_player_id": 2,
                         "creature_id": 22
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/14 15:52",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 3,
+                        "to_player_id": 5,
+                        "creature_id": 92
+                    }, {
+                        "from_player_id": 5,
+                        "to_player_id": 3,
+                        "creature_id": 100
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/14 15:53",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 3,
+                        "to_player_id": -1,
+                        "creature_id": 100
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": -1,
+                        "creature_id": 100
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 3,
+                        "creature_id": 101
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2024/12/14 15:54",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 5,
+                        "to_player_id": -1,
+                        "creature_id": 92
+                    }, {
+                        "from_player_id": 5,
+                        "to_player_id": -1,
+                        "creature_id": 92
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 5,
+                        "creature_id": 93
                     }
                 ]
             }
