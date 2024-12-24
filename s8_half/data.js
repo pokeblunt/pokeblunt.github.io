@@ -1161,18 +1161,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/15 13:27",
+            "date": "2024/12/14 20:27",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2263254386' target='_blank'>Stephen beat Arod</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2263254386' target='_blank'>mistermoscow beat Smokeydabearrr</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [137, 12, 35, 132, 143, 62],
                     }, {
                         "player_id": 4,
-                        "creature_ids": [],
+                        "creature_ids": [136, 5, 37, 122, 12, 108],
                     }
                 ],
                 "matches": [
@@ -1184,18 +1184,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/15 13:56",
+            "date": "2024/12/14 20:56",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2263261788' target='_blank'>Stephen beat Arod</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2263261788' target='_blank'>mistermoscow beat Smokeydabearrr</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [137, 12, 35, 132, 143, 62],
                     }, {
                         "player_id": 4,
-                        "creature_ids": [],
+                        "creature_ids": [136, 5, 37, 122, 12, 108],
                     }
                 ],
                 "matches": [
@@ -1207,18 +1207,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/15 11:41",
+            "date": "2024/12/15 18:40",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2263779140' target='_blank'>Stephen beat James</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2263779140' target='_blank'>mistermoscow beat Mango Meloetta</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [137, 12, 35, 132, 143, 62],
                     }, {
                         "player_id": 3,
-                        "creature_ids": [],
+                        "creature_ids": [59, 55, 47, 148, 89, 87],
                     }
                 ],
                 "matches": [
@@ -1230,18 +1230,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/15 11:50",
+            "date": "2024/12/15 18:51",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2263785896' target='_blank'>Stephen beat James</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2263785896' target='_blank'>mistermoscow beat Mango Meloetta</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [22, 12, 35, 71, 62, 143],
                     }, {
                         "player_id": 3,
-                        "creature_ids": [],
+                        "creature_ids": [59, 55, 47, 148, 89, 87],
                     }
                 ],
                 "matches": [
@@ -1253,18 +1253,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/17 00:00",
+            "date": "2024/12/17 16:08",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2265011606' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2265011606' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 0,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [12, 35, 62, 132, 137, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [57, 105, 85, 94, 25, 73],
                     }
                 ],
                 "matches": [
@@ -1276,18 +1276,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/17 00:01",
+            "date": "2024/12/17 16:19",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2265013442' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2265013442' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 0,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [12, 22, 35, 62, 71, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [57, 105, 85, 94, 25, 73],
                     }
                 ],
                 "matches": [
@@ -1299,18 +1299,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/18 00:00",
+            "date": "2024/12/18 13:35",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2265586682' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2265586682' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 0,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [12, 22, 35, 62, 71, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [57, 105, 85, 94, 25, 73],
                     }
                 ],
                 "matches": [
@@ -1322,18 +1322,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/18 00:01",
+            "date": "2024/12/18 13:42",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2265590734' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2265590734' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 0,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [12, 35, 62, 132, 137, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [31, 94, 85, 105, 57, 101],
                     }
                 ],
                 "matches": [
@@ -1345,18 +1345,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/19 00:00",
+            "date": "2024/12/19 07:04",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2266000658' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2266000658' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 0,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [12, 35, 62, 132, 137, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [57, 105, 85, 94, 25, 73],
                     }
                 ],
                 "matches": [
@@ -1368,18 +1368,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/20 00:00",
+            "date": "2024/12/20 07:09",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2266621946' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2266621946' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 0,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [12, 22, 35, 71, 137, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [57, 105, 85, 94, 25, 73],
                     }
                 ],
                 "matches": [
@@ -1391,18 +1391,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/21 00:00",
+            "date": "2024/12/21 13:54",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2267371403' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2267371403' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 0,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [12, 22, 35, 71, 137, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [33, 83, 77, 102, 35, 25],
                     }
                 ],
                 "matches": [
@@ -1414,18 +1414,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/22 00:00",
+            "date": "2024/12/22 14:30",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2267927700' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2267927700' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 0,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [12, 35, 62, 71, 137, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [57, 105, 85, 94, 25, 73],
                     }
                 ],
                 "matches": [
@@ -1437,18 +1437,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/23 00:00",
+            "date": "2024/12/22 23:09",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2268129486' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2268129486' target='_blank'>je64 beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
+                        "player_id": 2,
+                        "creature_ids": [12, 35, 62, 71, 137, 143],
+                    }, {
                         "player_id": 1,
-                        "creature_ids": [],
-                    }, {
-                        "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [64, 130, 107, 125, 113, 144],
                     }
                 ],
                 "matches": [
@@ -1460,18 +1460,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/23 00:01",
+            "date": "2024/12/22 23:26",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2268135118' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2268135118' target='_blank'>je64 beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 1,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [12, 22, 35, 71, 137, 143],
+                    }, {
+                        "player_id": 1,
+                        "creature_ids": [64, 130, 107, 113, 144, 126],
                     }
                 ],
                 "matches": [
@@ -1483,18 +1483,18 @@ var raw = {
             }
         }, {
             "type": "tournament",
-            "date": "2024/12/23 00:02",
+            "date": "2024/12/23 18:25",
             "description": `
-            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2268605408' target='_blank'>XXX beat YYY</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2268605408' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
                     {
-                        "player_id": 0,
-                        "creature_ids": [],
-                    }, {
                         "player_id": 2,
-                        "creature_ids": [],
+                        "creature_ids": [22, 35, 62, 71, 137, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [57, 105, 85, 94, 25, 73],
                     }
                 ],
                 "matches": [
