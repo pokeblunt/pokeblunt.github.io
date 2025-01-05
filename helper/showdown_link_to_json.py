@@ -28,8 +28,11 @@ def main() -> None:
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2271330848",
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2271337650"
 
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2272989726",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2272994443"
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2272989726",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2272994443"
+
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2274015427",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2274021897"
     ]
     matches = [Match(url) for url in urls]
     matches.sort(key=lambda x: x._upload_time)
