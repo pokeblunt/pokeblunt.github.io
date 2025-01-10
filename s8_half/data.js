@@ -1644,6 +1644,29 @@ var raw = {
             }
         }, {
             "type": "tournament",
+            "date": "2025/01/07 15:22",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2276915389' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [12, 22, 35, 62, 71, 143],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [57, 105, 85, 94, 25, 73],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
             "date": "2025/01/08 14:54",
             "description": `
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2277527423' target='_blank'>je64 beat mistermoscow</a><br/>
@@ -1685,6 +1708,29 @@ var raw = {
                     {
                         "win_player_id": 2,
                         "lose_player_id": 1,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2025/01/09 19:25",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2278280160' target='_blank'>Mattmandaman beat mistermoscow</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [22, 35, 62, 71, 143, 132],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [57, 105, 85, 94, 25, 73],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
                     }
                 ]
             }
