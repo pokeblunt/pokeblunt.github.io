@@ -6,19 +6,19 @@ var raw = {
             "id": 0,
             "name": "Kamon",
             "css_class": "kamon",
-            "creature_ids": [77, 105, 35, 57, 101, 83, 127, 25, 94, 33, 102, 66, 118, 95, 91, 31, 73, 85],
+            "creature_ids": [77, 105, 35, 57, 101, 83, 127, 25, 94, 33, 102, 66, 118, 95, 91, 31, 73, 85, 90, 10, 10, 62, 112, 39, 84, 7, 121, 140, 73, 34, 1],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [112, 130, 113, 125, 144, 107, 50, 119, 116, 72, 27, 86, 58, 102, 64, 126],
+            "creature_ids": [112, 130, 113, 125, 144, 107, 50, 119, 116, 72, 27, 86, 58, 102, 64, 126, 120, 50, 74, 85, 107, 48, 54, 54, 113, 42, 51, 109, 46],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [29, 30, 35, 56, 14, 15, 52, 143, 16, 132, 43, 71, 129, 62, 12, 22, 137],
+            "creature_ids": [29, 30, 35, 56, 14, 15, 52, 143, 16, 132, 43, 71, 129, 62, 12, 22, 137, 149, 127, 99, 133, 66, 14, 89, 94, 86, 111, 33],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
@@ -1778,6 +1778,51 @@ var raw = {
                         "win_player_id": 1,
                         "lose_player_id": 2,
                     }
+                ]
+            }
+        }, {
+            "type": "draft",
+            "date": "2025/01/15 15:00",
+            "description": "",
+            "kwargs": {
+                "creatures_drafted": [
+                    {"creature_id": 90, "player_id": 0},
+                    {"creature_id": 10, "player_id": 0},
+                    {"creature_id": 10, "player_id": 0},
+                    {"creature_id": 62, "player_id": 0},
+                    {"creature_id": 112, "player_id": 0},
+                    {"creature_id": 39, "player_id": 0},
+                    {"creature_id": 84, "player_id": 0},
+                    {"creature_id": 7, "player_id": 0},
+                    {"creature_id": 121, "player_id": 0},
+                    {"creature_id": 140, "player_id": 0},
+                    {"creature_id": 73, "player_id": 0},
+                    {"creature_id": 34, "player_id": 0},
+                    {"creature_id": 1, "player_id": 0},
+                    {"creature_id": 120, "player_id": 1},
+                    {"creature_id": 50, "player_id": 1},
+                    {"creature_id": 74, "player_id": 1},
+                    {"creature_id": 85, "player_id": 1},
+                    {"creature_id": 107, "player_id": 1},
+                    {"creature_id": 48, "player_id": 1},
+                    {"creature_id": 54, "player_id": 1},
+                    {"creature_id": 54, "player_id": 1},
+                    {"creature_id": 113, "player_id": 1},
+                    {"creature_id": 42, "player_id": 1},
+                    {"creature_id": 51, "player_id": 1},
+                    {"creature_id": 109, "player_id": 1},
+                    {"creature_id": 46, "player_id": 1},
+                    {"creature_id": 149, "player_id": 2},
+                    {"creature_id": 127, "player_id": 2},
+                    {"creature_id": 99, "player_id": 2},
+                    {"creature_id": 133, "player_id": 2},
+                    {"creature_id": 66, "player_id": 2},
+                    {"creature_id": 14, "player_id": 2},
+                    {"creature_id": 89, "player_id": 2},
+                    {"creature_id": 94, "player_id": 2},
+                    {"creature_id": 86, "player_id": 2},
+                    {"creature_id": 111, "player_id": 2},
+                    {"creature_id": 33, "player_id": 2},
                 ]
             }
         }
