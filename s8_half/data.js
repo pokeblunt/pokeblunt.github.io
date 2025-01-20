@@ -6,25 +6,25 @@ var raw = {
             "id": 0,
             "name": "Kamon",
             "css_class": "kamon",
-            "creature_ids": [77, 105, 35, 57, 101, 83, 127, 25, 94, 33, 102, 66, 118, 95, 91, 31, 73, 85, 90, 10, 10, 62, 112, 39, 84, 7, 121, 140, 34, 68],
+            "creature_ids": [77, 105, 35, 57, 101, 83, 127, 25, 94, 118, 95, 91, 31, 73, 85, 90, 10, 10, 62, 112, 84, 121, 34, 68, 89, 8, 113],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [112, 130, 113, 125, 144, 107, 50, 119, 116, 72, 27, 86, 58, 102, 64, 126, 120, 50, 74, 85, 107, 48, 54, 54, 113, 42, 51, 109, 46],
+            "creature_ids": [112, 130, 113, 125, 144, 107, 119, 116, 72, 27, 86, 58, 64, 126, 120, 74, 85, 107, 48, 42, 51, 109, 46, 51, 55, 103, 39],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [29, 30, 35, 56, 15, 52, 143, 16, 132, 43, 71, 129, 62, 12, 22, 149, 127, 99, 66, 89, 94, 86, 111, 33, 135, 15],
+            "creature_ids": [29, 35, 56, 15, 52, 143, 16, 132, 43, 71, 129, 62, 12, 22, 149, 99, 94, 86, 111, 135, 15, 87, 136, 34, 67],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [69, 136, 116, 117, 95, 148, 89, 59, 83, 53, 47, 55, 28, 87, 101, 7, 29, 47, 143, 91, 125, 27, 83, 117, 110, 29, 96],
+            "creature_ids": [69, 116, 117, 95, 148, 89, 59, 83, 53, 47, 55, 28, 101, 29, 47, 143, 91, 125, 27, 83, 117, 110, 29, 96, 30, 127, 140],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -2309,6 +2309,214 @@ var raw = {
                     {
                         "win_player_id": 0,
                         "lose_player_id": 1,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/17 18:22",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 50
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 50
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 1,
+                        "creature_id": 51                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/17 18:23",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 54
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 54
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 1,
+                        "creature_id": 55                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/18 8:00",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": 3,
+                        "creature_id": 127
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": 3,
+                        "creature_id": 30
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 2,
+                        "creature_id": 87
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 2,
+                        "creature_id": 136
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/19 13:54",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 0,
+                        "to_player_id": 3,
+                        "creature_id": 140
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 0,
+                        "creature_id": 7
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/19 13:55",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 0,
+                        "to_player_id": -1,
+                        "creature_id": 7
+                    }, {
+                        "from_player_id": 0,
+                        "to_player_id": -1,
+                        "creature_id": 7
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 0,
+                        "creature_id": 8
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/19 15:03",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": 0,
+                        "creature_id": 89
+                    }, {
+                        "from_player_id": 0,
+                        "to_player_id": 2,
+                        "creature_id": 33
+                    }, {
+                        "from_player_id": 0,
+                        "to_player_id": 2,
+                        "creature_id": 66
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/19 15:04",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 33
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 33
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 34
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/19 15:05",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 66
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 66
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 67
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/19 16:16",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": 0,
+                        "creature_id": 113
+                    }, {
+                        "from_player_id": 0,
+                        "to_player_id": 1,
+                        "creature_id": 102
+                    }, {
+                        "from_player_id": 0,
+                        "to_player_id": 1,
+                        "creature_id": 39
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/01/19 16:17",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 102
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 102
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 103
                     }
                 ]
             }
