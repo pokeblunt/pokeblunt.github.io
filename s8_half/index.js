@@ -123,7 +123,7 @@ function draw_creature_statistics_table(players, creatures, dom) {
                 create_element({tag: "td", innerHTML: creature.stat.round_match_wins}),
                 create_element({tag: "td", innerHTML: creature.stat.round_matches}),
                 create_element({tag: "td", innerHTML: creature.stat.trades}),
-                create_element({tag: "td", innerHTML: Math.round(creature.stat.elo)}),
+                create_element({tag: "td", innerHTML: creature.stat.elo != null ? Math.round(creature.stat.elo[player.id]) : 0}),
             ]}));
         }
     }
@@ -374,8 +374,17 @@ class Player {
             }
             return 1;
         });
+        var player_id = this.id
         creatures_this_player = creatures_this_player.sort(function(a, b) {
-            if (a.stat.elo > b.stat.elo) {
+            var elo_a = 0;
+            var elo_b = 0;
+            if (!(a.stat.elo === null)) {
+                elo_a = a.stat.elo[player_id];
+            }
+            if (!(b.stat.elo === null)) {
+                elo_b = b.stat.elo[player_id];
+            }
+            if (elo_a > elo_b) {
                 return -1;
             }
             return 1;
@@ -1241,9 +1250,14 @@ class Match {
         var nl = lose_creatures.length
         var win_elos = new Array(nw).fill(0).map(() => new Array(nl).fill(0));
         var lose_elos = new Array(nl).fill(0).map(() => new Array(nw).fill(0));
+        var win_player_id = this.win_team.player_id;
+        var lose_player_id = this.lose_team.player_id;
+        var player_ids = players.map(player => player.id);
         win_creatures.forEach(function (win_creature, i) {
             lose_creatures.forEach(function (lose_creature, j) {
-                var [ew, el] = elo_update(win_creature.stat.elo, lose_creature.stat.elo);
+                init_creature_elo(win_creature, player_ids);
+                init_creature_elo(lose_creature, player_ids);
+                var [ew, el] = elo_update(win_creature.stat.elo[win_player_id], lose_creature.stat.elo[lose_player_id]);
                 win_elos[i][j] = ew;
                 lose_elos[j][i] = el;
             });
@@ -1252,12 +1266,23 @@ class Match {
         var lose_elos = mean_rows(lose_elos);
         win_creatures.forEach(function (creature, i) {
             // creature.stat.elo = Math.max(1000, win_elos[i]);
-            creature.stat.elo = win_elos[i];
+            creature.stat.elo[win_player_id] = win_elos[i];
         });
         lose_creatures.forEach(function (creature, i) {
             // creature.stat.elo = Math.max(1000, lose_elos[i]);
-            creature.stat.elo = lose_elos[i];
+            creature.stat.elo[lose_player_id] = lose_elos[i];
         });
+    }
+}
+
+function init_creature_elo(creature, player_ids) {
+    if (creature.stat.elo === null) {
+        creature.stat.elo = {};
+    }
+    for (var player_id of player_ids) {
+        if (!(player_id in creature.stat.elo)) {
+            creature.stat.elo[player_id] = null;
+        }
     }
 }
 
