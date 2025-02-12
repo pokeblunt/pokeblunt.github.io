@@ -123,9 +123,12 @@ def main() -> None:
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2296838224",
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2296842536"
 
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298357077",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298363915",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2297793847"
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298357077",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298363915",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2297793847"
+
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298963338",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298968330"
     ]
     matches = [Match(url) for url in urls]
     matches.sort(key=lambda x: x._upload_time)
