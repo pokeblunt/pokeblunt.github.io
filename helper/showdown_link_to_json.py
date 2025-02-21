@@ -127,8 +127,18 @@ def main() -> None:
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298363915",
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2297793847"
 
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298963338",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298968330"
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298963338",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2298968330"
+
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2301592215",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2301595946",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2301601504",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2303431645",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2303434562",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2304211081",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2304216049",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2304840176",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2304850118"
     ]
     matches = [Match(url) for url in urls]
     matches.sort(key=lambda x: x._upload_time)
@@ -193,7 +203,8 @@ class Match:
             "mistermoscow": 2,
             "Mango Meloetta": 3,
             "Smokeydabearrr": 4,
-            "noli_cannoli10": 5
+            "smokeydabearrr": 4,
+            "noli_cannoli10": 5,
         }[name]
 
     @property
