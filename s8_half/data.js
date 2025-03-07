@@ -4441,6 +4441,28 @@ var raw = {
             }
         }, {
             "type": "tournament",
+            "date": "2025/03/04 14:45",
+            "description": `
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [77, 105, 35, 101, 83, 127, 25, 94, 95, 91, 31, 73, 85, 90, 62, 112, 121, 34, 68, 89, 8, 113, 79, 143],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [29, 35, 56, 15, 52, 16, 132, 43, 71, 12, 22, 149, 99, 135, 15, 87, 136, 34, 67, 27, 103, 122, 57, 94],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
             "date": "2025/03/05 16:46",
             "description": `
             <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2313385540' target='_blank'>Mango Meloetta beat mistermoscow</a><br/>
