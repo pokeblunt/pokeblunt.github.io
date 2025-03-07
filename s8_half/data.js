@@ -12,13 +12,13 @@ var raw = {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [112, 130, 113, 125, 144, 119, 116, 72, 58, 64, 126, 120, 74, 85, 107, 48, 42, 51, 109, 46, 51, 55, 103, 39, 87, 49],
+            "creature_ids": [112, 130, 113, 125, 144, 119, 116, 72, 58, 64, 126, 120, 74, 85, 107, 48, 42, 51, 109, 46, 55, 103, 39, 87, 49, 94],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [29, 35, 56, 15, 52, 16, 132, 43, 71, 129, 12, 22, 149, 99, 94, 135, 15, 87, 136, 34, 67, 27, 103, 122, 57],
+            "creature_ids": [29, 35, 56, 15, 52, 16, 132, 43, 71, 129, 12, 22, 149, 99, 135, 15, 87, 136, 34, 67, 27, 103, 122, 57, 51],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
@@ -4390,6 +4390,161 @@ var raw = {
                     {
                         "win_player_id": 2,
                         "lose_player_id": 0,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2025/03/02 12:42",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2311110026' target='_blank'>mistermoscow beat mattmandaman</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [34, 35, 57, 87, 135, 149],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [79, 85, 34, 121, 101, 94],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 2,
+                        "lose_player_id": 0,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2025/03/02 12:53",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2311114326' target='_blank'>mistermoscow beat mattmandaman</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [57, 87, 103, 122, 135, 149],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [68, 121, 113, 34, 94, 89],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 2,
+                        "lose_player_id": 0,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2025/03/05 16:46",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2313385540' target='_blank'>Mango Meloetta beat mistermoscow</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [35, 67, 94, 122, 135, 149],
+                    }, {
+                        "player_id": 3,
+                        "creature_ids": [127, 62, 125, 55, 143, 110],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 3,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2025/03/05 20:32",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2313495161' target='_blank'>mistermoscow beat Mango Meloetta</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [34, 35, 57, 87, 135, 149],
+                    }, {
+                        "player_id": 3,
+                        "creature_ids": [127, 62, 125, 55, 143, 110],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 2,
+                        "lose_player_id": 3,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2025/03/06 15:43",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2314071783' target='_blank'>je64 beat mistermoscow</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 1,
+                        "creature_ids": [51, 87, 125, 126, 49, 64],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [57, 87, 103, 122, 135, 149],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 1,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2025/03/06 15:59",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2314082456' target='_blank'>je64 beat mistermoscow</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [35, 71, 94, 103, 122, 135],
+                    }, {
+                        "player_id": 1,
+                        "creature_ids": [125, 130, 55, 113, 87, 49],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 1,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/03/06 16:20",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": 2,
+                        "creature_id": 51
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": 1,
+                        "creature_id": 94
                     }
                 ]
             }
