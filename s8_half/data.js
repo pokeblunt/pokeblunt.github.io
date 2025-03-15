@@ -4443,6 +4443,7 @@ var raw = {
             "type": "tournament",
             "date": "2025/03/04 14:45",
             "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2312495474' target='_blank'>mattmandaman beat mistermoscow</a><br/>
             `,
             "kwargs": {
                 "teams": [
