@@ -156,12 +156,20 @@ def main() -> None:
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2313385540",
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2313495161"
 
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2315182719",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2315187285",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2315190776",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2316882539",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2316887187",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2316892405"
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2315182719",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2315187285",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2315190776",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2316882539",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2316887187",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2316892405"
+
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2312495474",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319943764",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319950977",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319955496",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319962907",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319968410",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319977313"
     ]
     matches = [Match(url) for url in urls]
     matches.sort(key=lambda x: x._upload_time)
