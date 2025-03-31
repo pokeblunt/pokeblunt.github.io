@@ -164,12 +164,23 @@ def main() -> None:
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2316892405"
 
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2312495474",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319943764",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319950977",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319955496",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319962907",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319968410",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319977313"
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319943764",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319950977",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319955496",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319962907",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319968410",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2319977313"
+
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2323365718",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2323373762",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2323378970",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2328059081",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2328063793",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2328068584",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2331069284",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2331004318",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2331016149",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2331034204"
     ]
     matches = [Match(url) for url in urls]
     matches.sort(key=lambda x: x._upload_time)
