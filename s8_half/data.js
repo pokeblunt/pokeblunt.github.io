@@ -12,7 +12,7 @@ var raw = {
             "id": 1,
             "name": "JaeBird",
             "css_class": "jbird",
-            "creature_ids": [112, 130, 113, 125, 144, 119, 116, 72, 58, 64, 126, 120, 74, 85, 107, 48, 42, 51, 109, 46, 55, 103, 39, 87, 49, 94],
+            "creature_ids": [112, 130, 113, 125, 144, 119, 116, 72, 58, 64, 126, 74, 85, 107, 42, 51, 46, 55, 103, 87, 49, 94, 40, 110, 26],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
@@ -30,7 +30,7 @@ var raw = {
             "id": 4,
             "name": "A-Rod",
             "css_class": "arod",
-            "creature_ids": [131, 12, 48, 108, 19, 7, 4, 120, 16, 39, 74, 47, 37, 62, 85, 136, 19, 26, 26, 109, 50, 147, 63, 95, 151, 18, 6, 112, 149],
+            "creature_ids": [131, 12, 108, 19, 7, 4, 16, 74, 47, 37, 62, 85, 136, 19, 26, 50, 147, 63, 95, 151, 18, 6, 112, 149, 49, 121],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
@@ -6753,6 +6753,80 @@ var raw = {
                     {
                         "win_player_id": 0,
                         "lose_player_id": 1,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/09/05 21:01",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 1,
+                        "to_player_id": 4,
+                        "creature_id": 48
+                    }, {
+                        "from_player_id": 4,
+                        "to_player_id": 1,
+                        "creature_id": 39
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": 4,
+                        "creature_id": 120
+                    }, {
+                        "from_player_id": 4,
+                        "to_player_id": 1,
+                        "creature_id": 109
+                    }, {
+                        "from_player_id": 4,
+                        "to_player_id": 1,
+                        "creature_id": 26
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2025/09/05 21:02",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 4,
+                        "to_player_id": -1,
+                        "creature_id": 48
+                    }, {
+                        "from_player_id": 4,
+                        "to_player_id": -1,
+                        "creature_id": 48
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 4,
+                        "creature_id": 49
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 39
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 39
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 1,
+                        "creature_id": 40
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 109
+                    }, {
+                        "from_player_id": 1,
+                        "to_player_id": -1,
+                        "creature_id": 109
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 1,
+                        "creature_id": 110
                     }
                 ]
             }
