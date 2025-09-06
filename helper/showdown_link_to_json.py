@@ -249,14 +249,22 @@ def main() -> None:
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2388842716"
 
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2388843520-dqpadivg8vd2nm4y8ucav64upaosfrhpw",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2399245966",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2399249665",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2399253349",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2399258825",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2403438339",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2405575949",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2405581409",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2406302758"
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2399245966",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2399249665",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2399253349",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2399258825",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2403438339",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2405575949",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2405581409",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2406302758"
+
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2414839356",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2414847117",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2414853215",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2425822316",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2432098343",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2432105175",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2432110660"
     ]
     matches = [Match(url) for url in urls]
     matches.sort(key=lambda x: x._upload_time)
@@ -327,6 +335,7 @@ class Match:
             "Smokeydabearrr": 4,
             "smokeydabearrr": 4,
             "noli_cannoli10": 5,
+            "mango meloetta": 3
         }[name]
 
     @property
