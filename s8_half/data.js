@@ -6758,7 +6758,7 @@ var raw = {
             }
         }, {
             "type": "trade",
-            "date": "2025/09/05 21:01",
+            "date": "2025/09/05 18:01",
             "description": "",
             "kwargs": {
                 "creatures": [
@@ -6787,7 +6787,7 @@ var raw = {
             }
         }, {
             "type": "trade",
-            "date": "2025/09/05 21:02",
+            "date": "2025/09/05 18:02",
             "description": "",
             "kwargs": {
                 "creatures": [
@@ -6827,6 +6827,213 @@ var raw = {
                         "from_player_id": -1,
                         "to_player_id": 1,
                         "creature_id": 110
+                    }
+                ]
+            }
+        }, {
+            "type": "round",
+            "date": "2025/09/05 18:23",
+            "description": `
+            And folks, you won't believe your eyes! Playing absolutely out of his mind, "Nolan" has done it again! With the highly questionable but devastatingly effective No Guard + Fissure combo, he's claimed a decisive victory over Arod!
+            </br></br>
+            Analysts are still scratching their heads; how did he pull that off?! Some say "Nolan's" strategies are so advanced, it's as if three minds were working in perfect sync! Was it luck? Was it genius? Or was it destiny?!
+            </br></br>
+            One thing's for sure: this match will go down in history as a true Pokemon showstopper!
+            </br></br>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2436108460' target='_blank'>noli_cannoli1O beat Smokeydabearrr</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "win_player_id": 5,
+                        "win_creature_ids": [142, 34, 146, 123, 68, 80],
+                        "lose_player_id": 4,
+                        "lose_creature_ids": [37, 6, 26, 49, 108, 149],
+                    }
+                ]
+            }
+        }, {
+            "type": "round",
+            "date": "2025/09/05 18:37",
+            "description": `
+            What a wild match, folks! "Nolan" came out swinging, commanding the field with flawless precision - Persian, Parasect, the whole squad in sync! It looked like another unstoppable win... until - wait - what's this?! A Tera activation?! That's illegal! The ref waves it off - "Nolan" is disqualified!
+            </br></br>
+            The crowd's stunned... was it a mistake, or something more? With "Nolan" you never really know who's pulling the strings...
+            </br></br>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2436112772' target='_blank'>noli_cannoli1O beat mango meloetta</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "lose_player_id": 3,
+                        "lose_creature_ids": [91, 110, 47, 83, 53, 143],
+                        "win_player_id": 5,
+                        "win_creature_ids": [142, 34, 146, 123, 68, 80],
+                    }
+                ]
+            }
+        }, {
+            "type": "round",
+            "date": "2025/09/05 18:53",
+            "description": `
+            What a turnaround, folks! After advancing on a technicality, James faced off against the ever-calm Stephen! From the opening moments, Stephen's Dragonite and Mr. Mime took control of the skies and the field, setting up the perfect rhythm!
+            </br></br>
+            James fought back valiantly with Electabuzz and Snorlax, but Stephen's precision was unstoppable - Nidoking's blasts, Tailwind pressure, total domination!
+            </br></br>
+            And just like that, Stephen claims victory! A clean win, no controversy, and a clear message: this one's for the rule-followers!
+            </br></br>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2436119054' target='_blank'>mistermoscow beat mango meloetta</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "win_player_id": 2,
+                        "win_creature_ids": [34, 51, 103, 122, 135, 149],
+                        "lose_player_id": 3,
+                        "lose_creature_ids": [125, 59, 110, 143, 53, 127],
+                    }
+                ]
+            }
+        }, {
+            "type": "round",
+            "date": "2025/09/05 19:16",
+            "description": `
+            It's the semifinals, and the crowd can feel the pressure! Stephen storms in confident, his team sharp as ever - but he's about to meet the immovable object. From the shadows steps Chansey, that pink, smiling wall of doom!
+            </br></br>
+            At first, it looks like Stephen's got momentum - Dragonite soaring, Mr. Mime setting the terrain - but once Chansey hits the field, everything changes. Toxic after Toxic, Soft-Boiled after Soft-Boiled... it just won't go down!
+            </br></br>
+            One by one, Stephen's Pokemon crumble - Nidoking, Exeggutor, Dugtrio, even the mighty Dragonite - all felled by the endless endurance of one Chansey!
+            </br></br>
+            Jesse walks away with the win, and the legend of this unbreakable Chansey is born!
+            </br></br>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2436126572' target='_blank'>je64 beat mistermoscow</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "lose_player_id": 2,
+                        "lose_creature_ids": [34, 51, 103, 122, 135, 149],
+                        "win_player_id": 1,
+                        "win_creature_ids": [51, 94, 125, 87, 113, 144],
+                    }
+                ]
+            }
+        }, {
+            "type": "round",
+            "date": "2025/09/05 19:38",
+            "description": `
+            The grand finals - everything on the line! Jesse enters with ice in his veins, the same Chansey that crushed through the semifinals ready for one last miracle. Across the field, Matt stands calm and collected, his team built for precision and punishment.
+            </br></br>
+            Early on, Jesse sets the pace - clever switches, perfect reads, even forcing Starmie and Chansey into a Dugtrio trap that had the crowd on its feet! But just as victory seemed certain, disaster strikes - Starmie's Scald lands the burn! Dugtrio, the key to the setup, drops before it can finish the job. And when Dewgong steps in, its Triple Axel hits only once - leaving Chansey standing, smiling, unbroken.
+            </br></br>
+            From that moment, the tide turns. Matt regains control, tightening the field until every move from Jesse is smothered. One last Rock Slide, one last Seismic Toss - and just like that, it's over. Matt takes the championship in a match that will be remembered for its brilliance, heartbreak, and that one cruel burn that changed everything!
+            </br></br>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2436134522' target='_blank'>mattmandaman beat je64</a><br/>
+            `,
+            "kwargs": {
+                "matches": [
+                    {
+                        "lose_player_id": 1,
+                        "lose_creature_ids": [51, 94, 125, 87, 113, 144],
+                        "win_player_id": 0,
+                        "win_creature_ids": [34, 121, 113, 94, 68, 143],
+                    }
+                ]
+            }
+        }, {
+            "type": "champion",
+            "date": "2025/09/05 20:00",
+            "description": 'Kamon wins Season 8.5!',
+            "kwargs": {
+                "mvp_creature_id": 1,
+                "teams": [
+                    {
+                        "player_id": 0,
+                        "creature_ids": [25, 127, 94, 105, 113, 121],
+                    }, {
+                        "player_id": 1,
+                        "creature_ids": [130, 113, 125, 51, 144, 64],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [103, 67, 87, 149, 122, 135],
+                    }, {
+                        "player_id": 3,
+                        "creature_ids": [91, 101, 28, 55, 62, 143],
+                    }, {
+                        "player_id": 5,
+                        "creature_ids": [146, 68, 57, 136, 3, 123],
+                    }, {
+                        "player_id": 4,
+                        "creature_ids": [149, 112, 6, 26, 151, 12],
+                    }
+                ],
+            }
+        }, {
+            "type": "unofficial-tournament",
+            "date": "2025/09/07 18:37",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2437292925' target='_blank'>je64 beat mistermoscow</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [34, 57, 103, 122, 135, 149],
+                    }, {
+                        "player_id": 1,
+                        "creature_ids": [87, 94, 103, 40, 64, 112],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 1,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "unofficial-tournament",
+            "date": "2025/09/07 18:47",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2437298414' target='_blank'>je64 beat mistermoscow</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 1,
+                        "creature_ids": [51, 94, 26, 87, 85, 130],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [34, 57, 87, 122, 135, 149],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 1,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "unofficial-tournament",
+            "date": "2025/09/07 19:13",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2437304357' target='_blank'>je64 beat mattmandaman</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 1,
+                        "creature_ids": [51, 94, 87, 26, 113, 130],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [121, 25, 94, 35, 34, 113],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 1,
+                        "lose_player_id": 0,
                     }
                 ]
             }

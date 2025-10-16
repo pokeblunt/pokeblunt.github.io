@@ -258,13 +258,23 @@ def main() -> None:
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2405581409",
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2406302758"
 
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2414839356",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2414847117",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2414853215",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2425822316",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2432098343",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2432105175",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2432110660"
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2414839356",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2414847117",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2414853215",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2425822316",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2432098343",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2432105175",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2432110660"
+
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2436108460",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2436112772",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2436119054",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2436126572",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2436134522"
+
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2437292925",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2437298414",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2437304357"
     ]
     matches = [Match(url) for url in urls]
     matches.sort(key=lambda x: x._upload_time)
@@ -335,7 +345,8 @@ class Match:
             "Smokeydabearrr": 4,
             "smokeydabearrr": 4,
             "noli_cannoli10": 5,
-            "mango meloetta": 3
+            "mango meloetta": 3,
+            "noli_cannoli1O": 5,  # @eat: Hehehehehe
         }[name]
 
     @property
