@@ -1,0 +1,694 @@
+html * {
+    color: #000;
+    font-family: Arial;
+}
+html {
+    background-color: #ecf0f1;
+}
+h1 {
+    margin-top: 100px;
+}
+h2 {
+    padding-top: 20px;
+    margin-bottom: 0px;
+    font-size: 2em;
+}
+h2 > img {
+    height: 1em;
+    vertical-align: text-bottom;
+}
+body {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.main-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+body > p {
+    margin-top: 5px;
+}
+.navbar-container {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    background-color: #333;
+    opacity: 0.95;
+    z-index: 1000;
+}
+
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+ul.navbar > li {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+}
+ul.navbar > li > a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+ul.navbar > li > a.active.everything {
+    background-color: #ecf0f1;
+    color: #333;
+}
+ul.navbar > li > a.active.tournament {
+    background-color: #3498db;
+}
+ul.navbar > li > a.active.trainer {
+    background-color: #ecf0f1;
+    color: #333;
+}
+ul.navbar > li > a.active.trade {
+    background-color: #27ae60;
+}
+ul.navbar > li > a.active.draft {
+    background-color: #f39c12;
+}
+ul.navbar > li > a.active.unofficial-tournament {
+    background-color: #9b59b6;
+}
+ul.navbar > li > a:hover {
+    background-color: #111;
+}
+p.margin-bottom-0 {
+    margin-bottom: 0px;
+}
+.tournaments table,
+#playoffs    table,
+#drafts      table,
+#trades      table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.tournaments table tr:first-child td,
+#playoffs    table tr:first-child td,
+#drafts      table tr:first-child td,
+#trades      table tr:first-child td {
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+.tournaments table tr:not(:first-child) td,
+#playoffs    table tr:not(:first-child) td,
+#drafts      table tr:not(:first-child) td {
+    padding-right: 30px;
+}
+.tournaments table tr:not(:first-child) td:nth-child(3),
+#trades      table tr:not(:first-child) td:nth-child(3) {
+    text-align: center;
+}
+.tournaments table tr.winner {
+    font-weight: bold;
+}
+.tournaments div.match {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+.tournaments div.match.win {
+    background-color: #2ecc71;
+}
+.tournaments div.match.loss {
+    background-color: #e74c3c;
+}
+.tournaments div.match.none {
+    visibility: hidden;
+}
+#drafts {
+    max-width: 400px;
+}
+#drafts table tr:not(:first-child) td {
+    padding-bottom: 10px;
+}
+#trades table tr:not(:first-child) td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.pokemon-large {
+    display: inline-block;
+    border: 3px solid #444;
+    border-radius: 10px;
+    margin: 5px;
+}
+.pokemon-img {
+    border-radius: 50%;
+    width: 125px;
+}
+.pokemon-large > p {
+    text-align: center;
+    margin-top: 0px;
+}
+.pokemon-img.kamon, .tournaments table tr.winner.kamon, #drafts table tr.kamon, #trades table tr.kamon, #playoffs td.winner.kamon {
+    background: radial-gradient(#e74c3c 5%, #ecf0f1 70%);
+}
+.pokemon-img.jbird, .tournaments table tr.winner.jbird, #drafts table tr.jbird, #trades table tr.jbird, #playoffs td.winner.jbird {
+    background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
+}
+.pokemon-img.steve, .tournaments table tr.winner.steve, #drafts table tr.steve, #trades table tr.steve, #playoffs td.winner.steve {
+    background: radial-gradient(#9b59b6 5%, #ecf0f1 70%);
+}
+.pokemon-img.james, .tournaments table tr.winner.james, #drafts table tr.james, #trades table tr.james, #playoffs td.winner.james {
+    background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
+}
+.pokemon-img.arod, .tournaments table tr.winner.arod, #drafts table tr.arod, #trades table tr.arod, #playoffs td.winner.arod {
+    background: radial-gradient(#e67e22 15%, #ecf0f1 70%);
+}
+.pokemon-img.nolan, .tournaments table tr.winner.nolan, #drafts table tr.nolan, #trades table tr.nolan, #playoffs td.winner.nolan {
+    background: radial-gradient(#2ecc71 15%, #ecf0f1 70%);
+}
+a:hover > .pokemon-large > p {
+    text-decoration: underline;
+}
+a:hover .pokemon-img.kamon {
+    background: radial-gradient(#e74c3c 50%, #ecf0f1 70%);
+}
+a:hover .pokemon-img.jbird {
+    background: radial-gradient(#f1c40f 50%, #ecf0f1 70%);
+}
+a:hover .pokemon-img.steve {
+    background: radial-gradient(#9b59b6 50%, #ecf0f1 70%);
+}
+a:hover .pokemon-img.james {
+    background: radial-gradient(#74b9ff 50%, #ecf0f1 70%);
+}
+a:hover .pokemon-img.arod {
+    background: radial-gradient(#e67e22 50%, #ecf0f1 70%);
+}
+a:hover .pokemon-img.nolan {
+    background: radial-gradient(#2ecc71 50%, #ecf0f1 70%);
+}
+.pokemon-large.kamon {
+    border-color: #e74c3c;
+}
+.pokemon-large.jbird {
+    border-color: #f1c40f;
+}
+.pokemon-large.steve {
+    border-color: #9b59b6;
+}
+.pokemon-large.james {
+    border-color: #74b9ff;
+}
+.pokemon-large.arod {
+    border-color: #e67e22;
+}
+.pokemon-large.nolan {
+    border-color: #2ecc71;
+}
+
+h1, h2 {
+    text-align: center;
+}
+h2 {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+span {
+    display: block;
+    padding-bottom: 10px;
+}
+.pointer {
+    cursor: pointer;
+}
+.visibility-hidden {
+    visibility: hidden;
+}
+a.art-holder {
+    display: inline-block;
+    padding-bottom: 15px;
+    text-decoration: none;
+}
+a.art-holder > span {
+    text-align: center;
+    padding: 0px;
+}
+div.champ {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+div.event {
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 3px 10px 0 rgba(0, 0, 0, 0.12);
+    font-size: 14px;
+    width: 100%;
+    break-inside: avoid;
+}
+
+/* Multi-column layout for events */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+div.event > div.body {
+    padding: 15px;
+}
+div.event > div.header {
+    border-radius: 5px 5px 0px 0px;
+    padding: 10px 10px;
+    border-bottom: 1px solid #444;
+    font-weight: bold;
+}
+div.event.grey > div.header {
+    background-color: #2d3436;
+    color: #dfe6e9;
+}
+div.event.draft > div.header {
+    background-color: #f39c12;
+}
+div.event.draft {
+    max-height: 33em;
+    overflow: hidden;
+}
+div.event.draft:hover {
+    cursor: pointer;
+}
+div.event.draft.expanded {
+    max-height: none;
+}
+div.event.round > div.header {
+    background-color: #e74c3c;
+}
+div.event.tournament > div.header {
+    background-color: #3498db;
+}
+div.event.trade > div.header {
+    background-color: #27ae60;
+}
+div.event.unofficial-tournament > div.header {
+    background-color: #9b59b6;
+}
+img.art {
+    width: 100px;
+}
+div.kamon img.art {
+    background: radial-gradient(#e74c3c 3%, #ecf0f1 70%);
+}
+div.jbird img.art {
+    background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
+}
+div.steve img.art {
+    background: radial-gradient(#9b59b6 3%, #ecf0f1 70%);
+}
+div.james img.art {
+    background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
+}
+div.arod img.art {
+    background: radial-gradient(#e67e22 15%, #ecf0f1 70%);
+}
+div.nolan img.art {
+    background: radial-gradient(#2ecc71 15%, #ecf0f1 70%);
+}
+img.art.large {
+    height: 256px;
+    width: auto;
+}
+img.art.large.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+img.sprite {
+    width: 40px;
+}
+img.trainer_sprite {
+    height: 48px;
+}
+img.trainer_sprite.large {
+    height: 256px;
+}
+li.allowed {
+    color: #38761d;
+}
+li.restricted {
+    color: #c0392b;
+}
+table.standard {
+    margin-top: 10px;
+    text-align: center;
+    border-spacing: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    font-size: 14px;
+}
+table.standard th {
+    background-color: #bdc3c7;
+    border-radius: 5px;
+}
+table.standard td,
+table.standard th {
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+table.standard > tr > td.james.winner,
+table.standard > tr.james.winner > td,
+div.james.winner > img {
+    background: radial-gradient(#74b9ff 15%, #ecf0f1 70%);
+}
+table.standard > tr > td.jbird.winner,
+table.standard > tr.jbird.winner > td,
+div.jbird.winner > img {
+    background: radial-gradient(#f1c40f 15%, #ecf0f1 70%);
+}
+table.standard > tr > td.kamon.winner,
+table.standard > tr.kamon.winner > td,
+div.kamon.winner > img {
+    background: radial-gradient(#e74c3c 3%, #ecf0f1 70%);
+}
+table.standard > tr > td.steve.winner,
+table.standard > tr.steve.winner > td,
+div.steve.winner > img {
+    background: radial-gradient(#9b59b6 3%, #ecf0f1 70%);
+}
+table.standard > tr > td.arod.winner,
+table.standard > tr.arod.winner > td,
+div.arod.winner > img {
+    background: radial-gradient(#e67e22 15%, #ecf0f1 70%);
+}
+table.standard > tr > td.nolan.winner,
+table.standard > tr.nolan.winner > td,
+div.nolan.winner > img {
+    background: radial-gradient(#2ecc71 15%, #ecf0f1 70%);
+}
+#cst > tr > td {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+        padding: 0 5px;
+        gap: 10px;
+    }
+    
+    div.event {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 13px;
+        margin-top: 10px;
+    }
+    
+    .match-row {
+        padding: 3px 5px;
+        font-size: 10px;
+    }
+    
+    .match-player img {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .match-player .player-name {
+        font-size: 9px;
+    }
+    
+    .match-pokemon {
+        width: 50px;
+        height: 32px;
+    }
+    
+    .match-pokemon img {
+        width: 14px;
+        height: 14px;
+    }
+    
+    table.standard {
+        font-size: 12px;
+        border-spacing: 2px;
+    }
+    
+    table.standard th,
+    table.standard td {
+        padding: 3px 6px;
+    }
+    
+    img.sprite {
+        width: 32px;
+    }
+    
+    img.trainer_sprite {
+        height: 40px;
+    }
+    
+    img.art {
+        width: 80px;
+    }
+    
+    ul.navbar {
+        flex-direction: column;
+    }
+    
+    ul.navbar > li {
+        min-width: auto;
+    }
+    
+    ul.navbar > li > a {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+    
+    h1 {
+        margin-top: 120px;
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+        padding: 0 2px;
+        gap: 8px;
+    }
+    
+    div.event {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 11px;
+        margin-top: 8px;
+    }
+    
+    .match-row {
+        padding: 2px 4px;
+        font-size: 9px;
+    }
+    
+    .match-player img {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .match-player .player-name {
+        font-size: 8px;
+    }
+    
+    .match-pokemon {
+        width: 40px;
+        height: 28px;
+    }
+    
+    .match-pokemon img {
+        width: 12px;
+        height: 12px;
+    }
+    
+    table.standard {
+        font-size: 10px;
+    }
+    
+    table.standard th,
+    table.standard td {
+        padding: 2px 4px;
+    }
+    
+    img.sprite {
+        width: 28px;
+    }
+    
+    img.trainer_sprite {
+        height: 36px;
+    }
+    
+    img.art {
+        width: 60px;
+    }
+    
+    ul.navbar > li > a {
+        font-size: 14px;
+        padding: 6px 8px;
+    }
+    
+    h1 {
+        margin-top: 140px;
+        font-size: 1.5em;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+}
+
+/* Compact match display */
+.match-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 6px;
+    margin: 2px 0;
+    border-radius: 3px;
+    background: #f8f9fa;
+    border-left: 2px solid #3498db;
+    font-size: 11px;
+}
+
+.match-player {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.match-player.winner {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.match-player img {
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.match-player .player-name {
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.match-pokemon {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px;
+    width: 60px;
+    height: 40px;
+}
+
+.match-pokemon img {
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+}
+
+/* Champion section styling */
+.match-row.champion {
+    background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+    color: white !important;
+    border-left: 3px solid #f1c40f !important;
+}
+
+/* Compact event headers */
+div.event > div.header {
+    font-size: 14px;
+    padding: 8px 12px;
+    font-weight: bold;
+}
+
+/* Smaller event body padding */
+div.event > div.body {
+    padding: 10px;
+}
+
+/* Compact player stats */
+.player-stats-compact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.player-stat-item {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;
+}
+
+/* Improved team display */
+.team {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+}
+
+.team img {
+    border-radius: 3px;
+}
+
+/* Better event headers */
+div.event > div.header {
+    font-size: 18px;
+    padding: 12px 15px;
+}
+
+/* Compact event layout */
+div.event.compact {
+    font-size: 14px;
+}
+
+div.event.compact > div.body {
+    padding: 12px;
+}
+
+.stats-key {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.stats-key a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.stats-key a:hover {
+    text-decoration: underline;
+}

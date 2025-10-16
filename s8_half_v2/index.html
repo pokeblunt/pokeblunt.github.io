@@ -1,0 +1,58 @@
+<!doctype html>
+<!-- Development: Must run `npx http-server` on the command line to run locally. -->
+<html lang="en">
+<script>season="8.5"</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head><link rel="stylesheet" href="index.css"></head>
+
+<head><title id="tmp1"></title></head>
+<script>document.getElementById("tmp1").innerHTML = "PB / S" + season</script>
+<head><link id="tmp2" rel="shortcut icon" type="image/png"/></head>
+<script>document.getElementById("tmp2").href = "../img/s" + season + ".png"</script>
+
+<body>
+    <nav class="navbar-container">
+        <ul class="navbar">
+            <li><a class="tab" href="..">&laquo; Seasons</a></li>
+            <li><a onclick="filter_cards('')" class="tab everything active">Everything</a></li>
+            <li><a onclick="filter_cards('tournament')" class="tab tournament">Tournaments</a></li>
+            <li><a onclick="filter_cards('trainer')" class="tab trainer">Trainers</a></li>
+            <li><a onclick="filter_cards('trade')" class="tab trade">Trades</a></li>
+            <li><a onclick="filter_cards('draft')" class="tab draft">Drafts</a></li>
+            <li><a onclick="filter_cards('unofficial-tournament')" class="tab unofficial-tournament">Unofficials</a></li>
+        </ul>
+    </nav>
+
+    <h1>Poke-Blunt</h1>
+    <h2><img class="tmp4"><span id="tmp3" style="display: inline"></span><img class="tmp4"></h2>
+    <script>
+        document.getElementById("tmp3").innerHTML = " Season " + season + " "
+        doms = document.getElementsByClassName("tmp4")
+        for (dom of doms) {
+            dom.src = "../img/s" + season + ".png"
+        }
+    </script>
+
+    <div class="events-grid" id="events"></div>
+
+    <div class="event grey trainer">
+        <div class="header">Pokemon Statistics</div>
+        <div class="body" id="put-pokemon-stats-table-here">
+            <div class="stats-key">
+                <strong>Key:</strong> M+MW (Match Points) | MW (Match Wins) | M (Matches) | MW% (Win %) | TMW (Tournament Wins) | TM (Tournament Matches) | TW (Tournament Titles) | T (Tournaments) | PMW (Playoff Wins) | PM (Playoff Matches) | R (Trades) | ELO (Rating)
+            </div>
+            <div style="overflow-x: auto; margin-top: 10px;">
+                <!-- Table will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="event grey trainer" id="tmp5"></div>
+    <script>$("#tmp5").load("rules.html")</script>
+<script src="data.js"></script>
+<script src="index.js"></script>
+<script>
+    main(raw);
+</script>
+</body>
+</html>

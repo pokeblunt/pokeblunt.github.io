@@ -6942,23 +6942,23 @@ var raw = {
             }
         }, {
             "type": "champion",
-            "date": "2025/10/16 13:00",
-            "description": 'Kamon wins Season 8.5! Gengar is named MVP!',
+            "date": "2025/09/05 20:00",
+            "description": 'Kamon wins Season 8.5!',
             "kwargs": {
-                "mvp_creature_id": 94,
+                "mvp_creature_id": 1,
                 "teams": [
                     {
                         "player_id": 0,
                         "creature_ids": [25, 127, 94, 105, 113, 121],
                     }, {
                         "player_id": 1,
-                        "creature_ids": [87, 113, 125, 51, 144, 94],
+                        "creature_ids": [130, 113, 125, 51, 144, 64],
                     }, {
                         "player_id": 2,
                         "creature_ids": [103, 67, 87, 149, 122, 135],
                     }, {
                         "player_id": 3,
-                        "creature_ids": [91, 125, 47, 55, 62, 143],
+                        "creature_ids": [91, 101, 28, 55, 62, 143],
                     }, {
                         "player_id": 5,
                         "creature_ids": [146, 68, 57, 136, 3, 123],
