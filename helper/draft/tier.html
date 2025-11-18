@@ -28,14 +28,16 @@ textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:4px;font-fa
 .pokemon-card img{width:80px;height:80px;object-fit:contain;display:block;margin:0 auto 8px}
 .pokemon-number{font-size:12px;color:#666;margin-bottom:5px}
 .pokemon-name{font-weight:bold;color:#333}
-.ranked-list{min-height:200px;border:2px dashed #ddd;border-radius:6px;padding:15px;background:#fafafa}
-.ranked-item{display:flex;align-items:center;gap:10px;background:white;padding:10px;border:2px solid #ddd;border-radius:6px;margin-bottom:10px;cursor:move}
+.ranked-list{min-height:200px;border:2px dashed #ddd;border-radius:6px;padding:15px;background:#fafafa;display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
+.ranked-item{position:relative;text-align:center;background:white;padding:10px;border:2px solid #ddd;border-radius:6px;cursor:move;transition:all 0.2s}
+.ranked-item:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1)}
 .ranked-item.dragging{opacity:0.5}
-.ranked-item.drag-over{border-top:3px solid #2196F3}
-.rank-item{background:#2196F3;color:white;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:bold;flex-shrink:0}
-.ranked-item img{width:40px;height:40px;object-fit:contain}
-.ranked-item span{flex:1;font-weight:500}
-.ranked-item button{background:rgba(255,0,0,0.6);padding:4px 8px;font-size:12px}
+.ranked-item.drag-over{border:3px solid #2196F3;background:#e3f2fd}
+.rank-item{position:absolute;top:5px;left:5px;background:#2196F3;color:white;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:bold;font-size:12px;z-index:1}
+.ranked-item img{width:60px;height:60px;object-fit:contain;display:block;margin:0 auto 5px}
+.ranked-item span{display:block;font-size:11px;color:#666;margin-bottom:3px}
+.ranked-item .pokemon-name{font-weight:bold;font-size:12px;color:#333;margin-bottom:5px}
+.ranked-item button{position:absolute;top:5px;right:5px;background:rgba(255,0,0,0.6);border:none;color:white;padding:2px 6px;border-radius:3px;font-size:10px;cursor:pointer;z-index:1}
 .ranked-item button:hover{background:rgba(255,0,0,0.8)}
 .tier-results{margin-top:20px}
 .tier-section{margin-bottom:20px}
@@ -51,11 +53,15 @@ textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:4px;font-fa
 <div class="container">
 <h1>Pokemon Tier List Creator</h1>
 <div class="section">
-<h2>Step 1: Rank Your Top 50 Pokemon</h2>
+<h2>Step 1: Rank Your Pokemon</h2>
 <div>
 <h3>Your Ranking (drag to reorder)</h3>
 <div class="ranked-list" id="rankedList">Add Pokemon from below by clicking on them</div>
+<div class="controls">
 <button onclick="exportRanking()">Export Your Ranking</button>
+<button class="secondary" onclick="importMyRanking()">Import Your Ranking</button>
+</div>
+<textarea id="rankingData" placeholder='Paste ranking JSON here: {"pokemon": [1, 25, 150, ...]}' style="margin-top:10px"></textarea>
 </div>
 <div class="search-section" style="margin-top:20px">
 <input type="text" id="searchInput" placeholder="Search Pokemon by name or number..." oninput="filterPokemon()">
@@ -139,7 +145,7 @@ const filter=document.getElementById('searchInput').value;
 await renderPokemon(filter);
 }
 async function addToRanking(num){
-if(rankedPokemon.includes(num)||rankedPokemon.length>=50)return;
+if(rankedPokemon.includes(num))return;
 rankedPokemon.push(num);
 await renderRankedList();
 await renderPokemon(document.getElementById('searchInput').value);
@@ -160,8 +166,9 @@ ondrop="handleDrop(event,${idx})"
 ondragend="handleDragEnd(event)">
 <div class="rank-item">${idx+1}</div>
 <img src="${getPokemonImageUrl(num)}" alt="${name||num}" onerror="this.style.display='none'">
-<span>#${num} ${name||'...'}</span>
-<button onclick="removeFromRanking(${idx})">Remove</button>
+<span>#${num}</span>
+<div class="pokemon-name">${name||'...'}</div>
+<button onclick="removeFromRanking(${idx})" title="Remove">✕</button>
 </div>`;
 }));
 container.innerHTML=html.join('');
@@ -205,11 +212,28 @@ draggedItem=null;
 async function exportRanking(){
 if(rankedPokemon.length===0)return;
 const data=JSON.stringify({pokemon:rankedPokemon},null,2);
+const textarea=document.getElementById('rankingData');
+textarea.value=data;
 try{
 await navigator.clipboard.writeText(data);
-alert('Ranking copied to clipboard!');
 }catch(e){
-alert('Ranking data ready to copy');
+textarea.select();
+}
+}
+async function importMyRanking(){
+const textarea=document.getElementById('rankingData');
+const data=textarea.value.trim();
+if(!data)return;
+try{
+const ranking=JSON.parse(data);
+if(!ranking.pokemon||!Array.isArray(ranking.pokemon)){
+throw new Error('Invalid format');
+}
+rankedPokemon=ranking.pokemon;
+await renderRankedList();
+await renderPokemon(document.getElementById('searchInput').value);
+}catch(e){
+alert('Error importing ranking: '+e.message);
 }
 }
 function importRanking(){
@@ -220,9 +244,6 @@ try{
 const ranking=JSON.parse(data);
 if(!ranking.pokemon||!Array.isArray(ranking.pokemon)){
 throw new Error('Invalid format');
-}
-if(ranking.pokemon.length>50){
-ranking.pokemon=ranking.pokemon.slice(0,50);
 }
 importedRankings.push({id:Date.now(),pokemon:ranking.pokemon});
 renderImportedRankings();
