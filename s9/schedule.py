@@ -6,7 +6,7 @@ import numpy as np
 
 
 def main() -> None:
-    seed(348495023)
+    seed(822)  # Corvisquire
     n_shuffle = 4000
     names = [
         "Arod",
