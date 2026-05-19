@@ -272,9 +272,17 @@ def main() -> None:
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2436126572",
         # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2436134522"
 
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2437292925",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2437298414",
-        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2437304357"
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2437292925",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2437298414",
+        # "https://replay.pokemonshowdown.com/gen9doublescustomgame-2437304357"
+
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612845958",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612867531",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612876698",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612881760",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612888680",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612894842",
+        "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612909984"
     ]
     matches = [Match(url) for url in urls]
     matches.sort(key=lambda x: x._upload_time)
@@ -329,6 +337,8 @@ class Match:
         name2num["Zacian-Crowned"] = 888
         name2num["Indeedee-F"] = 876
         name2num["Kyurem-Black"] = 646
+        name2num["Landorus-Therian"] = 645
+        name2num["Floette-Eternal"] = 670
         return name2num[name]
 
     @property
@@ -342,6 +352,7 @@ class Match:
             "je64": 1,
             "mistermoscow": 2,
             "Mango Meloetta": 3,
+            "Jamochi": 3,
             "Smokeydabearrr": 4,
             "smokeydabearrr": 4,
             "noli_cannoli10": 5,

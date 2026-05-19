@@ -18,13 +18,13 @@ var raw = {
             "id": 2,
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [801, 987, 1004, 376, 38, 145, 876, 386, 571, 984, 901, 144],
+            "creature_ids": [801, 987, 1004, 376, 38, 145, 876, 386, 901, 591, 3, 788],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "name": "James",
             "css_class": "james",
-            "creature_ids": [149, 645, 6, 655, 983, 488, 445, 797, 786, 233, 788, 423],
+            "creature_ids": [149, 645, 6, 655, 983, 488, 445, 797, 786, 233, 986, 984],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -130,6 +130,127 @@ var raw = {
                     { "creature_id": 934, "player_id": 4 },
                     { "creature_id": 144, "player_id": 2 },
                     { "creature_id": 423, "player_id": 3 }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2026/05/01 09:00",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 3
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 571
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2026/05/01 10:49",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 3,
+                        "creature_id": 986
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": -1,
+                        "creature_id": 423
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2026/05/18 10:35",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": 3,
+                        "creature_id": 984
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 2,
+                        "creature_id": 788
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2026/05/18 16:58",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2612845958' target='_blank'>Jamochi beat noli_cannoli10</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2612867531' target='_blank'>Smokeydabearrr beat mistermoscow</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2612876698' target='_blank'>mistermoscow beat Jamochi</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2612881760' target='_blank'>Smokeydabearrr beat noli_cannoli10</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2612888680' target='_blank'>noli_cannoli10 beat mistermoscow</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2612894842' target='_blank'>Jamochi beat Smokeydabearrr</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9doublescustomgame-2612909984' target='_blank'>Jamochi beat Smokeydabearrr</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 3,
+                        "creature_ids": [6, 986, 645, 983, 149, 233],
+                    }, {
+                        "player_id": 5,
+                        "creature_ids": [670, 547, 248, 887, 809, 151],
+                    }, {
+                        "player_id": 2,
+                        "creature_ids": [3, 38, 801, 788, 987, 1004],
+                    }, {
+                        "player_id": 4,
+                        "creature_ids": [9, 94, 279, 934, 727, 1000],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 3,
+                        "lose_player_id": 5,
+                    }, {
+                        "win_player_id": 4,
+                        "lose_player_id": 2,
+                    }, {
+                        "win_player_id": 2,
+                        "lose_player_id": 3,
+                    }, {
+                        "win_player_id": 4,
+                        "lose_player_id": 5,
+                    }, {
+                        "win_player_id": 5,
+                        "lose_player_id": 2,
+                    }, {
+                        "win_player_id": 3,
+                        "lose_player_id": 4,
+                    }, {
+                        "win_player_id": 3,
+                        "lose_player_id": 4,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2026/05/18 20:18",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 591
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 144
+                    }
                 ]
             }
         }
