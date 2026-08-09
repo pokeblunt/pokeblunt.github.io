@@ -1,0 +1,421 @@
+/* Click-through battle stats panel. Layered on top of index.css. */
+
+.stat-link {
+    cursor: pointer;
+}
+
+.stat-link:hover {
+    filter: brightness(1.15);
+}
+
+td.stat-link:hover,
+.header.stat-link:hover {
+    text-decoration: underline;
+}
+
+img.sprite.stat-link:hover,
+img.trainer_sprite.stat-link:hover {
+    transform: scale(1.25);
+    transition: transform 0.1s ease-out;
+}
+
+/* Pokemon art gets the same lift as the sprites. The effects go on the <img>
+   rather than the <a> so the name/number caption underneath stays legible,
+   and a smaller factor because the art is 125px next to a 48px sprite. */
+a.art-holder.stat-link:hover {
+    filter: none;
+}
+
+a.art-holder.stat-link:hover > img.art {
+    filter: brightness(1.15);
+    transform: scale(1.1);
+    transition: transform 0.1s ease-out;
+}
+
+/* The art's radial glow fades out to the page colour, so brightness() turns that
+   flat outer area into a visible white square. Fading to the same colour at zero
+   alpha is identical at rest and leaves nothing for the filter to whiten. */
+div.kamon img.art { background: radial-gradient(#e74c3c 3%, rgba(236, 240, 241, 0) 70%); }
+div.jbird img.art { background: radial-gradient(#f1c40f 15%, rgba(236, 240, 241, 0) 70%); }
+div.steve img.art { background: radial-gradient(#9b59b6 3%, rgba(236, 240, 241, 0) 70%); }
+div.james img.art { background: radial-gradient(#74b9ff 15%, rgba(236, 240, 241, 0) 70%); }
+div.arod img.art { background: radial-gradient(#e67e22 15%, rgba(236, 240, 241, 0) 70%); }
+div.nolan img.art { background: radial-gradient(#2ecc71 15%, rgba(236, 240, 241, 0) 70%); }
+
+.sp-inline {
+    text-decoration: underline dotted;
+}
+
+/* ---------------------------------------------------------------- overlay */
+
+.sp-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1000;
+    padding: 3vh 2vw;
+    overflow: auto;
+}
+
+.sp-overlay.open {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sp-panel {
+    position: relative;
+    background: #f7f7f7;
+    color: #222;
+    border: 3px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    width: min(860px, 96vw);
+    max-height: 94vh;
+    overflow-y: auto;
+    padding: 18px 22px 26px;
+}
+
+.sp-close {
+    position: sticky;
+    float: right;
+    top: 0;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.sp-close:hover {
+    background: #b33;
+}
+
+.sp-head {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+}
+
+.sp-head h3 {
+    margin: 0;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sp-art {
+    height: 64px;
+    width: auto;
+}
+
+/* Sub-heading for a bar list tucked inside a section. */
+.sp-subhead {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    margin: 12px 0 5px;
+}
+
+.sp-sub {
+    font-size: 13px;
+    color: #666;
+}
+
+.sp-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* ------------------------------------------------------------------- hero */
+
+/* Art + identity on the left, four headline numbers on the right. */
+.sp-hero {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Nothing follows it (the never-played panel), so drop the divider. */
+.sp-hero:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sp-hero-left {
+    flex: 0 0 190px;
+    text-align: center;
+}
+
+.sp-hero-left .sp-art {
+    height: 150px;
+    width: auto;
+    display: block;
+    margin: 0 auto 4px;
+}
+
+.sp-hero-name {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.sp-hero-num {
+    font-size: 12px;
+    color: #888;
+}
+
+.sp-hero-right {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.sp-types,
+.sp-hero-mons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+/* A trainer's three most-played Pokemon, standing in for the type badges. */
+.sp-hero-mon {
+    height: 34px;
+    width: auto;
+    cursor: pointer;
+}
+
+.sp-hero-mon:hover {
+    transform: scale(1.2);
+    transition: transform 0.1s ease-out;
+}
+
+.sp-trainer {
+    height: 120px;
+    width: auto;
+    display: block;
+    margin: 0 auto 4px;
+    image-rendering: pixelated;
+}
+
+.sp-type {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #fff;
+    padding: 2px 9px;
+    border-radius: 10px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+}
+
+table.sp-headline {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.sp-headline th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    padding: 7px 6px;
+    border-bottom: 1px solid #ececec;
+    white-space: nowrap;
+}
+
+table.sp-headline td {
+    padding: 7px 6px;
+    border-bottom: 1px solid #ececec;
+    text-align: right;
+}
+
+table.sp-headline .sp-h-main {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    width: 22%;
+}
+
+table.sp-headline .sp-h-alt {
+    font-size: 13px;
+    color: #777;
+    width: 34%;
+}
+
+/* Type colours */
+.sp-type-normal   { background: #9fa19f; }
+.sp-type-fire     { background: #e62829; }
+.sp-type-water    { background: #2980ef; }
+.sp-type-electric { background: #d9a300; }
+.sp-type-grass    { background: #3fa129; }
+.sp-type-ice      { background: #3dcef3; }
+.sp-type-fighting { background: #ff8000; }
+.sp-type-poison   { background: #9141cb; }
+.sp-type-ground   { background: #915121; }
+.sp-type-flying   { background: #81b9ef; }
+.sp-type-psychic  { background: #ef4179; }
+.sp-type-bug      { background: #91a119; }
+.sp-type-rock     { background: #afa981; }
+.sp-type-ghost    { background: #704170; }
+.sp-type-dragon   { background: #5060e1; }
+.sp-type-dark     { background: #50413f; }
+.sp-type-steel    { background: #60a1b8; }
+.sp-type-fairy    { background: #ef70ef; }
+
+/* --------------------------------------------------------------- sections */
+
+.sp-section {
+    margin-bottom: 16px;
+}
+
+.sp-section h4 {
+    margin: 0 0 6px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #555;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 3px;
+}
+
+table.sp-rows {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+table.sp-rows th,
+table.sp-rows td {
+    text-align: left;
+    padding: 4px 6px;
+    border-bottom: 1px solid #ececec;
+    vertical-align: middle;
+}
+
+table.sp-rows th {
+    font-weight: 600;
+    color: #444;
+    width: 42%;
+}
+
+table.sp-roster th,
+table.sp-roster td {
+    width: auto;
+    text-align: right;
+}
+
+table.sp-roster th:first-child,
+table.sp-roster td:first-child {
+    text-align: left;
+    width: 34%;
+}
+
+.sp-mini {
+    height: 26px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+/* index.css sets a global `span { display: block }`, which would push every inline
+   hint onto its own line. Undo it inside table cells only, so the flex/grid spans
+   used by the type badges and move bars keep their own layout. */
+.sp-panel th span,
+.sp-panel td span {
+    display: inline;
+    padding-bottom: 0;
+}
+
+.sp-dim {
+    color: #999;
+    font-size: 12px;
+}
+
+.sp-empty {
+    color: #666;
+    font-style: italic;
+}
+
+.sp-foot {
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* ------------------------------------------------------------------- bars */
+
+.sp-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.sp-bar-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 46px;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.sp-bar-track {
+    background: #e6e6e6;
+    border-radius: 3px;
+    height: 12px;
+    overflow: hidden;
+}
+
+.sp-bar-fill {
+    display: block;
+    height: 100%;
+    background: #5a8fd6;
+    border-radius: 3px;
+}
+
+.sp-bar-count {
+    text-align: right;
+    color: #666;
+}
+
+@media (max-width: 560px) {
+    .sp-bar-row {
+        grid-template-columns: 110px 1fr 38px;
+    }
+
+    .sp-panel {
+        padding: 14px 12px 20px;
+    }
+
+    .sp-hero {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sp-hero-left {
+        flex-basis: auto;
+    }
+
+    .sp-hero-right {
+        width: 100%;
+    }
+
+    table.sp-headline .sp-h-main {
+        font-size: 22px;
+    }
+}
