@@ -4,36 +4,42 @@ var raw = {
     "players": [
         {
             "id": 0,
+            "showdown_accounts": ["mattmandaman"],
             "name": "Kamon",
             "css_class": "kamon",
             "creature_ids": [718, 812, 641, 1002, 992, 649, 576, 478, 991, 244, 235, 764],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
+            "showdown_accounts": ["je64"],
             "name": "JaeBird",
             "css_class": "jbird",
             "creature_ids": [807, 721, 373, 1017, 861, 719, 979, 902, 1003, 981, 892, 998],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
+            "showdown_accounts": ["mistermoscow"],
             "name": "Stephen",
             "css_class": "steve",
             "creature_ids": [801, 987, 1004, 376, 38, 145, 876, 386, 901, 591, 3, 788],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
+            "showdown_accounts": ["Jamochi"],
             "name": "James",
             "css_class": "james",
             "creature_ids": [149, 645, 6, 655, 983, 488, 445, 797, 786, 233, 986, 984],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
+            "showdown_accounts": ["Smokeydabearrr"],
             "name": "A-Rod",
             "css_class": "arod",
             "creature_ids": [727, 1000, 802, 94, 279, 1013, 1018, 9, 491, 1021, 700, 934],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
+            "showdown_accounts": ["noli_cannoli10"],
             "name": "Nolan",
             "css_class": "nolan",
             "creature_ids": [151, 809, 248, 1009, 324, 887, 670, 547, 784, 115, 895, 798],

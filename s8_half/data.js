@@ -4,36 +4,42 @@ var raw = {
     "players": [
         {
             "id": 0,
+            "showdown_accounts": ["Mattmandaman", "mattmandaman"],
             "name": "Kamon",
             "css_class": "kamon",
             "creature_ids": [77, 105, 35, 101, 83, 127, 25, 94, 118, 95, 91, 31, 73, 85, 90, 10, 10, 62, 112, 121, 34, 68, 89, 8, 113, 79, 143],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
+            "showdown_accounts": ["je64"],
             "name": "JaeBird",
             "css_class": "jbird",
             "creature_ids": [112, 130, 113, 125, 144, 119, 116, 72, 58, 64, 126, 74, 85, 107, 42, 51, 46, 55, 103, 87, 49, 94, 40, 110, 26],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
+            "showdown_accounts": ["mistermoscow"],
             "name": "Stephen",
             "css_class": "steve",
             "creature_ids": [29, 35, 56, 15, 52, 16, 132, 43, 71, 129, 12, 22, 149, 99, 135, 15, 87, 136, 34, 67, 27, 103, 122, 57, 51],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
+            "showdown_accounts": ["Mango Meloetta", "mango meloetta"],
             "name": "James",
             "css_class": "james",
             "creature_ids": [69, 116, 117, 95, 89, 59, 83, 53, 47, 55, 28, 101, 29, 47, 143, 91, 125, 27, 83, 117, 110, 29, 96, 30, 127, 140, 62],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
+            "showdown_accounts": ["Smokeydabearrr", "smokeydabearrr"],
             "name": "A-Rod",
             "css_class": "arod",
             "creature_ids": [131, 12, 108, 19, 7, 4, 16, 74, 47, 37, 62, 85, 136, 19, 26, 50, 147, 63, 95, 151, 18, 6, 112, 149, 49, 121],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
+            "showdown_accounts": ["noli_cannoli10", "noli_cannoli1O"],
             "name": "Nolan",
             "css_class": "nolan",
             "creature_ids": [123, 142, 34, 41, 131, 146, 80, 98, 46, 68, 97, 93, 41, 92, 136, 57, 53, 27, 81, 14, 69, 105, 73, 3, 137, 85, 107],

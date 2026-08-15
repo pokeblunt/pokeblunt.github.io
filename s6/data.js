@@ -2,30 +2,35 @@ var raw = {
     "players": [
         {
             "id": 0,
+            "showdown_accounts": ["mattmandaman"],
             "name": "Kamon",
             "css_class": "kamon",
             "creature_ids": [727, 233, 598, 882, 894, 641, 492, 861, 807, 895, 764, 818, 806, 468, 795, 809, 146, 687, 245, 785, 793, 777, 730, 563, 80,   36, 213, 869, 279],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
+            "showdown_accounts": ["je64"],
             "name": "JaeBird",
             "css_class": "jbird",
             "creature_ids": [812, 798, 721, 801, 145, 248, 186, 547, 858, 530, 560, 649, 423, 230,  38, 149, 113, 9, 380, 379, 647, 743, 302, 609,  94, 479, 169, 212, 244, 103],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
+            "showdown_accounts": ["mistermoscow", "Mister Moscow"],
             "name": "Steve",
             "css_class": "steve",
             "creature_ids": [892, 786, 385, 490, 876, 800, 151, 450, 350, 110, 260, 105, 356, 896, 719, 132,  12,  34,  59, 756, 765,   6, 243, 591, 887, 625, 373, 701],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
+            "showdown_accounts": ["Mango Meloetta", "Jamochi", "Weedichu"],
             "name": "James",
             "css_class": "james",
             "creature_ids": [797, 645, 788, 802, 488, 787, 637, 143, 461, 897, 639, 184, 778, 707, 286,   3, 823, 845, 847, 875, 883, 713, 178, 115, 683, 324, 805, 784, 386],
             "trainer_sprite": "../img/Marsteela.png"
         }, {
             "id": 4,
+            "showdown_accounts": ["smokeydabearrr"],
             "name": "A-Rod",
             "css_class": "arod",
             "creature_ids": [376, 485, 718, 494, 282, 748, 815, 445, 620, 642, 555, 839, 473, 462, 804, 880, 576, 635, 879, 794, 849, 681, 292, 242, 706, 658,  78, 700, 763],

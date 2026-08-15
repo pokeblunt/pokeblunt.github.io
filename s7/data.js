@@ -4,36 +4,42 @@ var raw = {
     "players": [
         {
             "id": 0,
+            "showdown_accounts": ["mattmandaman"],
             "name": "Kamon",
             "css_class": "kamon",
             "creature_ids": [812, 718, 151, 807, 721, 802, 641, 882, 786, 994, 571, 479, 36, 286, 794, 1001, 897, 936, 233, 861, 998, 990],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
+            "showdown_accounts": ["je64"],
             "name": "JaeBird",
             "css_class": "jbird",
             "creature_ids": [801, 727, 149, 1003, 645, 887, 986, 547, 492, 9, 488, 38, 145, 905, 186, 902, 212, 235, 901, 900, 804, 1002],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
+            "showdown_accounts": ["Mister Moscow"],
             "name": "Stephen",
             "css_class": "steve",
             "creature_ids": [876, 800, 649, 637, 132, 707, 793, 700, 964, 279, 460, 858, 302, 763, 892, 984, 491, 1017, 1015, 798, 1016],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
+            "showdown_accounts": ["Mango Meloetta", "Weedichu"],
             "name": "James",
             "css_class": "james",
             "creature_ids": [970, 797, 967, 494, 937, 923, 908, 771, 1006, 282, 795, 934, 706, 765, 788, 959, 146, 979, 809, 719, 373, 598],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
+            "showdown_accounts": ["smokeydabearrr"],
             "name": "A-Rod",
             "css_class": "arod",
             "creature_ids": [1004, 987, 894, 991, 485, 972, 248, 748, 785, 1009, 423, 59, 635, 985, 962, 386, 939, 914, 982, 324, 1005, 973, 925],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
+            "showdown_accounts": ["noli_cannoli10"],
             "name": "Nolan",
             "css_class": "nolan",
             "creature_ids": [1000, 992, 289, 591, 445, 778, 983, 977, 945, 978, 198, 385, 376, 468, 895, 184, 806, 784, 94, 620, 380, 981],

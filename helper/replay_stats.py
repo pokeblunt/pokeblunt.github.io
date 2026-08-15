@@ -31,12 +31,35 @@ ARCHIVE = os.path.join(ROOT, "replays")
 # Genuinely rebuildable scratch (the Showdown pokedex); gitignored.
 CACHE = os.path.join(HERE, ".cache")
 
-# Showdown account -> pokeblunt player id. Shared with showdown_link_to_json.py.
-ACCOUNT_TO_PLAYER_ID = {
-    "mattmandaman": 0, "je64": 1, "mistermoscow": 2, "mango meloetta": 3,
-    "jamochi": 3, "smokeydabearrr": 4, "noli_cannoli10": 5, "noli_cannoli1o": 5,
-    "noli_cannoli": 5,
-}
+def showdown_userid(name):
+    """Showdown's own userid rule: lowercase, drop everything but a-z0-9.
+
+    Collapses the casing and punctuation drift that shows up across seasons
+    ('Mattmandaman'/'mattmandaman', 'Mister Moscow'/'mistermoscow'). It does not
+    collapse 'noli_cannoli10' and 'noli_cannoli1O' -- digit zero vs letter O are
+    genuinely different accounts, so both must be listed.
+    """
+    return re.sub(r"[^a-z0-9]", "", name.lower())
+
+
+def load_account_map(season):
+    """Read each player's showdown_accounts out of <season>/data.js.
+
+    Identity is a per-season fact -- rosters change, people rename -- so it lives
+    beside the player it describes rather than in a global here. Returns
+    {showdown userid: player id}.
+    """
+    text = open(os.path.join(ROOT, season, "data.js")).read()
+    players_blk = text.split('"players"', 1)[1].split('"events"', 1)[0]
+    mapping = {}
+    for block in re.findall(r"\{(.*?)\}", players_blk, re.S):
+        pid = re.search(r'"id"\s*:\s*(\d+)', block)
+        accounts = re.search(r'"showdown_accounts"\s*:\s*\[([^\]]*)\]', block)
+        if not (pid and accounts):
+            continue
+        for handle in re.findall(r'"([^"]+)"', accounts.group(1)):
+            mapping[showdown_userid(handle)] = int(pid.group(1))
+    return mapping
 
 # Moves that always land a critical hit -- excluded from the "luck" crit stat.
 GUARANTEED_CRIT_MOVES = {
@@ -145,7 +168,8 @@ def tag_value(parts, prefix):
 class Battle:
     """One parsed replay."""
 
-    def __init__(self, data):
+    def __init__(self, data, accounts_map=None):
+        self.accounts_map = accounts_map or {}
         self.id = data["id"]
         self.url = "https://replay.pokemonshowdown.com/" + data["id"]
         self.log = data["log"]
@@ -233,11 +257,14 @@ class Battle:
                 record["dex"] = dex_id(record["species"])
                 if tag != "replace":
                     record["times_sent_out"] += 1
-                cur, mx = hp_of(parts[3])
-                if cur is not None:
-                    self.hp[key] = cur
-                if mx and mx != 100:
-                    self.maxhp[key] = mx
+                # `replace` (a Zoroark/Illusion reveal) corrects who the Pokemon is and
+                # carries no HP field, so the HP part is optional here.
+                if len(parts) > 3:
+                    cur, mx = hp_of(parts[3])
+                    if cur is not None:
+                        self.hp[key] = cur
+                    if mx and mx != 100:
+                        self.maxhp[key] = mx
                     record["maxhp"] = mx
 
             elif tag in ("detailschange", "-formechange"):
@@ -399,7 +426,7 @@ class Battle:
         return self.timestamps[-1] - self.timestamps[0] if len(self.timestamps) > 1 else 0
 
     def player_id(self, side):
-        return ACCOUNT_TO_PLAYER_ID.get(self.accounts[side].lower().strip())
+        return self.accounts_map.get(showdown_userid(self.accounts[side]))
 
 
 # ------------------------------------------------------------------ fetching
@@ -407,6 +434,35 @@ class Battle:
 def replay_ids(season):
     text = open(os.path.join(ROOT, season, "data.js")).read()
     return sorted(set(re.findall(r"replay\.pokemonshowdown\.com/([a-z0-9-]+)", text)))
+
+
+def recorded_matches(season):
+    """Games the site itself records for the season, from the match result entries.
+
+    This is the honest denominator. Replay coverage is never guaranteed: replays get
+    purged (all of s6, most of s7) and can simply go unlinked when someone forgets.
+    Every rate the page shows is computed over parsed replays only, and this is what
+    tells the reader how much of the season those replays actually represent.
+    """
+    text = open(os.path.join(ROOT, season, "data.js")).read()
+    # Scan the two fields in order rather than requiring them to be adjacent: some
+    # records carry win_creature_ids between them, and an adjacency regex silently
+    # undercounts the denominator, which shows up as >100% coverage.
+    tokens = re.findall(r'"(win|lose)_player_id":\s*(-?\d+)', text)
+    per_player = collections.Counter()
+    total = 0
+    pending = None
+    for kind, value in tokens:
+        if kind == "win":
+            pending = int(value)
+        elif pending is not None:
+            loser = int(value)
+            total += 1
+            for pid in (pending, loser):
+                if pid >= 0:            # -1 means "no player" (e.g. a dropped slot)
+                    per_player[pid] += 1
+            pending = None
+    return total, per_player
 
 
 class ReplayGone(Exception):
@@ -571,7 +627,8 @@ def roster_dex_ids(season):
     return ids
 
 
-def build_blob(battles, season=None):
+def build_blob(battles, season=None, linked=None):
+    recorded_total, recorded_per_player = recorded_matches(season) if season else (0, {})
     creatures, creature_extra, players, player_extra = aggregate(battles)
 
     creature_out = {}
@@ -612,6 +669,8 @@ def build_blob(battles, season=None):
             entry["best"] = dict(kos=px["best"]["kos"],
                                  pct_dealt=round(px["best"]["pct_dealt"], 1),
                                  url=px["best"]["url"], turns=px["best"]["turns"])
+        # Per-player coverage: how much of this trainer's season the replays cover.
+        entry["recorded_games"] = recorded_per_player.get(pid, 0)
         player_out[str(pid)] = entry
 
     dex_types = {}
@@ -622,9 +681,20 @@ def build_blob(battles, season=None):
     return dict(
         dex_types=dex_types,
         meta=dict(
+            season=season,
             battles=len(battles),
             turns=sum(b.turns for b in battles),
             seconds=sum(b.duration for b in battles),
+            # Coverage. Everything else in this blob is derived from `battles` alone,
+            # so these three numbers are what let the page state its own limits.
+            linked_replays=linked,
+            recorded_matches=recorded_total,
+            # Capped at 100: a season can hold more replays than recorded results if a
+            # game's result was never entered in data.js, and "104% covered" reads as a
+            # bug. The surplus is reported separately so it stays fixable.
+            coverage_pct=(min(100.0, round(100.0 * len(battles) / recorded_total, 1))
+                          if recorded_total else None),
+            unrecorded_replays=max(0, len(battles) - recorded_total),
             unmapped_accounts=sorted({b.accounts[s] for b in battles for s in ("p1", "p2")
                                       if b.player_id(s) is None}),
         ),
@@ -715,20 +785,48 @@ def main():
     season = sys.argv[1] if len(sys.argv) > 1 else "s8"
     out_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join("s8_stats", "replay_stats.js")
 
-    ids = replay_ids(season)
-    print("%s: %d replays" % (season, len(ids)))
-    battles = []
-    for i, rid in enumerate(ids, 1):
-        try:
-            battles.append(Battle(fetch(rid)))
-        except Exception as exc:                                  # noqa: BLE001
-            print("  !! %s failed: %s" % (rid, exc))
-        if i % 20 == 0:
-            print("  %d/%d" % (i, len(ids)))
+    accounts_map = load_account_map(season)
+    if not accounts_map:
+        sys.exit("%s/data.js has no showdown_accounts on any player; add them so replays "
+                 "can be attributed to trainers." % season)
 
-    blob = build_blob(battles, season)
-    if blob["meta"]["unmapped_accounts"]:
-        print("  !! unmapped showdown accounts:", blob["meta"]["unmapped_accounts"])
+    ids = replay_ids(season)
+    battles, missing, unparsed = [], [], []
+    for rid in ids:
+        if not os.path.exists(archive_path(rid)):
+            missing.append(rid)
+            continue
+        try:
+            battles.append(Battle(fetch(rid), accounts_map))
+        except Exception as exc:                                  # noqa: BLE001
+            unparsed.append(rid)
+            print("  !! %s failed to parse: %s" % (rid, exc))
+
+    blob = build_blob(battles, season, len(ids))
+    meta = blob["meta"]
+    # A replay we hold but cannot read is a coverage hole like any other; record it
+    # rather than letting it quietly shrink the sample.
+    meta["archived_replays"] = len(ids) - len(missing)
+    meta["unparsed_replays"] = sorted(unparsed)
+
+    # An unrecognised handle silently drops that player's games, which is worse than
+    # a crash: the page still renders, just quietly wrong. Refuse to write instead.
+    if meta["unmapped_accounts"]:
+        sys.exit("%s: unmapped showdown accounts %s\nAdd each to the matching player's "
+                 '"showdown_accounts" in %s/data.js and re-run.'
+                 % (season, meta["unmapped_accounts"], season))
+
+    print("%s: %d replays linked, %d archived, %d parsed" % (
+        season, len(ids), len(ids) - len(missing), len(battles)))
+    if meta["recorded_matches"]:
+        print("  coverage: %d of %d recorded games (%.1f%%)" % (
+            len(battles), meta["recorded_matches"], meta["coverage_pct"]))
+    if missing:
+        print("  %d linked replays are not in the archive (purged or not yet fetched)"
+              % len(missing))
+    if meta["unrecorded_replays"]:
+        print("  !! %d more replays than recorded results -- some games in %s/data.js "
+              "have a replay link but no win/lose entry" % (meta["unrecorded_replays"], season))
 
     full_out = os.path.join(ROOT, out_path)
     os.makedirs(os.path.dirname(full_out), exist_ok=True)

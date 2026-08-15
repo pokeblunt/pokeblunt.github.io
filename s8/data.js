@@ -4,36 +4,42 @@ var raw = {
     "players": [
         {
             "id": 0,
+            "showdown_accounts": ["Mattmandaman", "mattmandaman"],
             "name": "Kamon",
             "css_class": "kamon",
             "creature_ids": [802, 719, 721, 876, 386, 861, 798, 115, 1003, 492, 784, 642, 970, 248, 530, 763, 3, 380, 936, 571, 880, 157, 445],
             "trainer_sprite": "../img/giovanni.png"
         }, {
             "id": 1,
+            "showdown_accounts": ["je64"],
             "name": "JaeBird",
             "css_class": "jbird",
             "creature_ids": [807, 987, 151, 901, 641, 591, 895, 212, 1004, 788, 373, 385, 981, 145, 244, 998, 787, 230, 794, 900, 103, 1001, 647],
             "trainer_sprite": "../img/zen.gif"
         }, {
             "id": 2,
+            "showdown_accounts": ["mistermoscow"],
             "name": "Stephen",
             "css_class": "steve",
             "creature_ids": [727, 991, 645, 785, 902, 1000, 38, 1017, 1006, 80, 897, 1022, 1005, 490, 925, 894, 12, 700, 198, 992, 1013, 743, 576],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
+            "showdown_accounts": ["Mango Meloetta"],
             "name": "James",
             "css_class": "james",
             "creature_ids": [718, 94, 233, 1002, 598, 649, 923, 485, 65, 448, 149, 985, 237, 908, 144, 778, 795, 306, 1023, 254, 279, 707, 1018],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
+            "showdown_accounts": ["smokeydabearrr"],
             "name": "A-Rod",
             "css_class": "arod",
             "creature_ids": [812, 9, 488, 887, 1020, 1009, 494, 786, 547, 6, 491, 1021, 983, 59, 982, 800, 130, 934, 984, 823, 381, 160, 748],
             "trainer_sprite": "../img/ManiacHGSSsprite.png"
         }, {
             "id": 5,
+            "showdown_accounts": ["Noli_cannoli", "noli_cannoli10"],
             "name": "Nolan",
             "css_class": "nolan",
             "creature_ids": [801, 376, 892, 882, 260, 809, 324, 979, 637, 858, 797, 235, 905, 986, 323, 302, 423, 184, 362, 959, 939, 658, 186],

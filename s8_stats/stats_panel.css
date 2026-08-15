@@ -280,6 +280,19 @@ table.sp-headline .sp-h-alt {
 .sp-type-steel    { background: #60a1b8; }
 .sp-type-fairy    { background: #ef70ef; }
 
+/* Shown only when the replays are an incomplete sample of the season. */
+.sp-coverage {
+    background: #fff6e0;
+    border: 1px solid #f0d089;
+    border-left: 4px solid #e8a317;
+    border-radius: 5px;
+    padding: 8px 11px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #6b5219;
+    margin-bottom: 14px;
+}
+
 /* --------------------------------------------------------------- sections */
 
 .sp-section {

@@ -1,5 +1,7 @@
 # Rebuildable scratch (the Showdown pokedex download).
 helper/.cache/
+__pycache__/
+*.pyc
 
 # NOTE: replays/ is deliberately NOT ignored. Pokemon Showdown purges old replays --
 # every s6 and s7 replay this repo links to already 404s -- so those JSON files are the

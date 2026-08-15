@@ -162,6 +162,34 @@ function elo_index() {
     return elo_cache;
 }
 
+/** "Season 8" from the blob's own meta, so one shared panel serves every season. */
+function season_label() {
+    var season = (replay_stats.meta || {}).season;
+    if (!season) {
+        return "this season";
+    }
+    var num = season.replace(/^s/, "").replace(/_half.*$/, ".5").replace(/_.*$/, "");
+    return "Season " + num;
+}
+
+/**
+ * Every stat on these panels is computed from the replays we actually hold, which is
+ * not always the whole season -- Showdown purges old replays, and a game can simply go
+ * unlinked. When that sample is partial, say so rather than letting rates read as
+ * complete. `recorded` is the season's own match-record count for that entity.
+ */
+function coverage_note(sampled, recorded) {
+    if (!recorded || sampled >= recorded) {
+        return null;
+    }
+    var dom = el("div", "sp-coverage");
+    dom.innerHTML = "Based on <b>" + sampled + " of " + recorded + "</b> recorded games (" +
+        Math.round((100 * sampled) / recorded) + "%). " + season_label() +
+        " replays are incomplete, so totals below undercount and rates come from the " +
+        "games we have.";
+    return dom;
+}
+
 /** Headline row: rating on the left, standing on the right. */
 function elo_row(entry, total) {
     if (!entry) {
@@ -264,7 +292,7 @@ function show_creature(dex) {
     if (!stats) {
         var message = el("div");
         message.appendChild(el("p", "sp-empty",
-            "This Pokemon never appeared in a Season 8 replay. " +
+            "This Pokemon never appeared in a " + season_label() + " replay. " +
             "It may have been drafted but never brought to a match."));
         message.appendChild(foot);
         open_panel("", "", [], hero_block(art, name, "#" + dex, types, null, message));
@@ -283,6 +311,13 @@ function show_creature(dex) {
     ]);
 
     var nodes = [];
+
+    // A Pokemon has no match records of its own, so the season's coverage applies.
+    var season_note = coverage_note((replay_stats.meta || {}).battles,
+                                    (replay_stats.meta || {}).recorded_matches);
+    if (season_note) {
+        nodes.push(season_note);
+    }
 
     if (stats.top_moves.length) {
         nodes.push(section("Most used moves", bar_list(stats.top_moves)));
@@ -369,7 +404,7 @@ function show_player(player_id) {
         ? '<img class="sp-trainer" src="' + player.trainer_sprite + '">' : "";
 
     if (!stats) {
-        var message = el("p", "sp-empty", "No Season 8 replays are linked to this trainer.");
+        var message = el("p", "sp-empty", "No " + season_label() + " replays are linked to this trainer.");
         open_panel("", "", [], hero_block(art, name, "", null, null, message));
         return;
     }
@@ -391,7 +426,7 @@ function show_player(player_id) {
 
     var player_elo = elo_index().players;
     var hero = hero_block(art, name,
-        stats.wins + "–" + (stats.games - stats.wins) + " in Season 8", null, [
+        stats.wins + "–" + (stats.games - stats.wins) + " in " + season_label(), null, [
             elo_row(player_elo[player_id], player_elo.total),
             ["Games won", stats.wins, percent(stats.wins, stats.games) + " of " + stats.games],
             ["KOs", stats.kos, per_game(stats.kos, stats.games) + " / game"],
@@ -404,6 +439,12 @@ function show_player(player_id) {
     }
 
     var nodes = [];
+
+    // Trainers have their own match-record count, so their coverage is exact.
+    var player_note = coverage_note(stats.games, stats.recorded_games);
+    if (player_note) {
+        nodes.push(player_note);
+    }
 
     if (stats.top_moves.length) {
         nodes.push(section("Most used moves", bar_list(stats.top_moves)));
