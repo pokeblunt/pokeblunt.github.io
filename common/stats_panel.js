@@ -577,6 +577,15 @@ function show_player(player_id) {
 /* ----------------------------------------------------------------- wiring */
 
 function init_stats_panel() {
+    // Seasons predating the replay archive (s1-s6) ship no replay_stats.js at all, and
+    // s6's replays were purged before they could be saved. index.js still marks every
+    // sprite as a stat-link, so without this the affordances would be live and clicking
+    // would throw. Bail out and let the CSS drop the pointer/hover cues.
+    if (typeof replay_stats === "undefined" || !replay_stats || !replay_stats.meta) {
+        document.body.classList.add("no-replay-stats");
+        return;
+    }
+
     var overlay = el("div", "sp-overlay");
     overlay.id = "sp-overlay";
     overlay.innerHTML =

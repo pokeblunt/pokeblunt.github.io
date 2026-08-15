@@ -3,7 +3,9 @@
 <html lang="en">
 <script>season=4</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<head><link rel="stylesheet" href="index.css"></head>
+<head><meta charset="utf-8"></head>
+<head><link rel="stylesheet" href="../common/index.css"></head>
+<head><link rel="stylesheet" href="../common/stats_panel.css"></head>
 
 <head><title id="tmp1"></title></head>
 <script>document.getElementById("tmp1").innerHTML = "PB / S" + season</script>
@@ -59,9 +61,11 @@
     <div class="event grey trainer" id="tmp5"></div>
     <script>$("#tmp5").load("rules.html")</script>
 <script src="data.js"></script>
-<script src="index.js"></script>
+<script src="../common/index.js"></script>
+<script src="../common/stats_panel.js"></script>
 <script>
     main(raw);
+    init_stats_panel();
 </script>
 </body>
 </html>

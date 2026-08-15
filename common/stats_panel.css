@@ -4,6 +4,20 @@
     cursor: pointer;
 }
 
+/* No replay data for this season: keep the markup, drop the clickable cues. */
+body.no-replay-stats .stat-link {
+    cursor: default;
+}
+
+body.no-replay-stats .stat-link:hover,
+body.no-replay-stats img.sprite.stat-link:hover,
+body.no-replay-stats img.trainer_sprite.stat-link:hover,
+body.no-replay-stats a.art-holder.stat-link:hover > img.art {
+    filter: none;
+    transform: none;
+    text-decoration: none;
+}
+
 .stat-link:hover {
     filter: brightness(1.15);
 }
