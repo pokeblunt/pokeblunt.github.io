@@ -445,23 +445,22 @@ def recorded_matches(season):
     tells the reader how much of the season those replays actually represent.
     """
     text = open(os.path.join(ROOT, season, "data.js")).read()
-    # Scan the two fields in order rather than requiring them to be adjacent: some
-    # records carry win_creature_ids between them, and an adjacency regex silently
-    # undercounts the denominator, which shows up as >100% coverage.
-    tokens = re.findall(r'"(win|lose)_player_id":\s*(-?\d+)', text)
+    # Read each match object whole rather than pairing the two fields as they stream
+    # past. Records vary: some put win_creature_ids between the ids, and a few list
+    # lose_player_id first. Sequential pairing mis-associates those and the error
+    # cascades into every record after it. Match objects contain arrays but never
+    # nested braces, so a non-nested {...} match isolates them exactly.
     per_player = collections.Counter()
     total = 0
-    pending = None
-    for kind, value in tokens:
-        if kind == "win":
-            pending = int(value)
-        elif pending is not None:
-            loser = int(value)
-            total += 1
-            for pid in (pending, loser):
-                if pid >= 0:            # -1 means "no player" (e.g. a dropped slot)
-                    per_player[pid] += 1
-            pending = None
+    for obj in re.findall(r"\{[^{}]*\}", text):
+        winner = re.search(r'"win_player_id":\s*(-?\d+)', obj)
+        loser = re.search(r'"lose_player_id":\s*(-?\d+)', obj)
+        if not (winner and loser):
+            continue
+        total += 1
+        for pid in (int(winner.group(1)), int(loser.group(1))):
+            if pid >= 0:                # -1 means "no player" (e.g. a dropped slot)
+                per_player[pid] += 1
     return total, per_player
 
 
