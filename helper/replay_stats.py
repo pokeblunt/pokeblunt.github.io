@@ -1,25 +1,35 @@
 """Parse Pokemon Showdown replays for a season into a JS stats blob for the website.
 
 Usage:
-    python3 helper/replay_stats.py s8 s8_stats/replay_stats.js
+    python3 helper/replay_stats.py s8 s8_stats/replay_stats.js   # build one season
+    python3 helper/replay_stats.py --archive                     # refresh replays/
 
-Reads replay URLs out of <season>/data.js, downloads (and caches) each replay's JSON
-from replay.pokemonshowdown.com, parses the battle log into per-Pokemon and per-player
-statistics, and writes `var replay_stats = {...}` for the site to consume.
+Reads replay URLs out of <season>/data.js, loads each replay's JSON from the local
+archive (downloading it once if absent), parses the battle log into per-Pokemon and
+per-player statistics, and writes `var replay_stats = {...}` for the site to consume.
 
-Cache lives in helper/.replay_cache/ so re-runs are free.
+replays/ is a committed archive, NOT a rebuildable cache. Pokemon Showdown purges old
+replays: every s6 (2022) and s7 (2023) replay this repo links to already returns 404,
+so those seasons can never be re-derived. The JSON in replays/ is the only surviving
+copy of the input and must stay in version control. `--archive` fetches anything
+missing and records what is gone in replays/MANIFEST.json.
 """
 import collections
+import datetime
 import json
 import os
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-CACHE = os.path.join(HERE, ".replay_cache")
+# Committed, irreplaceable input.
+ARCHIVE = os.path.join(ROOT, "replays")
+# Genuinely rebuildable scratch (the Showdown pokedex); gitignored.
+CACHE = os.path.join(HERE, ".cache")
 
 # Showdown account -> pokeblunt player id. Shared with showdown_link_to_json.py.
 ACCOUNT_TO_PLAYER_ID = {
@@ -61,6 +71,9 @@ def load_pokedex():
     """Showdown's own pokedex, so form types match what the sim actually used."""
     os.makedirs(CACHE, exist_ok=True)
     path = os.path.join(CACHE, "pokedex.json")
+    legacy = os.path.join(HERE, ".replay_cache", "pokedex.json")
+    if not os.path.exists(path) and os.path.exists(legacy):
+        os.replace(legacy, path)
     if not (os.path.exists(path) and os.path.getsize(path) > 0):
         request = urllib.request.Request(POKEDEX_URL, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(request, timeout=30) as response:
@@ -396,18 +409,48 @@ def replay_ids(season):
     return sorted(set(re.findall(r"replay\.pokemonshowdown\.com/([a-z0-9-]+)", text)))
 
 
-def fetch(replay_id):
-    os.makedirs(CACHE, exist_ok=True)
-    path = os.path.join(CACHE, replay_id + ".json")
-    if os.path.exists(path) and os.path.getsize(path) > 0:
-        return json.load(open(path))
+class ReplayGone(Exception):
+    """The replay 404s: Showdown has purged it and it is not coming back."""
+
+
+def archive_path(replay_id):
+    return os.path.join(ARCHIVE, replay_id + ".json")
+
+
+def download(replay_id, attempts=4):
+    """Fetch one replay. Raises ReplayGone on 404, retries transient failures.
+
+    Showdown sits behind Cloudflare and will start refusing connections outright
+    under a burst, so back off rather than mistaking throttling for a dead replay.
+    """
     url = "https://replay.pokemonshowdown.com/%s.json" % replay_id
     request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        payload = response.read().decode("utf-8")
-    json.loads(payload)  # validate before caching
+    last = None
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                payload = response.read().decode("utf-8")
+            json.loads(payload)  # validate before writing
+            return payload
+        except urllib.error.HTTPError as exc:
+            if exc.code == 404:
+                raise ReplayGone(replay_id) from exc
+            last = exc
+        except Exception as exc:                                   # noqa: BLE001
+            last = exc
+        time.sleep(2 ** attempt)
+    raise RuntimeError("%s failed after %d attempts: %s" % (replay_id, attempts, last))
+
+
+def fetch(replay_id):
+    """Load from the archive, downloading once if it is not there yet."""
+    path = archive_path(replay_id)
+    if os.path.exists(path) and os.path.getsize(path) > 0:
+        return json.load(open(path))
+    os.makedirs(ARCHIVE, exist_ok=True)
+    payload = download(replay_id)
     open(path, "w").write(payload)
-    time.sleep(0.2)
+    time.sleep(0.4)
     return json.loads(payload)
 
 
@@ -590,7 +633,85 @@ def build_blob(battles, season=None):
     )
 
 
+def all_seasons():
+    """Every season directory that links at least one replay."""
+    out = []
+    for name in sorted(os.listdir(ROOT)):
+        path = os.path.join(ROOT, name, "data.js")
+        if os.path.isdir(os.path.join(ROOT, name)) and os.path.exists(path):
+            if replay_ids(name):
+                out.append(name)
+    return out
+
+
+def archive_all(seasons=None, today=None):
+    """Download every linked replay that is not already archived; write a manifest.
+
+    Replay ids are globally unique, so a replay linked by two seasons (s8_half and
+    s8_half_v2 share all 250) is stored once and listed under both.
+    """
+    seasons = seasons or all_seasons()
+    os.makedirs(ARCHIVE, exist_ok=True)
+
+    by_season = {season: replay_ids(season) for season in seasons}
+    wanted = sorted({rid for ids in by_season.values() for rid in ids})
+    have = {rid for rid in wanted if os.path.exists(archive_path(rid))
+            and os.path.getsize(archive_path(rid)) > 0}
+    print("%d seasons, %d unique replays, %d already archived, %d to fetch"
+          % (len(seasons), len(wanted), len(have), len(wanted) - len(have)))
+
+    gone, failed = set(), {}
+    todo = [rid for rid in wanted if rid not in have]
+    for i, rid in enumerate(todo, 1):
+        try:
+            payload = download(rid)
+            open(archive_path(rid), "w").write(payload)
+            have.add(rid)
+            time.sleep(0.4)
+        except ReplayGone:
+            gone.add(rid)
+            time.sleep(0.2)
+        except Exception as exc:                                   # noqa: BLE001
+            failed[rid] = str(exc)
+        if i % 25 == 0 or i == len(todo):
+            print("  %d/%d  archived=%d gone=%d failed=%d"
+                  % (i, len(todo), len(have), len(gone), len(failed)))
+
+    manifest = {
+        "note": ("Pokemon Showdown purges old replays. These JSON files are the only "
+                 "surviving copy of the input the stats are derived from -- keep them "
+                 "in version control. 'gone' replays returned HTTP 404 and are "
+                 "permanently unrecoverable."),
+        "checked": today,
+        "seasons": {},
+    }
+    for season in seasons:
+        ids = sorted(by_season[season])
+        manifest["seasons"][season] = {
+            "linked": len(ids),
+            "archived": sorted(r for r in ids if r in have),
+            "gone": sorted(r for r in ids if r in gone),
+            "failed": sorted(r for r in ids if r in failed),
+        }
+        counts = manifest["seasons"][season]
+        print("  %-12s linked=%-4d archived=%-4d gone=%-4d failed=%d"
+              % (season, counts["linked"], len(counts["archived"]),
+                 len(counts["gone"]), len(counts["failed"])))
+
+    with open(os.path.join(ARCHIVE, "MANIFEST.json"), "w") as handle:
+        json.dump(manifest, handle, indent=1, sort_keys=True)
+        handle.write("\n")
+    if failed:
+        print("!! %d replays failed for transient reasons; re-run to retry" % len(failed))
+    return manifest
+
+
 def main():
+    if "--archive" in sys.argv:
+        rest = [a for a in sys.argv[1:] if not a.startswith("--")]
+        archive_all(rest or None, datetime.date.today().isoformat())
+        return
+
     season = sys.argv[1] if len(sys.argv) > 1 else "s8"
     out_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join("s8_stats", "replay_stats.js")
 

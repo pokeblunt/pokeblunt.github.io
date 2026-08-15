@@ -1,3 +1,6 @@
-# Cached Pokemon Showdown replay JSON downloaded by helper/replay_stats.py.
-# Regenerate at any time by re-running the script; the derived stats are committed.
-helper/.replay_cache/
+# Rebuildable scratch (the Showdown pokedex download).
+helper/.cache/
+
+# NOTE: replays/ is deliberately NOT ignored. Pokemon Showdown purges old replays --
+# every s6 and s7 replay this repo links to already 404s -- so those JSON files are the
+# only surviving copy of the data the stats are derived from. Keep them committed.
