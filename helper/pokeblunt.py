@@ -849,24 +849,104 @@ def event_block(replay_id, season, event_type="tournament"):
                 pid_of(winner), pid_of(loser))
 
 
+def merged_event_block(replay_ids_in, season, event_type="tournament"):
+    """One event covering several replays -- how a tournament is actually recorded.
+
+    A tournament is a single data.js entry listing every game, with one team per
+    player and one match record per game, not one entry per replay.
+    """
+    accounts = load_account_map(season)
+    games, teams, order = [], {}, []
+
+    for rid in replay_ids_in:
+        data = fetch(rid)
+        log = data["log"]
+        winner = log.split("|win|", 1)[1].split("\n", 1)[0].strip()
+        p1, p2 = data["players"][0], data["players"][1]
+        loser = p2 if showdown_userid(winner) == showdown_userid(p1) else p1
+
+        def pid_of(name):
+            pid = accounts.get(showdown_userid(name))
+            if pid is None:
+                sys.exit("%s: replay %s has account %r missing from %s/data.js "
+                         '"showdown_accounts"' % (season, rid, name, season))
+            return pid
+
+        for side, name in (("p1", p1), ("p2", p2)):
+            pid = pid_of(name)
+            species = [s.split(",")[0].strip()
+                       for s in re.findall(r"\|poke\|%s\|([^|]*)\|" % side, log)]
+            dex = [dex_id(s) for s in species]
+            if any(d is None for d in dex):
+                sys.exit("%s: unmapped species %s"
+                         % (rid, [s for s, d in zip(species, dex) if d is None]))
+            if pid not in teams:
+                teams[pid] = dex
+                order.append(pid)
+            elif teams[pid] != dex:
+                print("  !! player %d brought a different six in %s; keeping the first"
+                      % (pid, rid), file=sys.stderr)
+
+        games.append(dict(rid=rid, when=data["uploadtime"], winner=winner, loser=loser,
+                          win_id=pid_of(winner), lose_id=pid_of(loser)))
+
+    games.sort(key=lambda g: g["when"])
+    stamp = datetime.datetime.fromtimestamp(
+        games[0]["when"], datetime.timezone(datetime.timedelta(hours=-8))
+    ).strftime("%Y/%m/%d %H:%M")
+
+    links = "\n".join(
+        "            <a href='https://replay.pokemonshowdown.com/%s' target='_blank'>"
+        "%s beat %s</a><br/>" % (g["rid"], g["winner"], g["loser"]) for g in games)
+    team_txt = ", ".join(
+        '{\n                        "player_id": %d,\n'
+        '                        "creature_ids": %s,\n                    }'
+        % (pid, teams[pid]) for pid in order)
+    match_txt = ", ".join(
+        '{\n                        "win_player_id": %d,\n'
+        '                        "lose_player_id": %d,\n                    }'
+        % (g["win_id"], g["lose_id"]) for g in games)
+
+    return """{
+            "type": "%s",
+            "date": "%s",
+            "description": `
+%s
+            `,
+            "kwargs": {
+                "teams": [
+                    %s
+                ],
+                "matches": [
+                    %s
+                ]
+            }
+        }""" % (event_type, stamp, links, team_txt, match_txt)
+
+
 def cmd_event(args):
     season = "s9"
     etype = "tournament"
+    merge = False
     urls = []
     for arg in args:
         if arg.startswith("--season="):
             season = arg.split("=", 1)[1]
         elif arg.startswith("--type="):
             etype = arg.split("=", 1)[1]
+        elif arg == "--merge":
+            merge = True
         else:
             urls.append(arg)
     if not urls:
-        sys.exit("usage: pokeblunt.py event [--season=s9] [--type=tournament] <replay url|id>...")
+        sys.exit("usage: pokeblunt.py event [--season=s9] [--type=tournament] [--merge] "
+                 "<replay url|id>...")
 
     ids = [u.rstrip("/").split("/")[-1].replace(".json", "") for u in urls]
-    blocks = []
-    for rid in ids:
-        blocks.append((fetch(rid)["uploadtime"], event_block(rid, season, etype)))
+    if merge:
+        print(merged_event_block(ids, season, etype))
+        return
+    blocks = [(fetch(rid)["uploadtime"], event_block(rid, season, etype)) for rid in ids]
     blocks.sort(key=lambda pair: pair[0])
     print(", ".join(block for _, block in blocks))
 
@@ -962,6 +1042,14 @@ def main():
     argv = sys.argv[1:]
     command = argv[0] if argv else ""
     rest = argv[1:]
+
+    # A typo'd season should say so, not surface a FileNotFoundError traceback.
+    for arg in rest:
+        if arg.startswith("--"):
+            continue
+        if command in ("build", "verify", "archive") and \
+                not os.path.exists(os.path.join(ROOT, arg, "data.js")):
+            sys.exit("no such season: %r (expected a directory with a data.js)" % arg)
 
     if command == "archive":
         retry = "--retry-gone" in rest

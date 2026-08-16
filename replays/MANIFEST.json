@@ -1,5 +1,5 @@
 {
- "checked": "2026-08-15",
+ "checked": "2026-08-16",
  "note": "Pokemon Showdown purges old replays. These JSON files are the only surviving copy of the input the stats are derived from -- keep them in version control. 'gone' replays returned HTTP 404 and are permanently unrecoverable.",
  "seasons": {
   "s6": {
