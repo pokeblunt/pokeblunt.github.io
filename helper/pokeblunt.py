@@ -1,18 +1,22 @@
-"""Parse Pokemon Showdown replays for a season into a JS stats blob for the website.
+"""Pokeblunt replay tooling: archive replays, derive stats, draft data.js entries.
 
-Usage:
-    python3 helper/replay_stats.py s8 s8_stats/replay_stats.js   # build one season
-    python3 helper/replay_stats.py --archive                     # refresh replays/
+    python3 helper/pokeblunt.py archive              # fetch new replays into replays/
+    python3 helper/pokeblunt.py event <url>...       # data.js blocks for new games
+    python3 helper/pokeblunt.py build                # regenerate every replay_stats.js
+    python3 helper/pokeblunt.py verify               # check the invariants
 
-Reads replay URLs out of <season>/data.js, loads each replay's JSON from the local
-archive (downloading it once if absent), parses the battle log into per-Pokemon and
-per-player statistics, and writes `var replay_stats = {...}` for the site to consume.
+Typical loop after a tournament: paste the replay URLs into `event`, merge the printed
+blocks into <season>/data.js, then `archive && build && verify`.
 
-replays/ is a committed archive, NOT a rebuildable cache. Pokemon Showdown purges old
-replays: every s6 (2022) and s7 (2023) replay this repo links to already returns 404,
-so those seasons can never be re-derived. The JSON in replays/ is the only surviving
-copy of the input and must stay in version control. `--archive` fetches anything
-missing and records what is gone in replays/MANIFEST.json.
+replays/ is a committed archive, NOT a rebuildable cache. Showdown purges old replays:
+all 87 of s6's and 108 of s7's 128 already return 404, so those games can never be
+re-derived. The JSON in replays/ is the only surviving copy of the input.
+
+Because coverage is never guaranteed, every generated blob carries its own denominator
+(the season's recorded match count) and the page states what fraction of the season its
+numbers actually rest on. `verify` exists to keep that honest: the failures it checks
+for -- unmapped handles silently dropping a player's games, a miscounted denominator
+pushing coverage over 100%, replays held but unparseable -- have all happened here.
 """
 import collections
 import datetime
@@ -23,6 +27,9 @@ import sys
 import time
 import urllib.error
 import urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import dex_names                                                   # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -76,15 +83,7 @@ SELF_INFLICTED = {
 
 # ---------------------------------------------------------------- dex helpers
 
-def load_dex_names():
-    """Pull the national-dex name list out of showdown_link_to_json.py."""
-    src = open(os.path.join(HERE, "showdown_link_to_json.py")).read()
-    match = re.search(r"names = (\[.*?\])\n", src, re.S)
-    assert match, "Could not find the dex `names` list in showdown_link_to_json.py"
-    return eval(match.group(1))
-
-
-DEX_NAMES = load_dex_names()
+DEX_NAMES = dex_names.NAMES
 NAME_TO_DEX = {name: i + 1 for i, name in enumerate(DEX_NAMES)}
 
 POKEDEX_URL = "https://play.pokemonshowdown.com/data/pokedex.json"
@@ -713,7 +712,7 @@ def all_seasons():
     return out
 
 
-def archive_all(seasons=None, today=None):
+def archive_all(seasons=None, today=None, retry_gone=False):
     """Download every linked replay that is not already archived; write a manifest.
 
     Replay ids are globally unique, so a replay linked by two seasons (s8_half and
@@ -726,11 +725,21 @@ def archive_all(seasons=None, today=None):
     wanted = sorted({rid for ids in by_season.values() for rid in ids})
     have = {rid for rid in wanted if os.path.exists(archive_path(rid))
             and os.path.getsize(archive_path(rid)) > 0}
-    print("%d seasons, %d unique replays, %d already archived, %d to fetch"
-          % (len(seasons), len(wanted), len(have), len(wanted) - len(have)))
+
+    # A 404 is permanent, so don't re-request the known dead on every run -- that was
+    # 195 pointless requests per archive. --retry-gone forces a recheck.
+    manifest_path = os.path.join(ARCHIVE, "MANIFEST.json")
+    previously_gone = set()
+    if os.path.exists(manifest_path) and not retry_gone:
+        prior = json.load(open(manifest_path))
+        for entry in prior.get("seasons", {}).values():
+            previously_gone.update(entry.get("gone", []))
 
     gone, failed = set(), {}
-    todo = [rid for rid in wanted if rid not in have]
+    gone |= previously_gone & set(wanted)
+    todo = [rid for rid in wanted if rid not in have and rid not in gone]
+    print("%d seasons, %d unique replays, %d archived, %d known gone, %d to fetch"
+          % (len(seasons), len(wanted), len(have), len(gone), len(todo)))
     for i, rid in enumerate(todo, 1):
         try:
             payload = download(rid)
@@ -775,15 +784,210 @@ def archive_all(seasons=None, today=None):
     return manifest
 
 
+def event_block(replay_id, season, event_type="tournament"):
+    """Render one replay as a data.js event, ready to paste into the events list.
+
+    Replaces the old showdown_link_to_json.py, which kept its URLs in a hardcoded
+    list inside the file and had its own copy of the account map.
+    """
+    data = fetch(replay_id)
+    accounts = load_account_map(season)
+
+    def pid_of(name):
+        pid = accounts.get(showdown_userid(name))
+        if pid is None:
+            sys.exit("%s: replay %s has account %r, which is not in any player's "
+                     '"showdown_accounts" in %s/data.js' % (season, replay_id, name, season))
+        return pid
+
+    log = data["log"]
+    winner = log.split("|win|", 1)[1].split("\n", 1)[0].strip()
+    p1_name, p2_name = data["players"][0], data["players"][1]
+    loser = p2_name if showdown_userid(winner) == showdown_userid(p1_name) else p1_name
+
+    teams = []
+    for side, name in (("p1", p1_name), ("p2", p2_name)):
+        species = [s.split(",")[0].strip()
+                   for s in re.findall(r"\|poke\|%s\|([^|]*)\|" % side, log)]
+        dex = [dex_id(s) for s in species]
+        unknown = [s for s, d in zip(species, dex) if d is None]
+        if unknown:
+            sys.exit("%s: could not map species %s to a dex number" % (replay_id, unknown))
+        teams.append((pid_of(name), dex))
+
+    # -08:00 explicitly rather than the host's local zone, so the same replay renders
+    # the same date wherever this is run.
+    stamp = datetime.datetime.fromtimestamp(
+        data["uploadtime"], datetime.timezone(datetime.timedelta(hours=-8))
+    ).strftime("%Y/%m/%d %H:%M")
+
+    return """{
+            "type": "%s",
+            "date": "%s",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/%s' target='_blank'>%s beat %s</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": %d,
+                        "creature_ids": %s,
+                    }, {
+                        "player_id": %d,
+                        "creature_ids": %s,
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": %d,
+                        "lose_player_id": %d,
+                    }
+                ]
+            }
+        }""" % (event_type, stamp, replay_id, winner, loser,
+                teams[0][0], teams[0][1], teams[1][0], teams[1][1],
+                pid_of(winner), pid_of(loser))
+
+
+def cmd_event(args):
+    season = "s9"
+    etype = "tournament"
+    urls = []
+    for arg in args:
+        if arg.startswith("--season="):
+            season = arg.split("=", 1)[1]
+        elif arg.startswith("--type="):
+            etype = arg.split("=", 1)[1]
+        else:
+            urls.append(arg)
+    if not urls:
+        sys.exit("usage: pokeblunt.py event [--season=s9] [--type=tournament] <replay url|id>...")
+
+    ids = [u.rstrip("/").split("/")[-1].replace(".json", "") for u in urls]
+    blocks = []
+    for rid in ids:
+        blocks.append((fetch(rid)["uploadtime"], event_block(rid, season, etype)))
+    blocks.sort(key=lambda pair: pair[0])
+    print(", ".join(block for _, block in blocks))
+
+
+def cmd_verify(seasons=None):
+    """Check the generated blobs against invariants that must always hold.
+
+    These are the checks that caught real bugs while this was being built: silently
+    dropped players from unmapped handles, coverage over 100% from a miscounted
+    denominator, and replays held but unparseable.
+    """
+    seasons = seasons or [s for s in all_seasons()
+                          if os.path.exists(os.path.join(ROOT, s, "replay_stats.js"))]
+    problems = []
+
+    manifest_path = os.path.join(ARCHIVE, "MANIFEST.json")
+    manifest = json.load(open(manifest_path)) if os.path.exists(manifest_path) else {"seasons": {}}
+
+    for season in seasons:
+        path = os.path.join(ROOT, season, "replay_stats.js")
+        text = open(path).read()
+        blob = json.loads(re.search(r"var replay_stats = (.*);", text, re.S).group(1))
+        meta = blob["meta"]
+
+        def bad(msg):
+            problems.append("%s: %s" % (season, msg))
+
+        if meta["season"] != season:
+            bad("blob says season=%r" % meta["season"])
+        if meta["unmapped_accounts"]:
+            bad("unmapped accounts %s (their games are dropped)" % meta["unmapped_accounts"])
+        if meta["unparsed_replays"]:
+            bad("%d archived replays failed to parse: %s"
+                % (len(meta["unparsed_replays"]), meta["unparsed_replays"][:3]))
+        if meta["recorded_matches"] and meta["battles"] > meta["recorded_matches"]:
+            bad("%d replays but only %d recorded matches"
+                % (meta["battles"], meta["recorded_matches"]))
+
+        # Internal consistency of the aggregation.
+        games = sum(p["games"] for p in blob["players"].values())
+        wins = sum(p["wins"] for p in blob["players"].values())
+        h2h = sum(sum(p["h2h"].values()) for p in blob["players"].values())
+        if games != 2 * meta["battles"]:
+            bad("player games sum to %d, expected %d" % (games, 2 * meta["battles"]))
+        if wins != meta["battles"]:
+            bad("player wins sum to %d, expected %d" % (wins, meta["battles"]))
+        if h2h != meta["battles"]:
+            bad("head-to-head sums to %d, expected %d" % (h2h, meta["battles"]))
+
+        for pid, player in blob["players"].items():
+            if player["games"] > player["recorded_games"]:
+                bad("player %s has %d replay games but %d recorded"
+                    % (pid, player["games"], player["recorded_games"]))
+
+        for dex, creature in blob["creatures"].items():
+            if creature["kos"] and not creature["moves_used"]:
+                bad("creature %s scored KOs with no moves used" % dex)
+            if creature["games"] > meta["battles"]:
+                bad("creature %s appears in more games than exist" % dex)
+
+        # Every linked replay should be archived, or knowingly gone.
+        linked = set(replay_ids(season))
+        archived = {r for r in linked if os.path.exists(archive_path(r))}
+        gone = set(manifest["seasons"].get(season, {}).get("gone", []))
+        unexplained = linked - archived - gone
+        if unexplained:
+            bad("%d linked replays neither archived nor recorded as gone: %s"
+                % (len(unexplained), sorted(unexplained)[:3]))
+
+        print("  %-11s %3d battles  coverage %5s%%  %s"
+              % (season, meta["battles"], meta["coverage_pct"],
+                 "ok" if not [p for p in problems if p.startswith(season)] else "PROBLEMS"))
+
+    if problems:
+        print("\n%d problem(s):" % len(problems))
+        for p in problems:
+            print("  !! " + p)
+        return 1
+    print("\nall checks passed")
+    return 0
+
+
+USAGE = """usage: python3 helper/pokeblunt.py <command>
+
+  build [season...]      regenerate <season>/replay_stats.js (default: all with replays)
+  archive [season...]    download replays not yet in replays/ (--retry-gone rechecks 404s)
+  event <url>...         print data.js event blocks for replays (--season=s9 --type=tournament)
+  verify [season...]     check the generated blobs against the invariants
+"""
+
+
 def main():
-    if "--archive" in sys.argv:
-        rest = [a for a in sys.argv[1:] if not a.startswith("--")]
-        archive_all(rest or None, datetime.date.today().isoformat())
+    argv = sys.argv[1:]
+    command = argv[0] if argv else ""
+    rest = argv[1:]
+
+    if command == "archive":
+        retry = "--retry-gone" in rest
+        archive_all([a for a in rest if not a.startswith("--")] or None,
+                    datetime.date.today().isoformat(), retry)
         return
+    if command == "event":
+        cmd_event(rest)
+        return
+    if command == "verify":
+        sys.exit(cmd_verify(rest or None))
+    if command == "build":
+        # Only seasons whose page actually loads a blob. s8_half_v2 shares s8.5's
+        # replays but runs its own index.js without the stat hooks, so building for
+        # it would just leave an unused file on disk.
+        targets = rest or [s for s in all_seasons()
+                           if any(os.path.exists(archive_path(r)) for r in replay_ids(s))
+                           and "replay_stats.js" in open(
+                               os.path.join(ROOT, s, "index.html")).read()]
+        for season in targets:
+            build_season(season, os.path.join(season, "replay_stats.js"))
+        return
+    sys.exit(USAGE)
 
-    season = sys.argv[1] if len(sys.argv) > 1 else "s8"
-    out_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join("s8_stats", "replay_stats.js")
 
+def build_season(season, out_path):
     accounts_map = load_account_map(season)
     if not accounts_map:
         sys.exit("%s/data.js has no showdown_accounts on any player; add them so replays "

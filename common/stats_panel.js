@@ -183,8 +183,10 @@ function coverage_note(sampled, recorded) {
         return null;
     }
     var dom = el("div", "sp-coverage");
+    // Capped at 99: this only renders when the sample is short, so a rounded 100%
+    // would contradict the sentence it sits in (221 of 222 is not "100%").
     dom.innerHTML = "Based on <b>" + sampled + " of " + recorded + "</b> recorded games (" +
-        Math.round((100 * sampled) / recorded) + "%). " + season_label() +
+        Math.min(99, Math.round((100 * sampled) / recorded)) + "%). " + season_label() +
         " replays are incomplete, so totals below undercount and rates come from the " +
         "games we have.";
     return dom;
