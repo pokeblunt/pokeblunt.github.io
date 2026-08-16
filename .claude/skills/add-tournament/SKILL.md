@@ -12,7 +12,7 @@ means editing `data.js`, then regenerating and verifying.
 All commands run from the repo root and go through one tool:
 
 ```
-python3 helper/pokeblunt.py event <url>... [--season=sN] [--type=tournament] [--merge]
+python3 helper/pokeblunt.py event <url>... [--season=sN] [--type=tournament] [--merge] [--insert]
 python3 helper/pokeblunt.py archive        # download new replays into replays/
 python3 helper/pokeblunt.py build          # regenerate every replay_stats.js
 python3 helper/pokeblunt.py verify         # assert the invariants; exits non-zero on failure
@@ -35,22 +35,34 @@ guess.
   `--type=round`. Omit `--merge`.
 - `--type` also accepts `unofficial-tournament`.
 
+Print the block first, without `--insert`, so it can be reviewed:
+
 ```
 python3 helper/pokeblunt.py event --season=s9 --merge <url> <url> ...
 ```
 
 **4. Ask the user for the description.** Every event has a `description` shown on the
-page. The merged block ships with just the replay links. Past seasons put real
+page. The generated block carries only the replay links. Past seasons put real
 commentary above those links — match reports, running jokes, callouts. **Never invent
 this.** Ask what they want to say, or leave the links alone if they say nothing.
 
 The description is a JS template literal in backticks, so any literal backtick in the
 text must be escaped. Use `</br></br>` between paragraphs, matching existing entries.
 
-**5. Paste the block into `data.js`.** Events live in the `"events": [ ... ]` array,
-separated by `}, {`. Append before the array's closing `    ],` (which is immediately
-followed by `"creatures": [`). Display order does not depend on position — the site
-sorts events by date — so appending is fine.
+**5. Write it into `data.js`.** Re-run the same command with `--insert` to append the
+event to the end of the season's events array:
+
+```
+python3 helper/pokeblunt.py event --season=s9 --merge --insert <url> <url> ...
+```
+
+It refuses if any of the replays are already linked, if the events array cannot be
+located, or if the result would unbalance the braces — in any of those cases nothing is
+written and you should edit by hand. Display order does not depend on position, since
+the site sorts events by date.
+
+If the user wants a description, add it by hand afterwards, above the links inside the
+same backticks.
 
 **6. Trades and drafts are hand-written**, not generated. Shapes:
 

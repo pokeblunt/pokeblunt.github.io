@@ -924,10 +924,41 @@ def merged_event_block(replay_ids_in, season, event_type="tournament"):
         }""" % (event_type, stamp, links, team_txt, match_txt)
 
 
+def insert_events(season, blocks):
+    """Append event blocks to the end of <season>/data.js's events array.
+
+    The array closes with `    ],` immediately before the top-level "creatures" key,
+    which is the one anchor that does not depend on the contents of any event --
+    descriptions are free text and can contain almost anything.
+    """
+    path = os.path.join(ROOT, season, "data.js")
+    text = open(path).read()
+
+    anchor = '\n    ],\n    "creatures":'
+    if text.count(anchor) != 1:
+        sys.exit("%s: expected exactly one events-array terminator, found %d. Insert by "
+                 "hand." % (path, text.count(anchor)))
+
+    at = text.index(anchor)
+    before = text[:at].rstrip()
+    if not before.endswith("}"):
+        sys.exit("%s: events array does not end with a closing brace; insert by hand." % path)
+
+    added = "".join("        }, " + block.lstrip() for block in blocks)
+    # `before` already ends with the previous event's `}`, which `added` re-opens.
+    merged = before[:-1].rstrip("\n ") + "\n" + added + text[at:]
+
+    if merged.count("{") != merged.count("}") or merged.count("[") != merged.count("]"):
+        sys.exit("%s: insertion would unbalance the file; nothing written." % path)
+
+    open(path, "w").write(merged)
+    return path
+
+
 def cmd_event(args):
     season = "s9"
     etype = "tournament"
-    merge = False
+    merge = insert = False
     urls = []
     for arg in args:
         if arg.startswith("--season="):
@@ -936,19 +967,35 @@ def cmd_event(args):
             etype = arg.split("=", 1)[1]
         elif arg == "--merge":
             merge = True
+        elif arg == "--insert":
+            insert = True
         else:
             urls.append(arg)
     if not urls:
         sys.exit("usage: pokeblunt.py event [--season=s9] [--type=tournament] [--merge] "
-                 "<replay url|id>...")
+                 "[--insert] <replay url|id>...")
 
     ids = [u.rstrip("/").split("/")[-1].replace(".json", "") for u in urls]
     if merge:
-        print(merged_event_block(ids, season, etype))
+        blocks = [merged_event_block(ids, season, etype)]
+    else:
+        pairs = [(fetch(rid)["uploadtime"], event_block(rid, season, etype)) for rid in ids]
+        pairs.sort(key=lambda pair: pair[0])
+        blocks = [block for _, block in pairs]
+
+    if not insert:
+        print(", ".join(blocks))
         return
-    blocks = [(fetch(rid)["uploadtime"], event_block(rid, season, etype)) for rid in ids]
-    blocks.sort(key=lambda pair: pair[0])
-    print(", ".join(block for _, block in blocks))
+
+    already = [rid for rid in ids
+               if rid in open(os.path.join(ROOT, season, "data.js")).read()]
+    if already:
+        sys.exit("%s/data.js already links %s. Remove the duplicate or drop --insert."
+                 % (season, already))
+
+    path = insert_events(season, blocks)
+    print("added %d event(s) to %s" % (len(blocks), path))
+    print("next: pokeblunt.py archive && pokeblunt.py build && pokeblunt.py verify")
 
 
 def cmd_verify(seasons=None):
