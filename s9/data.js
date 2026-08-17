@@ -21,14 +21,14 @@ var raw = {
             "showdown_accounts": ["mistermoscow"],
             "name": "Stephen",
             "css_class": "steve",
-            "creature_ids": [801, 987, 1004, 376, 38, 145, 876, 386, 901, 591, 3, 788],
+            "creature_ids": [801, 987, 1004, 38, 145, 876, 901, 591, 3, 788, 485, 448],
             "trainer_sprite": "../img/Spr_B2W2_Alder.png"
         }, {
             "id": 3,
             "showdown_accounts": ["Jamochi"],
             "name": "James",
             "css_class": "james",
-            "creature_ids": [149, 645, 6, 655, 983, 488, 445, 797, 786, 233, 986, 984],
+            "creature_ids": [149, 645, 6, 983, 488, 797, 786, 233, 986, 984, 386, 376],
             "trainer_sprite": "../img/li.png"
         }, {
             "id": 4,
@@ -287,6 +287,111 @@ var raw = {
                     }, {
                         "win_player_id": 2,
                         "lose_player_id": 1,
+                    }, {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2026/06/18 17:47",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": 3,
+                        "creature_id": 386
+                    }, {
+                        "from_player_id": 2,
+                        "to_player_id": 3,
+                        "creature_id": 376
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 2,
+                        "creature_id": 655
+                    }, {
+                        "from_player_id": 3,
+                        "to_player_id": 2,
+                        "creature_id": 445
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2026/08/04 09:03",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 655
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 485
+                    }
+                ]
+            }
+        }, {
+            "type": "trade",
+            "date": "2026/08/16 20:50",
+            "description": "",
+            "kwargs": {
+                "creatures": [
+                    {
+                        "from_player_id": 2,
+                        "to_player_id": -1,
+                        "creature_id": 445
+                    }, {
+                        "from_player_id": -1,
+                        "to_player_id": 2,
+                        "creature_id": 448
+                    }
+                ]
+            }
+        }, {
+            "type": "tournament",
+            "date": "2026/08/16 18:12",
+            "description": `
+            <a href='https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666003563' target='_blank'>mistermoscow beat Jamochi</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666007477' target='_blank'>mattmandaman beat Jamochi</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666010367' target='_blank'>mattmandaman beat mistermoscow</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666017238' target='_blank'>Jamochi beat mistermoscow</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666024232' target='_blank'>mattmandaman beat Jamochi</a><br/>
+            <a href='https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666028964' target='_blank'>mattmandaman beat mistermoscow</a><br/>
+            `,
+            "kwargs": {
+                "teams": [
+                    {
+                        "player_id": 2,
+                        "creature_ids": [3, 38, 145, 801, 901, 1004],
+                    }, {
+                        "player_id": 3,
+                        "creature_ids": [149, 488, 797, 645, 986, 786],
+                    }, {
+                        "player_id": 0,
+                        "creature_ids": [812, 718, 244, 641, 1002, 992],
+                    }
+                ],
+                "matches": [
+                    {
+                        "win_player_id": 2,
+                        "lose_player_id": 3,
+                    }, {
+                        "win_player_id": 0,
+                        "lose_player_id": 3,
+                    }, {
+                        "win_player_id": 0,
+                        "lose_player_id": 2,
+                    }, {
+                        "win_player_id": 3,
+                        "lose_player_id": 2,
+                    }, {
+                        "win_player_id": 0,
+                        "lose_player_id": 3,
                     }, {
                         "win_player_id": 0,
                         "lose_player_id": 2,

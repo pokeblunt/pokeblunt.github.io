@@ -82,11 +82,102 @@ var replay_stats = {
    "unboosts_taken": 6,
    "wins": 2
   },
+  "1002": {
+   "abilities": [
+    [
+     "Sword of Ruin",
+     7
+    ]
+   ],
+   "best": {
+    "kos": 3,
+    "nick": "Chien-Pao",
+    "pct_dealt": 172.8,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666007477"
+   },
+   "boosts": 0,
+   "by_player": {
+    "0": 4
+   },
+   "crits_landed": 1,
+   "crits_landed_luck": 1,
+   "crits_taken": 0,
+   "damaging_moves_used": 11,
+   "dmg_dealt": 762,
+   "dmg_taken": 212,
+   "fainted": 1,
+   "form": "Chien-Pao",
+   "forms": [
+    [
+     "Chien-Pao",
+     4
+    ]
+   ],
+   "games": 4,
+   "healed": 0,
+   "immune": 0,
+   "items": [
+    [
+     "Focus Sash",
+     1
+    ]
+   ],
+   "items_lost": 1,
+   "kos": 6,
+   "maxhps": [
+    [
+     157,
+     4
+    ]
+   ],
+   "mega": 0,
+   "misses": 0,
+   "moves_used": 11,
+   "name": "Chien-Pao",
+   "nicknames": [
+    [
+     "Chien-Pao",
+     4
+    ]
+   ],
+   "pct_dealt": 381.5,
+   "pct_healed": 0.0,
+   "pct_taken": 135.0,
+   "resisted_hits": 2,
+   "se_hits": 4,
+   "statuses_inflicted": 0,
+   "statuses_taken": 0,
+   "support_moves_used": 0,
+   "switched_out": 3,
+   "tera": 0,
+   "times_sent_out": 7,
+   "top_moves": [
+    [
+     "Crunch",
+     5
+    ],
+    [
+     "Icicle Crash",
+     3
+    ],
+    [
+     "Psychic Fangs",
+     3
+    ]
+   ],
+   "turns_active": 14,
+   "types": [
+    "Dark",
+    "Ice"
+   ],
+   "unboosts_taken": 2,
+   "wins": 4
+  },
   "1004": {
    "abilities": [
     [
      "Beads of Ruin",
-     5
+     12
     ]
    ],
    "best": {
@@ -97,80 +188,84 @@ var replay_stats = {
    },
    "boosts": 0,
    "by_player": {
-    "2": 5
+    "2": 9
    },
-   "crits_landed": 1,
-   "crits_landed_luck": 1,
+   "crits_landed": 2,
+   "crits_landed_luck": 2,
    "crits_taken": 0,
-   "damaging_moves_used": 9,
-   "dmg_dealt": 1886,
-   "dmg_taken": 978,
-   "fainted": 4,
+   "damaging_moves_used": 14,
+   "dmg_dealt": 2574,
+   "dmg_taken": 1481,
+   "fainted": 7,
    "form": "Chi-Yu",
    "forms": [
     [
      "Chi-Yu",
-     5
+     9
     ]
    ],
-   "games": 5,
+   "games": 9,
    "healed": 40,
    "immune": 0,
    "items": [],
    "items_lost": 0,
-   "kos": 4,
+   "kos": 6,
    "maxhps": [
+    [
+     130,
+     6
+    ],
     [
      252,
      3
-    ],
-    [
-     130,
-     2
     ]
    ],
    "mega": 0,
    "misses": 2,
-   "moves_used": 9,
+   "moves_used": 18,
    "name": "Chi-Yu",
    "nicknames": [
     [
      "Chip",
-     5
+     9
     ]
    ],
-   "pct_dealt": 648.4,
+   "pct_dealt": 993.6,
    "pct_healed": 30.8,
-   "pct_taken": 499.8,
+   "pct_taken": 886.7,
    "resisted_hits": 2,
-   "se_hits": 2,
+   "se_hits": 3,
    "statuses_inflicted": 0,
    "statuses_taken": 0,
-   "support_moves_used": 0,
-   "switched_out": 1,
+   "support_moves_used": 4,
+   "switched_out": 4,
    "tera": 0,
-   "times_sent_out": 5,
+   "times_sent_out": 12,
    "top_moves": [
     [
      "Heat Wave",
-     5
+     7
     ],
     [
      "Dark Pulse",
-     3
+     6
+    ],
+    [
+     "Protect",
+     4
     ],
     [
      "Snarl",
      1
     ]
    ],
-   "turns_active": 14,
+   "turns_active": 28,
    "types": [
     "Dark",
     "Fire"
    ],
-   "unboosts_taken": 2,
-   "wins": 2
+   "unboosts_taken": 3,
+   "wins": 3
   },
   "1017": {
    "abilities": [],
@@ -249,29 +344,34 @@ var replay_stats = {
    "unboosts_taken": 0,
    "wins": 0
   },
-  "149": {
-   "abilities": [],
+  "145": {
+   "abilities": [
+    [
+     "Defiant",
+     2
+    ]
+   ],
    "best": {
-    "kos": 0,
-    "nick": "Dragonite",
-    "pct_dealt": 106.8,
-    "url": "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612894842"
+    "kos": 1,
+    "nick": "Daniel",
+    "pct_dealt": 74.5,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666017238"
    },
    "boosts": 4,
    "by_player": {
-    "3": 4
+    "2": 4
    },
-   "crits_landed": 1,
-   "crits_landed_luck": 1,
-   "crits_taken": 0,
-   "damaging_moves_used": 6,
-   "dmg_dealt": 517,
-   "dmg_taken": 1292,
-   "fainted": 4,
-   "form": "Dragonite",
+   "crits_landed": 0,
+   "crits_landed_luck": 0,
+   "crits_taken": 1,
+   "damaging_moves_used": 4,
+   "dmg_dealt": 335,
+   "dmg_taken": 741,
+   "fainted": 3,
+   "form": "Zapdos-Galar",
    "forms": [
     [
-     "Dragonite",
+     "Zapdos-Galar",
      4
     ]
    ],
@@ -280,59 +380,160 @@ var replay_stats = {
    "immune": 0,
    "items": [],
    "items_lost": 0,
-   "kos": 0,
+   "kos": 1,
    "maxhps": [
     [
-     323,
+     197,
      4
     ]
    ],
    "mega": 0,
    "misses": 0,
-   "moves_used": 12,
-   "name": "Dragonite",
+   "moves_used": 15,
+   "name": "Zapdos",
    "nicknames": [
+    [
+     "Daniel",
+     4
+    ]
+   ],
+   "pct_dealt": 160.5,
+   "pct_healed": 0.0,
+   "pct_taken": 376.1,
+   "resisted_hits": 1,
+   "se_hits": 1,
+   "statuses_inflicted": 0,
+   "statuses_taken": 1,
+   "support_moves_used": 11,
+   "switched_out": 3,
+   "tera": 0,
+   "times_sent_out": 6,
+   "top_moves": [
+    [
+     "Tailwind",
+     4
+    ],
+    [
+     "Coaching",
+     4
+    ],
+    [
+     "Thunderous Kick",
+     4
+    ],
+    [
+     "Quick Guard",
+     3
+    ]
+   ],
+   "turns_active": 20,
+   "types": [
+    "Fighting",
+    "Flying"
+   ],
+   "unboosts_taken": 2,
+   "wins": 1
+  },
+  "149": {
+   "abilities": [],
+   "best": {
+    "kos": 2,
+    "nick": "Dragonite",
+    "pct_dealt": 149.6,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666007477"
+   },
+   "boosts": 12,
+   "by_player": {
+    "3": 8
+   },
+   "crits_landed": 1,
+   "crits_landed_luck": 1,
+   "crits_taken": 0,
+   "damaging_moves_used": 21,
+   "dmg_dealt": 1436,
+   "dmg_taken": 1974,
+   "fainted": 8,
+   "form": "Dragonite-Mega",
+   "forms": [
+    [
+     "Dragonite-Mega",
+     4
+    ],
     [
      "Dragonite",
      4
     ]
    ],
-   "pct_dealt": 146.6,
-   "pct_healed": 0.0,
-   "pct_taken": 400.0,
+   "games": 8,
+   "healed": 10,
+   "immune": 3,
+   "items": [],
+   "items_lost": 0,
+   "kos": 5,
+   "maxhps": [
+    [
+     168,
+     4
+    ],
+    [
+     323,
+     4
+    ]
+   ],
+   "mega": 4,
+   "misses": 0,
+   "moves_used": 31,
+   "name": "Dragonite",
+   "nicknames": [
+    [
+     "Dragonite",
+     8
+    ]
+   ],
+   "pct_dealt": 680.9,
+   "pct_healed": 6.0,
+   "pct_taken": 806.0,
    "resisted_hits": 1,
-   "se_hits": 0,
+   "se_hits": 6,
    "statuses_inflicted": 0,
-   "statuses_taken": 1,
-   "support_moves_used": 6,
-   "switched_out": 2,
+   "statuses_taken": 2,
+   "support_moves_used": 10,
+   "switched_out": 4,
    "tera": 0,
-   "times_sent_out": 6,
+   "times_sent_out": 12,
    "top_moves": [
+    [
+     "Extreme Speed",
+     12
+    ],
+    [
+     "Dragon Dance",
+     6
+    ],
+    [
+     "Earthquake",
+     4
+    ],
     [
      "Protect",
      4
     ],
     [
-     "Extreme Speed",
-     4
-    ],
-    [
-     "Dragon Dance",
-     2
+     "Thunder Punch",
+     3
     ],
     [
      "Outrage",
      2
     ]
    ],
-   "turns_active": 15,
+   "turns_active": 37,
    "types": [
     "Dragon",
     "Flying"
    ],
-   "unboosts_taken": 1,
-   "wins": 3
+   "unboosts_taken": 2,
+   "wins": 4
   },
   "151": {
    "abilities": [],
@@ -520,78 +721,82 @@ var replay_stats = {
   "244": {
    "abilities": [],
    "best": {
-    "kos": 1,
+    "kos": 2,
     "nick": "Entei",
-    "pct_dealt": 241.5,
-    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2657517850"
+    "pct_dealt": 309.5,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666007477"
    },
-   "boosts": 0,
+   "boosts": 2,
    "by_player": {
-    "0": 1
+    "0": 5
    },
    "crits_landed": 0,
    "crits_landed_luck": 0,
    "crits_taken": 0,
-   "damaging_moves_used": 3,
-   "dmg_dealt": 392,
-   "dmg_taken": 157,
-   "fainted": 0,
+   "damaging_moves_used": 12,
+   "dmg_dealt": 1469,
+   "dmg_taken": 651,
+   "fainted": 2,
    "form": "Entei",
    "forms": [
     [
      "Entei",
-     1
+     5
     ]
    ],
-   "games": 1,
-   "healed": 28,
+   "games": 5,
+   "healed": 52,
    "immune": 0,
    "items": [],
    "items_lost": 0,
-   "kos": 1,
+   "kos": 5,
    "maxhps": [
     [
      192,
-     1
+     5
     ]
    ],
    "mega": 0,
    "misses": 0,
-   "moves_used": 4,
+   "moves_used": 16,
    "name": "Entei",
    "nicknames": [
     [
      "Entei",
-     1
+     5
     ]
    ],
-   "pct_dealt": 241.5,
-   "pct_healed": 14.6,
-   "pct_taken": 81.8,
-   "resisted_hits": 1,
-   "se_hits": 1,
-   "statuses_inflicted": 1,
+   "pct_dealt": 783.0,
+   "pct_healed": 27.1,
+   "pct_taken": 339.1,
+   "resisted_hits": 2,
+   "se_hits": 7,
+   "statuses_inflicted": 3,
    "statuses_taken": 0,
-   "support_moves_used": 1,
-   "switched_out": 1,
+   "support_moves_used": 4,
+   "switched_out": 3,
    "tera": 0,
-   "times_sent_out": 1,
+   "times_sent_out": 6,
    "top_moves": [
     [
      "Sacred Fire",
-     3
+     12
     ],
     [
      "Protect",
-     1
+     2
+    ],
+    [
+     "Howl",
+     2
     ]
    ],
-   "turns_active": 5,
+   "turns_active": 19,
    "types": [
     "Fire"
    ],
    "unboosts_taken": 1,
-   "wins": 1
+   "wins": 5
   },
   "248": {
    "abilities": [
@@ -751,40 +956,44 @@ var replay_stats = {
   "3": {
    "abilities": [],
    "best": {
-    "kos": 1,
+    "kos": 2,
     "nick": "Vinny",
-    "pct_dealt": 118.3,
-    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2657517850"
+    "pct_dealt": 76.2,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666010367"
    },
-   "boosts": 0,
+   "boosts": 2,
    "by_player": {
-    "2": 4
+    "2": 7
    },
    "crits_landed": 0,
    "crits_landed_luck": 0,
-   "crits_taken": 0,
-   "damaging_moves_used": 5,
-   "dmg_dealt": 365,
-   "dmg_taken": 976,
-   "fainted": 4,
+   "crits_taken": 1,
+   "damaging_moves_used": 7,
+   "dmg_dealt": 564,
+   "dmg_taken": 1678,
+   "fainted": 7,
    "form": "Venusaur-Mega",
    "forms": [
     [
      "Venusaur-Mega",
-     2
+     5
     ],
     [
      "Venusaur",
      2
     ]
    ],
-   "games": 4,
-   "healed": 64,
+   "games": 7,
+   "healed": 205,
    "immune": 0,
    "items": [],
    "items_lost": 0,
-   "kos": 2,
+   "kos": 4,
    "maxhps": [
+    [
+     187,
+     3
+    ],
     [
      155,
      2
@@ -794,51 +1003,55 @@ var replay_stats = {
      2
     ]
    ],
-   "mega": 4,
+   "mega": 7,
    "misses": 2,
-   "moves_used": 10,
+   "moves_used": 16,
    "name": "Venusaur",
    "nicknames": [
     [
      "Vinny",
-     4
+     7
     ]
    ],
-   "pct_dealt": 176.3,
-   "pct_healed": 21.3,
-   "pct_taken": 421.3,
+   "pct_dealt": 277.1,
+   "pct_healed": 96.7,
+   "pct_taken": 796.7,
    "resisted_hits": 1,
-   "se_hits": 2,
-   "statuses_inflicted": 1,
-   "statuses_taken": 0,
-   "support_moves_used": 5,
+   "se_hits": 3,
+   "statuses_inflicted": 2,
+   "statuses_taken": 1,
+   "support_moves_used": 9,
    "switched_out": 0,
    "tera": 0,
-   "times_sent_out": 4,
+   "times_sent_out": 7,
    "top_moves": [
     [
      "Leech Seed",
-     4
+     7
     ],
     [
      "Weather Ball",
      3
     ],
     [
+     "Toxic",
+     2
+    ],
+    [
      "Earth Power",
      2
     ],
     [
-     "Toxic",
-     1
+     "Sludge Bomb",
+     2
     ]
    ],
-   "turns_active": 15,
+   "turns_active": 24,
    "types": [
     "Grass",
     "Poison"
    ],
-   "unboosts_taken": 5,
+   "unboosts_taken": 6,
    "wins": 1
   },
   "373": {
@@ -933,23 +1146,27 @@ var replay_stats = {
    },
    "boosts": 10,
    "by_player": {
-    "2": 5
+    "2": 9
    },
-   "crits_landed": 0,
-   "crits_landed_luck": 0,
+   "crits_landed": 1,
+   "crits_landed_luck": 1,
    "crits_taken": 1,
-   "damaging_moves_used": 2,
-   "dmg_dealt": 413,
-   "dmg_taken": 1082,
-   "fainted": 4,
+   "damaging_moves_used": 4,
+   "dmg_dealt": 514,
+   "dmg_taken": 1802,
+   "fainted": 8,
    "form": "Ninetales",
    "forms": [
     [
      "Ninetales",
      5
+    ],
+    [
+     "Ninetales-Alola",
+     4
     ]
    ],
-   "games": 5,
+   "games": 9,
    "healed": 22,
    "immune": 0,
    "items": [],
@@ -957,42 +1174,54 @@ var replay_stats = {
    "kos": 0,
    "maxhps": [
     [
-     350,
-     3
+     180,
+     6
     ],
     [
-     180,
-     2
+     350,
+     3
     ]
    ],
    "mega": 0,
    "misses": 0,
-   "moves_used": 10,
+   "moves_used": 18,
    "name": "Ninetales",
    "nicknames": [
     [
      "Prince Ember",
      5
+    ],
+    [
+     "Princess Sparkle",
+     4
     ]
    ],
-   "pct_dealt": 124.9,
+   "pct_dealt": 181.8,
    "pct_healed": 12.2,
-   "pct_taken": 412.2,
+   "pct_taken": 812.2,
    "resisted_hits": 0,
-   "se_hits": 2,
+   "se_hits": 3,
    "statuses_inflicted": 0,
    "statuses_taken": 0,
-   "support_moves_used": 8,
-   "switched_out": 4,
+   "support_moves_used": 14,
+   "switched_out": 6,
    "tera": 0,
-   "times_sent_out": 8,
+   "times_sent_out": 14,
    "top_moves": [
     [
      "Calm Mind",
      5
     ],
     [
+     "Aurora Veil",
+     4
+    ],
+    [
      "Helping Hand",
+     4
+    ],
+    [
+     "Icy Wind",
      2
     ],
     [
@@ -1008,12 +1237,92 @@ var replay_stats = {
      1
     ]
    ],
-   "turns_active": 20,
+   "turns_active": 32,
    "types": [
     "Fire"
    ],
-   "unboosts_taken": 7,
-   "wins": 2
+   "unboosts_taken": 8,
+   "wins": 3
+  },
+  "488": {
+   "abilities": [],
+   "best": {
+    "kos": 0,
+    "nick": "Cresselia",
+    "pct_dealt": 36.0,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666024232"
+   },
+   "boosts": 0,
+   "by_player": {
+    "3": 4
+   },
+   "crits_landed": 0,
+   "crits_landed_luck": 0,
+   "crits_taken": 2,
+   "damaging_moves_used": 1,
+   "dmg_dealt": 71,
+   "dmg_taken": 908,
+   "fainted": 4,
+   "form": "Cresselia",
+   "forms": [
+    [
+     "Cresselia",
+     4
+    ]
+   ],
+   "games": 4,
+   "healed": 0,
+   "immune": 0,
+   "items": [],
+   "items_lost": 0,
+   "kos": 0,
+   "maxhps": [
+    [
+     227,
+     4
+    ]
+   ],
+   "mega": 0,
+   "misses": 0,
+   "moves_used": 8,
+   "name": "Cresselia",
+   "nicknames": [
+    [
+     "Cresselia",
+     4
+    ]
+   ],
+   "pct_dealt": 36.0,
+   "pct_healed": 0.0,
+   "pct_taken": 400.0,
+   "resisted_hits": 0,
+   "se_hits": 1,
+   "statuses_inflicted": 1,
+   "statuses_taken": 0,
+   "support_moves_used": 7,
+   "switched_out": 1,
+   "tera": 0,
+   "times_sent_out": 5,
+   "top_moves": [
+    [
+     "Helping Hand",
+     4
+    ],
+    [
+     "Trick Room",
+     3
+    ],
+    [
+     "Icy Wind",
+     1
+    ]
+   ],
+   "turns_active": 10,
+   "types": [
+    "Psychic"
+   ],
+   "unboosts_taken": 1,
+   "wins": 1
   },
   "547": {
    "abilities": [],
@@ -1278,11 +1587,87 @@ var replay_stats = {
    "unboosts_taken": 2,
    "wins": 3
   },
+  "641": {
+   "abilities": [],
+   "best": {
+    "kos": 0,
+    "nick": "Tornadus",
+    "pct_dealt": 162.4,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666028964"
+   },
+   "boosts": 0,
+   "by_player": {
+    "0": 4
+   },
+   "crits_landed": 0,
+   "crits_landed_luck": 0,
+   "crits_taken": 0,
+   "damaging_moves_used": 3,
+   "dmg_dealt": 324,
+   "dmg_taken": 712,
+   "fainted": 4,
+   "form": "Tornadus",
+   "forms": [
+    [
+     "Tornadus",
+     4
+    ]
+   ],
+   "games": 4,
+   "healed": 0,
+   "immune": 0,
+   "items": [],
+   "items_lost": 0,
+   "kos": 0,
+   "maxhps": [
+    [
+     178,
+     4
+    ]
+   ],
+   "mega": 0,
+   "misses": 1,
+   "moves_used": 6,
+   "name": "Tornadus",
+   "nicknames": [
+    [
+     "Tornadus",
+     4
+    ]
+   ],
+   "pct_dealt": 162.4,
+   "pct_healed": 0.0,
+   "pct_taken": 400.0,
+   "resisted_hits": 0,
+   "se_hits": 2,
+   "statuses_inflicted": 0,
+   "statuses_taken": 0,
+   "support_moves_used": 3,
+   "switched_out": 0,
+   "tera": 0,
+   "times_sent_out": 4,
+   "top_moves": [
+    [
+     "Tailwind",
+     3
+    ],
+    [
+     "Bleakwind Storm",
+     3
+    ]
+   ],
+   "turns_active": 6,
+   "types": [
+    "Flying"
+   ],
+   "unboosts_taken": 2,
+   "wins": 4
+  },
   "645": {
    "abilities": [
     [
      "Intimidate",
-     4
+     12
     ]
    ],
    "best": {
@@ -1293,76 +1678,84 @@ var replay_stats = {
    },
    "boosts": 0,
    "by_player": {
-    "3": 3
+    "3": 7
    },
-   "crits_landed": 0,
-   "crits_landed_luck": 0,
+   "crits_landed": 1,
+   "crits_landed_luck": 1,
    "crits_taken": 0,
-   "damaging_moves_used": 9,
-   "dmg_dealt": 1698,
-   "dmg_taken": 632,
-   "fainted": 1,
+   "damaging_moves_used": 26,
+   "dmg_dealt": 3139,
+   "dmg_taken": 1486,
+   "fainted": 4,
    "form": "Landorus-Therian",
    "forms": [
     [
      "Landorus-Therian",
-     3
+     7
     ]
    ],
-   "games": 3,
-   "healed": 0,
-   "immune": 2,
+   "games": 7,
+   "healed": 100,
+   "immune": 3,
    "items": [],
    "items_lost": 0,
-   "kos": 6,
+   "kos": 11,
    "maxhps": [
+    [
+     196,
+     4
+    ],
     [
      382,
      3
     ]
    ],
    "mega": 0,
-   "misses": 1,
-   "moves_used": 9,
+   "misses": 2,
+   "moves_used": 26,
    "name": "Landorus",
    "nicknames": [
     [
      "Landorus",
-     3
+     7
     ]
    ],
-   "pct_dealt": 479.5,
-   "pct_healed": 0.0,
-   "pct_taken": 165.4,
-   "resisted_hits": 0,
-   "se_hits": 8,
+   "pct_dealt": 1208.0,
+   "pct_healed": 51.0,
+   "pct_taken": 601.2,
+   "resisted_hits": 6,
+   "se_hits": 17,
    "statuses_inflicted": 0,
-   "statuses_taken": 1,
+   "statuses_taken": 2,
    "support_moves_used": 0,
-   "switched_out": 1,
+   "switched_out": 5,
    "tera": 0,
-   "times_sent_out": 4,
+   "times_sent_out": 12,
    "top_moves": [
     [
      "Earthquake",
-     7
-    ],
-    [
-     "U-turn",
-     1
+     13
     ],
     [
      "Rock Slide",
+     9
+    ],
+    [
+     "U-turn",
+     3
+    ],
+    [
+     "Superpower",
      1
     ]
    ],
-   "turns_active": 10,
+   "turns_active": 32,
    "types": [
     "Ground",
     "Flying"
    ],
-   "unboosts_taken": 0,
-   "wins": 2
+   "unboosts_taken": 3,
+   "wins": 3
   },
   "649": {
    "abilities": [
@@ -1539,7 +1932,7 @@ var replay_stats = {
    "abilities": [
     [
      "Aura Break",
-     4
+     9
     ]
    ],
    "best": {
@@ -1548,31 +1941,35 @@ var replay_stats = {
     "pct_dealt": 312.4,
     "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2657505591"
    },
-   "boosts": 2,
+   "boosts": 3,
    "by_player": {
-    "0": 2
+    "0": 5
    },
    "crits_landed": 1,
    "crits_landed_luck": 1,
    "crits_taken": 0,
-   "damaging_moves_used": 6,
-   "dmg_dealt": 732,
-   "dmg_taken": 265,
-   "fainted": 0,
+   "damaging_moves_used": 17,
+   "dmg_dealt": 2065,
+   "dmg_taken": 702,
+   "fainted": 2,
    "form": "Zygarde",
    "forms": [
     [
      "Zygarde",
-     2
+     5
     ]
    ],
-   "games": 2,
-   "healed": 84,
+   "games": 5,
+   "healed": 128,
    "immune": 0,
    "items": [],
    "items_lost": 0,
-   "kos": 4,
+   "kos": 11,
    "maxhps": [
+    [
+     185,
+     3
+    ],
     [
      199,
      2
@@ -1580,42 +1977,42 @@ var replay_stats = {
    ],
    "mega": 0,
    "misses": 0,
-   "moves_used": 7,
+   "moves_used": 18,
    "name": "Zygarde",
    "nicknames": [
     [
      "Zygarde",
-     2
+     5
     ]
    ],
-   "pct_dealt": 388.7,
-   "pct_healed": 42.2,
-   "pct_taken": 133.2,
-   "resisted_hits": 0,
-   "se_hits": 4,
-   "statuses_inflicted": 0,
-   "statuses_taken": 0,
+   "pct_dealt": 1117.5,
+   "pct_healed": 66.0,
+   "pct_taken": 369.4,
+   "resisted_hits": 1,
+   "se_hits": 7,
+   "statuses_inflicted": 2,
+   "statuses_taken": 1,
    "support_moves_used": 1,
-   "switched_out": 2,
+   "switched_out": 4,
    "tera": 0,
-   "times_sent_out": 4,
+   "times_sent_out": 9,
    "top_moves": [
     [
      "Thousand Arrows",
-     6
+     17
     ],
     [
      "Dragon Dance",
      1
     ]
    ],
-   "turns_active": 10,
+   "turns_active": 25,
    "types": [
     "Dragon",
     "Ground"
    ],
-   "unboosts_taken": 3,
-   "wins": 2
+   "unboosts_taken": 5,
+   "wins": 5
   },
   "719": {
    "abilities": [],
@@ -1950,6 +2347,84 @@ var replay_stats = {
    "unboosts_taken": 3,
    "wins": 1
   },
+  "786": {
+   "abilities": [],
+   "best": {
+    "kos": 0,
+    "nick": "Tapu Lele",
+    "pct_dealt": 0.0,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666003563"
+   },
+   "boosts": 6,
+   "by_player": {
+    "3": 4
+   },
+   "crits_landed": 0,
+   "crits_landed_luck": 0,
+   "crits_taken": 1,
+   "damaging_moves_used": 0,
+   "dmg_dealt": 0,
+   "dmg_taken": 708,
+   "fainted": 4,
+   "form": "Tapu Lele",
+   "forms": [
+    [
+     "Tapu Lele",
+     4
+    ]
+   ],
+   "games": 4,
+   "healed": 0,
+   "immune": 0,
+   "items": [
+    [
+     "Mirror Herb",
+     3
+    ]
+   ],
+   "items_lost": 3,
+   "kos": 0,
+   "maxhps": [
+    [
+     177,
+     4
+    ]
+   ],
+   "mega": 0,
+   "misses": 0,
+   "moves_used": 1,
+   "name": "Tapu Lele",
+   "nicknames": [
+    [
+     "Tapu Lele",
+     4
+    ]
+   ],
+   "pct_dealt": 0.0,
+   "pct_healed": 0.0,
+   "pct_taken": 400.0,
+   "resisted_hits": 0,
+   "se_hits": 0,
+   "statuses_inflicted": 1,
+   "statuses_taken": 0,
+   "support_moves_used": 1,
+   "switched_out": 0,
+   "tera": 0,
+   "times_sent_out": 4,
+   "top_moves": [
+    [
+     "Toxic",
+     1
+    ]
+   ],
+   "turns_active": 5,
+   "types": [
+    "Psychic",
+    "Fairy"
+   ],
+   "unboosts_taken": 2,
+   "wins": 1
+  },
   "788": {
    "abilities": [],
    "best": {
@@ -2035,11 +2510,101 @@ var replay_stats = {
    "unboosts_taken": 0,
    "wins": 1
   },
+  "797": {
+   "abilities": [
+    [
+     "Beast Boost",
+     2
+    ]
+   ],
+   "best": {
+    "kos": 2,
+    "nick": "Celesteela",
+    "pct_dealt": 358.6,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666017238"
+   },
+   "boosts": 2,
+   "by_player": {
+    "3": 4
+   },
+   "crits_landed": 1,
+   "crits_landed_luck": 1,
+   "crits_taken": 1,
+   "damaging_moves_used": 9,
+   "dmg_dealt": 729,
+   "dmg_taken": 1114,
+   "fainted": 4,
+   "form": "Celesteela",
+   "forms": [
+    [
+     "Celesteela",
+     4
+    ]
+   ],
+   "games": 4,
+   "healed": 298,
+   "immune": 0,
+   "items": [],
+   "items_lost": 0,
+   "kos": 2,
+   "maxhps": [
+    [
+     204,
+     4
+    ]
+   ],
+   "mega": 0,
+   "misses": 0,
+   "moves_used": 16,
+   "name": "Celesteela",
+   "nicknames": [
+    [
+     "Celesteela",
+     4
+    ]
+   ],
+   "pct_dealt": 379.6,
+   "pct_healed": 146.1,
+   "pct_taken": 546.1,
+   "resisted_hits": 1,
+   "se_hits": 4,
+   "statuses_inflicted": 1,
+   "statuses_taken": 0,
+   "support_moves_used": 7,
+   "switched_out": 0,
+   "tera": 0,
+   "times_sent_out": 4,
+   "top_moves": [
+    [
+     "Heavy Slam",
+     6
+    ],
+    [
+     "Leech Seed",
+     5
+    ],
+    [
+     "Flamethrower",
+     3
+    ],
+    [
+     "Wide Guard",
+     2
+    ]
+   ],
+   "turns_active": 19,
+   "types": [
+    "Steel",
+    "Flying"
+   ],
+   "unboosts_taken": 2,
+   "wins": 1
+  },
   "801": {
    "abilities": [
     [
      "Soul-Heart",
-     16
+     24
     ]
    ],
    "best": {
@@ -2048,31 +2613,35 @@ var replay_stats = {
     "pct_dealt": 192.7,
     "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2657512891"
    },
-   "boosts": 26,
+   "boosts": 36,
    "by_player": {
-    "2": 5
+    "2": 9
    },
    "crits_landed": 0,
    "crits_landed_luck": 0,
    "crits_taken": 0,
-   "damaging_moves_used": 12,
-   "dmg_dealt": 3126,
-   "dmg_taken": 1169,
-   "fainted": 3,
+   "damaging_moves_used": 17,
+   "dmg_dealt": 4224,
+   "dmg_taken": 1854,
+   "fainted": 6,
    "form": "Magearna",
    "forms": [
     [
      "Magearna",
-     5
+     9
     ]
    ],
-   "games": 5,
-   "healed": 44,
+   "games": 9,
+   "healed": 143,
    "immune": 0,
    "items": [],
    "items_lost": 0,
-   "kos": 10,
+   "kos": 14,
    "maxhps": [
+    [
+     157,
+     4
+    ],
     [
      364,
      3
@@ -2084,37 +2653,37 @@ var replay_stats = {
    ],
    "mega": 0,
    "misses": 0,
-   "moves_used": 25,
+   "moves_used": 35,
    "name": "Magearna",
    "nicknames": [
     [
      "Mags",
-     5
+     9
     ]
    ],
-   "pct_dealt": 992.3,
-   "pct_healed": 23.5,
-   "pct_taken": 392.1,
-   "resisted_hits": 4,
-   "se_hits": 8,
+   "pct_dealt": 1555.3,
+   "pct_healed": 86.6,
+   "pct_taken": 828.4,
+   "resisted_hits": 6,
+   "se_hits": 13,
    "statuses_inflicted": 0,
-   "statuses_taken": 1,
-   "support_moves_used": 13,
-   "switched_out": 0,
+   "statuses_taken": 2,
+   "support_moves_used": 18,
+   "switched_out": 4,
    "tera": 0,
-   "times_sent_out": 5,
+   "times_sent_out": 13,
    "top_moves": [
     [
      "Dazzling Gleam",
-     9
+     13
     ],
     [
      "Protect",
-     8
+     12
     ],
     [
      "Calm Mind",
-     5
+     6
     ],
     [
      "Energy Ball",
@@ -2123,15 +2692,19 @@ var replay_stats = {
     [
      "Shadow Ball",
      1
+    ],
+    [
+     "Flash Cannon",
+     1
     ]
    ],
-   "turns_active": 28,
+   "turns_active": 44,
    "types": [
     "Steel",
     "Fairy"
    ],
    "unboosts_taken": 0,
-   "wins": 2
+   "wins": 3
   },
   "809": {
    "abilities": [],
@@ -2227,71 +2800,79 @@ var replay_stats = {
    },
    "boosts": 0,
    "by_player": {
-    "0": 2
+    "0": 6
    },
    "crits_landed": 0,
    "crits_landed_luck": 0,
    "crits_taken": 0,
-   "damaging_moves_used": 5,
-   "dmg_dealt": 118,
-   "dmg_taken": 316,
-   "fainted": 1,
+   "damaging_moves_used": 11,
+   "dmg_dealt": 337,
+   "dmg_taken": 729,
+   "fainted": 2,
    "form": "Rillaboom",
    "forms": [
     [
      "Rillaboom",
-     2
+     6
     ]
    ],
-   "games": 2,
-   "healed": 72,
+   "games": 6,
+   "healed": 108,
    "immune": 0,
    "items": [],
    "items_lost": 0,
-   "kos": 1,
+   "kos": 3,
    "maxhps": [
     [
      207,
-     2
+     6
     ]
    ],
    "mega": 0,
    "misses": 0,
-   "moves_used": 5,
+   "moves_used": 11,
    "name": "Rillaboom",
    "nicknames": [
     [
      "Rillaboom",
-     2
+     6
     ]
    ],
-   "pct_dealt": 80.6,
-   "pct_healed": 34.8,
-   "pct_taken": 152.7,
+   "pct_dealt": 188.6,
+   "pct_healed": 52.2,
+   "pct_taken": 352.2,
    "resisted_hits": 1,
-   "se_hits": 0,
+   "se_hits": 3,
    "statuses_inflicted": 0,
    "statuses_taken": 0,
    "support_moves_used": 0,
-   "switched_out": 2,
+   "switched_out": 4,
    "tera": 0,
-   "times_sent_out": 3,
+   "times_sent_out": 8,
    "top_moves": [
     [
      "Fake Out",
-     3
+     6
     ],
     [
      "Grassy Glide",
      2
+    ],
+    [
+     "U-turn",
+     2
+    ],
+    [
+     "High Horsepower",
+     1
     ]
    ],
-   "turns_active": 7,
+   "turns_active": 13,
    "types": [
     "Grass"
    ],
    "unboosts_taken": 2,
-   "wins": 2
+   "wins": 6
   },
   "861": {
    "abilities": [],
@@ -2555,36 +3136,44 @@ var replay_stats = {
   "901": {
    "abilities": [],
    "best": {
-    "kos": 0,
-    "nick": "Ursa Major",
-    "pct_dealt": 85.4,
-    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2657512891"
+    "kos": 3,
+    "nick": "Banjo",
+    "pct_dealt": 391.0,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666017238"
    },
-   "boosts": 0,
+   "boosts": 6,
    "by_player": {
-    "2": 2
+    "2": 6
    },
-   "crits_landed": 0,
-   "crits_landed_luck": 0,
-   "crits_taken": 0,
-   "damaging_moves_used": 4,
-   "dmg_dealt": 291,
-   "dmg_taken": 276,
-   "fainted": 1,
-   "form": "Ursaluna-Bloodmoon",
+   "crits_landed": 1,
+   "crits_landed_luck": 1,
+   "crits_taken": 2,
+   "damaging_moves_used": 15,
+   "dmg_dealt": 1803,
+   "dmg_taken": 1197,
+   "fainted": 4,
+   "form": "Ursaluna",
    "forms": [
+    [
+     "Ursaluna",
+     4
+    ],
     [
      "Ursaluna-Bloodmoon",
      2
     ]
    ],
-   "games": 2,
+   "games": 6,
    "healed": 0,
    "immune": 0,
    "items": [],
    "items_lost": 0,
-   "kos": 0,
+   "kos": 8,
    "maxhps": [
+    [
+     237,
+     4
+    ],
     [
      197,
      2
@@ -2592,26 +3181,38 @@ var replay_stats = {
    ],
    "mega": 0,
    "misses": 0,
-   "moves_used": 4,
+   "moves_used": 16,
    "name": "Ursaluna",
    "nicknames": [
+    [
+     "Banjo",
+     4
+    ],
     [
      "Ursa Major",
      2
     ]
    ],
-   "pct_dealt": 139.6,
+   "pct_dealt": 917.2,
    "pct_healed": 0.0,
-   "pct_taken": 140.1,
+   "pct_taken": 528.7,
    "resisted_hits": 1,
-   "se_hits": 1,
+   "se_hits": 5,
    "statuses_inflicted": 0,
-   "statuses_taken": 1,
-   "support_moves_used": 0,
-   "switched_out": 0,
+   "statuses_taken": 5,
+   "support_moves_used": 1,
+   "switched_out": 2,
    "tera": 0,
-   "times_sent_out": 2,
+   "times_sent_out": 7,
    "top_moves": [
+    [
+     "Ice Punch",
+     6
+    ],
+    [
+     "Facade",
+     5
+    ],
     [
      "Snarl",
      2
@@ -2619,15 +3220,19 @@ var replay_stats = {
     [
      "Earth Power",
      2
+    ],
+    [
+     "Protect",
+     1
     ]
    ],
-   "turns_active": 6,
+   "turns_active": 20,
    "types": [
     "Ground",
     "Normal"
    ],
-   "unboosts_taken": 1,
-   "wins": 1
+   "unboosts_taken": 3,
+   "wins": 2
   },
   "934": {
    "abilities": [],
@@ -2972,34 +3577,38 @@ var replay_stats = {
    },
    "boosts": 0,
    "by_player": {
-    "3": 4
+    "3": 8
    },
    "crits_landed": 0,
    "crits_landed_luck": 0,
    "crits_taken": 0,
-   "damaging_moves_used": 9,
-   "dmg_dealt": 1567,
-   "dmg_taken": 1307,
-   "fainted": 3,
+   "damaging_moves_used": 10,
+   "dmg_dealt": 1608,
+   "dmg_taken": 2192,
+   "fainted": 7,
    "form": "Brute Bonnet",
    "forms": [
     [
      "Brute Bonnet",
-     4
+     8
     ]
    ],
-   "games": 4,
-   "healed": 0,
-   "immune": 1,
+   "games": 8,
+   "healed": 13,
+   "immune": 2,
    "items": [
     [
      "Booster Energy",
-     3
+     7
     ]
    ],
-   "items_lost": 3,
+   "items_lost": 7,
    "kos": 4,
    "maxhps": [
+    [
+     218,
+     4
+    ],
     [
      426,
      4
@@ -3007,50 +3616,50 @@ var replay_stats = {
    ],
    "mega": 0,
    "misses": 0,
-   "moves_used": 17,
+   "moves_used": 25,
    "name": "Brute Bonnet",
    "nicknames": [
     [
      "Brute Bonnet",
-     4
+     8
     ]
    ],
-   "pct_dealt": 485.4,
-   "pct_healed": 0.0,
-   "pct_taken": 306.8,
-   "resisted_hits": 0,
+   "pct_dealt": 517.0,
+   "pct_healed": 6.0,
+   "pct_taken": 712.8,
+   "resisted_hits": 1,
    "se_hits": 6,
-   "statuses_inflicted": 4,
+   "statuses_inflicted": 7,
    "statuses_taken": 0,
-   "support_moves_used": 8,
+   "support_moves_used": 15,
    "switched_out": 4,
    "tera": 0,
-   "times_sent_out": 7,
+   "times_sent_out": 11,
    "top_moves": [
     [
-     "Seed Bomb",
-     6
+     "Spore",
+     10
     ],
     [
-     "Spore",
+     "Seed Bomb",
+     7
+    ],
+    [
+     "Rage Powder",
      5
     ],
     [
      "Sucker Punch",
      3
-    ],
-    [
-     "Rage Powder",
-     3
     ]
    ],
-   "turns_active": 24,
+   "turns_active": 33,
    "types": [
     "Grass",
     "Dark"
    ],
-   "unboosts_taken": 6,
-   "wins": 3
+   "unboosts_taken": 7,
+   "wins": 4
   },
   "987": {
    "abilities": [],
@@ -3145,6 +3754,87 @@ var replay_stats = {
    ],
    "unboosts_taken": 3,
    "wins": 2
+  },
+  "992": {
+   "abilities": [],
+   "best": {
+    "kos": 2,
+    "nick": "Iron Hands",
+    "pct_dealt": 257.1,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666010367"
+   },
+   "boosts": 1,
+   "by_player": {
+    "0": 4
+   },
+   "crits_landed": 2,
+   "crits_landed_luck": 2,
+   "crits_taken": 0,
+   "damaging_moves_used": 13,
+   "dmg_dealt": 1039,
+   "dmg_taken": 684,
+   "fainted": 1,
+   "form": "Iron Hands",
+   "forms": [
+    [
+     "Iron Hands",
+     4
+    ]
+   ],
+   "games": 4,
+   "healed": 217,
+   "immune": 0,
+   "items": [],
+   "items_lost": 0,
+   "kos": 4,
+   "maxhps": [
+    [
+     261,
+     4
+    ]
+   ],
+   "mega": 0,
+   "misses": 0,
+   "moves_used": 13,
+   "name": "Iron Hands",
+   "nicknames": [
+    [
+     "Iron Hands",
+     4
+    ]
+   ],
+   "pct_dealt": 578.1,
+   "pct_healed": 83.1,
+   "pct_taken": 262.1,
+   "resisted_hits": 1,
+   "se_hits": 5,
+   "statuses_inflicted": 0,
+   "statuses_taken": 1,
+   "support_moves_used": 0,
+   "switched_out": 4,
+   "tera": 0,
+   "times_sent_out": 5,
+   "top_moves": [
+    [
+     "Heavy Slam",
+     6
+    ],
+    [
+     "Drain Punch",
+     4
+    ],
+    [
+     "Fake Out",
+     3
+    ]
+   ],
+   "turns_active": 19,
+   "types": [
+    "Fighting",
+    "Electric"
+   ],
+   "unboosts_taken": 4,
+   "wins": 4
   }
  },
  "dex_types": {
@@ -3235,13 +3925,17 @@ var replay_stats = {
   "386": [
    "Psychic"
   ],
-  "445": [
-   "Dragon",
-   "Ground"
+  "448": [
+   "Fighting",
+   "Steel"
   ],
   "478": [
    "Ice",
    "Ghost"
+  ],
+  "485": [
+   "Fire",
+   "Steel"
   ],
   "488": [
    "Psychic"
@@ -3274,10 +3968,6 @@ var replay_stats = {
   "649": [
    "Bug",
    "Steel"
-  ],
-  "655": [
-   "Fire",
-   "Psychic"
   ],
   "670": [
    "Fairy"
@@ -3416,14 +4106,14 @@ var replay_stats = {
   ]
  },
  "meta": {
-  "archived_replays": 10,
-  "battles": 10,
+  "archived_replays": 16,
+  "battles": 16,
   "coverage_pct": 100.0,
-  "linked_replays": 10,
-  "recorded_matches": 10,
+  "linked_replays": 16,
+  "recorded_matches": 16,
   "season": "s9",
-  "seconds": 9129,
-  "turns": 133,
+  "seconds": 12845,
+  "turns": 197,
   "unmapped_accounts": [],
   "unparsed_replays": [],
   "unrecorded_replays": 0
@@ -3432,58 +4122,76 @@ var replay_stats = {
   "0": {
    "best": {
     "kos": 6,
-    "pct_dealt": 611.7,
-    "turns": 14,
-    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2657505591"
+    "pct_dealt": 648.5,
+    "turns": 9,
+    "url": "https://replay.pokemonshowdown.com/gen9championsdoublescustomgame-2666007477"
    },
-   "boosts": 8,
-   "chat": 0,
-   "crits_landed": 1,
-   "crits_landed_luck": 1,
+   "boosts": 12,
+   "chat": 2,
+   "crits_landed": 4,
+   "crits_landed_luck": 4,
    "crits_taken": 1,
-   "damaging_moves_used": 28,
-   "dmg_dealt": 2044,
-   "dmg_taken": 1511,
-   "fainted": 2,
-   "games": 2,
+   "damaging_moves_used": 81,
+   "dmg_dealt": 6798,
+   "dmg_taken": 4463,
+   "fainted": 13,
+   "games": 6,
    "h2h": {
     "1": 1,
-    "2": 1
+    "2": 3,
+    "3": 2
    },
-   "hazards": [],
-   "healed": 733,
+   "hazards": [
+    [
+     "Tailwind",
+     3
+    ]
+   ],
+   "healed": 1054,
    "immune": 0,
-   "items_lost": 1,
-   "kos": 11,
+   "items_lost": 2,
+   "kos": 34,
    "mega": 0,
-   "misses": 0,
-   "moves_used": 39,
-   "pct_dealt": 1194.8,
-   "pct_healed": 434.6,
-   "pct_taken": 840.3,
-   "recorded_games": 2,
-   "resisted_hits": 2,
-   "se_hits": 10,
-   "seconds": 1426,
-   "statuses_inflicted": 1,
-   "statuses_taken": 1,
-   "support_moves_used": 11,
-   "switched_out": 7,
-   "switches": 7,
+   "misses": 1,
+   "moves_used": 98,
+   "pct_dealt": 3695.0,
+   "pct_healed": 571.4,
+   "pct_taken": 2330.5,
+   "recorded_games": 6,
+   "resisted_hits": 7,
+   "se_hits": 33,
+   "seconds": 3527,
+   "statuses_inflicted": 5,
+   "statuses_taken": 3,
+   "support_moves_used": 17,
+   "switched_out": 20,
+   "switches": 20,
    "tera": 0,
    "tera_turns": [],
-   "times_sent_out": 13,
+   "times_sent_out": 44,
    "top_moves": [
+    [
+     "Thousand Arrows",
+     17
+    ],
+    [
+     "Sacred Fire",
+     12
+    ],
+    [
+     "Fake Out",
+     11
+    ],
     [
      "Draining Kiss",
      7
     ],
     [
-     "Thousand Arrows",
+     "Heavy Slam",
      6
     ],
     [
-     "Fake Out",
+     "Crunch",
      5
     ],
     [
@@ -3491,26 +4199,14 @@ var replay_stats = {
      4
     ],
     [
-     "Sacred Fire",
-     3
-    ],
-    [
-     "Psychic Noise",
-     3
-    ],
-    [
-     "Calm Mind",
-     2
-    ],
-    [
-     "Heal Pulse",
-     2
+     "Drain Punch",
+     4
     ]
    ],
-   "turns": 24,
-   "turns_active": 48,
-   "unboosts_taken": 12,
-   "wins": 2
+   "turns": 61,
+   "turns_active": 122,
+   "unboosts_taken": 22,
+   "wins": 6
   },
   "1": {
    "best": {
@@ -3608,81 +4304,90 @@ var replay_stats = {
     "turns": 7,
     "url": "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612876698"
    },
-   "boosts": 42,
-   "chat": 5,
-   "crits_landed": 1,
-   "crits_landed_luck": 1,
-   "crits_taken": 3,
-   "damaging_moves_used": 43,
-   "dmg_dealt": 6943,
-   "dmg_taken": 6794,
-   "fainted": 23,
-   "games": 5,
+   "boosts": 64,
+   "chat": 14,
+   "crits_landed": 4,
+   "crits_landed_luck": 4,
+   "crits_taken": 7,
+   "damaging_moves_used": 72,
+   "dmg_dealt": 10876,
+   "dmg_taken": 11066,
+   "fainted": 42,
+   "games": 9,
    "h2h": {
     "1": 1,
-    "3": 1
+    "3": 2
    },
-   "hazards": [],
-   "healed": 490,
-   "immune": 0,
-   "items_lost": 2,
-   "kos": 17,
-   "mega": 4,
-   "misses": 5,
-   "moves_used": 76,
-   "pct_dealt": 2403.9,
-   "pct_healed": 184.6,
-   "pct_taken": 2741.7,
-   "recorded_games": 5,
-   "resisted_hits": 14,
-   "se_hits": 19,
-   "seconds": 3165,
-   "statuses_inflicted": 1,
-   "statuses_taken": 3,
-   "support_moves_used": 33,
-   "switched_out": 7,
-   "switches": 7,
-   "tera": 0,
-   "tera_turns": [],
-   "times_sent_out": 33,
-   "top_moves": [
+   "hazards": [
     [
-     "Calm Mind",
-     13
+     "Aurora Veil",
+     4
     ],
     [
+     "Tailwind",
+     4
+    ]
+   ],
+   "healed": 730,
+   "immune": 0,
+   "items_lost": 2,
+   "kos": 34,
+   "mega": 7,
+   "misses": 5,
+   "moves_used": 136,
+   "pct_dealt": 4407.6,
+   "pct_healed": 323.1,
+   "pct_taken": 5105.1,
+   "recorded_games": 9,
+   "resisted_hits": 17,
+   "se_hits": 32,
+   "seconds": 5717,
+   "statuses_inflicted": 2,
+   "statuses_taken": 10,
+   "support_moves_used": 64,
+   "switched_out": 21,
+   "switches": 21,
+   "tera": 0,
+   "tera_turns": [],
+   "times_sent_out": 68,
+   "top_moves": [
+    [
      "Protect",
-     10
+     19
     ],
     [
      "Dazzling Gleam",
-     10
+     14
+    ],
+    [
+     "Calm Mind",
+     14
     ],
     [
      "Icy Wind",
+     9
+    ],
+    [
+     "Leech Seed",
      7
     ],
     [
      "Heat Wave",
-     5
+     7
     ],
     [
-     "Leech Seed",
-     4
+     "Dark Pulse",
+     6
     ],
     [
-     "Earth Power",
-     4
-    ],
-    [
-     "Weather Ball",
-     3
+     "Ice Punch",
+     6
     ]
    ],
-   "turns": 58,
-   "turns_active": 110,
-   "unboosts_taken": 18,
-   "wins": 2
+   "turns": 103,
+   "turns_active": 195,
+   "unboosts_taken": 25,
+   "wins": 3
   },
   "3": {
    "best": {
@@ -3691,81 +4396,82 @@ var replay_stats = {
     "turns": 17,
     "url": "https://replay.pokemonshowdown.com/gen9doublescustomgame-2612845958"
    },
-   "boosts": 11,
-   "chat": 19,
-   "crits_landed": 3,
-   "crits_landed_luck": 3,
-   "crits_taken": 2,
-   "damaging_moves_used": 51,
-   "dmg_dealt": 7702,
-   "dmg_taken": 7086,
-   "fainted": 16,
-   "games": 4,
+   "boosts": 27,
+   "chat": 44,
+   "crits_landed": 5,
+   "crits_landed_luck": 5,
+   "crits_taken": 6,
+   "damaging_moves_used": 94,
+   "dmg_dealt": 10903,
+   "dmg_taken": 12237,
+   "fainted": 39,
+   "games": 8,
    "h2h": {
+    "2": 1,
     "4": 2,
     "5": 1
    },
    "hazards": [],
-   "healed": 374,
-   "immune": 3,
-   "items_lost": 5,
-   "kos": 20,
-   "mega": 4,
-   "misses": 1,
-   "moves_used": 78,
-   "pct_dealt": 2303.2,
-   "pct_healed": 100.0,
-   "pct_taken": 1938.3,
-   "recorded_games": 4,
-   "resisted_hits": 5,
-   "se_hits": 27,
-   "seconds": 4808,
-   "statuses_inflicted": 5,
-   "statuses_taken": 2,
-   "support_moves_used": 27,
-   "switched_out": 12,
-   "switches": 12,
+   "healed": 795,
+   "immune": 8,
+   "items_lost": 12,
+   "kos": 32,
+   "mega": 8,
+   "misses": 2,
+   "moves_used": 147,
+   "pct_dealt": 4013.2,
+   "pct_healed": 309.0,
+   "pct_taken": 4532.0,
+   "recorded_games": 8,
+   "resisted_hits": 13,
+   "se_hits": 47,
+   "seconds": 7587,
+   "statuses_inflicted": 11,
+   "statuses_taken": 4,
+   "support_moves_used": 53,
+   "switched_out": 19,
+   "switches": 19,
    "tera": 0,
    "tera_turns": [],
-   "times_sent_out": 33,
+   "times_sent_out": 64,
    "top_moves": [
+    [
+     "Earthquake",
+     17
+    ],
+    [
+     "Extreme Speed",
+     12
+    ],
     [
      "Protect",
      11
+    ],
+    [
+     "Spore",
+     10
     ],
     [
      "Thunderbolt",
      10
     ],
     [
-     "Sucker Punch",
-     7
+     "Rock Slide",
+     9
     ],
     [
-     "Earthquake",
+     "Trick Room",
      7
     ],
     [
      "Seed Bomb",
-     6
-    ],
-    [
-     "Spore",
-     5
-    ],
-    [
-     "Iron Head",
-     5
-    ],
-    [
-     "Trick Room",
-     4
+     7
     ]
    ],
-   "turns": 53,
-   "turns_active": 104,
-   "unboosts_taken": 22,
-   "wins": 3
+   "turns": 99,
+   "turns_active": 191,
+   "unboosts_taken": 32,
+   "wins": 4
   },
   "4": {
    "best": {
