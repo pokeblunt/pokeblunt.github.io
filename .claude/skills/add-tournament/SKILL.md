@@ -83,6 +83,17 @@ same backticks.
 a drop. `creature_id` is the national dex number. A draft uses
 `"kwargs": {"creatures_drafted": [{"creature_id": N, "player_id": M}, ...]}`.
 
+**A trade is two edits, not one.** The event above is only the visible record — each
+player's `creature_ids` in the players array is a hand-maintained list of who owns what
+*now*, and the site does not derive it from trade events. Add the event **and** move the
+dex numbers between the two players' `creature_ids`. Check the roster sizes are
+unchanged afterwards unless the trade was genuinely lopsided.
+
+Before recording a trade, confirm the giver actually owns the Pokemon by looking at
+their `creature_ids`. If they do not, something earlier is missing — ask rather than
+assuming. An unrecorded trade is easy to miss because nothing breaks: the page renders,
+the numbers just quietly describe the wrong roster.
+
 Trades change who owns a Pokemon, which changes its ELO attribution — so run the
 rebuild after trades too, not just after games.
 

@@ -944,9 +944,10 @@ def insert_events(season, blocks):
     if not before.endswith("}"):
         sys.exit("%s: events array does not end with a closing brace; insert by hand." % path)
 
-    added = "".join("        }, " + block.lstrip() for block in blocks)
-    # `before` already ends with the previous event's `}`, which `added` re-opens.
-    merged = before[:-1].rstrip("\n ") + "\n" + added + text[at:]
+    # `before` ends with the previous event's closing brace and each block is a whole
+    # {...}, so events are joined with ", " -- which lands as the file's `}, {` seam.
+    # Do not re-add a brace per block; that only balances when there is exactly one.
+    merged = before + ", " + ", ".join(b.strip() for b in blocks) + text[at:]
 
     if merged.count("{") != merged.count("}") or merged.count("[") != merged.count("]"):
         sys.exit("%s: insertion would unbalance the file; nothing written." % path)
